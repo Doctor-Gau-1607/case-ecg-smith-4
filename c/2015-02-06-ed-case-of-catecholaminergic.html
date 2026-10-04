@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="vi" data-nen="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>06/02/2015 — Ca bệnh tại khoa cấp cứu: VT đa dạng do catecholamine (CPVT)</title>
+<style>
+:root{
+ --nen:#f2f4f6; --giay:#ffffff; --chu:#172033; --nhat:#5b6675; --vien:#e3e7ec;
+ --do:#b30000; --xanh:#004b87; --diu:#f6f8fa; --danh:#fff3cd;
+}
+:root[data-nen="toi"]{
+ --nen:#12151b; --giay:#1b2029; --chu:#e6eaf0; --nhat:#9aa5b4; --vien:#2c333f;
+ --do:#ff8a8a; --xanh:#7fb6e6; --diu:#232a35; --danh:#5a4a12;
+}
+*{box-sizing:border-box}
+html{font-size:var(--co,16px)}
+body{margin:0;background:var(--nen);color:var(--chu);
+ font-family:"Noto Sans","Segoe UI",Roboto,Arial,sans-serif;
+ font-size:1rem;line-height:1.7;-webkit-text-size-adjust:100%}
+a{color:var(--xanh)}
+.bo-cuc{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px;
+ max-width:1500px;margin:0 auto;padding:22px}
+/* ---- cột mục lục ---- */
+.muc-luc{position:sticky;top:22px;align-self:start;height:calc(100vh - 44px);
+ background:var(--giay);border-radius:16px;padding:16px 10px;display:flex;
+ flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ml-dau{display:flex;justify-content:space-between;align-items:center;
+ padding:2px 10px 10px;font-size:.78rem;font-weight:800;letter-spacing:.09em;
+ color:var(--do);border-bottom:1px solid var(--vien)}
+#phanTram{color:var(--nhat)}
+/* Thu gọn / mở lại cột mục lục. Trang nhớ lựa chọn, vì người đọc guideline
+   mở lại nhiều lần và không muốn mỗi lần lại phải thu tay. */
+.ml-dau .nut-thu{margin-left:8px;border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:1px 8px;cursor:pointer;font:inherit;
+ font-size:.9rem;line-height:1.4}
+@media(min-width:981px){
+ :root[data-ml="thu"] .bo-cuc{grid-template-columns:minmax(0,1fr)}
+ :root[data-ml="thu"] .muc-luc{display:none}
+ :root[data-ml="thu"] .hien-ml{display:block}
+}
+.o-tim{padding:10px 8px 6px}
+.o-tim input{width:100%;padding:8px 10px;border:1px solid var(--vien);
+ border-radius:9px;background:var(--diu);color:var(--chu);font:inherit;font-size:.85rem}
+.tim-dieu-khien{display:flex;gap:6px;align-items:center;margin-top:6px;
+ font-size:.76rem;color:var(--nhat)}
+.tim-dieu-khien button{border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:2px 9px;cursor:pointer;font:inherit}
+.ml-cuon{overflow-y:auto;flex:1;margin-top:4px}
+#dsMuc{list-style:none;margin:0;padding:0}
+#dsMuc a{display:block;padding:7px 12px;border-radius:9px;text-decoration:none;
+ color:var(--chu);font-size:.87rem;line-height:1.4}
+#dsMuc a:hover{background:var(--diu)}
+#dsMuc a.dang-doc{background:var(--diu);color:var(--do);font-weight:700;
+ box-shadow:inset 3px 0 0 var(--do)}
+#dsMuc .cap-1>a{font-weight:700}
+#dsMuc .cap-2>a{padding-left:26px;font-size:.85rem}
+#dsMuc .cap-3>a{padding-left:40px;font-size:.82rem;color:var(--nhat)}
+#dsMuc .cap-4>a,#dsMuc .cap-5>a{padding-left:54px;font-size:.8rem;color:var(--nhat)}
+/* ---- thân bài ---- */
+.dau-bai,.to-giay{background:var(--giay);border-radius:16px;
+ box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.dau-bai{padding:28px 34px;margin-bottom:22px}
+.nhan{font-size:.76rem;font-weight:800;letter-spacing:.16em;color:var(--nhat)}
+.dau-bai h1{margin:.25em 0 .35em;font-size:2rem;line-height:1.25;color:var(--do)}
+.dich-gia{color:var(--nhat);font-size:.92rem;margin:0}
+.dich-gia b{color:var(--xanh)}
+.to-giay{padding:34px 40px 60px}
+.to-giay h2{color:var(--do);font-size:1.65rem;margin:1.7em 0 .5em;
+ padding-bottom:4px;border-bottom:2px solid var(--vien)}
+.to-giay h2:first-child{margin-top:0}
+.to-giay h3{color:var(--xanh);font-size:1.3rem;margin:1.5em 0 .4em}
+.to-giay h4{font-size:1.08rem;margin:1.3em 0 .3em}
+.to-giay h5,.to-giay h6{font-size:1rem;margin:1.2em 0 .3em;color:var(--nhat)}
+.to-giay p{margin:0 0 .85em;text-align:justify}
+.to-giay p.cham{padding-left:1.35em;text-indent:-1.1em;text-align:left}
+figure{margin:1.4em 0;text-align:center}
+figure img{max-width:100%;height:auto;border:1px solid var(--vien);border-radius:10px}
+/* ---- bảng ---- */
+.tham-chieu{color:var(--xanh);font-weight:600;text-decoration:none;
+ border-bottom:1px dotted currentColor}
+.tham-chieu:hover{border-bottom-style:solid}
+.chu-thich-float{font-weight:600;margin:0 0 .4em}
+.khung-bang{overflow-x:auto;margin:1.4em 0;border-radius:10px;
+ border:1px solid var(--vien)}
+.khung-bang table{border-collapse:collapse;width:100%;font-size:.88rem;
+ table-layout:fixed}
+.to-giay p,.to-giay li,.to-giay dd{overflow-wrap:break-word}
+.to-giay sup{overflow-wrap:anywhere}
+.khung-bang td{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;
+ line-height:1.5;word-wrap:break-word}
+.khung-bang td.sat{padding-left:0;padding-right:0}
+.khung-bang td.giua{text-align:center;vertical-align:middle}
+.khung-bang td.ky-hieu{font-weight:800;white-space:nowrap}
+.khung-bang td.nen-toi,.khung-bang td.nen-toi *{color:#fff}
+.khung-bang td.nen-sang,.khung-bang td.nen-sang *{color:#12151b}
+.khung-bang td span{display:block}
+.khung-bang td span.cham{padding-left:1.1em;text-indent:-1em}
+mark.danh{background:var(--danh);color:inherit;border-radius:3px}
+/* Ô có màu ép màu chữ cho cả con cháu, kể cả <mark> của phần tìm trong bài — chữ
+   trắng trên nền vàng nhạt là tìm thấy mà không nhìn thấy. Trả chữ về màu trang. */
+.khung-bang td.nen-toi mark.danh,.khung-bang td.nen-sang mark.danh,
+.khung-bang td.nen-toi mark.danh *,.khung-bang td.nen-sang mark.danh *{color:var(--chu)}
+mark.danh.dang{outline:2px solid var(--do)}
+/* ---- nút nổi ---- */
+.thanh-nut{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:9}
+.thanh-nut button{width:42px;height:42px;border-radius:50%;cursor:pointer;
+ border:1px solid var(--vien);background:var(--giay);color:var(--chu);
+ font-size:1rem;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.hien-ml{display:none}
+/* ---- màn hình hẹp ---- */
+@media(max-width:980px){
+ .bo-cuc{grid-template-columns:minmax(0,1fr);padding:12px}
+ .muc-luc{position:fixed;inset:0 auto 0 0;width:88%;max-width:340px;z-index:20;
+  border-radius:0;height:100vh;transform:translateX(-102%);transition:transform .2s}
+ .muc-luc.mo{transform:none}
+ .hien-ml{display:block}
+ .to-giay{padding:22px 18px 44px}
+ /* Màn hình điện thoại: giữ bề rộng tối thiểu cho bảng rồi cho cuộn ngang,
+    thay vì bóp cột hẹp tới mức "Trung bình" xuống dòng thành "Tr un g bì nh". */
+ .khung-bang table{min-width:620px}
+ .dau-bai{padding:20px}
+ .dau-bai h1{font-size:1.5rem}
+}
+/* ---- in ra giấy ---- */
+@media print{
+ /* Nền tối được nhớ trong localStorage: bật một lần là mọi lần in sau đều dính.
+    Giấy luôn trắng, nên trả bảng màu về bản sáng trước khi in — nếu không, chữ
+    #e6eaf0 in lên giấy trắng là mất hẳn. */
+ :root,:root[data-nen="toi"]{--nen:#fff;--giay:#fff;--chu:#172033;--nhat:#4a5462;
+  --vien:#c9ced5;--do:#b30000;--xanh:#004b87;--diu:#f6f8fa;--danh:#fff3cd}
+ body{background:#fff;font-size:11.5pt}
+ .muc-luc,.thanh-nut{display:none!important}
+ .bo-cuc{display:block;max-width:none;padding:0}
+ .dau-bai,.to-giay{box-shadow:none;border-radius:0;padding:0}
+ .to-giay h2,.to-giay h3{break-after:avoid}
+ .khung-bang,figure{break-inside:avoid}
+ .khung-bang td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.c-xanh{color:var(--xanh)} .c-do{color:var(--do)} .c-luc{color:var(--luc)} .c-nhat{color:var(--nhat)}
+:root{--luc:#1d7a3a} :root[data-nen="toi"]{--luc:#7fd49a}
+.ban-quyen{display:inline-block;margin:.4em 0 1.2em!important;padding:6px 14px;border-radius:9px;
+ background:var(--diu);border:1px solid var(--vien);color:var(--nhat);font-size:.88rem}
+.note{background:var(--diu);border-left:4px solid var(--xanh);border-radius:0 10px 10px 0;padding:10px 16px;margin:1.1em 0}
+.note p:last-child{margin-bottom:0}
+.canh-bao{background:#fff4d6;border:1px solid #e8c97a;color:#4a3a10;border-radius:10px;padding:12px 16px;margin:0 0 18px;font-size:.93em}
+:root[data-nen="toi"] .canh-bao{background:#3a2f12;border-color:#6b5a1a;color:#f0e2bd}
+.to-giay blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid var(--vien);background:var(--diu);border-radius:0 10px 10px 0}
+.to-giay ul,.to-giay ol{padding-left:1.5em;margin:0 0 .9em}
+.to-giay li{margin:.2em 0}
+.to-giay hr{border:0;border-top:1px solid var(--vien);margin:1.6em 0}
+.khung-bang th{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;background:var(--diu);text-align:left;line-height:1.5}
+.khung-bang td[style*="background"],.khung-bang th[style*="background"]{color:#12151b}
+.tk p,.tk li{font-size:.9em;color:var(--nhat);text-align:left}
+figcaption,.chu-thich-anh{font-size:.88rem;color:var(--nhat);margin-top:.45em;text-align:center;line-height:1.55}
+figcaption b{color:var(--chu)}
+figure.anh-dau img{width:100%;max-height:420px;object-fit:cover}
+figure video{width:100%;max-height:78vh;background:#000;border-radius:10px;display:block}
+.khung-video{position:relative;padding-top:56.25%;margin:0;border-radius:10px;overflow:hidden;background:#000}
+.khung-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer;display:block;border-radius:10px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;border:0!important;border-radius:0!important;transition:opacity .2s}
+.yt:hover img{opacity:1}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.yt .play svg{width:58px;height:58px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.badge{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:2px 8px;border-radius:20px;pointer-events:none}
+.ytlink{display:inline-block;margin-left:8px;font-size:.92em;color:var(--xanh);text-decoration:none;border:1px solid var(--vien);border-radius:20px;padding:1px 10px;white-space:nowrap}
+.bo-anh{display:grid;gap:8px;margin:1em 0 1.4em;align-items:start}
+.bo-anh.cot-1{grid-template-columns:repeat(1,minmax(0,1fr))}
+.bo-anh.cot-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bo-anh.cot-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bo-anh.cot-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.bo-anh.cot-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bo-anh.cot-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.o-anh{display:block;border-radius:8px;overflow:hidden;background:#000;
+ border:1px solid var(--vien);cursor:zoom-in;line-height:0}
+.o-anh img{display:block;width:100%;height:auto}
+figure .o-anh{display:inline-block;background:none;border:0}
+figure .o-anh img{border:1px solid var(--vien);border-radius:10px}
+@media(max-width:980px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.xem-anh{position:fixed;inset:0;z-index:50;background:rgba(8,10,14,.94);display:none;
+ flex-direction:column;align-items:center;justify-content:center;padding:14px}
+.xem-anh.mo{display:flex}
+.xem-anh img{max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;border-radius:6px;background:#000}
+.xem-anh .xa-chu{color:#dfe5ec;font-size:.85rem;max-width:1100px;margin-top:10px;text-align:center;
+ line-height:1.5;max-height:5.2em;overflow:auto}
+.xem-anh .xa-dem{position:absolute;top:14px;left:18px;color:#c4ccd6;font-size:.85rem}
+.xem-anh button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;
+ width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+.xem-anh button:hover{background:rgba(255,255,255,.25)}
+.xem-anh .xa-dong{top:12px;right:14px}
+.xem-anh .xa-truoc{left:14px;top:50%;transform:translateY(-50%)}
+.xem-anh .xa-sau{right:14px;top:50%;transform:translateY(-50%)}
+@media print{
+ .xem-anh,.canh-bao,.ytlink{display:none!important}
+ .bo-anh{break-inside:avoid}
+ .o-anh{background:none}
+}
+</style>
+</head>
+<body>
+<div class="bo-cuc">
+ <aside class="muc-luc" id="mucLuc">
+  <div class="ml-dau"><span>NỘI DUNG</span><span id="phanTram">0%</span><button
+    id="nutThu" class="nut-thu" type="button" title="Thu gọn mục lục">«</button></div>
+  <div class="o-tim">
+   <input id="oTim" type="search" placeholder="Tìm trong tài liệu…" autocomplete="off">
+   <div class="tim-dieu-khien">
+    <button id="timTruoc" type="button">↑</button>
+    <button id="timSau" type="button">↓</button>
+    <span id="demTim"></span>
+   </div>
+  </div>
+  <div class="ml-cuon"><ul id="dsMuc"></ul></div>
+ </aside>
+ <main>
+  <section class="dau-bai">
+   <div class="nhan">CASE ECG #502 · DR. SMITH’S ECG BLOG</div>
+   <h1>06/02/2015 — Ca bệnh tại khoa cấp cứu: VT đa dạng do catecholamine (CPVT)</h1>
+   <p class="dich-gia"><a href="https://doctor-gau-1607.github.io/case-ecg-smith/">← Mục lục Case ECG</a></p><p class="dich-gia">Bản dịch tiếng Việt của bài <a href="https://drsmithsecgblog.com/ed-case-of-catecholaminergic/" target="_blank" rel="noopener">"ED Case of Catecholaminergic Polymorphic Ventricular Tachycardia"</a> – Dr. Smith’s ECG Blog. Giữ nguyên toàn bộ 2 hình ảnh của bản gốc.</p>
+  </section>
+  <section class="to-giay" id="toGiay">
+<p>Ca này do một độc giả cung cấp; có một số chi tiết bị thiếu, nhưng tôi tin rằng nó vẫn mang tính giáo dục.</p>
+<h2 id="trinh-bay-ca-benh">Trình bày ca bệnh</h2>
+<h3 id="lan-den-khoa-cap-cuu-ed-thu-nhat">Lần đến khoa cấp cứu (ED) thứ nhất</h3>
+<p>Một bệnh nhân nam 40 mấy tuổi khởi phát tiền ngất khi đang gắng sức mức độ vừa.  Khi đến khoa cấp cứu, bệnh nhân tím tái và lơ mơ buồn ngủ.  Monitor cho thấy nhịp nhanh QRS rộng (wide complex tachycardia).  Sốc điện chuyển nhịp ở mức 120 J không có đáp ứng, nhưng sau đó bệnh nhân tự chuyển về nhịp xoang.  Sau khi được tiêm một liều bolus amiodarone, bệnh nhân được nhập viện.</p>
+<p>Khai thác thêm tiền sử cho thấy trước đây đã từng có một cơn VT đa dạng (Polymorphic VT), với chẩn đoán giả định là VT đa dạng do catecholamine (Catecholaminergic Polymorphic VT – CPVT) do bất thường thụ thể ryanodine.</p>
+<p>Bệnh nhân đã được điều trị bằng nadolol và một máy khử rung tim cấy được tự động (AICD).  Không có tiền sử gia đình liên quan.   Ngoài ra bệnh nhân luôn khỏe mạnh, và luôn thích tập thể dục.</p>
+<p>Trong thời gian gần đây hơn, bệnh nhân cũng đã bị máy cấy trong cơ thể phóng sốc một lần khi đang tập luyện.  Khi kiểm tra AICD, hóa ra cú sốc là do nhịp nhanh xoang, vì vậy giới hạn tần số tim chấp nhận được đã được nâng từ 150 lần/phút lên 188 lần/phút.</p>
+<p><strong>Diễn biến tại bệnh viện</strong> <strong>thuận lợi.</strong>  Bệnh nhân vẫn ổn định và được cho ra viện với flecainide, có lên kế hoạch làm nghiệm pháp gắng sức tái khám.</p>
+<p>Trong kế hoạch điều trị có ghi: <em>“Vùng điều trị của ICD sẽ không được hạ thấp vào lúc này vì lo ngại rằng các cú sốc của ICD ở người bị CPVT có thể gây ra đáp ứng adrenergic mạnh và khởi phát cơn bão VT.”</em></p>
+<h3 id="lan-den-khoa-cap-cuu-thu-hai">Lần đến khoa cấp cứu thứ hai</h3>
+<p><strong><br></strong><br>Bệnh nhân lại đến khoa cấp cứu <strong>5 ngày sau</strong>:</p>
+<p>Sau khi gắng sức mức độ vừa, bệnh nhân đến trong tình trạng suy kiệt cấp với tần số tim 180, nhưng số nhát bóp có tưới máu ít hơn.</p>
+<p>Đây là các điện tâm đồ của bệnh nhân:</p>
+<figure><a class="o-anh" href="2015-02-06-ed-case-of-catecholaminergic_anh/2015_02_CPVT2.jpg"><img src="2015-02-06-ed-case-of-catecholaminergic_anh/2015_02_CPVT2.jpg" alt="" width="1498" height="816" loading="lazy" decoding="async"></a><figcaption>Nhịp nhanh QRS rộng.  Phần lớn đây là VT đơn dạng, nhưng vì V5 cho thấy 2 nhát QRS hẹp (có thể bị nhầm với nhát hỗn hợp), đây là <strong>VT đa dạng</strong> do các cơn ngắn <strong><a href="https://drsmithsecgblog.com/search/label/bidirectional%20tachycardia" rel="noopener" target="_blank">nhịp nhanh thất hai chiều</a>.</strong>  Lưu ý các nhát này không xuất hiện trong lúc đang ghi V2 và V3, khác với điện tâm đồ tiếp theo.</figcaption></figure>
+<p>Bản ghi thứ hai, ngay sau bản ghi thứ nhất:</p>
+<figure><a class="o-anh" href="2015-02-06-ed-case-of-catecholaminergic_anh/2015_02_CPVT1.jpg"><img src="2015-02-06-ed-case-of-catecholaminergic_anh/2015_02_CPVT1.jpg" alt="" width="1500" height="825" loading="lazy" decoding="async"></a><figcaption>Ở đây một lần nữa chúng ta thấy <strong>nhịp nhanh hai chiều (Bidirectional Tachycardia)</strong>, và lần này rõ ràng hơn vì nó xảy ra trong lúc ghi V2 và V3, là các chuyển đạo cho thấy nó rõ hơn mọi chuyển đạo khác ngoại trừ V5 (dải chạy dọc phía dưới),  chuyển đạo có giá trị chẩn đoán cao nhất, vượt xa các chuyển đạo còn lại.</figcaption></figure>
+<h3 id="dien-bien-tai-khoa-cap-cuu">Diễn biến tại khoa cấp cứu</h3>
+<p>Bệnh nhân được <strong>sốc điện chuyển nhịp đồng bộ</strong> hai lần ở mức 120 và 200 J mà không có đáp ứng.  Bệnh nhân vẫn duy trì nhịp nhanh QRS rộng với tần số tim trên monitor lên tới 180, nhưng số nhát bóp có tưới máu ít hơn. Bệnh nhân vẫn tỉnh táo.</p>
+<p>Bệnh nhân được dùng <strong>metoprolol</strong> 15 mg tĩnh mạch mà không có đáp ứng.  (<strong><em>Bình luận</em></strong>: Tôi cho rằng đây là một liều nhỏ, và tôi sẽ dùng esmolol vì thuốc tác dụng ngắn, có thể tăng liều dần và ngừng nếu có biến cố bất lợi).</p>
+<p>Nhằm giảm cơn tăng vọt catecholamine được cho là đang thúc đẩy nhịp nhanh, bệnh nhân được đặt nội khí quản và <strong>an thần bằng propofol</strong>.  Biện pháp này thất bại.</p>
+<p>Đã thử <strong>tạo nhịp vượt tần số (overdrive pacing)</strong> qua máy tạo nhịp đã cấy, và biện pháp này cũng thất bại.</p>
+<p>Sau đó nhịp được xử trí bằng <strong>amiodarone</strong> (thất bại).</p>
+<p>Bệnh nhân được dùng <strong>esmolol</strong> (cũng thất bại).</p>
+<p>Cuối cùng, bệnh nhân được dùng <strong>verapamil</strong>.</p>
+<p>Sau verapamil, bệnh nhân tụt huyết áp nặng cho đến khi da xám ngắt và <strong>mất mạch</strong>.  Ép tim được bắt đầu và bệnh nhân được khử rung lần nữa ở mức 200J, kết quả là khôi phục nhịp xoang 30-40 lần/phút, nhưng tưới máu không đầy đủ.</p>
+<p>Đã dùng atropine và tạo nhịp.  Bệnh nhân ổn định, và có thể được chuyển ra khỏi khoa cấp cứu.</p>
+<p>Sau một tuần nằm viện, bệnh nhân được cho ra viện với amiodarone và nadolol sau một nghiệm pháp gắng sức không có gì bất thường. Flecainide được ngừng.  Có cân nhắc việc cắt thần kinh giao cảm tim trong tương lai.</p>
+<h2 id="nhip-nhanh-that-da-dang-do-catecholamine-catecholaminergic-polymorphic-ventricular-tachycardia">Nhịp nhanh thất đa dạng do catecholamine (Catecholaminergic Polymorphic Ventricular Tachycardia)</h2>
+<p>CPVT là một trong các loại VT xảy ra trên tim có cấu trúc bình thường.  Bệnh do các đột biến hiếm gặp (di truyền hoặc tự phát) của gen thụ thể ryanodine hoặc gen calsequestrin 2.  Cả hai đột biến này lại ảnh hưởng đến sự giải phóng calci thì tâm trương từ lưới cơ tương, và do đó làm tăng nồng độ calci nội bào (giống như digoxin), dẫn đến hậu khử cực muộn và hoạt động khởi kích.  Cũng như với digoxin, một trong những rối loạn nhịp chính là nhịp nhanh hai chiều.</p>
+<p>PMVT có đặc điểm là các cơn ngất từng đợt khi gắng sức nặng hoặc khi xúc động cấp ở những người không có bất thường cấu trúc tim.  Bệnh gây ra VT đa dạng, thường kèm VT hai chiều, và có thể dung nạp tốt.</p>
+<p>Như đã đề cập ở trên, một số trường hợp CPVT có liên quan đến đột biến ở thụ thể ryanodine của tim, còn gọi là kênh giải phóng calci của lưới cơ tương tim (kênh trung gian giải phóng calci từ lưới cơ tương, cần thiết cho sự co bóp cơ tim).  Catecholamine có thể làm các kênh liên quan đến ryanodine này “rò rỉ” calci trong thì tâm trương và có thể khởi phát các rối loạn nhịp đe dọa tính mạng.</p>
+<p>Bàn luận sâu hơn về cơ chế nằm ngoài phạm vi của blog này (và ngoài khả năng của tôi!)</p>
+<p>Tuổi khởi phát trung bình là 7-12 tuổi, vì vậy ban đầu đây là một vấn đề của <strong>nhi khoa</strong>.  Tuy nhiên, bệnh có thể khởi phát muộn tới 40 tuổi.  Biểu hiện đầu tiên có thể là ngừng tim.</p>
+<p>Điện tâm đồ nền bình thường.  Có nhiều cơ chế tham gia, bao gồm vào lại và hậu khử cực muộn do quá tải calci hoặc do thay đổi trương lực thần kinh tự chủ.  Nói chung không thể gây ra cơn trong phòng thăm dò điện sinh lý (EP).</p>
+<p>VT có hình thái đa dạng hoặc hình thái <a href="https://drsmithsecgblog.com/search/label/aconite" rel="noopener" target="_blank">hai chiều</a>, như gặp trong ngộ độc digoxin hoặc ngộ độc <a href="https://drsmithsecgblog.com/search/label/aconite" rel="noopener" target="_blank">aconite</a>, với trục QRS luân phiên, hoặc LBBB/RBBB luân phiên.</p>
+<p><strong>Bàn luận thêm nằm ngoài phạm vi của blog này, ngoại trừ phần xử trí cấp cứu, và một chút về xử trí lâu dài.</strong></p>
+<h2 id="xu-tri-cap-cuu-vt-da-dang-do-catecholamine">XỬ TRÍ CẤP CỨU VT đa dạng do catecholamine</h2>
+<p>(tôi tìm được rất ít trong y văn; <a href="http://content.onlinejacc.org/article.aspx?articleid=1137887" rel="noopener" target="_blank">hướng dẫn của ACC/AHA về rối loạn nhịp có vẻ như chưa được cập nhật kể từ lần công bố gần nhất năm 2006</a>):</p>
+<p>Nếu đó là một trẻ em đến khám lần đầu, bạn có thể chỉ gặp một VT đa dạng không rõ căn nguyên. Nếu bạn ghi được điện tâm đồ khi đang nhịp xoang và thấy QT dài, thì bạn sẽ biết đó không phải PMVT. Nếu không có cơ hội ghi điện tâm đồ đó, bạn sẽ không biết, nhưng QT dài phổ biến hơn PMVT rất nhiều. Đến tuổi trưởng thành, bệnh nhân có lẽ đã biết về bệnh của mình. Điều này quan trọng, vì xử trí hai bệnh lý này rất khác nhau.</p>
+<h3 id="neu-ban-ghi-duoc-mot-doan-nhip-xoang">Nếu bạn ghi được một đoạn nhịp xoang:</h3>
+<p>1. Nếu có QT dài, thì VT đa dạng đó là xoắn đỉnh (Torsade).</p>
+<p>2. Nếu điện tâm đồ có thiếu máu cục bộ hoặc bằng chứng bệnh cơ tim, thì đó là VT đa dạng do thiếu máu cục bộ hoặc do tim bất thường về cấu trúc.</p>
+<p><strong><a href="https://drsmithsecgblog.com/2013/10/polymorphic-ventricular-tachycardia.html" rel="noopener" target="_blank">Đây là một bài về xử trí VT đa dạng <em>KHÔNG</em> do CPVT.</a></strong></p>
+<p>3. Nếu QRST bình thường khi đang nhịp xoang, thì hãy nghĩ nhiều đến<strong> CPVT. </strong></p>
+<p><strong>Hoặc có thể, như trong ca này, bệnh nhân đã được biết là có CPVT</strong>.</p>
+<h3 id="sau-day-la-mot-so-buoc-xu-tri-can-thuc-hien">Sau đây là một số bước xử trí cần thực hiện:</h3>
+<p>1. <strong>Sốc điện chuyển nhịp hoặc khử rung</strong> (tùy theo có mạch hay không), nhưng <strong>dùng trước thuốc chẹn beta</strong> (nếu có thể), vì bản thân cú sốc điện có thể gây tăng vọt catecholamine, làm tình trạng thêm trầm trọng và khiến VT tái phát sớm.</p>
+<p>2. Cần dùng <strong>thuốc chẹn beta đường tĩnh mạch</strong>. <strong>Esmolol</strong> là lựa chọn rất tốt, vì thuốc có thời gian bán thải rất ngắn và có thể ngừng nếu có biến chứng. <strong><u>Liều:</u></strong> Esmolol có thể tiêm bolus 500 mcg/kg (0,50 mg/kg), sau đó truyền liên tục 50 mcg/kg/phút (0,05 mg/kg/phút). Có thể tiêm bolus lại nhiều lần khi cần, mỗi lần tăng tốc độ truyền thêm 50 mcg/kg/phút.</p>
+<p>3. Với VT tái phát khi không có QT kéo dài, cần dùng <strong>amiodarone</strong> tiêm bolus rồi truyền liên tục. Amiodarone có tác dụng chẹn beta.</p>
+<p>4. <strong>Verapamil</strong> được khuyến cáo dựa trên các nghiên cứu cho thấy thuốc phòng ngừa PMVT do gắng sức (3, 4). Tuy nhiên, tôi chưa tìm thấy y văn nào về việc dùng thuốc trong tình huống cấp. Bác sĩ điện sinh lý của chúng tôi viết rằng anh ấy sẽ thử dùng. Trong ca này, thuốc <strong><em>có vẻ</em></strong> đã làm tình hình xấu đi, nhưng đó chính là vấn đề của các ca đơn lẻ không có nhóm chứng.</p>
+<p><strong><br></strong>4. <strong>An thần</strong>, như trong ca này, để giảm kích thích giao cảm? <a href="http://content.onlinejacc.org/article.aspx?articleid=1137887" rel="noopener" target="_blank">Hoặc, khuyến cáo nhóm IIb trong hướng dẫn của ACC/AHA cho VT "dai dẳng liên tục" (incessant) là gây mê toàn thân.</a></p>
+<p><strong>Tránh</strong> isoproterenol và tạo nhịp vượt tần số. Với VT đa dạng do QT dài mắc phải (xoắn đỉnh – Torsade de Pointe), isoproterenol được chỉ định để tăng tần số xoang và ngăn xoắn đỉnh tái phát. Tuy nhiên, thuốc này làm CPVT <strong><em>nặng hơn</em></strong>. May mắn là xoắn đỉnh phổ biến hơn, nhưng nếu bạn biết bệnh nhân có CPVT, <strong>hãy tránh isoproterenol.</strong></p>
+<p><a href="http://content.onlinejacc.org/article.aspx?articleid=1137887" rel="noopener" target="_blank"><strong>Tạo nhịp vượt tần số (overdrive pacing)</strong> được xếp vào nhóm IIb cho VT "dai dẳng liên tục" trong hướng dẫn của ACC/AHA, <strong><em>nhưng không được áp dụng cho CPVT.</em></strong></a><strong><em> </em></strong></p>
+<p>Tạo nhịp vượt tần số được dùng để ngăn tái phát PMVT phụ thuộc khoảng ngưng (xoắn đỉnh), vốn nặng lên khi nhịp chậm và cải thiện khi nhịp nhanh). Sinh lý bệnh của CPVT rất khác với hội chứng QT dài. CPVT, khác với xoắn đỉnh, lại <strong><em>nặng lên</em></strong> khi nhịp nhanh. <a href="https://drsmithsecgblog.com/2013/10/polymorphic-ventricular-tachycardia.html" rel="noopener" target="_blank">Xem bài này về xử trí xoắn đỉnh.</a></p>
+<h2 id="xu-tri-lau-dai-day-la-mot-vai-bien-phap-dieu-tri-ma-bac-si-dien-sinh-ly-co-the-ap-dung">XỬ TRÍ LÂU DÀI (đây là một vài biện pháp điều trị mà bác sĩ điện sinh lý có thể áp dụng)</h2>
+<p>1. Thuốc chẹn beta</p>
+<p>2. Cân nhắc máy khử rung tim cấy được tự động (AICD), đặc biệt nếu bệnh nhân từng sống sót sau ngừng tim. Điều trị bằng ICD mà không dùng kèm thuốc chẹn beta <br>là nguy hiểm vì nguy cơ bão điện (electrical storm) khởi phát <br>do tăng vọt adrenergic liên quan đến cú sốc điện.</p>
+<p>3. Flecainide nếu kháng trị với các biện pháp trên (thuốc ức chế thụ thể ryanodine của tim)</p>
+<p>4. Thuốc verapamil</p>
+<p>5. Tuyệt đối tránh thể thao thi đấu</p>
+<p>6. <a href="http://link.springer.com/article/10.1007/s00392-012-0492-7" rel="noopener" target="_blank">Cắt bỏ thần kinh giao cảm tim (sympathetic denervation) nếu kháng trị với các biện pháp trên</a></p>
+<div class="note"><p><strong>Chỉ cần bỏ lỡ một liều thuốc chẹn beta cũng có thể dẫn đến biến cố tử vong hoặc suýt tử vong</strong></p></div>
+<p>Đoạn sau được chép từ hướng dẫn của ACC/AHA (trích nguyên văn):</p>
+<p>Các rối loạn nhịp trên thất và thất thường được gây ra một cách lặp lại được bằng gắng sức khi tần số tim đạt ngưỡng 120 đến 130 nhịp/phút. PVC đơn lẻ thường xuất hiện trước, và ngay sau đó là các loạt ngắn nhịp nhanh thất không bền bỉ (NSVT). Nếu bệnh nhân tiếp tục gắng sức, thời gian các loạt VT tăng dần và VT có thể trở thành bền bỉ. Trục QRS luân phiên từng nhát, xoay 180°, gọi là “VT hai chiều”, là hình ảnh điển hình của các rối loạn nhịp liên quan đến CPVT. Bệnh nhân CPVT cũng có thể biểu hiện bằng VT đa dạng không đều hoặc rung thất (VF).</p>
+<p>Thuốc chẹn beta ngăn ngừa ngất tái phát ở phần lớn bệnh nhân, ngay cả khi VT và SVT thường vẫn có thể gây ra được trong nghiệm pháp gắng sức. Nếu ngất xảy ra ở bệnh nhân đang dùng thuốc chẹn beta, khuyến cáo cấy ICD. Tuy nhiên, điều trị bằng ICD đòi hỏi lập trình thiết bị cẩn thận để tránh điều trị không cần thiết cho các cơn rối loạn nhịp nhanh thất không bền bỉ.</p>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo:</h2>
+<p>Zipes DP và cs. ACC/AHA Guidelines for management of patients with ventricular arrhythmias and sudden cardiac death. Tạp chí JACC Vol. 48, No. 5, Sept. 2006:e247– e346</p>
+<p>Pflaumer A. Davis AM. Guidelines for the diagnosis and management of <br>Catecholaminergic Polymorphic Ventricular <br>Tachycardia. Tạp chí Heart, Lung, and Circulation 2012:21(2):96-100.</p>
+<p>Rosso R và cs. Calcium channel blockers and beta-blockers versus beta-blockers alone for preventing exercise-induced arrhythmias in catecholaminergic polymorphic ventricular tachycardia. Tạp chí Heart Rhythm 2007;4:1149–1154.</p>
+<p>Swan H và cs. Calcium channel antagonism reduces exercise-induced ventricular arrhythmias in catecholaminergic polymorphic ventricular tachycardia patients with RyR2 mutations. Tạp chí J Cardiovasc Electrophysiol 2005;16:162–166. Bài báo này chỉ bàn về xử trí lâu dài, không bàn về xử trí cấp cứu.</p>
+  </section>
+ </main>
+</div>
+<div class="thanh-nut">
+ <button id="nutMl" class="hien-ml" type="button" title="Mục lục">≡</button>
+ <button id="nutGiam" type="button" title="Chữ nhỏ hơn">A-</button>
+ <button id="nutTang" type="button" title="Chữ lớn hơn">A+</button>
+ <button id="nutNen" type="button" title="Nền sáng/tối">◐</button>
+</div>
+<div class="xem-anh" id="xemAnh" role="dialog" aria-label="Xem ảnh">
+ <span class="xa-dem"></span>
+ <button class="xa-dong" type="button" title="Đóng (Esc)">✕</button>
+ <button class="xa-truoc" type="button" title="Ảnh trước (←)">‹</button>
+ <img alt="">
+ <button class="xa-sau" type="button" title="Ảnh sau (→)">›</button>
+ <div class="xa-chu"></div>
+</div>
+<script>
+(function(){
+ var goc=document.documentElement, ds=document.getElementById('dsMuc'),
+     giay=document.getElementById('toGiay'), pt=document.getElementById('phanTram'),
+     ml=document.getElementById('mucLuc');
+ var dau=[].slice.call(giay.querySelectorAll('h2,h3,h4,h5,h6'));
+
+ // mục lục
+ dau.forEach(function(h){
+  var li=document.createElement('li');
+  li.className='cap-'+(+h.tagName[1]-1);
+  var a=document.createElement('a');
+  a.href='#'+h.id; a.textContent=h.textContent;
+  a.addEventListener('click',function(){ ml.classList.remove('mo'); });
+  li.appendChild(a); ds.appendChild(li);
+ });
+ var neo=[].slice.call(ds.querySelectorAll('a'));
+
+ function capNhat(){
+  var i=0;
+  for(var k=0;k<dau.length;k++){ if(dau[k].getBoundingClientRect().top<140) i=k; }
+  neo.forEach(function(a,k){ a.classList.toggle('dang-doc',k===i); });
+  var a=neo[i];
+  if(a){ var cuon=a.closest('.ml-cuon');
+   if(cuon){ var h=a.getBoundingClientRect(), c=cuon.getBoundingClientRect();
+    if(h.top<c.top||h.bottom>c.bottom) cuon.scrollTop+=h.top-c.top-c.height/3; } }
+  var het=document.documentElement.scrollHeight-innerHeight;
+  pt.textContent=(het>0?Math.min(100,Math.round(scrollY/het*100)):100)+'%';
+ }
+ addEventListener('scroll',capNhat,{passive:true});
+ addEventListener('resize',capNhat); capNhat();
+
+ // cỡ chữ + nền tối, nhớ lựa chọn
+ function docNho(k,md){ try{ return localStorage.getItem(k)||md; }catch(e){ return md; } }
+ function ghiNho(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+ var co=parseInt(docNho('gl-co','16'),10);
+ function apCo(){ goc.style.setProperty('--co',co+'px'); ghiNho('gl-co',co); capNhat(); }
+ apCo();
+ goc.setAttribute('data-nen',docNho('gl-nen','sang'));
+ document.getElementById('nutTang').onclick=function(){ co=Math.min(24,co+1); apCo(); };
+ document.getElementById('nutGiam').onclick=function(){ co=Math.max(12,co-1); apCo(); };
+ document.getElementById('nutNen').onclick=function(){
+  var v=goc.getAttribute('data-nen')==='toi'?'sang':'toi';
+  goc.setAttribute('data-nen',v); ghiNho('gl-nen',v);
+ };
+ // thu gọn / mở lại cột mục lục (nhớ lựa chọn)
+ goc.setAttribute('data-ml',docNho('gl-ml',''));
+ function datMl(v){ goc.setAttribute('data-ml',v); ghiNho('gl-ml',v); capNhat(); }
+ document.getElementById('nutThu').onclick=function(){ datMl('thu'); };
+ document.getElementById('nutMl').onclick=function(){
+  // màn hình rộng: nút ≡ mở lại cột đã thu; màn hình hẹp: kéo cột ra/vào
+  if(innerWidth>980 && goc.getAttribute('data-ml')==='thu'){ datMl(''); return; }
+  ml.classList.toggle('mo');
+ };
+
+ // tìm trong bài
+ var o=document.getElementById('oTim'), dem=document.getElementById('demTim'), hit=[], vt=-1;
+ function xoaDanh(){
+  hit=[]; vt=-1;
+  var m=giay.querySelectorAll('mark.danh');
+  for(var i=0;i<m.length;i++){ var p=m[i].parentNode;
+   p.replaceChild(document.createTextNode(m[i].textContent),m[i]); p.normalize(); }
+ }
+ function danhDau(q){
+  xoaDanh();
+  if(q.length<2){ dem.textContent=''; return; }
+  var tw=document.createTreeWalker(giay,NodeFilter.SHOW_TEXT,null), nut=[], n;
+  while((n=tw.nextNode())) if(n.nodeValue.trim()) nut.push(n);
+  var kq=q.toLowerCase();
+  nut.forEach(function(n){
+   var s=n.nodeValue, l=s.toLowerCase(), i=l.indexOf(kq);
+   if(i<0) return;
+   var cha=n.parentNode, sau=n, dich=0;
+   while(i>=0){
+    var giua=sau.splitText(i-dich); dich=i+q.length;
+    sau=giua.splitText(q.length);
+    var mk=document.createElement('mark'); mk.className='danh';
+    cha.replaceChild(mk,giua); mk.appendChild(giua); hit.push(mk);
+    i=l.indexOf(kq,dich);
+   }
+  });
+  dem.textContent=hit.length?('1/'+hit.length):'0';
+  if(hit.length){ vt=0; toi(0); }
+ }
+ function toi(i){
+  if(!hit.length) return;
+  hit.forEach(function(m){ m.classList.remove('dang'); });
+  vt=(i+hit.length)%hit.length;
+  hit[vt].classList.add('dang');
+  hit[vt].scrollIntoView({block:'center',behavior:'smooth'});
+  dem.textContent=(vt+1)+'/'+hit.length;
+ }
+ var cho;
+ o.addEventListener('input',function(){ clearTimeout(cho);
+  cho=setTimeout(function(){ danhDau(o.value.trim()); },250); });
+ o.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault();
+  toi(vt+(e.shiftKey?-1:1)); } });
+ document.getElementById('timTruoc').onclick=function(){ toi(vt-1); };
+ document.getElementById('timSau').onclick=function(){ toi(vt+1); };
+ addEventListener('beforeprint',xoaDanh);
+})();
+// xem ảnh phóng to: bấm ảnh để mở, ←/→ chuyển ảnh trong cùng bộ, Esc để đóng
+(function(){
+ var hop=document.getElementById('xemAnh'), anh=hop.querySelector('img'),
+     chu=hop.querySelector('.xa-chu'), dem=hop.querySelector('.xa-dem'), bo=[], vt=0;
+ function hien(i){
+  vt=(i+bo.length)%bo.length; var a=bo[vt], im=a.querySelector('img');
+  anh.src=a.getAttribute('href'); anh.alt=im.alt; chu.textContent=im.alt;
+  chu.style.display=im.alt?'':'none';
+  dem.textContent=bo.length>1?(vt+1)+' / '+bo.length:'';
+  hop.querySelector('.xa-truoc').style.display=hop.querySelector('.xa-sau').style.display=bo.length>1?'':'none';
+ }
+ function dong(){ hop.classList.remove('mo'); anh.removeAttribute('src'); document.body.style.overflow=''; }
+ document.getElementById('toGiay').addEventListener('click',function(e){
+  var a=e.target.closest('a.o-anh'); if(!a) return;
+  e.preventDefault();
+  var cha=a.closest('.bo-anh');
+  bo=cha?[].slice.call(cha.querySelectorAll('a.o-anh')):[a];
+  hien(bo.indexOf(a)); hop.classList.add('mo'); document.body.style.overflow='hidden';
+ });
+ hop.querySelector('.xa-dong').onclick=dong;
+ hop.querySelector('.xa-truoc').onclick=function(e){ e.stopPropagation(); hien(vt-1); };
+ hop.querySelector('.xa-sau').onclick=function(e){ e.stopPropagation(); hien(vt+1); };
+ hop.addEventListener('click',function(e){ if(e.target===hop) dong(); });
+ addEventListener('keydown',function(e){
+  if(!hop.classList.contains('mo')) return;
+  if(e.key==='Escape') dong();
+  else if(e.key==='ArrowLeft') hien(vt-1);
+  else if(e.key==='ArrowRight') hien(vt+1);
+ });
+ var x0=null;
+ hop.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+ hop.addEventListener('touchend',function(e){ if(x0===null) return;
+  var dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)>50) hien(vt+(dx<0?1:-1)); });
+})();
+// video YouTube: chỉ tải khi bấm. YouTube trả "Lỗi 153" khi trang không gửi được referrer
+// (mở từ ổ đĩa file:// hoặc khung sandbox) — khi đó mở thẳng tab YouTube.
+(function(){
+ var giay=document.getElementById('toGiay'), ds=giay.querySelectorAll('.yt');
+ if(!ds.length) return;
+ var canEmbed=/^https?:$/.test(location.protocol) &&
+   (typeof window.origin==='undefined' || (window.origin && window.origin!=='null'));
+ var PLAY='<span class="play"><svg viewBox="0 0 68 48"><path fill="#f00" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/><path fill="#fff" d="M27 34l18-10-18-10z"/></svg></span>';
+ [].forEach.call(ds,function(b){
+  var id=b.getAttribute('data-id'), n=b.getAttribute('data-n')||'Video', watch='https://www.youtube.com/watch?v='+id;
+  b.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+n+'">'+PLAY+'<span class="badge">▶ '+n+'</span>';
+  b.setAttribute('role','button'); b.setAttribute('tabindex','0');
+  var fig=b.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+  if(!cap&&fig){ cap=document.createElement('figcaption'); fig.appendChild(cap); }
+  if(cap){ var a=document.createElement('a'); a.className='ytlink'; a.href=watch; a.target='_blank';
+   a.rel='noopener'; a.textContent='Mở trên YouTube ↗'; cap.appendChild(a); }
+  function load(){
+   if(!canEmbed){ window.open(watch,'_blank','noopener'); return; }
+   b.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&autoplay=1" '+
+    'referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer;autoplay;clipboard-write;'+
+    'encrypted-media;gyroscope;picture-in-picture" allowfullscreen title="'+n+'"></iframe>';
+   b.style.cursor='default';
+  }
+  b.addEventListener('click',load);
+  b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
+ });
+ if(!canEmbed){
+  var w=document.createElement('div'); w.className='canh-bao';
+  w.innerHTML='<b>Lưu ý:</b> trang đang mở trực tiếp từ ổ đĩa (hoặc trong khung xem trước) nên YouTube chặn phát nhúng '+
+   '(<i>Lỗi 153</i>). Bấm vào video sẽ mở tab YouTube. Đăng trang lên web (https) thì video phát ngay trong trang.';
+  giay.insertBefore(w, giay.firstChild);
+ }
+})();
+</script>
+</body>
+</html>
