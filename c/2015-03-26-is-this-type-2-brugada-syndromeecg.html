@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="vi" data-nen="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>26/03/2015 — Đây có phải hội chứng Brugada/hình ảnh điện tâm đồ Brugada típ 2?</title>
+<style>
+:root{
+ --nen:#f2f4f6; --giay:#ffffff; --chu:#172033; --nhat:#5b6675; --vien:#e3e7ec;
+ --do:#b30000; --xanh:#004b87; --diu:#f6f8fa; --danh:#fff3cd;
+}
+:root[data-nen="toi"]{
+ --nen:#12151b; --giay:#1b2029; --chu:#e6eaf0; --nhat:#9aa5b4; --vien:#2c333f;
+ --do:#ff8a8a; --xanh:#7fb6e6; --diu:#232a35; --danh:#5a4a12;
+}
+*{box-sizing:border-box}
+html{font-size:var(--co,16px)}
+body{margin:0;background:var(--nen);color:var(--chu);
+ font-family:"Noto Sans","Segoe UI",Roboto,Arial,sans-serif;
+ font-size:1rem;line-height:1.7;-webkit-text-size-adjust:100%}
+a{color:var(--xanh)}
+.bo-cuc{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px;
+ max-width:1500px;margin:0 auto;padding:22px}
+/* ---- cột mục lục ---- */
+.muc-luc{position:sticky;top:22px;align-self:start;height:calc(100vh - 44px);
+ background:var(--giay);border-radius:16px;padding:16px 10px;display:flex;
+ flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ml-dau{display:flex;justify-content:space-between;align-items:center;
+ padding:2px 10px 10px;font-size:.78rem;font-weight:800;letter-spacing:.09em;
+ color:var(--do);border-bottom:1px solid var(--vien)}
+#phanTram{color:var(--nhat)}
+/* Thu gọn / mở lại cột mục lục. Trang nhớ lựa chọn, vì người đọc guideline
+   mở lại nhiều lần và không muốn mỗi lần lại phải thu tay. */
+.ml-dau .nut-thu{margin-left:8px;border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:1px 8px;cursor:pointer;font:inherit;
+ font-size:.9rem;line-height:1.4}
+@media(min-width:981px){
+ :root[data-ml="thu"] .bo-cuc{grid-template-columns:minmax(0,1fr)}
+ :root[data-ml="thu"] .muc-luc{display:none}
+ :root[data-ml="thu"] .hien-ml{display:block}
+}
+.o-tim{padding:10px 8px 6px}
+.o-tim input{width:100%;padding:8px 10px;border:1px solid var(--vien);
+ border-radius:9px;background:var(--diu);color:var(--chu);font:inherit;font-size:.85rem}
+.tim-dieu-khien{display:flex;gap:6px;align-items:center;margin-top:6px;
+ font-size:.76rem;color:var(--nhat)}
+.tim-dieu-khien button{border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:2px 9px;cursor:pointer;font:inherit}
+.ml-cuon{overflow-y:auto;flex:1;margin-top:4px}
+#dsMuc{list-style:none;margin:0;padding:0}
+#dsMuc a{display:block;padding:7px 12px;border-radius:9px;text-decoration:none;
+ color:var(--chu);font-size:.87rem;line-height:1.4}
+#dsMuc a:hover{background:var(--diu)}
+#dsMuc a.dang-doc{background:var(--diu);color:var(--do);font-weight:700;
+ box-shadow:inset 3px 0 0 var(--do)}
+#dsMuc .cap-1>a{font-weight:700}
+#dsMuc .cap-2>a{padding-left:26px;font-size:.85rem}
+#dsMuc .cap-3>a{padding-left:40px;font-size:.82rem;color:var(--nhat)}
+#dsMuc .cap-4>a,#dsMuc .cap-5>a{padding-left:54px;font-size:.8rem;color:var(--nhat)}
+/* ---- thân bài ---- */
+.dau-bai,.to-giay{background:var(--giay);border-radius:16px;
+ box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.dau-bai{padding:28px 34px;margin-bottom:22px}
+.nhan{font-size:.76rem;font-weight:800;letter-spacing:.16em;color:var(--nhat)}
+.dau-bai h1{margin:.25em 0 .35em;font-size:2rem;line-height:1.25;color:var(--do)}
+.dich-gia{color:var(--nhat);font-size:.92rem;margin:0}
+.dich-gia b{color:var(--xanh)}
+.to-giay{padding:34px 40px 60px}
+.to-giay h2{color:var(--do);font-size:1.65rem;margin:1.7em 0 .5em;
+ padding-bottom:4px;border-bottom:2px solid var(--vien)}
+.to-giay h2:first-child{margin-top:0}
+.to-giay h3{color:var(--xanh);font-size:1.3rem;margin:1.5em 0 .4em}
+.to-giay h4{font-size:1.08rem;margin:1.3em 0 .3em}
+.to-giay h5,.to-giay h6{font-size:1rem;margin:1.2em 0 .3em;color:var(--nhat)}
+.to-giay p{margin:0 0 .85em;text-align:justify}
+.to-giay p.cham{padding-left:1.35em;text-indent:-1.1em;text-align:left}
+figure{margin:1.4em 0;text-align:center}
+figure img{max-width:100%;height:auto;border:1px solid var(--vien);border-radius:10px}
+/* ---- bảng ---- */
+.tham-chieu{color:var(--xanh);font-weight:600;text-decoration:none;
+ border-bottom:1px dotted currentColor}
+.tham-chieu:hover{border-bottom-style:solid}
+.chu-thich-float{font-weight:600;margin:0 0 .4em}
+.khung-bang{overflow-x:auto;margin:1.4em 0;border-radius:10px;
+ border:1px solid var(--vien)}
+.khung-bang table{border-collapse:collapse;width:100%;font-size:.88rem;
+ table-layout:fixed}
+.to-giay p,.to-giay li,.to-giay dd{overflow-wrap:break-word}
+.to-giay sup{overflow-wrap:anywhere}
+.khung-bang td{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;
+ line-height:1.5;word-wrap:break-word}
+.khung-bang td.sat{padding-left:0;padding-right:0}
+.khung-bang td.giua{text-align:center;vertical-align:middle}
+.khung-bang td.ky-hieu{font-weight:800;white-space:nowrap}
+.khung-bang td.nen-toi,.khung-bang td.nen-toi *{color:#fff}
+.khung-bang td.nen-sang,.khung-bang td.nen-sang *{color:#12151b}
+.khung-bang td span{display:block}
+.khung-bang td span.cham{padding-left:1.1em;text-indent:-1em}
+mark.danh{background:var(--danh);color:inherit;border-radius:3px}
+/* Ô có màu ép màu chữ cho cả con cháu, kể cả <mark> của phần tìm trong bài — chữ
+   trắng trên nền vàng nhạt là tìm thấy mà không nhìn thấy. Trả chữ về màu trang. */
+.khung-bang td.nen-toi mark.danh,.khung-bang td.nen-sang mark.danh,
+.khung-bang td.nen-toi mark.danh *,.khung-bang td.nen-sang mark.danh *{color:var(--chu)}
+mark.danh.dang{outline:2px solid var(--do)}
+/* ---- nút nổi ---- */
+.thanh-nut{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:9}
+.thanh-nut button{width:42px;height:42px;border-radius:50%;cursor:pointer;
+ border:1px solid var(--vien);background:var(--giay);color:var(--chu);
+ font-size:1rem;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.hien-ml{display:none}
+/* ---- màn hình hẹp ---- */
+@media(max-width:980px){
+ .bo-cuc{grid-template-columns:minmax(0,1fr);padding:12px}
+ .muc-luc{position:fixed;inset:0 auto 0 0;width:88%;max-width:340px;z-index:20;
+  border-radius:0;height:100vh;transform:translateX(-102%);transition:transform .2s}
+ .muc-luc.mo{transform:none}
+ .hien-ml{display:block}
+ .to-giay{padding:22px 18px 44px}
+ /* Màn hình điện thoại: giữ bề rộng tối thiểu cho bảng rồi cho cuộn ngang,
+    thay vì bóp cột hẹp tới mức "Trung bình" xuống dòng thành "Tr un g bì nh". */
+ .khung-bang table{min-width:620px}
+ .dau-bai{padding:20px}
+ .dau-bai h1{font-size:1.5rem}
+}
+/* ---- in ra giấy ---- */
+@media print{
+ /* Nền tối được nhớ trong localStorage: bật một lần là mọi lần in sau đều dính.
+    Giấy luôn trắng, nên trả bảng màu về bản sáng trước khi in — nếu không, chữ
+    #e6eaf0 in lên giấy trắng là mất hẳn. */
+ :root,:root[data-nen="toi"]{--nen:#fff;--giay:#fff;--chu:#172033;--nhat:#4a5462;
+  --vien:#c9ced5;--do:#b30000;--xanh:#004b87;--diu:#f6f8fa;--danh:#fff3cd}
+ body{background:#fff;font-size:11.5pt}
+ .muc-luc,.thanh-nut{display:none!important}
+ .bo-cuc{display:block;max-width:none;padding:0}
+ .dau-bai,.to-giay{box-shadow:none;border-radius:0;padding:0}
+ .to-giay h2,.to-giay h3{break-after:avoid}
+ .khung-bang,figure{break-inside:avoid}
+ .khung-bang td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.c-xanh{color:var(--xanh)} .c-do{color:var(--do)} .c-luc{color:var(--luc)} .c-nhat{color:var(--nhat)}
+:root{--luc:#1d7a3a} :root[data-nen="toi"]{--luc:#7fd49a}
+.ban-quyen{display:inline-block;margin:.4em 0 1.2em!important;padding:6px 14px;border-radius:9px;
+ background:var(--diu);border:1px solid var(--vien);color:var(--nhat);font-size:.88rem}
+.note{background:var(--diu);border-left:4px solid var(--xanh);border-radius:0 10px 10px 0;padding:10px 16px;margin:1.1em 0}
+.note p:last-child{margin-bottom:0}
+.canh-bao{background:#fff4d6;border:1px solid #e8c97a;color:#4a3a10;border-radius:10px;padding:12px 16px;margin:0 0 18px;font-size:.93em}
+:root[data-nen="toi"] .canh-bao{background:#3a2f12;border-color:#6b5a1a;color:#f0e2bd}
+.to-giay blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid var(--vien);background:var(--diu);border-radius:0 10px 10px 0}
+.to-giay ul,.to-giay ol{padding-left:1.5em;margin:0 0 .9em}
+.to-giay li{margin:.2em 0}
+.to-giay hr{border:0;border-top:1px solid var(--vien);margin:1.6em 0}
+.khung-bang th{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;background:var(--diu);text-align:left;line-height:1.5}
+.khung-bang td[style*="background"],.khung-bang th[style*="background"]{color:#12151b}
+.tk p,.tk li{font-size:.9em;color:var(--nhat);text-align:left}
+figcaption,.chu-thich-anh{font-size:.88rem;color:var(--nhat);margin-top:.45em;text-align:center;line-height:1.55}
+figcaption b{color:var(--chu)}
+figure.anh-dau img{width:100%;max-height:420px;object-fit:cover}
+figure video{width:100%;max-height:78vh;background:#000;border-radius:10px;display:block}
+.khung-video{position:relative;padding-top:56.25%;margin:0;border-radius:10px;overflow:hidden;background:#000}
+.khung-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer;display:block;border-radius:10px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;border:0!important;border-radius:0!important;transition:opacity .2s}
+.yt:hover img{opacity:1}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.yt .play svg{width:58px;height:58px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.badge{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:2px 8px;border-radius:20px;pointer-events:none}
+.ytlink{display:inline-block;margin-left:8px;font-size:.92em;color:var(--xanh);text-decoration:none;border:1px solid var(--vien);border-radius:20px;padding:1px 10px;white-space:nowrap}
+.bo-anh{display:grid;gap:8px;margin:1em 0 1.4em;align-items:start}
+.bo-anh.cot-1{grid-template-columns:repeat(1,minmax(0,1fr))}
+.bo-anh.cot-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bo-anh.cot-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bo-anh.cot-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.bo-anh.cot-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bo-anh.cot-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.o-anh{display:block;border-radius:8px;overflow:hidden;background:#000;
+ border:1px solid var(--vien);cursor:zoom-in;line-height:0}
+.o-anh img{display:block;width:100%;height:auto}
+figure .o-anh{display:inline-block;background:none;border:0}
+figure .o-anh img{border:1px solid var(--vien);border-radius:10px}
+@media(max-width:980px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.xem-anh{position:fixed;inset:0;z-index:50;background:rgba(8,10,14,.94);display:none;
+ flex-direction:column;align-items:center;justify-content:center;padding:14px}
+.xem-anh.mo{display:flex}
+.xem-anh img{max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;border-radius:6px;background:#000}
+.xem-anh .xa-chu{color:#dfe5ec;font-size:.85rem;max-width:1100px;margin-top:10px;text-align:center;
+ line-height:1.5;max-height:5.2em;overflow:auto}
+.xem-anh .xa-dem{position:absolute;top:14px;left:18px;color:#c4ccd6;font-size:.85rem}
+.xem-anh button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;
+ width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+.xem-anh button:hover{background:rgba(255,255,255,.25)}
+.xem-anh .xa-dong{top:12px;right:14px}
+.xem-anh .xa-truoc{left:14px;top:50%;transform:translateY(-50%)}
+.xem-anh .xa-sau{right:14px;top:50%;transform:translateY(-50%)}
+@media print{
+ .xem-anh,.canh-bao,.ytlink{display:none!important}
+ .bo-anh{break-inside:avoid}
+ .o-anh{background:none}
+}
+</style>
+</head>
+<body>
+<div class="bo-cuc">
+ <aside class="muc-luc" id="mucLuc">
+  <div class="ml-dau"><span>NỘI DUNG</span><span id="phanTram">0%</span><button
+    id="nutThu" class="nut-thu" type="button" title="Thu gọn mục lục">«</button></div>
+  <div class="o-tim">
+   <input id="oTim" type="search" placeholder="Tìm trong tài liệu…" autocomplete="off">
+   <div class="tim-dieu-khien">
+    <button id="timTruoc" type="button">↑</button>
+    <button id="timSau" type="button">↓</button>
+    <span id="demTim"></span>
+   </div>
+  </div>
+  <div class="ml-cuon"><ul id="dsMuc"></ul></div>
+ </aside>
+ <main>
+  <section class="dau-bai">
+   <div class="nhan">CASE ECG #518 · DR. SMITH’S ECG BLOG</div>
+   <h1>26/03/2015 — Đây có phải hội chứng Brugada/hình ảnh điện tâm đồ Brugada típ 2?</h1>
+   <p class="dich-gia"><a href="https://doctor-gau-1607.github.io/case-ecg-smith/">← Mục lục Case ECG</a></p><p class="dich-gia">Bản dịch tiếng Việt của bài <a href="https://drsmithsecgblog.com/is-this-type-2-brugada-syndromeecg/" target="_blank" rel="noopener">"Is this Type 2 Brugada syndrome/ECG pattern?"</a> – Dr. Smith’s ECG Blog. Giữ nguyên toàn bộ 14 hình ảnh của bản gốc.</p>
+  </section>
+  <section class="to-giay" id="toGiay">
+<h2 id="gioi-thieu">Giới thiệu</h2>
+<p>Brugada típ 2 và típ 3 đã được gộp lại thành típ 2. Nhiều năm nay các chẩn đoán này vẫn gây bối rối, vì chúng dựa trên hình thái “yên ngựa” (saddleback). Tuy nhiên, hình thái yên ngựa là một biến thể bình thường rất thường gặp: hình thái “yên ngựa” hiếm khi là hình ảnh Brugada, và càng hiếm hơn nữa mới là hội chứng Brugada.</p>
+<p><strong><u>Để xem phần cập nhật quan trọng cho bài này, hãy vào đây:</u></strong></p>
+<h2 id="non-vagal-syncope-and-saddleback-morphology-in-v2-ngat-khong-do-phan-xa-phe-vi-va-hinh-thai-yen-ngua-o-v2">Non-Vagal Syncope and Saddleback Morphology in V2 (Ngất không do phản xạ phế vị và hình thái yên ngựa ở V2)</h2>
+<p>Bài này cho thấy quyết định cấy máy khử rung tim khó khăn đến mức nào.</p>
+<h2 id="ca-1">Ca 1</h2>
+<p>Một vận động viên trẻ đến viện vì ngất. Đây là điện tâm đồ của anh ấy:</p>
+<figure><a class="o-anh" href="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_EDECG.jpg"><img src="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_EDECG.jpg" alt="" width="1600" height="680" loading="lazy" decoding="async"></a><figcaption>Có phức bộ rSr’ kèm ST chênh lên và sóng T dương, tạo thành hình “yên ngựa” (saddleback) ở cả V1 và V2</figcaption></figure>
+<p><strong>Đây là hình ảnh Brugada típ 2 hay típ 3?</strong></p>
+<p><strong><br></strong><br>Hội chứng Brugada là một bệnh lý có thể dẫn tới nhịp nhanh thất đa dạng, rung thất và đột tử. Nhận diện được bệnh trước khi bệnh nhân tử vong là điều quan trọng.</p>
+<p>Chẩn đoán hội chứng Brugada đòi hỏi CẢ HAI: 1) hình ảnh Brugada trên điện tâm đồ và 2) tiêu chuẩn lâm sàng.</p>
+<p><a href="https://drsmithsecgblog.com/2014/01/syncope-and-st-segment-elevation-and.html" rel="noopener" target="_blank">Đây là một ví dụ về hình ảnh Brugada típ I xuất hiện khi sốt và biến mất sau khi hạ sốt. Hình ảnh này có thể thoáng qua và bị bộc lộ trong nhiều tình huống khác nhau (xem bên dưới).</a></p>
+<p>Việc nhận diện và xử trí hình ảnh Brugada típ 1 trên điện tâm đồ không hoàn toàn đơn giản, nhưng theo tôi, nó dễ hơn nhiều so với việc nhận diện và xử trí bệnh nhân có thể bị Brugada típ 2/3 (hình thái típ 3 nay đã được nhập vào típ 2). <a href="http://www.escardio.org/communities/councils/ccp/e-journal/volume7/Pages/management-brugada-ECG-pattern.aspx#.VQh311PF_iQ" rel="noopener" target="_blank">Ở đây, một trong hai anh em Brugada trình bày sơ lược cách xử trí trường hợp có thể bị hội chứng Brugada, nhưng không bàn về típ 2 đủ chi tiết để tôi hiểu được.</a></p>
+<p>Nhiều bài báo và trang web chỉ đơn giản nói rằng hình ảnh Brugada típ 2 có dạng “yên ngựa” ở V2. Họ không bàn gì thêm. Điều này không hữu ích, vì <strong>hình yên ngựa là một dạng rất thường gặp ở V2</strong> (tới 7% ở bệnh nhân không có bệnh tim rõ ràng) và trong đại đa số trường hợp là biến thể bình thường, đặc biệt ở vận động viên.</p>
+<p>Hình yên ngựa được gọi như vậy là do có sóng r’ (rSr’) đi kèm sóng T dương, tạo thành hình cái yên ngựa. Dạng này còn được gọi là chậm dẫn truyền thất phải, và nếu QRS đủ rộng (nhưng không quá 120 ms) thì đó là blốc nhánh phải không hoàn toàn (I-RBBB).</p>
+<p><strong>Một bác sĩ không chuyên về điện sinh lý làm thế nào để nghi ngờ Brugada típ 2?</strong></p>
+<p>Một lần nữa, phải phân biệt giữa hội chứng và hình thái trên điện tâm đồ. Riêng hình thái thì chưa đủ để chẩn đoán. Phải có thêm bối cảnh lâm sàng phù hợp (xem bên dưới) hoặc thăm dò điện sinh lý dương tính.</p>
+<p><span class="c-do"><strong>Làm thế nào để nhận diện hình thái Brugada típ 2 trên điện tâm đồ?</strong></span> May mắn là đã có một <a href="http://www.sciencedirect.com/science/article/pii/S0022073612002026" rel="noopener" target="_blank">bài báo đồng thuận về chủ đề này</a> do Bayes de Luna và anh em nhà Brugada viết. <a href="https://www.researchgate.net/profile/Antonio_Luna4/publication/235697888_consensus_Brugada/links/09e41512b1bb5b580a000000/consensus-Brugada.pdf" rel="noopener" target="_blank">Đây là toàn văn của bài báo.</a></p>
+<p>Còn có một bài báo rất hay (link toàn văn dạng html): <a href="http://onlinelibrary.wiley.com/doi/10.1111/anec.12241/full" rel="noopener" target="_blank">Differential diagnosis of rSr’ pattern in Leads V1-V2: Comprehensive Review and Proposed Algorithm.</a> (Chẩn đoán phân biệt dạng rSr’ ở các chuyển đạo V1-V2: tổng quan toàn diện và đề xuất thuật toán). Bài này do chính các tác giả của bộ tiêu chuẩn mới cho Brugada típ 2 viết, nên khá có thẩm quyền. <a href="http://www.researchgate.net/profile/Adrian_Baranchuk/publication/270007503_Differential_Diagnosis_of_rSr_Pattern_in_Leads_V1-V2._Comprehensive_Review_and_Proposed_Algorithm/links/54a545980cf257a63608c794.pdf" rel="noopener" target="_blank">(Đây là link tới toàn văn dạng pdf).</a></p>
+<h3 id="duoi-day-la-chan-doan-phan-biet-cua-rsr-co-chinh-sua-tu-bai-bao-ve-rsr">Dưới đây là chẩn đoán phân biệt của rSr’, có chỉnh sửa từ bài báo về rSr’:</h3>
+<p><strong><u>A. Các dạng lành tính</u>: </strong> –<strong>r’ được ghi nhanh (hẹp), khác với RBBB hay Brugada, vốn đều có R’ rộng hơn. Nguyên nhân:</strong></p>
+<p>1. Đặt điện cực V1, V2 cao hơn vị trí chuẩn</p>
+<p>2. Biến thể bình thường, do vùng sau-đáy thất trái được hoạt hóa muộn</p>
+<p>3. Blốc nhánh phải không hoàn toàn, do dẫn truyền qua nhánh phải bị chậm. Không liên quan đến kết cục bất lợi. Tuy nhiên, tỷ lệ tiến triển thành RBBB hoàn toàn về sau cao hơn.</p>
+<p>4. Vận động viên: 35-50%, do thất phải lớn sinh lý</p>
+<p>5. Lồng ngực lõm (pectus excavatum), do thay đổi vị trí của tim trong lồng ngực</p>
+<p><strong><u>B. Các dạng bệnh lý</u></strong>: –<strong>r’ </strong>thường cao hơn –<strong>r</strong>, với nhánh lên/nhánh xuống chậm hơn</p>
+<p>1. Hình ảnh Brugada típ 2</p>
+<p>2. Thất phải lớn, phì đại do nhiều bệnh lý khác nhau</p>
+<p>3. Loạn sản thất phải gây loạn nhịp (ARVD)</p>
+<p>4. Hội chứng Wolff-Parkinson-White (WPW)</p>
+<p>5. <a href="https://drsmithsecgblog.com/2013/11/you-must-recognize-this-pattern-even-if.html" rel="noopener" target="_blank">Tăng kali máu</a></p>
+<p>6. Thuốc chẹn kênh natri (Na) (<a href="https://drsmithsecgblog.com/2013/01/right-bundle-branch-block-with-new.html" rel="noopener" target="_blank">thuốc chống loạn nhịp</a>, <a href="https://drsmithsecgblog.com/search/label/Tricyclic%20antidepressant" rel="noopener" target="_blank">thuốc chống trầm cảm ba vòng (TCA)</a>)</p>
+<h3 id="hay-quay-lai-ca-benh-cua-chung-ta-voi-nhieu-chi-tiet-hon">Hãy quay lại ca bệnh của chúng ta, với nhiều chi tiết hơn:</h3>
+<p>Một vận động viên trẻ có một tình trạng gây đau nên được khám tại khoa cấp cứu (ED). Sau một cơn đau, anh bị một cơn ngất với mất ý thức hoàn toàn và mất trương lực tư thế, rồi tự tỉnh lại. <strong>Có tiền triệu dường như mang tính chất phản xạ phế vị (vasovagal).</strong> Anh bắt đầu thấy khó chịu và cảm giác đè nặng ở bụng dưới, kèm vã mồ hôi, rồi bắt đầu thấy choáng váng và ngất đi. Anh tự hồi phục ý thức. Anh không có tiền sử các cơn ngất trước đây. Không có tiền sử gia đình ngừng tim đột ngột sớm ở người thân bậc một. Không có tiền sử ngất khi gắng sức hay ngất sau gắng sức. Khám tại khoa cấp cứu bình thường.</p>
+<p>Đây lại là điện tâm đồ đó:</p>
+<figure><a class="o-anh" href="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_EDECG-1.jpg"><img src="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_EDECG-1.jpg" alt="" width="1600" height="680" loading="lazy" decoding="async"></a><figcaption>Đây có phải hình ảnh Brugada típ 2?
+Đây có phải hội chứng Brugada típ 2?</figcaption></figure>
+<p><strong>Câu trả lời ngắn gọn là <u>KHÔNG</u>.</strong></p>
+<p>1. Đây không phải Brugada típ 1.</p>
+<p>2. Đoạn khởi đầu/nhánh xuống của đoạn ST ở V1 và V2 không đủ phẳng (góc “beta” không đủ rộng) để là Brugada típ 2. Một <strong>sóng r’</strong> rõ nét là hình ảnh thường gặp ở vận động viên.</p>
+<h2 id="day-la-cau-tra-loi-dai">Đây là câu trả lời dài</h2>
+<p>Dưới đây tôi tóm tắt bài báo đã nhắc ở trên, có tựa đề (kèm link toàn văn): <a href="https://www.researchgate.net/profile/Adrian_Baranchuk/publication/230740128_Current_electrocardiographic_criteria_for_diagnosis_of_Brugada_pattern_a_consensus_report/links/09e4150916db2deb08000000.pdf" rel="noopener" target="_blank">Current electrocardiographic criteria for diagnosis of Brugada pattern: a consensus report</a> (Tiêu chuẩn điện tâm đồ hiện hành để chẩn đoán hình ảnh Brugada: báo cáo đồng thuận)</p>
+<p><u>Chẩn đoán hội chứng Brugada đòi hỏi <strong>cả hai</strong></u>:</p>
+<p>1. <strong>Điện tâm đồ có hình ảnh Brugada</strong> (hoặc Brugada típ 1, hoặc Brugada típ 2 <em><strong>mới được định nghĩa</strong></em>)</p>
+<p>Các dấu hiệu có thể thay đổi động và đôi khi bị che lấp; các dấu hiệu có thể chỉ được thấy trong một số hoàn cảnh nhất định như sốt, nhiễm độc, rối loạn điện giải, có mặt <a href="http://www.ncbi.nlm.nih.gov/pubmed/21039643" rel="noopener" target="_blank">các thuốc/chất chẹn kênh natri</a>, hoặc kích thích phế vị.</p>
+<p>2. <strong><u>Ít nhất một trong các tiêu chí sau</u>:</strong></p>
+<p>(a) sống sót sau ngừng tim,</p>
+<p>(b) nhịp nhanh thất (VT) đa dạng được chứng kiến/ghi lại,</p>
+<p>(c) tiền sử ngất <strong><em><u>không do phản xạ phế vị</u></em></strong>,</p>
+<p>(d) tiền sử gia đình có người đột tử khi dưới 45 tuổi mà không có hội chứng vành</p>
+<p>cấp</p>
+<p>(e) hình ảnh Brugada típ 1 ở người thân.</p>
+<h3 id="hinh-thai-tip-1">Hình thái típ 1</h3>
+<p>Đây là hình ảnh típ 1 ở V1 và/hoặc V2, khá dễ nhận ra:</p>
+<figure><a class="o-anh" href="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_IMG_3107.jpg"><img src="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_IMG_3107.jpg" alt="" width="1536" height="2048" loading="lazy" decoding="async"></a><figcaption>Sóng R’ phải có biên độ ít nhất 2 mm
+Chỉ số Corrado (xem bên dưới) = 1,5/0,5 = 3,0. Do đó nó lớn hơn 1,0.</figcaption></figure>
+<h3 id="tieu-chuan-cua-hinh-thai-tip-1">Tiêu chuẩn của hình thái típ 1:</h3>
+<p>1. Sóng R’ ít nhất 2 mm ở V1 hoặc V2</p>
+<p>2. <em><strong>Nhưng</strong></em> không có sóng R’ <u>tách biệt</u> vì đoạn ST khởi đầu theo một góc ngay từ đỉnh</p>
+<p>3. Đoạn ST lồi lên trên (“dạng vòm”, coved). [Họ dùng thuật ngữ “lõm xuống dưới”]</p>
+<p>4. Đỉnh ở điểm khởi đầu cao không trùng với điểm J. Nó nằm TRƯỚC điểm J, khi đo ở các chuyển đạo khác (như chuyển đạo II chạy dọc phía dưới).</p>
+<p>5. Đoạn ST dốc xuống từ từ sao cho tại 40 ms sau điểm khởi đầu, biên độ giảm ít hơn 4 mm (trong ví dụ này, ít hơn 1 mm). Trong RBBB thông thường, biên độ giảm nhiều hơn hẳn (xem ví dụ này).</p>
+<p>6. Theo sau đoạn ST là một sóng T âm đối xứng</p>
+<p>7. “Thời gian QRS dài hơn so với trong RBBB,” và “có sự bất tương xứng giữa V1 và V6.” Tiêu chuẩn này gây khó hiểu và không được giải thích rõ.</p>
+<p>8. Độ dốc xuống phải sao cho <strong>chỉ số Corrado</strong> lớn hơn 1,0 (xem ví dụ ở trên).</p>
+<p><strong>Chỉ số Corrado</strong> là tỷ số:</p>
+<p>[ST chênh lên tại điểm J]</p>
+<p><strong><u>chia cho</u></strong></p>
+<p>[ST chênh lên tại 80 ms sau điểm J].</p>
+<p><strong>Ở vận động viên</strong>, chỉ số này nhỏ hơn 1,0 do đoạn ST chênh lên nằm ngang hoặc dốc lên, như ở đây:</p>
+<figure><a class="o-anh" href="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_Corradaindexlessthanone.jpg"><img src="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_Corradaindexlessthanone.jpg" alt="" width="511" height="477" loading="lazy" decoding="async"></a><figcaption>Chỉ số Corrado nhỏ hơn 1 ở một vận động viên, vì đoạn ST dốc lên</figcaption></figure>
+<h3 id="tieu-chuan-cua-brugada-tip-2">Tiêu chuẩn của Brugada típ 2:</h3>
+<p><strong><u><br></u></strong><br><a href="http://www.researchgate.net/publication/230740128_Current_electrocardiographic_criteria_for_diagnosis_of_Brugada_pattern_a_consensus_report/file/79e4150916db2deb08.pdf" rel="noopener" target="_blank">Trong bài báo đồng thuận mà chúng ta đang bàn ở đây</a>, Brugada típ 2 và típ 3 đã được gộp thành một típ gọi là típ 2. Họ nêu rõ các tiêu chuẩn cần dùng (bên dưới).</p>
+<p><strong><u><br></u></strong><br><strong>Đây là một ví dụ từ bài báo:</strong></p>
+<figure><a class="o-anh" href="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_Type2Brugadafromarticle.jpg"><img src="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_Type2Brugadafromarticle.jpg" alt="" width="1040" height="722" loading="lazy" decoding="async"></a></figure>
+<p><strong>Trước hết, phải có</strong>:</p>
+<p>a) Phức bộ RSr’ với hình yên ngựa (saddleback) điển hình ở V1 và/hoặc V2.</p>
+<p>b) V1 có thể có sóng T dương, dẹt hoặc đảo ngược (trong ca của chúng ta ở trên, sóng T đảo ngược).</p>
+<p>c) Sóng T ở V2 thường, nhưng không phải luôn luôn, dương.</p>
+<p>d) Đoạn ST đi lên tối thiểu 0,5 mm. Không thể có hình yên ngựa nếu không có đoạn đi lên.</p>
+<p><strong>Khi đã thỏa các điều trên, ở chuyển đạo V2 cần có</strong>:</p>
+<p><strong>1.  </strong>Điểm khởi đầu cao của nhánh xuống của sóng r’ cao ít nhất 2 mm trên đường đẳng điện (trong ca của chúng ta, lớn hơn 2 mm). Do đó sóng <strong>r’</strong> <strong><em>không tách biệt</em></strong> như trong các nguyên nhân lành tính của rSr’</p>
+<p><strong>2.</strong>  Bất tương xứng về thời gian QRS giữa chuyển đạo V1 và V6 (dài hơn ở chuyển đạo V1). Điều này giúp phân biệt với RBBB, trong đó thời gian QRS ở V1 và V6 bằng nhau.</p>
+<p><strong>3.</strong> Giống như típ 1, đỉnh sóng r’ không trùng với điểm J ở các chuyển đạo khác.</p>
+<p><strong>4.</strong> Đáy của tam giác được vẽ phải dài hơn 3,5 mm. Điều này xác nhận rằng độ dốc của đoạn ST đủ phẳng để chẩn đoán. Tôi giải thích điều này trong một hình có chú thích ở đây:</p>
+<figure><a class="o-anh" href="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_Type2Brugadafromarticle-annotated.jpg"><img src="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_Type2Brugadafromarticle-annotated.jpg" alt="" width="977" height="765" loading="lazy" decoding="async"></a><figcaption><strong>Giải thích</strong>
+1. Vẽ một đường ngang từ đỉnh sóng r’ (đường đen 1)<br>2. Vẽ một đường ngang thấp hơn đường này 5 mm (đường xanh lá 2)<br>3. Kéo dài đoạn r’-ST dốc xuống (đường đen 3) cho đến khi cắt đường xanh lá<br>4. Đo đáy.  
+<strong>Nếu lớn hơn 3,5 mm thì đạt tiêu chuẩn (tương đương với <u>góc beta (β)</u> 35 độ)</strong></figcaption></figure>
+<p>Tôi đã làm điều này với chuyển đạo V1 trên điện tâm đồ của chúng ta:</p>
+<figure><a class="o-anh" href="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_EDECG-V1annotated.jpg"><img src="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_EDECG-V1annotated.jpg" alt="" width="1027" height="557" loading="lazy" decoding="async"></a><figcaption>Khoảng cách từ sóng S đến đường gần như thẳng đứng nhỏ hơn 3,5 mm, nên không đạt tiêu chuẩn.</figcaption></figure>
+<p>Còn ở chuyển đạo V2 thì sao?</p>
+<figure><a class="o-anh" href="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_EDECG-V2annotated.jpg"><img src="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_EDECG-V2annotated.jpg" alt="" width="577" height="339" loading="lazy" decoding="async"></a><figcaption><span class="c-do"><strong>Hình vẽ này sai</strong></span>, và chỉ nhằm cho thấy <span class="c-do"><strong>KHÔNG</strong></span> nên làm như thế nào.
+Cả hai đường phải được vẽ từ chỗ bắt đầu dốc xuống ở đỉnh sóng r’.</figcaption></figure>
+<p>Dữ liệu cho tiêu chuẩn này <a href="http://europace.oxfordjournals.org/content/early/2014/03/05/europace.euu025.short" rel="noopener" target="_blank">đến từ nghiên cứu này</a>, so sánh những bệnh nhân đã biết có hội chứng Brugada típ 2 nguy cơ cao với các vận động viên có rSr’. <a href="http://www.redheracles.net/media/upload/research/pdf/246039551405687191.pdf" rel="noopener" target="_blank">Có thể xem toàn văn tại đây</a>.</p>
+<p><strong>Các tiêu chuẩn này, <em>khi được nghiên cứu trên các quần thể so sánh này</em>, có độ nhạy khoảng 90% và độ đặc hiệu khoảng 90% trong nghiên cứu này.</strong></p>
+<h3 id="dien-tien-ca-benh">Diễn tiến ca bệnh:</h3>
+<p>Điện tâm đồ này được ghi sau đó:</p>
+<figure><a class="o-anh" href="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_Nextmorning.jpg"><img src="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_Nextmorning.jpg" alt="" width="1352" height="490" loading="lazy" decoding="async"></a><figcaption>Mọi dấu hiệu đáng ngờ đều đã biến mất. Chỉ còn ST chênh lên biến thể bình thường (tái cực sớm)</figcaption></figure>
+<p><a href="http://www.sciencedirect.com/science/article/pii/S0002914906018169" rel="noopener" target="_blank">Ở bệnh nhân Brugada, hình thái Brugada có thể được bộc lộ khi ghi V1 và V2 ở các khoang liên sườn cao hơn (xem bài báo này)</a>.</p>
+<p><a href="http://www.researchgate.net/profile/Eugene_Chung2/publication/259546036_JECG_HL_HCG_final/links/00b7d52c6e5f9c1892000000.pdf" rel="noopener" target="_blank">Một bài báo khác cho thấy những người <em><strong>khỏe mạnh</strong></em> có thể có hình thái típ 2 dương tính giả nếu đặt điện cực quá cao, nhưng <strong><em>KHÔNG</em></strong> có típ 1 (link toàn văn)!</a>  (Chung EH. <a href="http://www.sciencedirect.com/science/article/pii/S002207361300424X" rel="noopener" target="_blank">Brugada-type patterns are easily observed in high precordial lead ECGs in collegiate athletes</a> (Hình ảnh kiểu Brugada dễ dàng quan sát được trên điện tâm đồ đặt chuyển đạo trước tim cao ở vận động viên đại học). Journal of Electrocardiology 47 (2014) 1–6.)</p>
+<p>Điều này đã được thực hiện ở đây:</p>
+<figure><a class="o-anh" href="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_V1andV2oneintercostalspacehigher.jpg"><img src="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_V1andV2oneintercostalspacehigher.jpg" alt="" width="1439" height="514" loading="lazy" decoding="async"></a><figcaption><strong>Ghi V1, V2 cao hơn một khoang liên sườn <em><u>không</u></em> bộc lộ hình ảnh Brugada típ 1.</strong>  <strong>Nó cho thấy một rSr’ rõ nét</strong>
+Ghi V1 và V2 cao hơn một hoặc hai khoang liên sườn, trên vùng tim có nhiều khả năng tạo ra hình ảnh Brugada nhất, sẽ làm hình ảnh này rõ hơn. Nếu đúng như vậy, điều đó sẽ rất gợi ý Brugada.
+<strong>Lưu ý rằng có sóng T đảo ngược ở V2 (nhưng không phải hình ảnh Brugada!).  </strong>
+<strong>Đặt điện cực cao là một trong những nguyên nhân gây sóng T đảo ngược “bất thường” ở V2 và các chuyển đạo xa hơn. </strong>
+<strong><br></strong><br><span class="c-do"><strong>Bản ghi này cũng gợi ý rằng điện tâm đồ ban đầu đã được ghi quá cao, vì nó rất giống với điện tâm đồ đầu tiên đó</strong></span></figcaption></figure>
+<p>Vì anh là vận động viên đại học, các căn nguyên khác của cơn ngất cũng đã được cân nhắc, bao gồm HOCM, nhịp nhanh thất đa dạng do catecholamine và loạn sản thất phải gây loạn nhịp. Siêu âm tim qua thành ngực không cho thấy bằng chứng nào của HOCM hay loạn sản thất phải. EF bình thường. Anh không có tiền sử gia đình đã biết về đột tử do tim ở tuổi trẻ.</p>
+<p>Bác sĩ điện sinh lý tin chắc rằng đây không phải Brugada; có thể làm nghiệm pháp kích thích bằng procainamide, nhưng thông thường nghiệm pháp này chỉ làm cho ngất “không giải thích được”, chứ không làm cho ngất do phản xạ phế vị điển hình. Bệnh nhân được xuất viện mà không bị hạn chế vận động. Bác sĩ để ngỏ khả năng làm nghiệm pháp gắng sức để loại trừ nhịp nhanh thất đa dạng do catecholamine (CPVT), vốn xảy ra khi stress và gắng sức. Tuy nhiên, khi không có yếu tố gắng sức, xác suất CPVT là rất thấp.</p>
+<h3 id="ket-luan-ca-benh">Kết luận ca bệnh</h3>
+<p><strong>Thực ra, điện tâm đồ này hoặc là:</strong></p>
+<p><strong>1) một hình ảnh giả Brugada típ 2 điển hình ở vận động viên, hoặc </strong></p>
+<p><strong>2) một bản ghi đặt điện cực quá cao, hoặc </strong></p>
+<p><strong>3) CẢ HAI.  </strong></p>
+<h2 id="ca-2">Ca 2</h2>
+<p>Đây là một bệnh nhân đến khám vì tiền ngất tái diễn và hồi hộp đánh trống ngực.</p>
+<figure><a class="o-anh" href="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_TypeIIBrugadapossible.jpg"><img src="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_TypeIIBrugadapossible.jpg" alt="" width="1600" height="640" loading="lazy" decoding="async"></a></figure>
+<p>Đây là chuyển đạo V2 phóng to:</p>
+<figure><a class="o-anh" href="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_possibletypeIIBrugadaannotatedlines.jpg"><img src="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_possibletypeIIBrugadaannotatedlines.jpg" alt="" width="217" height="182" loading="lazy" decoding="async"></a><figcaption>Đáy tam giác khoảng 3,5 mm, và nó đạt các tiêu chuẩn khác.</figcaption></figure>
+<p>Bác sĩ điện sinh lý lo ngại về Brugada típ 2 đến mức đã cấy cho bệnh nhân một máy ghi vòng lặp (loop recorder).</p>
+<h2 id="ca-3">Ca 3</h2>
+<p>Bệnh nhân 40 mấy tuổi này đến khám vì choáng váng và đau ngực. Cảm giác choáng váng có vẻ là chóng mặt (vertigo) hơn là tiền ngất.</p>
+<figure><a class="o-anh" href="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_PossibleType2BrugadaJan2015.jpg"><img src="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_PossibleType2BrugadaJan2015.jpg" alt="" width="1302" height="489" loading="lazy" decoding="async"></a></figure>
+<p>Đây là các đường đã vẽ:</p>
+<figure><a class="o-anh" href="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_Possibletype2BrugadaJan2015withlinesdrawn.jpg"><img src="2015-03-26-is-this-type-2-brugada-syndromeecg_anh/2015_03_Possibletype2BrugadaJan2015withlinesdrawn.jpg" alt="" width="1256" height="470" loading="lazy" decoding="async"></a><figcaption>Đáy lớn hơn 3,5 mm, và có các tiêu chuẩn khác của hình ảnh Brugada típ 2.</figcaption></figure>
+<p>Trong ca này, bệnh nhân được làm nghiệm pháp gắng sức vì đau ngực, nhưng chẩn đoán Brugada típ 2 bị gạt bỏ vì không có tiêu chuẩn lâm sàng. Choáng váng do chóng mặt (vertigo) là không đủ.</p>
+<p><strong>Có hình ảnh Brugada, nhưng không có hội chứng Brugada</strong></p>
+<p>Đây là một bài tổng quan toàn diện về các rối loạn nhịp di truyền: <a href="http://europace.oxfordjournals.org/content/15/10/1389" rel="noopener" target="_blank">Executive summary: HRS/EHRA/APHRS expert consensus statement on the diagnosis and management of patients with inherited primary arrhythmia syndromes</a> (Tóm tắt: tuyên bố đồng thuận của chuyên gia HRS/EHRA/APHRS về chẩn đoán và xử trí bệnh nhân có các hội chứng rối loạn nhịp nguyên phát di truyền)</p>
+  </section>
+ </main>
+</div>
+<div class="thanh-nut">
+ <button id="nutMl" class="hien-ml" type="button" title="Mục lục">≡</button>
+ <button id="nutGiam" type="button" title="Chữ nhỏ hơn">A-</button>
+ <button id="nutTang" type="button" title="Chữ lớn hơn">A+</button>
+ <button id="nutNen" type="button" title="Nền sáng/tối">◐</button>
+</div>
+<div class="xem-anh" id="xemAnh" role="dialog" aria-label="Xem ảnh">
+ <span class="xa-dem"></span>
+ <button class="xa-dong" type="button" title="Đóng (Esc)">✕</button>
+ <button class="xa-truoc" type="button" title="Ảnh trước (←)">‹</button>
+ <img alt="">
+ <button class="xa-sau" type="button" title="Ảnh sau (→)">›</button>
+ <div class="xa-chu"></div>
+</div>
+<script>
+(function(){
+ var goc=document.documentElement, ds=document.getElementById('dsMuc'),
+     giay=document.getElementById('toGiay'), pt=document.getElementById('phanTram'),
+     ml=document.getElementById('mucLuc');
+ var dau=[].slice.call(giay.querySelectorAll('h2,h3,h4,h5,h6'));
+
+ // mục lục
+ dau.forEach(function(h){
+  var li=document.createElement('li');
+  li.className='cap-'+(+h.tagName[1]-1);
+  var a=document.createElement('a');
+  a.href='#'+h.id; a.textContent=h.textContent;
+  a.addEventListener('click',function(){ ml.classList.remove('mo'); });
+  li.appendChild(a); ds.appendChild(li);
+ });
+ var neo=[].slice.call(ds.querySelectorAll('a'));
+
+ function capNhat(){
+  var i=0;
+  for(var k=0;k<dau.length;k++){ if(dau[k].getBoundingClientRect().top<140) i=k; }
+  neo.forEach(function(a,k){ a.classList.toggle('dang-doc',k===i); });
+  var a=neo[i];
+  if(a){ var cuon=a.closest('.ml-cuon');
+   if(cuon){ var h=a.getBoundingClientRect(), c=cuon.getBoundingClientRect();
+    if(h.top<c.top||h.bottom>c.bottom) cuon.scrollTop+=h.top-c.top-c.height/3; } }
+  var het=document.documentElement.scrollHeight-innerHeight;
+  pt.textContent=(het>0?Math.min(100,Math.round(scrollY/het*100)):100)+'%';
+ }
+ addEventListener('scroll',capNhat,{passive:true});
+ addEventListener('resize',capNhat); capNhat();
+
+ // cỡ chữ + nền tối, nhớ lựa chọn
+ function docNho(k,md){ try{ return localStorage.getItem(k)||md; }catch(e){ return md; } }
+ function ghiNho(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+ var co=parseInt(docNho('gl-co','16'),10);
+ function apCo(){ goc.style.setProperty('--co',co+'px'); ghiNho('gl-co',co); capNhat(); }
+ apCo();
+ goc.setAttribute('data-nen',docNho('gl-nen','sang'));
+ document.getElementById('nutTang').onclick=function(){ co=Math.min(24,co+1); apCo(); };
+ document.getElementById('nutGiam').onclick=function(){ co=Math.max(12,co-1); apCo(); };
+ document.getElementById('nutNen').onclick=function(){
+  var v=goc.getAttribute('data-nen')==='toi'?'sang':'toi';
+  goc.setAttribute('data-nen',v); ghiNho('gl-nen',v);
+ };
+ // thu gọn / mở lại cột mục lục (nhớ lựa chọn)
+ goc.setAttribute('data-ml',docNho('gl-ml',''));
+ function datMl(v){ goc.setAttribute('data-ml',v); ghiNho('gl-ml',v); capNhat(); }
+ document.getElementById('nutThu').onclick=function(){ datMl('thu'); };
+ document.getElementById('nutMl').onclick=function(){
+  // màn hình rộng: nút ≡ mở lại cột đã thu; màn hình hẹp: kéo cột ra/vào
+  if(innerWidth>980 && goc.getAttribute('data-ml')==='thu'){ datMl(''); return; }
+  ml.classList.toggle('mo');
+ };
+
+ // tìm trong bài
+ var o=document.getElementById('oTim'), dem=document.getElementById('demTim'), hit=[], vt=-1;
+ function xoaDanh(){
+  hit=[]; vt=-1;
+  var m=giay.querySelectorAll('mark.danh');
+  for(var i=0;i<m.length;i++){ var p=m[i].parentNode;
+   p.replaceChild(document.createTextNode(m[i].textContent),m[i]); p.normalize(); }
+ }
+ function danhDau(q){
+  xoaDanh();
+  if(q.length<2){ dem.textContent=''; return; }
+  var tw=document.createTreeWalker(giay,NodeFilter.SHOW_TEXT,null), nut=[], n;
+  while((n=tw.nextNode())) if(n.nodeValue.trim()) nut.push(n);
+  var kq=q.toLowerCase();
+  nut.forEach(function(n){
+   var s=n.nodeValue, l=s.toLowerCase(), i=l.indexOf(kq);
+   if(i<0) return;
+   var cha=n.parentNode, sau=n, dich=0;
+   while(i>=0){
+    var giua=sau.splitText(i-dich); dich=i+q.length;
+    sau=giua.splitText(q.length);
+    var mk=document.createElement('mark'); mk.className='danh';
+    cha.replaceChild(mk,giua); mk.appendChild(giua); hit.push(mk);
+    i=l.indexOf(kq,dich);
+   }
+  });
+  dem.textContent=hit.length?('1/'+hit.length):'0';
+  if(hit.length){ vt=0; toi(0); }
+ }
+ function toi(i){
+  if(!hit.length) return;
+  hit.forEach(function(m){ m.classList.remove('dang'); });
+  vt=(i+hit.length)%hit.length;
+  hit[vt].classList.add('dang');
+  hit[vt].scrollIntoView({block:'center',behavior:'smooth'});
+  dem.textContent=(vt+1)+'/'+hit.length;
+ }
+ var cho;
+ o.addEventListener('input',function(){ clearTimeout(cho);
+  cho=setTimeout(function(){ danhDau(o.value.trim()); },250); });
+ o.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault();
+  toi(vt+(e.shiftKey?-1:1)); } });
+ document.getElementById('timTruoc').onclick=function(){ toi(vt-1); };
+ document.getElementById('timSau').onclick=function(){ toi(vt+1); };
+ addEventListener('beforeprint',xoaDanh);
+})();
+// xem ảnh phóng to: bấm ảnh để mở, ←/→ chuyển ảnh trong cùng bộ, Esc để đóng
+(function(){
+ var hop=document.getElementById('xemAnh'), anh=hop.querySelector('img'),
+     chu=hop.querySelector('.xa-chu'), dem=hop.querySelector('.xa-dem'), bo=[], vt=0;
+ function hien(i){
+  vt=(i+bo.length)%bo.length; var a=bo[vt], im=a.querySelector('img');
+  anh.src=a.getAttribute('href'); anh.alt=im.alt; chu.textContent=im.alt;
+  chu.style.display=im.alt?'':'none';
+  dem.textContent=bo.length>1?(vt+1)+' / '+bo.length:'';
+  hop.querySelector('.xa-truoc').style.display=hop.querySelector('.xa-sau').style.display=bo.length>1?'':'none';
+ }
+ function dong(){ hop.classList.remove('mo'); anh.removeAttribute('src'); document.body.style.overflow=''; }
+ document.getElementById('toGiay').addEventListener('click',function(e){
+  var a=e.target.closest('a.o-anh'); if(!a) return;
+  e.preventDefault();
+  var cha=a.closest('.bo-anh');
+  bo=cha?[].slice.call(cha.querySelectorAll('a.o-anh')):[a];
+  hien(bo.indexOf(a)); hop.classList.add('mo'); document.body.style.overflow='hidden';
+ });
+ hop.querySelector('.xa-dong').onclick=dong;
+ hop.querySelector('.xa-truoc').onclick=function(e){ e.stopPropagation(); hien(vt-1); };
+ hop.querySelector('.xa-sau').onclick=function(e){ e.stopPropagation(); hien(vt+1); };
+ hop.addEventListener('click',function(e){ if(e.target===hop) dong(); });
+ addEventListener('keydown',function(e){
+  if(!hop.classList.contains('mo')) return;
+  if(e.key==='Escape') dong();
+  else if(e.key==='ArrowLeft') hien(vt-1);
+  else if(e.key==='ArrowRight') hien(vt+1);
+ });
+ var x0=null;
+ hop.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+ hop.addEventListener('touchend',function(e){ if(x0===null) return;
+  var dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)>50) hien(vt+(dx<0?1:-1)); });
+})();
+// video YouTube: chỉ tải khi bấm. YouTube trả "Lỗi 153" khi trang không gửi được referrer
+// (mở từ ổ đĩa file:// hoặc khung sandbox) — khi đó mở thẳng tab YouTube.
+(function(){
+ var giay=document.getElementById('toGiay'), ds=giay.querySelectorAll('.yt');
+ if(!ds.length) return;
+ var canEmbed=/^https?:$/.test(location.protocol) &&
+   (typeof window.origin==='undefined' || (window.origin && window.origin!=='null'));
+ var PLAY='<span class="play"><svg viewBox="0 0 68 48"><path fill="#f00" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/><path fill="#fff" d="M27 34l18-10-18-10z"/></svg></span>';
+ [].forEach.call(ds,function(b){
+  var id=b.getAttribute('data-id'), n=b.getAttribute('data-n')||'Video', watch='https://www.youtube.com/watch?v='+id;
+  b.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+n+'">'+PLAY+'<span class="badge">▶ '+n+'</span>';
+  b.setAttribute('role','button'); b.setAttribute('tabindex','0');
+  var fig=b.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+  if(!cap&&fig){ cap=document.createElement('figcaption'); fig.appendChild(cap); }
+  if(cap){ var a=document.createElement('a'); a.className='ytlink'; a.href=watch; a.target='_blank';
+   a.rel='noopener'; a.textContent='Mở trên YouTube ↗'; cap.appendChild(a); }
+  function load(){
+   if(!canEmbed){ window.open(watch,'_blank','noopener'); return; }
+   b.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&autoplay=1" '+
+    'referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer;autoplay;clipboard-write;'+
+    'encrypted-media;gyroscope;picture-in-picture" allowfullscreen title="'+n+'"></iframe>';
+   b.style.cursor='default';
+  }
+  b.addEventListener('click',load);
+  b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
+ });
+ if(!canEmbed){
+  var w=document.createElement('div'); w.className='canh-bao';
+  w.innerHTML='<b>Lưu ý:</b> trang đang mở trực tiếp từ ổ đĩa (hoặc trong khung xem trước) nên YouTube chặn phát nhúng '+
+   '(<i>Lỗi 153</i>). Bấm vào video sẽ mở tab YouTube. Đăng trang lên web (https) thì video phát ngay trong trang.';
+  giay.insertBefore(w, giay.firstChild);
+ }
+})();
+</script>
+</body>
+</html>
