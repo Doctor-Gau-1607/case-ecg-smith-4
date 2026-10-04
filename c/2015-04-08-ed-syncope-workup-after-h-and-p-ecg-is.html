@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="vi" data-nen="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>08/04/2015 — Thăm dò ngất tại khoa cấp cứu: sau hỏi bệnh và khám lâm sàng, điện tâm đồ là xét nghiệm duy nhất cần làm cho mọi bệnh nhân…..</title>
+<style>
+:root{
+ --nen:#f2f4f6; --giay:#ffffff; --chu:#172033; --nhat:#5b6675; --vien:#e3e7ec;
+ --do:#b30000; --xanh:#004b87; --diu:#f6f8fa; --danh:#fff3cd;
+}
+:root[data-nen="toi"]{
+ --nen:#12151b; --giay:#1b2029; --chu:#e6eaf0; --nhat:#9aa5b4; --vien:#2c333f;
+ --do:#ff8a8a; --xanh:#7fb6e6; --diu:#232a35; --danh:#5a4a12;
+}
+*{box-sizing:border-box}
+html{font-size:var(--co,16px)}
+body{margin:0;background:var(--nen);color:var(--chu);
+ font-family:"Noto Sans","Segoe UI",Roboto,Arial,sans-serif;
+ font-size:1rem;line-height:1.7;-webkit-text-size-adjust:100%}
+a{color:var(--xanh)}
+.bo-cuc{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px;
+ max-width:1500px;margin:0 auto;padding:22px}
+/* ---- cột mục lục ---- */
+.muc-luc{position:sticky;top:22px;align-self:start;height:calc(100vh - 44px);
+ background:var(--giay);border-radius:16px;padding:16px 10px;display:flex;
+ flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ml-dau{display:flex;justify-content:space-between;align-items:center;
+ padding:2px 10px 10px;font-size:.78rem;font-weight:800;letter-spacing:.09em;
+ color:var(--do);border-bottom:1px solid var(--vien)}
+#phanTram{color:var(--nhat)}
+/* Thu gọn / mở lại cột mục lục. Trang nhớ lựa chọn, vì người đọc guideline
+   mở lại nhiều lần và không muốn mỗi lần lại phải thu tay. */
+.ml-dau .nut-thu{margin-left:8px;border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:1px 8px;cursor:pointer;font:inherit;
+ font-size:.9rem;line-height:1.4}
+@media(min-width:981px){
+ :root[data-ml="thu"] .bo-cuc{grid-template-columns:minmax(0,1fr)}
+ :root[data-ml="thu"] .muc-luc{display:none}
+ :root[data-ml="thu"] .hien-ml{display:block}
+}
+.o-tim{padding:10px 8px 6px}
+.o-tim input{width:100%;padding:8px 10px;border:1px solid var(--vien);
+ border-radius:9px;background:var(--diu);color:var(--chu);font:inherit;font-size:.85rem}
+.tim-dieu-khien{display:flex;gap:6px;align-items:center;margin-top:6px;
+ font-size:.76rem;color:var(--nhat)}
+.tim-dieu-khien button{border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:2px 9px;cursor:pointer;font:inherit}
+.ml-cuon{overflow-y:auto;flex:1;margin-top:4px}
+#dsMuc{list-style:none;margin:0;padding:0}
+#dsMuc a{display:block;padding:7px 12px;border-radius:9px;text-decoration:none;
+ color:var(--chu);font-size:.87rem;line-height:1.4}
+#dsMuc a:hover{background:var(--diu)}
+#dsMuc a.dang-doc{background:var(--diu);color:var(--do);font-weight:700;
+ box-shadow:inset 3px 0 0 var(--do)}
+#dsMuc .cap-1>a{font-weight:700}
+#dsMuc .cap-2>a{padding-left:26px;font-size:.85rem}
+#dsMuc .cap-3>a{padding-left:40px;font-size:.82rem;color:var(--nhat)}
+#dsMuc .cap-4>a,#dsMuc .cap-5>a{padding-left:54px;font-size:.8rem;color:var(--nhat)}
+/* ---- thân bài ---- */
+.dau-bai,.to-giay{background:var(--giay);border-radius:16px;
+ box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.dau-bai{padding:28px 34px;margin-bottom:22px}
+.nhan{font-size:.76rem;font-weight:800;letter-spacing:.16em;color:var(--nhat)}
+.dau-bai h1{margin:.25em 0 .35em;font-size:2rem;line-height:1.25;color:var(--do)}
+.dich-gia{color:var(--nhat);font-size:.92rem;margin:0}
+.dich-gia b{color:var(--xanh)}
+.to-giay{padding:34px 40px 60px}
+.to-giay h2{color:var(--do);font-size:1.65rem;margin:1.7em 0 .5em;
+ padding-bottom:4px;border-bottom:2px solid var(--vien)}
+.to-giay h2:first-child{margin-top:0}
+.to-giay h3{color:var(--xanh);font-size:1.3rem;margin:1.5em 0 .4em}
+.to-giay h4{font-size:1.08rem;margin:1.3em 0 .3em}
+.to-giay h5,.to-giay h6{font-size:1rem;margin:1.2em 0 .3em;color:var(--nhat)}
+.to-giay p{margin:0 0 .85em;text-align:justify}
+.to-giay p.cham{padding-left:1.35em;text-indent:-1.1em;text-align:left}
+figure{margin:1.4em 0;text-align:center}
+figure img{max-width:100%;height:auto;border:1px solid var(--vien);border-radius:10px}
+/* ---- bảng ---- */
+.tham-chieu{color:var(--xanh);font-weight:600;text-decoration:none;
+ border-bottom:1px dotted currentColor}
+.tham-chieu:hover{border-bottom-style:solid}
+.chu-thich-float{font-weight:600;margin:0 0 .4em}
+.khung-bang{overflow-x:auto;margin:1.4em 0;border-radius:10px;
+ border:1px solid var(--vien)}
+.khung-bang table{border-collapse:collapse;width:100%;font-size:.88rem;
+ table-layout:fixed}
+.to-giay p,.to-giay li,.to-giay dd{overflow-wrap:break-word}
+.to-giay sup{overflow-wrap:anywhere}
+.khung-bang td{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;
+ line-height:1.5;word-wrap:break-word}
+.khung-bang td.sat{padding-left:0;padding-right:0}
+.khung-bang td.giua{text-align:center;vertical-align:middle}
+.khung-bang td.ky-hieu{font-weight:800;white-space:nowrap}
+.khung-bang td.nen-toi,.khung-bang td.nen-toi *{color:#fff}
+.khung-bang td.nen-sang,.khung-bang td.nen-sang *{color:#12151b}
+.khung-bang td span{display:block}
+.khung-bang td span.cham{padding-left:1.1em;text-indent:-1em}
+mark.danh{background:var(--danh);color:inherit;border-radius:3px}
+/* Ô có màu ép màu chữ cho cả con cháu, kể cả <mark> của phần tìm trong bài — chữ
+   trắng trên nền vàng nhạt là tìm thấy mà không nhìn thấy. Trả chữ về màu trang. */
+.khung-bang td.nen-toi mark.danh,.khung-bang td.nen-sang mark.danh,
+.khung-bang td.nen-toi mark.danh *,.khung-bang td.nen-sang mark.danh *{color:var(--chu)}
+mark.danh.dang{outline:2px solid var(--do)}
+/* ---- nút nổi ---- */
+.thanh-nut{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:9}
+.thanh-nut button{width:42px;height:42px;border-radius:50%;cursor:pointer;
+ border:1px solid var(--vien);background:var(--giay);color:var(--chu);
+ font-size:1rem;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.hien-ml{display:none}
+/* ---- màn hình hẹp ---- */
+@media(max-width:980px){
+ .bo-cuc{grid-template-columns:minmax(0,1fr);padding:12px}
+ .muc-luc{position:fixed;inset:0 auto 0 0;width:88%;max-width:340px;z-index:20;
+  border-radius:0;height:100vh;transform:translateX(-102%);transition:transform .2s}
+ .muc-luc.mo{transform:none}
+ .hien-ml{display:block}
+ .to-giay{padding:22px 18px 44px}
+ /* Màn hình điện thoại: giữ bề rộng tối thiểu cho bảng rồi cho cuộn ngang,
+    thay vì bóp cột hẹp tới mức "Trung bình" xuống dòng thành "Tr un g bì nh". */
+ .khung-bang table{min-width:620px}
+ .dau-bai{padding:20px}
+ .dau-bai h1{font-size:1.5rem}
+}
+/* ---- in ra giấy ---- */
+@media print{
+ /* Nền tối được nhớ trong localStorage: bật một lần là mọi lần in sau đều dính.
+    Giấy luôn trắng, nên trả bảng màu về bản sáng trước khi in — nếu không, chữ
+    #e6eaf0 in lên giấy trắng là mất hẳn. */
+ :root,:root[data-nen="toi"]{--nen:#fff;--giay:#fff;--chu:#172033;--nhat:#4a5462;
+  --vien:#c9ced5;--do:#b30000;--xanh:#004b87;--diu:#f6f8fa;--danh:#fff3cd}
+ body{background:#fff;font-size:11.5pt}
+ .muc-luc,.thanh-nut{display:none!important}
+ .bo-cuc{display:block;max-width:none;padding:0}
+ .dau-bai,.to-giay{box-shadow:none;border-radius:0;padding:0}
+ .to-giay h2,.to-giay h3{break-after:avoid}
+ .khung-bang,figure{break-inside:avoid}
+ .khung-bang td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.c-xanh{color:var(--xanh)} .c-do{color:var(--do)} .c-luc{color:var(--luc)} .c-nhat{color:var(--nhat)}
+:root{--luc:#1d7a3a} :root[data-nen="toi"]{--luc:#7fd49a}
+.ban-quyen{display:inline-block;margin:.4em 0 1.2em!important;padding:6px 14px;border-radius:9px;
+ background:var(--diu);border:1px solid var(--vien);color:var(--nhat);font-size:.88rem}
+.note{background:var(--diu);border-left:4px solid var(--xanh);border-radius:0 10px 10px 0;padding:10px 16px;margin:1.1em 0}
+.note p:last-child{margin-bottom:0}
+.canh-bao{background:#fff4d6;border:1px solid #e8c97a;color:#4a3a10;border-radius:10px;padding:12px 16px;margin:0 0 18px;font-size:.93em}
+:root[data-nen="toi"] .canh-bao{background:#3a2f12;border-color:#6b5a1a;color:#f0e2bd}
+.to-giay blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid var(--vien);background:var(--diu);border-radius:0 10px 10px 0}
+.to-giay ul,.to-giay ol{padding-left:1.5em;margin:0 0 .9em}
+.to-giay li{margin:.2em 0}
+.to-giay hr{border:0;border-top:1px solid var(--vien);margin:1.6em 0}
+.khung-bang th{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;background:var(--diu);text-align:left;line-height:1.5}
+.khung-bang td[style*="background"],.khung-bang th[style*="background"]{color:#12151b}
+.tk p,.tk li{font-size:.9em;color:var(--nhat);text-align:left}
+figcaption,.chu-thich-anh{font-size:.88rem;color:var(--nhat);margin-top:.45em;text-align:center;line-height:1.55}
+figcaption b{color:var(--chu)}
+figure.anh-dau img{width:100%;max-height:420px;object-fit:cover}
+figure video{width:100%;max-height:78vh;background:#000;border-radius:10px;display:block}
+.khung-video{position:relative;padding-top:56.25%;margin:0;border-radius:10px;overflow:hidden;background:#000}
+.khung-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer;display:block;border-radius:10px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;border:0!important;border-radius:0!important;transition:opacity .2s}
+.yt:hover img{opacity:1}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.yt .play svg{width:58px;height:58px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.badge{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:2px 8px;border-radius:20px;pointer-events:none}
+.ytlink{display:inline-block;margin-left:8px;font-size:.92em;color:var(--xanh);text-decoration:none;border:1px solid var(--vien);border-radius:20px;padding:1px 10px;white-space:nowrap}
+.bo-anh{display:grid;gap:8px;margin:1em 0 1.4em;align-items:start}
+.bo-anh.cot-1{grid-template-columns:repeat(1,minmax(0,1fr))}
+.bo-anh.cot-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bo-anh.cot-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bo-anh.cot-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.bo-anh.cot-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bo-anh.cot-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.o-anh{display:block;border-radius:8px;overflow:hidden;background:#000;
+ border:1px solid var(--vien);cursor:zoom-in;line-height:0}
+.o-anh img{display:block;width:100%;height:auto}
+figure .o-anh{display:inline-block;background:none;border:0}
+figure .o-anh img{border:1px solid var(--vien);border-radius:10px}
+@media(max-width:980px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.xem-anh{position:fixed;inset:0;z-index:50;background:rgba(8,10,14,.94);display:none;
+ flex-direction:column;align-items:center;justify-content:center;padding:14px}
+.xem-anh.mo{display:flex}
+.xem-anh img{max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;border-radius:6px;background:#000}
+.xem-anh .xa-chu{color:#dfe5ec;font-size:.85rem;max-width:1100px;margin-top:10px;text-align:center;
+ line-height:1.5;max-height:5.2em;overflow:auto}
+.xem-anh .xa-dem{position:absolute;top:14px;left:18px;color:#c4ccd6;font-size:.85rem}
+.xem-anh button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;
+ width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+.xem-anh button:hover{background:rgba(255,255,255,.25)}
+.xem-anh .xa-dong{top:12px;right:14px}
+.xem-anh .xa-truoc{left:14px;top:50%;transform:translateY(-50%)}
+.xem-anh .xa-sau{right:14px;top:50%;transform:translateY(-50%)}
+@media print{
+ .xem-anh,.canh-bao,.ytlink{display:none!important}
+ .bo-anh{break-inside:avoid}
+ .o-anh{background:none}
+}
+</style>
+</head>
+<body>
+<div class="bo-cuc">
+ <aside class="muc-luc" id="mucLuc">
+  <div class="ml-dau"><span>NỘI DUNG</span><span id="phanTram">0%</span><button
+    id="nutThu" class="nut-thu" type="button" title="Thu gọn mục lục">«</button></div>
+  <div class="o-tim">
+   <input id="oTim" type="search" placeholder="Tìm trong tài liệu…" autocomplete="off">
+   <div class="tim-dieu-khien">
+    <button id="timTruoc" type="button">↑</button>
+    <button id="timSau" type="button">↓</button>
+    <span id="demTim"></span>
+   </div>
+  </div>
+  <div class="ml-cuon"><ul id="dsMuc"></ul></div>
+ </aside>
+ <main>
+  <section class="dau-bai">
+   <div class="nhan">CASE ECG #524 · DR. SMITH’S ECG BLOG</div>
+   <h1>08/04/2015 — Thăm dò ngất tại khoa cấp cứu: sau hỏi bệnh và khám lâm sàng, điện tâm đồ là xét nghiệm duy nhất cần làm cho mọi bệnh nhân…..</h1>
+   <p class="dich-gia"><a href="https://doctor-gau-1607.github.io/case-ecg-smith/">← Mục lục Case ECG</a></p><p class="dich-gia">Bản dịch tiếng Việt của bài <a href="https://drsmithsecgblog.com/ed-syncope-workup-after-h-and-p-ecg-is/" target="_blank" rel="noopener">"Emergency Department Syncope Workup: After H and P, ECG is the Only Test Required for Every Patient….."</a> – Dr. Smith’s ECG Blog. Giữ nguyên toàn bộ 4 hình ảnh của bản gốc.</p>
+  </section>
+  <section class="to-giay" id="toGiay">
+<h2 id="tom-tat-cach-tiep-can-ngat-syncope-tai-khoa-cap-cuu-ed">Tóm tắt cách tiếp cận ngất (syncope) tại khoa cấp cứu (ED)</h2>
+<p>Xin thứ lỗi vì các lỗi định dạng mà tôi chưa sửa được!</p>
+<p>Tôi đã dùng tài liệu này để giảng dạy cho các bác sĩ nội trú của chúng tôi, và tôi nghĩ họ thấy nó hữu ích.  Đây KHÔNG phải là một tổng quan có cấu trúc hay một phân tích gộp (meta-analysis).</p>
+<h2 id="cach-tiep-can-ngat">Cách tiếp cận ngất</h2>
+<p><strong><u><br></u></strong><br><strong><u>Định nghĩa ngất:</u> Mất ý thức thoáng qua kèm mất trương lực tư thế và hồi phục hoàn toàn, tự phát, không cần can thiệp y tế.</strong></p>
+<p><strong><u>Trước tiên:</u> Bạn có chắc đó là ngất, chứ không phải CO GIẬT (SEIZURE)?  </strong></p>
+<p><strong><u>Ngược lại</u>, ngất thường kèm một đợt ngắn hoạt động co cứng-co giật (tonic-clonic) giống như co giật.</strong></p>
+<h3 id="tim-nguyen-nhan-mach-mau-hay-nghi-toi-nhung-nguyen-nhan-nay-trong-luc-hoi-benh-su-tien-su-va-kham-lam-sang-h-and-p">Tìm nguyên nhân mạch máu — hãy nghĩ tới những nguyên nhân này trong lúc hỏi bệnh sử, tiền sử và khám lâm sàng (H and P):</h3>
+<p><strong>–Chảy máu:</strong> vỡ phình động mạch chủ bụng (AAA), xuất huyết tiêu hóa, vỡ thai ngoài tử cung,<br>các chảy máu tự phát khác như vỡ phình động mạch mạc treo. <strong>Kiểm tra</strong>: <u>[dấu hiệu sinh tồn, siêu âm bụng/chậu, siêu âm động mạch chủ, dấu hiệu sinh tồn tư thế, xét nghiệm tìm máu (heme test),<br>hemoglobin, test thai nước tiểu (UPT)]</u></p>
+<p><strong>–Đột quỵ</strong> (nguyên nhân gây ngất rất hiếm gặp; phải là cơn thiếu máu não thoáng qua (TIA), vì ngất hàm ý tính <em><strong>hồi phục được</strong></em>): xuất huyết dưới nhện (đau đầu dữ dội ngay lúc ngất), TIA<br>(phải là TIA hệ đốt sống-thân nền <u>hoặc</u> TIA bán cầu ở bệnh nhân đã từng đột quỵ bán cầu bên kia)  <strong>Kiểm tra</strong>: <u>[bệnh sử, khám thần kinh]</u></p>
+<p><strong>–Tắc nghẽn:</strong> thuyên tắc phổi (khó thở?), bóc tách động mạch chủ,<br>bệnh van tim (đặc biệt là hẹp van động mạch chủ), chèn ép tim.  <strong>Kiểm tra</strong>: <u>[dấu hiệu sinh tồn, khó thở (SOB), đau ngực, siêu âm]</u></p>
+<p>Nếu bệnh nhân có <strong>đau bụng, đau ngực, khó thở hoặc giảm oxy máu, đau đầu, hạ huyết áp</strong>, thì những triệu chứng này nên được xem là lý do chính đến khám <u>nguyên phát</u> (chứ không phải ngất).   Hầu hết các bác sĩ sẽ tự động lo ngại trước những triệu chứng này.  Nếu bệnh nhân có <strong>dấu hiệu sinh tồn bất thường</strong> (sốt, hạ huyết áp, nhịp tim nhanh, thở nhanh, hoặc giảm oxy máu), thì đây là vấn đề chính cần giải quyết, vì đang có một bệnh lý tiếp diễn cần được xác định.</p>
+<p>Cũng cần nghĩ tới <strong>giảm thể tích tuần hoàn, mất nước</strong> không do chảy máu: dấu hiệu sinh tồn tư thế có thể phát hiện tình trạng này [xem Mendu và cs. (3)].</p>
+<p><strong>Ngất <u><em>thực sự</em></u>:</strong> Ngược lại, nếu bệnh nhân khỏe, <strong>không có triệu chứng nghiêm trọng <em>nào khác</em></strong>, có <strong>nhịp xoang bình thường,</strong> và <strong>khám lâm sàng bình thường</strong>, thì bạn cần chắc chắn rằng cơn ngất không phải do một rối loạn nhịp chậm hoặc rối loạn nhịp nhanh nguy hiểm có thể tái phát.</p>
+<p><strong>Xem trang web này để có hệ thống tính điểm trực tuyến tốt nhất cho quy tắc Canada: <a href="http://www.teamvenk.com/csrs" rel="noopener" target="_blank">www.teamvenk.com/csrs</a></strong><br><u><br></u><br><u><strong>Ngất do tim (“ngất thực sự”)</strong></u></p>
+<h3 id="cac-yeu-to-du-bao-doc-lap-cua-ket-cuc-bat-loi">Các yếu tố dự báo độc lập của kết cục bất lợi</h3>
+<p><strong>tổng hợp từ nhiều nghiên cứu</strong></p>
+<p><strong>1.</strong>   <strong>Điện tâm đồ bất thường</strong> – tìm dấu hiệu<br>ngất do tim.</p>
+<p><strong><br></strong><br><strong>a. </strong>  Điện tâm đồ (ECG) bất thường: được định nghĩa (theo quy tắc ngất San Francisco) là<br>bất kỳ thay đổi mới nào so với điện tâm đồ gần nhất, hoặc có nhịp không phải nhịp xoang.<br>Nếu không có điện tâm đồ cũ, điện tâm đồ được xếp là bất thường nếu có<br>bất kỳ bất thường nào.  Tuy nhiên, định nghĩa San Francisco này <em><strong>quá thiếu đặc hiệu</strong></em>, nên tôi liệt kê dưới đây các bất thường điện tâm đồ đặc hiệu hơn:</p>
+<p><strong><br></strong><br><strong>b.    </strong><strong><u>Đặc biệt, hãy chú ý tới các dấu hiệu gợi ý những bệnh lý sau</u></strong>:</p>
+<p><strong>            </strong><strong>QT dài<br>(ít nhất 480-500ms), hình thái Brugada, loạn sản thất phải (RV dysplasia), WPW, bệnh cơ tim phì đại tắc nghẽn (HOCM)</strong></p>
+<p><strong>c.   Và các dấu hiệu sau đến từ các nghiên cứu </strong><strong><a href="https://scholar.google.com/scholar?hl=en&amp;q=syncope+OESIL&amp;btnG=&amp;as_sdt=1%2C24&amp;as_sdtp=" rel="noopener" target="_blank">OESIL</a>, <a href="http://heart.bmj.com/content/94/12/1620.short" rel="noopener" target="_blank">EGSYS</a> và <a href="http://www.sciencedirect.com/science/article/pii/S0002934301007975" rel="noopener" target="_blank">Sarasin</a>:</strong></p>
+<p><strong>            </strong>i:      Nhịp không phải nhịp xoang</p>
+<p>ii:     SVT hoặc VT (hiển nhiên, và dù sao điều này cũng tạo ra một dấu hiệu sinh tồn bất thường)</p>
+<p>iii.    Blốc AV độ 2 hoặc độ 3, hoặc khoảng ngưng xoang ít nhất 2 giây</p>
+<p>iv.    Blốc nhánh phải (BBB) kèm blốc phân nhánh (blốc hai phân nhánh)</p>
+<p>v.     Blốc nhánh trái</p>
+<p>vi.    Bằng chứng thiếu máu cục bộ cấp (có thể kín đáo)</p>
+<p>vii.   Sóng Q bệnh lý</p>
+<p>viii.  LVH (phì đại thất trái) hoặc RV [người dịch: nguyên văn ghi “RV”, nhiều khả năng là lỗi đánh máy của RVH – phì đại thất phải]</p>
+<p><strong>d.</strong> Bất thường nhưng ít đáng lo hơn:</p>
+<p>i. PAC thường xuyên hoặc lặp lại</p>
+<p>ii. Blốc nhánh phải đơn độc hoặc chậm dẫn truyền trong thất</p>
+<p>iii.  PVC (ngoại tâm thu thất)</p>
+<p><strong><br></strong><br><strong>N</strong><strong>hững dấu hiệu thường không được xem là điện tâm đồ bất thường:</strong> PAC đơn độc, blốc AV độ một, nhịp chậm xoang với tần số 35-45, và bất thường ST-T không đặc hiệu (kể cả khi khác với điện tâm đồ cũ).</p>
+<p><strong>2.  </strong>Tuổi trên 65 (Sarasin và STePS)</p>
+<p><strong>3</strong>.   Tiền sử bệnh tim mạch (mọi nghiên cứu):</p>
+<p>Đặc biệt là bất kỳ tiền sử suy tim hoặc bệnh tim cấu trúc nào, kể cả bệnh van tim</p>
+<p><strong>4. </strong>  Ngất không có tiền triệu, không có yếu tố khởi phát (EGSYS)</p>
+<p><strong>5.</strong>   Hemoglobin dưới 10 (quy tắc SF)</p>
+<p><strong>6. </strong>  Ngất khi gắng sức (EGSYS)</p>
+<p><strong>7.  </strong> Ngất khi đang nằm ngửa (EGSYS)</p>
+<p><strong>8.  </strong> Hồi hộp đánh trống ngực trước khi ngất (giá trị cao nhất trong thang điểm EGSYS)</p>
+<p><strong>9. </strong>  Các yếu tố dự báo âm tính của kết cục bất lợi:</p>
+<p>Có máy tạo nhịp</p>
+<p>Tiền ngất (presyncope) hay “gần ngất”, nhưng vẫn còn một nguy cơ nhỏ (5, 18)</p>
+<p><strong><u>Hai yếu tố cuối này </u></strong>được xác định trong các nghiên cứu, nhưng tôi coi chúng là những dấu hiệu và triệu chứng nguy hiểm tự thân, như đã nêu ở trên:</p>
+<p><strong>10.</strong> Hạ huyết áp (hiển nhiên)</p>
+<p><strong>11. </strong>Khó thở (SOB) hoặc giảm oxy máu (hiển nhiên)</p>
+<p><strong><br></strong><br><strong>Ngất do phản xạ phế vị (vasovagal) (ngất do cơ chế thần kinh-tim hay ngất phản xạ) là nguyên nhân thường gặp nhất của ngất do tim, kể cả ở bệnh nhân có bệnh tim: </strong>Trong bệnh cảnh này, có CẢ đáp ứng nhịp chậm và/hoặc đáp ứng giảm áp mạch (vasodepressor).  Do đó, nếu ghi nhận được nhịp chậm xoang vào thời điểm ngất, và không nghi ngờ blốc AV mức độ cao, thì điều này rất hữu ích.  <strong><em>Các triệu chứng báo trước</em></strong> (buồn nôn, xanh tái, vã mồ hôi, đỏ bừng mặt), hoặc <strong><em>các yếu tố khởi phát</em></strong> (Valsalva, đau, xúc động, đứng lâu, mất nước) rất hữu ích cho chẩn đoán.   Ngất do phản xạ phế vị nhìn chung lành tính.</p>
+<p>Trong EGSYS, các triệu chứng báo trước này là yếu tố dự báo âm tính của kết cục bất lợi.</p>
+<p>Cuối cùng, phần lớn những điều này tương quan tốt với <strong><a href="http://onlinelibrary.wiley.com/doi/10.1111/acem.13275/full" rel="noopener" target="_blank">Thang điểm nguy cơ rối loạn nhịp trong ngất của Canada (Canadian Syncope Arrhythmia Risk Score)</a> mới</strong>, công bố năm 2016; kết quả được trình bày bên dưới trong phần Thư mục có chú giải.</p>
+<p><strong>Xem trang web này để có hệ thống tính điểm trực tuyến tốt nhất cho quy tắc Canada: <a href="http://www.teamvenk.com/csrs" rel="noopener" target="_blank">www.teamvenk.com/csrs</a></strong></p>
+<h2 id="tom-tat">Tóm tắt:</h2>
+<p>Ở <strong>những bệnh nhân thực sự có ngất là lý do chính đến khám (không phải co giật, không phải đau bụng, đau ngực, hạ huyết áp, khó thở, đau đầu, và dấu hiệu sinh tồn cùng nhịp tim bình thường tại khoa cấp cứu)</strong>, và sau khi<br>đã loại trừ các vấn đề chảy máu, đột quỵ và tắc nghẽn, chúng ta còn lại<br>các yếu tố dự báo đáng lo ngại sau:</p>
+<p><strong>Điện tâm đồ bất thường</strong> – tìm dấu hiệu ngất do tim.</p>
+<p>QRS dài hơn 130 ms,<br>nhịp không phải nhịp xoang, thiếu máu cục bộ</p>
+<p>QT dài hơn 480 ms,<br>HOCM, WPW, loạn sản thất phải, Brugada típ 1</p>
+<p>Sóng Q chẩn đoán nhồi máu cơ tim cũ</p>
+<p>Tuổi trên 65-90 (yếu tố dự báo không tốt lắm)</p>
+<p><strong>Tiền sử bệnh tim mạch</strong> (bệnh van tim,<br>suy tim sung huyết (CHF), nhồi máu cơ tim)</p>
+<p>(hoặc BNP cao hoặc troponin tăng)</p>
+<p>Ngất không có <u><strong>tiền triệu</strong></u><u>,</u> hoặc<br>khi <u><strong>gắng sức</strong>,</u> hoặc khi <strong>nằm ngửa,</strong> hoặc có <strong><u>hồi hộp đánh trống ngực</u></strong> trước đó</p>
+<p>Hemoglobin dưới 10,0 g/dL</p>
+<p>Hạ huyết áp (hiển nhiên!)</p>
+<p>Khó thở hoặc giảm oxy máu (hiển nhiên!)</p>
+<p>(độ bão hòa oxy dưới 94%??)</p>
+<p>Tiền sử gia đình có người đột tử trước 40 tuổi</p>
+<p><u>Các yếu tố dự báo<br>âm tính</u>:</p>
+<p>có máy tạo nhịp, chỉ tiền ngất hoặc gần ngất</p>
+<h2 id="tham-do-danh-gia-y-kien-cua-smith-dua-tren-y-van">Thăm dò đánh giá (ý kiến của Smith dựa trên y văn)</h2>
+<h3 id="luon-danh-gia-bang">Luôn đánh giá bằng:</h3>
+<p>1.<br>Hỏi bệnh và khám lâm sàng kỹ lưỡng, bao gồm</p>
+<p>a.<strong> dấu hiệu sinh tồn<br><u>tư thế</u></strong></p>
+<p>b. nghe tim (hẹp van động mạch chủ);</p>
+<p>c. tiền sử gia đình (FHx) có đột tử.</p>
+<p>2.<br>Điện tâm đồ</p>
+<h3 id="can-nhac-o-mot-so-benh-nhan">Cân nhắc ở một số bệnh nhân:</h3>
+<p>Siêu âm<br>động mạch chủ, siêu âm tim</p>
+<p>Dịch tự do<br>ổ bụng (siêu âm FAST)</p>
+<p>Hemoglobin (Hgb)</p>
+<p>Test thai nước tiểu ở phụ nữ trong độ tuổi sinh đẻ</p>
+<p>BNP (peptide lợi niệu natri típ B)</p>
+<p>Troponin (xét nghiệm)</p>
+<p>D-dimer (xét nghiệm)</p>
+<h2 id="nhap-vien-va-hoac-tham-do-them">Nhập viện và/hoặc thăm dò thêm:</h2>
+<p>–Các triệu chứng nghiêm trọng thường bắt buộc nhập viện và/hoặc thăm dò thêm: đau ngực, khó thở, đau bụng, đau đầu dữ dội, hoặc hạ huyết áp</p>
+<p>–Cho nhập viện theo dõi những bệnh nhân có dấu hiệu thực thể đáng lo ngại gợi ý một nguyên nhân nghiêm trọng</p>
+<p>—Cho nhập viện theo dõi những bệnh nhân có từ 1-2 yếu tố nguy cơ cao trở lên (trong trường hợp tiền ngất hoặc gần ngất, vốn có nguy cơ thấp hơn nhiều so với ngất hoàn toàn, thường cần nhiều hơn một yếu tố nguy cơ cao)</p>
+<p>–Lý tưởng nhất là tất cả các yếu tố dự báo này nên được nghiên cứu bằng phân tích đa biến để xem có yếu tố nào đồng biến (covariate) hay không.  Cho đến lúc đó, tôi coi bất kỳ yếu tố nào trong số này là yếu tố nguy cơ bất lợi độc lập.</p>
+<p>—<a href="http://circ.ahajournals.org/content/110/24/3636.long" rel="noopener" target="_blank">Cuối cùng, một đơn vị chuyên về ngất có thể cải thiện việc đánh giá và kết cục</a> (17).</p>
+<h2 id="thu-muc-co-chu-giai">Thư mục có chú giải</h2>
+<p>Để có một tổng quan xuất sắc về <strong>xử trí ngất tại khoa cấp cứu</strong>, <a href="http://xa.yimg.com/kq/groups/14639670/273327953/name/Evidence+Based+Approach+to+Syncope+2010.pdf" rel="noopener" target="_blank">xem bài viết này của Kessler C và cs. trên EM Clinics of North America năm 2010</a> (link toàn văn)</p>
+<p>Để có một tổng quan đầy đủ về ngất và toàn bộ việc xử trí ngất ngoài môi trường khoa cấp cứu, hãy xem <a href="http://eurheartj.oxfordjournals.org/content/30/21/2631.full.pdf+html" rel="noopener" target="_blank">Hướng dẫn năm 2009 của Hội Tim mạch châu Âu (European Society of Cardiology)</a> (pdf toàn văn).</p>
+<h3 id="nghien-cuu-gan-day-nhat-va-co-le-tot-nhat-la-nghien-cuu-sau">Nghiên cứu gần đây nhất và có lẽ tốt nhất là nghiên cứu sau:</h3>
+<p><strong>Thang điểm nguy cơ rối loạn nhịp trong ngất của Canada (Canadian Syncope Arrhythmia Risk Score).</strong></p>
+<p>Thiruganasambandamoorthy, V., Stiell, I., Sivilotti, M., Rowe, B., Mukarram, M., Arcot, K., . . . Baumann, B. (2017). Predicting Short-term Risk of Arrhythmia among Patients With Syncope: The Canadian Syncope Arrhythmia Risk Score (Dự báo nguy cơ rối loạn nhịp ngắn hạn ở bệnh nhân ngất: Thang điểm nguy cơ rối loạn nhịp trong ngất của Canada). Tạp chí <em>Academic Emergency Medicine.,</em> <em>24</em>(11), 1315-1326.</p>
+<p>Thang điểm này phức tạp, nhưng các tác giả đã xây dựng một điểm số dựa trên các biến sau:</p>
+<p>1. Cơ địa dễ ngất do phản xạ phế vị (nơi nóng và đông người, đứng lâu, sợ hãi, xúc động, đau): (-1)</p>
+<p>2. Tiền sử bệnh tim (+1)</p>
+<p>3. Bất kỳ trị số huyết áp tâm thu nào tại khoa cấp cứu dưới 90 hoặc trên 180 mm Hg (+1)</p>
+<p>4. Troponin trên bách phân vị thứ 99 (+1)</p>
+<p>5. Thời gian QRS trên 130 msec (+2)</p>
+<p>6. Khoảng QTc trên 480 msec (+1)</p>
+<p>7. Chẩn đoán tại khoa cấp cứu là ngất do phản xạ phế vị (-1)</p>
+<p>8. Chẩn đoán tại khoa cấp cứu là ngất do tim (+2)</p>
+<p>*Chẩn đoán tại khoa cấp cứu do bác sĩ cấp cứu đưa ra theo hướng dẫn của Hội Tim mạch châu Âu, vốn được thể hiện rõ qua các ý tưởng trình bày ở đây.</p>
+<figure><a class="o-anh" href="2015-04-08-ed-syncope-workup-after-h-and-p-ecg-is_anh/2015_04_Canadian-syncope-scale-2.jpg"><img src="2015-04-08-ed-syncope-workup-after-h-and-p-ecg-is_anh/2015_04_Canadian-syncope-scale-2.jpg" alt="" width="747" height="563" loading="lazy" decoding="async"></a></figure>
+<figure><a class="o-anh" href="2015-04-08-ed-syncope-workup-after-h-and-p-ecg-is_anh/2015_04_Canadian-syncope-scale.jpg"><img src="2015-04-08-ed-syncope-workup-after-h-and-p-ecg-is_anh/2015_04_Canadian-syncope-scale.jpg" alt="" width="1229" height="924" loading="lazy" decoding="async"></a></figure>
+<h3 id="cac-nghien-cuu-khac">Các nghiên cứu khác</h3>
+<p>1)     <strong><a href="http://www.arritmiaonline.com.br/preditores%20clinicos%20de%20sincope%20cardiaca.pdf" rel="noopener" target="_blank">Thang điểm EGSYS</a> </strong>(link toàn văn).  Del Rosso A, và cs. Clinical predictors of cardiac syncope at</p>
+<p>initial evaluation in patients referred urgently to general hospital: the EGSYS (tên bài, tiếp theo)</p>
+<p>score. Tạp chí Heart, 2008;94(12):1620–6. (Tên bài: Các yếu tố dự báo lâm sàng của ngất do tim khi đánh giá ban đầu ở bệnh nhân được chuyển gấp tới bệnh viện đa khoa: thang điểm EGSYS.)</p>
+<figure><a class="o-anh" href="2015-04-08-ed-syncope-workup-after-h-and-p-ecg-is_anh/2015_04_EGSYSscoreTable.jpg"><img src="2015-04-08-ed-syncope-workup-after-h-and-p-ecg-is_anh/2015_04_EGSYSscoreTable.jpg" alt="" width="1500" height="515" loading="lazy" decoding="async"></a><figcaption><strong>Diễn giải điểm số: </strong>Sau 2 năm, bệnh nhân có điểm số lớn hơn hoặc bằng 3 có tỷ lệ tử vong 17% và 21% lần lượt ở nhóm xây dựng (derivation) và nhóm thẩm định (validation), so với 3% và 2% ở những người có điểm số dưới 3.</figcaption></figure>
+<p>2)    <strong><a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2276584/" rel="noopener" target="_blank">Quy tắc ngất Boston (Boston syncope rule): </a></strong><a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2276584/" rel="noopener" target="_blank">J Emerg Med. 2007 Oct; 33(3): 233–239</a>.   (link toàn văn)</p>
+<p><strong>Sự hiện diện của bất kỳ một trong 8 tiêu chuẩn sau có độ nhạy 97% và độ đặc hiệu 62% đối với kết cục bất lợi: </strong>1) dấu hiệu hội chứng vành cấp (ACS), 2) bệnh lý dẫn truyền, 3) tiền sử tim mạch đáng lo ngại (ví dụ: rối loạn nhịp, máy tạo nhịp), 4) bệnh van tim, 5) tiền sử gia đình (FHx) có đột tử, 6) giảm thể tích tuần hoàn, 7) dấu hiệu sinh tồn bất thường<br>kéo dài, 8) biến cố thần kinh trung ương (CNS) nguyên phát</p>
+<p>_____________________________________________________________________________</p>
+<p>3)   Mendu ML và cs.  <a href="http://archinte.jamanetwork.com/article.aspx?articleid=224676" rel="noopener" target="_blank">Yield of Diagnostic Tests in Evaluating Syncopal Episodes in Older Patients</a> (Hiệu quả chẩn đoán của các xét nghiệm trong đánh giá cơn ngất ở bệnh nhân cao tuổi)</p>
+<p>Tạp chí <em>Arch Intern Med</em>, ngày 27 tháng Bảy năm 2009; 169:1299-1305.</p>
+<p><a href="http://archinte.jamanetwork.com/article.aspx?articleid=724730" rel="noopener" target="_blank">Bình luận của </a><a href="http://archinte.jamanetwork.com/article.aspx?articleid=724730" rel="noopener" target="_blank">Heidenreich PA</a>. Tạp chí <em>Arch Intern Med</em>, ngày 27<br>tháng Bảy năm 2009; 169:1262.</p>
+<p>Một bình luận khác của Quinn JV. Tạp chí <em>Arch<br>Intern Med</em>, ngày 27 tháng Bảy năm 2009; 169:1305. (bắt đầu ở cuối bài báo, trang 1305)</p>
+<p>a. <strong>Hạ huyết áp tư thế đứng là quan trọng</strong></p>
+<p><strong><br></strong><br><strong>Bối cảnh</strong>: Cơn ngất thường gặp ở người cao tuổi; nguyên nhân dao động từ lành tính đến đe dọa tính mạng. Chúng tôi xác định tần suất, hiệu quả chẩn đoán và chi phí của các xét nghiệm được chỉ định để đánh giá người cao tuổi bị ngất. Chúng tôi cũng tính chi phí trên mỗi xét nghiệm có kết quả hữu ích và xác định liệu Quy tắc ngất San Francisco (San Francisco Syncope Rule, SFSR) có cải thiện hiệu quả chẩn đoán của xét nghiệm hay không.</p>
+<p><strong>Phương pháp</strong>: Hồi cứu 2.106 bệnh nhân liên tiếp từ 65 tuổi trở lên nhập viện sau một cơn ngất.</p>
+<p><strong>Kết quả</strong>: Điện tâm đồ (99%), theo dõi từ xa (telemetry) (95%), men tim (95%) và chụp cắt lớp vi tính (CT) sọ não (63%) là các xét nghiệm được chỉ định thường xuyên nhất. Men tim, CT, siêu âm tim, siêu âm động mạch cảnh và điện não đồ đều chỉ ảnh hưởng tới chẩn đoán hoặc xử trí ở &lt;5% số ca và chỉ giúp xác định nguyên nhân ngất trong &lt;2% số lần. <em><u>Huyết áp tư thế</u></em>, chỉ được thực hiện ở 38% số cơn ngất, có hiệu quả cao nhất về mặt ảnh hưởng tới chẩn đoán (18-26%) hoặc xử trí (25-30%) và xác định nguyên nhân của cơn ngất (15-21%).</p>
+<p>Chi phí trên mỗi xét nghiệm có ảnh hưởng tới chẩn đoán hoặc xử trí cao nhất đối với điện não đồ (32.973 $), CT (24.881 $) và men tim (22.397 $), và thấp nhất đối với huyết áp tư thế (17-20 $). Hiệu quả chẩn đoán và chi phí của các xét nghiệm tim mạch tốt hơn ở những bệnh nhân đáp ứng so với không đáp ứng SFSR. Ví dụ, chi phí trên mỗi xét nghiệm men tim có ảnh hưởng tới chẩn đoán hoặc xử trí là 10.331 $ ở những người đáp ứng, so với 111.518 $ ở những người không đáp ứng SFSR.<strong>Kết luận</strong>: Nhiều xét nghiệm không cần thiết được chỉ định để đánh giá ngất. Lựa chọn xét nghiệm dựa trên hỏi bệnh và khám lâm sàng, đồng thời ưu tiên các xét nghiệm rẻ hơn và có hiệu quả chẩn đoán cao hơn, sẽ bảo đảm một cách tiếp cận có cơ sở hơn và hiệu quả hơn về chi phí khi đánh giá bệnh nhân cao tuổi bị ngất.</p>
+<p>_____________________________________________________________________________</p>
+<p>4)    Reed MJ.  <strong>Nghiên cứu ROSE (Risk Stratification of syncope in the emergency department – phân tầng nguy cơ ngất tại khoa cấp cứu)</strong>.  Tạp chí J Am Coll<br>Cardiol, 2010; 55:713-721, doi:10.1016/j.jacc.2009.09.049</p>
+<p>Mục tiêu: Mục tiêu của nghiên cứu này là<br>xây dựng và thẩm định một quy tắc quyết định<sup> </sup>lâm sàng (CDR) để dự báo<br>kết cục nghiêm trọng trong 1 tháng và tử vong do mọi nguyên nhân<sup> </sup>ở bệnh nhân đến<br>khoa cấp cứu vì ngất.</p>
+<p>Bối cảnh: Ngất là một<br>tình trạng thường gặp, có khả năng nghiêm trọng, chiếm<sup> </sup>một tỷ lệ lớn<br>ca nhập viện.   Phương pháp: Đây là một nghiên cứu quan sát, tiến cứu, đơn<br>trung tâm trên<sup> </sup>người lớn đến<br>khoa cấp cứu vì ngất.<sup> </sup>Một quy tắc quyết định lâm sàng (CDR) được xây dựng từ 550<br>bệnh nhân trong một nhóm xây dựng (derivation cohort) và<sup> </sup>được kiểm định trong một nhóm thẩm định gồm<br>thêm 550 bệnh nhân khác.  Kết quả:<br>Kết cục nghiêm trọng hoặc tử vong do mọi nguyên nhân trong một tháng xảy ra ở 40<sup> </sup>(7,3%)<br>bệnh nhân trong nhóm xây dựng. Các yếu tố tiên đoán độc lập<sup> </sup>là <strong><u>nồng độ peptide lợi niệu</u></strong> natri<br>não (brain natriuretic peptide) lớn hơn 300 pg/ml (tỷ số<sup> </sup>chênh<br>[OR]: 7,3), <u>xét nghiệm máu ẩn trong phân</u><br>dương tính (OR: 13,2), <u>hemoglobin</u> dưới<sup> </sup>90 g/l (OR: 6,7), <strong>độ bão hòa oxy dưới</strong> <strong>94%</strong> (OR: 3,0), và <strong><u>sóng Q<sup> </sup>trên điện tâm đồ<br>lúc đến khám (OR: 2,8)</u></strong>. Kết cục nghiêm trọng<sup> </sup>hoặc<br>tử vong do mọi nguyên nhân trong một tháng xảy ra ở 39 (7,1%) bệnh nhân trong<sup> </sup>nhóm thẩm<br>định. Quy tắc ROSE (Risk stratification Of Syncope<sup> </sup>in the Emergency<br>department – Phân tầng nguy cơ ngất tại khoa cấp cứu) có <strong><u>độ nhạy<br>và độ đặc hiệu<sup> </sup>lần lượt là 87,2% và 65,5%,</u></strong> và giá trị<br>tiên đoán<sup> </sup>âm là 98,5%. Riêng nồng độ peptide lợi niệu natri typ B<br>(BNP)<sup> </sup>tăng đã là một yếu tố tiên đoán chính của các kết cục tim<br>mạch<sup> </sup>nghiêm trọng (8 trên 22 biến cố, 36%) và tử vong do mọi nguyên nhân<br>(8 trên 9<sup> </sup>ca tử vong, 89%).<br>Kết luận: Quy tắc ROSE có độ nhạy và giá trị tiên đoán<br>âm<sup> </sup>rất tốt trong việc nhận diện bệnh nhân ngất nguy cơ<br>cao.<sup> </sup>Là một thành phần của quy tắc, BNP dường như là yếu tố tiên đoán chính của<br>kết cục<sup> </sup>tim mạch nghiêm trọng và tử vong do mọi nguyên nhân. Quy tắc ROSE<br>và<sup> </sup>việc đo BNP có thể là những công cụ phân tầng nguy cơ có giá trị<sup><br></sup>ở bệnh nhân đến cấp cứu vì ngất và giờ đây cần<sup> </sup>được<br>thẩm định ngoài.</p>
+<p>__________________________________________________________________________</p>
+<p>5)   Sun BC và cs. <strong>Predictors of 30-day serious events in<br>older patients with syncope</strong> (Các yếu tố tiên đoán biến cố nghiêm trọng trong 30 ngày ở bệnh nhân ngất cao tuổi). <em>Ann Emerg Med</em> tháng Mười hai năm 2009; 54:769.</p>
+<p><strong>Mục tiêu nghiên cứu: </strong>Chúng tôi xác định các yếu tố tiên đoán biến cố nghiêm trọng trong 30 ngày sau<br>ngất ở người cao tuổi.  <strong>Phương pháp: </strong>Chúng tôi<br>đã xem xét<br>hồ sơ bệnh án của người cao tuổi (tuổi ≥60) đến một trong 3 khoa cấp cứu (ED) vì ngất<br>hoặc gần ngất trong giai đoạn từ 2002 đến 2005.<br>Kết cục chính là sự xuất hiện của một biến cố nghiêm trọng đã định nghĩa trước trong vòng 30 ngày<br>sau khi được đánh giá tại ED. Chúng tôi dùng hồi quy logistic đa biến để xác định<br>các yếu tố tiên đoán biến cố nghiêm trọng trong 30 ngày.  <strong>Kết quả:<br></strong>Trong 3.727 bệnh nhân có khả năng đủ điều kiện, 2.871 (77%) đáp ứng mọi tiêu chuẩn<br>chọn vào. Chúng tôi loại thêm 287 bệnh nhân được chẩn đoán một<br>tình trạng lâm sàng nghiêm trọng ngay khi còn ở ED. Trong nhóm nghiên cứu cuối cùng<br>(n=2.584), chúng tôi ghi nhận 173 (7%) bệnh nhân gặp biến cố nghiêm trọng trong 30<br>ngày. Các yếu tố tiên đoán nguy cơ cao gồm <strong><u>tuổi<br>trên 90, giới nam, tiền sử rối loạn nhịp, huyết áp tâm thu lúc phân loại (triage)<br>trên 160 mm Hg, điện tâm đồ bất thường và nồng độ<br>troponin I bất thường. </u></strong>Một yếu tố tiên đoán nguy cơ thấp là than phiền <strong><u>gần ngất</u></strong> thay vì<br>ngất. Một thang điểm nguy cơ, tạo ra bằng cách cộng các yếu tố tiên đoán nguy cơ cao và<br>trừ đi yếu tố tiên đoán nguy cơ thấp, có thể phân tầng bệnh nhân thành các nhóm nguy cơ thấp (tỷ lệ biến cố<br>2,5%; khoảng tin cậy [KTC] 95% 1,4% đến 3,6%), trung bình (tỷ lệ biến cố<br>6,3%; KTC 95% 5,1% đến 7,5%) và cao (tỷ lệ biến cố 20%; KTC 95% 15% đến 25%)<br>.  <strong>Kết luận: </strong>Chúng tôi đã xác định<br>các yếu tố tiên đoán biến cố nghiêm trọng trong 30 ngày sau ngất ở người lớn từ 60 tuổi<br>trở lên. Một thang điểm đơn giản có thể phân tầng các bệnh nhân này thành các nhóm<br>nguy cơ khác biệt rõ và, nếu được thẩm định ngoài, có thể có tiềm năng hỗ trợ<br>việc ra quyết định tại ED.</p>
+<p>_____________________________________________________________________________</p>
+<p>6)    Gabayan GZ và cs.<strong><br>Predictors of Short-Term (Seven-Day) Cardiac Outcomes After Emergency<br>Department Visit for Syncope</strong> (Các yếu tố tiên đoán kết cục tim mạch ngắn hạn – bảy ngày – sau lần khám tại khoa cấp cứu vì ngất).  Am J Cardiol 2010;105:82–86</p>
+<p>Ngất là lý do thường gặp<br>khiến bệnh nhân đến khoa cấp cứu (ED), và bệnh nhân thường được nhập viện để<br>loại trừ ngất có nguồn gốc tim mạch. Dữ liệu dựa trên quần thể về mô hình và<br>các yếu tố tiên đoán kết cục tim mạch có thể giúp cải thiện việc ra quyết định. Mục tiêu của chúng tôi là<br>xác định mô hình và các yếu tố tiên đoán <strong>kết cục tim mạch <u>ngắn hạn</u> ở bệnh nhân<br>ngất tại ED</strong>. Dữ liệu hành chính từ một hệ thống y tế tích hợp gồm<br>11 khoa cấp cứu ở Nam California được dùng để xác định kết cục tim mạch sau khi<br>đến ED vì ngất từ ngày 1 tháng Một năm 2002 đến ngày 31 tháng Mười hai năm 2005. Ngất<br>và nguyên nhân tử vong được xác định bằng các mã của <em>Bảng Phân loại Quốc tế<br>về Bệnh tật, Phiên bản thứ chín</em>. Kết cục tim mạch gồm tử vong do tim và<br>nhập viện hoặc thủ thuật phù hợp với bệnh tim thiếu máu cục bộ, bệnh van<br>tim, hoặc rối loạn nhịp. Các yếu tố tiên đoán kết cục tim mạch được xác định bằng<br>hồi quy logistic đa biến. Có 35.330 đối tượng người lớn với<br>tổng cộng 39.943 lượt đến ED vì ngất. Nguy cơ kết cục tim mạch giảm<br>mạnh sau 7 ngày kể từ khi ngất. Kết cục tim mạch trong 7 ngày xảy ra<br>ở 893 trường hợp (3%). Các yếu tố tiên đoán dương của kết cục tim mạch trong 7 ngày gồm <strong>tuổi trên 60</strong>,<br>giới nam, <strong>suy tim sung huyết</strong>, <strong>bệnh tim thiếu máu cục bộ</strong>, <strong>rối loạn<br>nhịp tim</strong> và <strong>bệnh van tim</strong>. <u>Các yếu tố tiên đoán âm</u> gồm sa sút trí tuệ,<br>có máy tạo nhịp, đã tái thông mạch vành và bệnh mạch máu não. Có mối liên quan phụ thuộc tuổi giữa<br>kết cục tim mạch trong 7 ngày với rối loạn nhịp và bệnh van tim, trong đó bệnh nhân<br>trẻ hơn ( dưới 60 tuổi) có nguy cơ xảy ra biến cố cao hơn so<br>với những người cùng độ tuổi. Tóm lại, việc ra quyết định tại ED nên tập trung<br>vào nguy cơ biến cố tim trong 7 ngày đầu sau ngất, và cần đặc biệt<br>chú ý đến bệnh nhân trẻ có bệnh tim mạch đi kèm.</p>
+<p>7)   Soteriades ES và cs.<strong> </strong><strong>“Incidence<br>and Prognosis of Syncope”</strong><strong> </strong>(Tỷ lệ mới mắc và tiên lượng của ngất) NEJM 347(12):878-885, ngày 19 tháng Chín<br>năm 2002.</p>
+<p><em>Bối cảnh</em> Hiện còn ít hiểu biết về dịch tễ học và tiên lượng<sup><br></sup>của ngất trong dân số chung.<sup>   </sup><em>Phương pháp</em> Chúng tôi đánh giá<br>tỷ lệ mới mắc, các nguyên nhân cụ thể và tiên lượng<sup> </sup>của ngất ở phụ nữ và<br>nam giới tham gia Nghiên cứu Tim Framingham<sup> </sup>(Framingham Heart Study) từ năm 1971 đến 1998.<sup>   </sup><em>Kết quả</em> Trong 7814 người<br>tham gia nghiên cứu được theo dõi trung bình<sup> </sup>17 năm, có 822 người báo cáo<br>bị ngất. Tỷ lệ mới mắc của lần báo cáo ngất đầu tiên<sup> </sup>là 6,2 trên 1000<br>người-năm. Các nguyên nhân được xác định thường gặp nhất<sup> </sup>là phản xạ phế vị<br>(21,2%), do tim (9,5%<sup> </sup>), và tư thế đứng (9,4%<br>); ở 36,6% trường hợp<sup> </sup>không rõ nguyên nhân. Tỷ số<br>nguy cơ đã hiệu chỉnh đa biến<sup> </sup>ở những người bị ngất<br>do bất kỳ nguyên nhân nào, so<sup> </sup>với những người không bị ngất,<br>là 1,31 (khoảng tin<sup> </sup>cậy 95%, 1,14 đến 1,51) đối với tử vong<br>do mọi nguyên nhân, 1,27 (khoảng<sup> </sup>tin cậy 95%, 0,99 đến 1,64)<br>đối với nhồi máu cơ tim<sup> </sup>hoặc tử vong do bệnh mạch vành, và<br>1,06 (khoảng tin cậy<sup> </sup>95%, 0,77 đến 1,45) đối với đột quỵ tử vong hoặc<br>không tử vong. Các tỷ số nguy cơ<sup> </sup>tương ứng ở những người<br>bị ngất do tim là 2,01<sup> </sup>(khoảng tin cậy 95%, 1,48<br>đến 2,73), 2,66 (khoảng tin<sup> </sup>cậy 95%, 1,69 đến 4,19) và<br>2,01 (khoảng tin cậy<sup> </sup>95%, 1,06 đến 3,80). Những người<br>bị ngất không rõ<sup> </sup>nguyên nhân và những người bị ngất do thần kinh có<br>nguy cơ<sup> </sup>tử vong do mọi nguyên nhân tăng, với tỷ số nguy cơ đã hiệu chỉnh đa biến<br>lần<sup> </sup>lượt là 1,32 (khoảng tin cậy 95%, 1,09 đến 1,60)<sup><br></sup>và 1,54 (khoảng tin cậy 95%, 1,12 đến 2,12).<sup><br></sup><strong>Không có sự gia tăng nguy cơ bệnh tật hay tử vong tim mạch<sup><br></sup>liên quan đến ngất do phản xạ phế vị (bao gồm cả ngất tư thế và ngất liên quan đến thuốc)<sup><br></sup>.</strong><sup>   </sup><em>Kết luận</em><br>Người bị ngất do tim có nguy cơ tăng<sup> </sup>tử vong do<br>mọi nguyên nhân và biến cố tim mạch, còn người<sup> </sup>bị ngất không<br>rõ nguyên nhân có nguy cơ tăng tử vong<sup> </sup>do mọi nguyên nhân.<br>Ngất do phản xạ phế vị dường như có tiên lượng lành tính.</p>
+<p>8)     <a href="http://gateway2.ovid.com/ovidweb.cgi?S=IDNJHKAGDECPEP00D&amp;Search+Link=%22Sarasin+FP%22.au." rel="noopener" target="_blank">Sarasin FP</a>. <a href="http://gateway2.ovid.com/ovidweb.cgi?S=IDNJHKAGDECPEP00D&amp;Search+Link=%22Louis-Simonet+M%22.au." rel="noopener" target="_blank">Louis-Simonet M</a>. <a href="http://gateway2.ovid.com/ovidweb.cgi?S=IDNJHKAGDECPEP00D&amp;Search+Link=%22Carballo+D%22.au." rel="noopener" target="_blank">Carballo D</a>.<br><a href="http://gateway2.ovid.com/ovidweb.cgi?S=IDNJHKAGDECPEP00D&amp;Search+Link=%22Slama+S%22.au." rel="noopener" target="_blank">Slama S</a>.<br><a href="http://gateway2.ovid.com/ovidweb.cgi?S=IDNJHKAGDECPEP00D&amp;Search+Link=%22Rajeswaran+A%22.au." rel="noopener" target="_blank">Rajeswaran A</a>.<br><a href="http://gateway2.ovid.com/ovidweb.cgi?S=IDNJHKAGDECPEP00D&amp;Search+Link=%22Metzger+JT%22.au." rel="noopener" target="_blank">Metzger JT</a>.<br><a href="http://gateway2.ovid.com/ovidweb.cgi?S=IDNJHKAGDECPEP00D&amp;Search+Link=%22Lovis+C%22.au." rel="noopener" target="_blank">Lovis C</a>.<br><a href="http://gateway2.ovid.com/ovidweb.cgi?S=IDNJHKAGDECPEP00D&amp;Search+Link=%22Unger+PF%22.au." rel="noopener" target="_blank">Unger PF</a>.<br><a href="http://gateway2.ovid.com/ovidweb.cgi?S=IDNJHKAGDECPEP00D&amp;Search+Link=%22Junod+AF%22.au." rel="noopener" target="_blank">Junod AF</a>.  <strong>Prospective<br>evaluation of patients with syncope:<br>a population-based study</strong> (Đánh giá tiến cứu bệnh nhân ngất: một nghiên cứu dựa trên quần thể).  American<br>Journal of Medicine. 111(3):177-84, ngày 15 tháng Tám năm 2001.</p>
+<p><strong>Tóm tắt</strong> <strong>MỤC ĐÍCH:</strong> Xác định hiệu suất chẩn đoán của<br>một quy trình đánh giá tuần tự chuẩn hóa ở bệnh nhân <strong>ngất</strong> tại một<br><strong>bệnh viện</strong> giảng dạy chăm sóc ban đầu.<strong> BỆNH NHÂN VÀ PHƯƠNG PHÁP:</strong> Tất cả<br>bệnh nhân liên tiếp đến <strong>khoa</strong> <strong>cấp cứu</strong><br>với lý do chính đến khám là <strong>ngất</strong> đều được đưa vào nghiên cứu. Quy trình đánh giá bao gồm<br>thăm khám lâm sàng ban đầu và thường quy, kể cả xoa xoang<br>cảnh, cùng với ghi điện tâm đồ và xét nghiệm cơ bản. Các<br>xét nghiệm có mục tiêu, như siêu âm tim, được dùng khi lâm sàng nghi ngờ một bệnh lý<br>cụ thể. Các xét nghiệm tim mạch khác (Holter 24 giờ, điện tâm đồ<br>lưu động bằng máy ghi vòng lặp (loop recorder), nghiệm pháp bàn nghiêng, và điện tâm đồ trung bình tín hiệu)<br>được thực hiện ở bệnh nhân <strong>ngất</strong> không giải thích được sau các<br>bước ban đầu. Thăm dò điện sinh lý chỉ được thực hiện ở một số bệnh nhân chọn lọc khi<br>phù hợp về mặt lâm sàng. Thông tin theo dõi về tái phát và tử vong được<br>thu thập mỗi 6 tháng trong tối đa 18 tháng ở 94% (n = 611)<br>bệnh nhân.<strong> KẾT QUẢ:</strong> Sau đánh giá lâm sàng ban đầu, nguyên nhân nghi ngờ<br>của ngất được tìm thấy ở 69% (n = 446) trong số 650 bệnh nhân,<br>bao gồm ngất do cơ chế thần kinh-tim (n = 234, 36%), hạ huyết áp tư thế đứng<br>(n = 156, 24%), rối loạn nhịp (n = 24, 4%), và các bệnh khác (n = 32, 5%). Trong số<br>67 bệnh nhân được làm xét nghiệm có mục tiêu, chẩn đoán nghi ngờ được<br>khẳng định ở 49 (73%) bệnh nhân: hẹp van động mạch chủ (n = 8, 1%), thuyên tắc phổi<br>(n = 8, 1%), co giật/đột quỵ (n = 30, 5%), và các bệnh khác (n = 3).<br>Các thăm dò tim mạch mở rộng, được thực hiện ở 122 trong số 155<br>bệnh nhân vẫn còn ngất không giải thích được sau đánh giá lâm sàng,<br>chỉ tìm ra nguyên nhân nghi ngờ của ngất ở 30 (25%) bệnh nhân,<br>trong đó rối loạn nhịp ở 18 (60%), tất cả đều có điện tâm đồ nền bất thường. Tỷ lệ<br>tử vong sau 18 tháng là 9% (n = 55, gồm 8 bệnh nhân đột tử); ngất<br>tái phát ở 15% (n = 95) bệnh nhân.<strong> KẾT LUẬN:</strong> Hiệu suất<br>chẩn đoán của quy trình đánh giá lâm sàng chuẩn hóa đối với <strong>ngất</strong> là 76%, cao hơn<br>so với các báo cáo trước đây ở bệnh nhân không chọn lọc. Phân tầng nguy cơ dựa trên điện tâm đồ<br>hữu ích trong việc định hướng sử dụng các xét nghiệm tim mạch<br>chuyên sâu.</p>
+<p>_____________________________________________________________________________</p>
+<p>9)   François<br>P. Sarasin, <strong>“A Risk Score to Predict<br>Arrhythmias in Patients with Unexplained Syncope” (Thang điểm nguy cơ tiên đoán rối loạn nhịp ở bệnh nhân ngất không rõ nguyên nhân).  </strong>Academic Emergency Medicine, năm 2003, tập<br>10, số 5, trang 539-540.</p>
+<p><strong>Mục tiêu:</strong> Xây dựng và thẩm định một thang điểm nguy cơ tiên đoán<sup> </sup>rối loạn nhịp<br>ở bệnh nhân ngất vẫn chưa giải thích được<sup> </sup>sau đánh giá không xâm lấn tại khoa<br>cấp cứu (ED). <strong>Phương pháp:</strong><sup> </sup>Một nhóm<br>gồm 175 bệnh nhân ngất không rõ nguyên nhân (Geneva,<sup> </sup>Thụy Sĩ) được<br>dùng để xây dựng và thẩm định chéo thang<sup> </sup>điểm; nhóm thứ hai<br>gồm 269 bệnh nhân tương tự (Pittsburgh,<sup> </sup>PA) được dùng để thẩm định<br>hệ thống. Rối loạn nhịp là nguyên nhân<sup> </sup>gây ngất được chẩn đoán bằng theo dõi<br>tim hoặc thăm dò điện<sup> </sup>sinh lý. Dữ liệu từ bệnh<br>sử và điện tâm đồ 12 chuyển đạo tại khoa cấp<sup> </sup>cứu được dùng để<br>xác định các yếu tố tiên đoán<sup> </sup>rối loạn nhịp. Hồi quy logistic được dùng để<br>xác định các yếu tố tiên đoán<sup> </sup>cho hệ thống thang điểm nguy cơ. Hiệu năng của thang điểm<br>nguy cơ được đo<sup> </sup>bằng cách so sánh tỷ lệ bệnh nhân<br>có rối loạn nhịp ở<sup> </sup>các mức điểm khác nhau và các đường cong<br>đặc tính hoạt động của bộ thu nhận<sup> </sup>(ROC). <strong>Kết quả:</strong> Tỷ lệ<br>hiện mắc ngất do rối loạn nhịp<sup> </sup>là 17% ở nhóm xây dựng<br>và 18% ở nhóm thẩm định.<sup> </sup>Các yếu tố tiên đoán rối loạn nhịp là<br><strong>điện tâm đồ bất thường</strong> (tỷ số chênh [OR]:<sup> </sup>8,1, khoảng tin cậy [KTC] 95% =<br>3,0 đến 22,7), <strong>tiền sử<sup> </sup>suy tim sung huyết</strong> (OR: 5,3, KTC 95%<br>= 1,9 đến 15,0),<sup> </sup>và <strong>tuổi trên 65</strong> (OR: 5,4, KTC 95% = 1,1 đến<br>26,0). Ở<sup> </sup>nhóm xây dựng, nguy cơ rối loạn nhịp dao động từ<br>0% (KTC 95%<sup> </sup>= 0 đến 6) ở bệnh nhân không có yếu tố nguy cơ nào đến 6% (KTC 95%<sup><br></sup>= 1 đến 15) ở bệnh nhân có một yếu tố nguy cơ, 41% (KTC 95% =<sup> </sup>26<br>đến 57) ở bệnh nhân có hai yếu tố nguy cơ, và 60% (KTC 95%<sup> </sup>= 32 đến<br>84) ở bệnh nhân có ba yếu tố nguy cơ. Ở nhóm<sup> </sup>thẩm định,<br>các tỷ lệ này dao động từ 2% (KTC 95% = 0 đến 7) khi<sup> </sup>không có yếu tố<br>nguy cơ nào đến 17% (KTC 95% = 10 đến 27) khi có một yếu tố nguy cơ,<sup> </sup>35% (KTC 95%<br>= 24 đến 46) khi có hai yếu tố nguy cơ, và 27% (KTC 95%<sup> </sup>= 6 đến 61) khi có<br>ba yếu tố nguy cơ. Diện tích dưới đường cong ROC<sup> </sup>dao động từ 0,88 (KTC 95%<br>= 0,84 đến 0,91) ở nhóm xây<sup> </sup>dựng đến 0,84 (KTC 95% = 0,77<br>đến 0,91) sau thẩm định chéo<sup> </sup>trong cùng nhóm và 0,75 (KTC 95%<br>= 0,68 đến 0,81) ở<sup> </sup>nhóm thẩm định ngoài. <strong>Kết luận:</strong><br>Ở bệnh nhân<sup> </sup>ngất không rõ nguyên nhân, một thang điểm nguy cơ dựa trên các yếu tố lâm sàng<br>và điện<sup> </sup>tâm đồ sẵn có tại ED giúp nhận diện những bệnh nhân có nguy cơ<sup><br></sup>rối loạn nhịp.   <strong>Từ khóa</strong>: ngất không rõ nguyên nhân; rối loạn nhịp; yếu tố nguy cơ;<br>hệ thống tính điểm</p>
+<p>_____________________________________________________________________________</p>
+<p>10)  <a href="http://gateway2.ovid.com/ovidweb.cgi?S=IDNJHKAGDECPEP00D&amp;Search+Link=%22Ammirati+F%22.au." rel="noopener" target="_blank">Ammirati<br>F</a>. <a href="http://gateway2.ovid.com/ovidweb.cgi?S=IDNJHKAGDECPEP00D&amp;Search+Link=%22Colivicchi+F%22.au." rel="noopener" target="_blank">Colivicchi<br>F</a>. <a href="http://gateway2.ovid.com/ovidweb.cgi?S=IDNJHKAGDECPEP00D&amp;Search+Link=%22Santini+M%22.au." rel="noopener" target="_blank">Santini<br>M</a>.  <strong>Diagnosing syncope in clinical practice. Implementation of a simplified<br>diagnostic algorithm in a multicentre prospective trial – the OESIL 2 study</strong> (Osservatorio Epidemiologico della Sincope nel<br>Lazio) (Chẩn đoán ngất trong thực hành lâm sàng. Áp dụng một thuật toán chẩn đoán đơn giản hóa trong một thử nghiệm tiến cứu đa trung tâm – nghiên cứu OESIL 2). European Heart Journal. 21(11):935-40, tháng Sáu năm 2000.</p>
+<p><strong>Tóm tắt</strong></p>
+<p><strong>BỐI CẢNH:</strong> Ở một số bệnh nhân ngất,<br>việc chăm sóc y tế là không phù hợp và không hiệu quả. Trong một nghiên cứu<br>quan sát gần đây tại các bệnh viện cộng đồng vùng Lazio, Ý (nghiên cứu<br>OESIL), 54,4% bệnh nhân nhập viện vì ngất từ phòng cấp cứu<br>đã ra viện mà không có chẩn đoán xác định.<strong> MỤC TIÊU NGHIÊN CỨU:</strong> Một<br>thuật toán chẩn đoán hai bước đơn giản hóa đã được xây dựng và áp dụng tiến cứu<br>tại chín bệnh viện cộng đồng vùng Lazio, Ý, nhằm<br>cải thiện hiệu quả chẩn đoán của bác sĩ lâm sàng, qua đó giảm số<br>bệnh nhân không được chẩn đoán.<strong> QUẦN THỂ NGHIÊN CỨU:</strong> Quần thể nghiên cứu gồm<br>195 bệnh nhân liên tiếp (85 nam và 110 nữ, tuổi trung bình 62,5, khoảng tuổi<br>13-95) đến phòng cấp cứu của<br>một trong chín bệnh viện tham gia vì một cơn ngất trong khoảng thời gian 2 tháng.<strong> KẾT QUẢ:</strong><br>Việc áp dụng có hệ thống thuật toán chẩn đoán được đề xuất đã giúp<br>giảm rõ rệt số ca không được chẩn đoán. Tỷ lệ bệnh nhân<br>ra viện mà không có chẩn đoán xác định giảm từ 54,4% xuống 17,5%.<br>Ngất qua trung gian thần kinh được chẩn đoán ở 35,2% trường hợp, ngất do tim<br>ở 20,9% và ngất do thần kinh ở 13,8%.<strong> KẾT LUẬN:</strong> Việc sử dụng<br>các hướng dẫn và thuật toán chẩn đoán cụ thể, đơn giản hóa giúp<br>cải thiện hiệu quả lâm sàng chung. Tuy nhiên, việc xây dựng các<br>công cụ hỗ trợ ra quyết định như vậy cần cân nhắc kỹ hoàn cảnh thực hành<br>lâm sàng hằng ngày tại địa phương. Bản quyền 2000 Hội Tim mạch châu Âu (The European Society of Cardiology).</p>
+<p>_____________________________________________________________________________</p>
+<p>11)   Colivicchi F và<br>cs.  <strong>Development<br>and prospective validation of a risk stratification system for patients with<br>syncope in the emergency department: The OESIL risk score.</strong> (Xây dựng và thẩm định tiến cứu một hệ thống phân tầng nguy cơ cho bệnh nhân ngất tại khoa cấp cứu: thang điểm nguy cơ OESIL.)  Eur Heart J tháng Năm 2003; 24:811-19.   <a href="http://eurheartj.oxfordjournals.org/content/24/9/811.full.pdf+html" rel="noopener" target="_blank">http://eurheartj.oxfordjournals.org/content/24/9/811.full.pdf+html</a> (liên kết toàn văn)</p>
+<p><strong>MỤC TIÊU:</strong> Mục tiêu của nghiên cứu này là xây dựng và sau đó<br>thẩm định một hệ thống phân loại nguy cơ đơn giản cho bệnh nhân<br>đến khoa cấp cứu vì ngất.<strong> PHƯƠNG PHÁP VÀ KẾT QUẢ:</strong><br>Một nhóm 270 bệnh nhân liên tiếp (145 nữ, tuổi trung bình 59,5)<br>đến khoa cấp cứu của sáu bệnh viện cộng đồng<br>thuộc vùng Lazio (Ý) vì ngất được dùng làm đoàn hệ xây dựng (derivation cohort) cho<br>việc phát triển hệ thống phân loại nguy cơ. Dữ liệu từ bệnh sử<br>ban đầu, khám lâm sàng và điện tâm đồ được dùng để xác định<br>các yếu tố tiên đoán độc lập của tử vong chung trong 12 tháng đầu sau<br>lần đánh giá ban đầu. Phân tích đa biến cho phép nhận diện<br>các yếu tố tiên đoán tử vong sau: (1) <strong>tuổi trên 65</strong>; (2) <strong>tiền sử bệnh<br>tim mạch</strong>; (3) <strong>ngất không có tiền triệu</strong>; và (4) <strong>điện tâm đồ<br>bất thường</strong>. Điểm OESIL (Osservatorio Epidemiologico sulla Sincope nel<br>Lazio) được tính bằng tổng số học đơn giản của số yếu tố tiên đoán<br>có mặt ở từng bệnh nhân. Tỷ lệ tử vong tăng có ý nghĩa<br>khi điểm tăng trong đoàn hệ xây dựng (0% với điểm 0, 0,8% với<br>1 điểm; 19,6% với 2 điểm; 34,7% với 3 điểm; 57,1% với 4 điểm;<br>p nhỏ hơn 0,0001 cho xu hướng). Một xu hướng tử vong tăng dần tương tự theo<br>mức điểm tăng dần đã được xác nhận tiến cứu trong một đoàn hệ thẩm định thứ hai gồm<br>328 bệnh nhân liên tiếp (178 nữ; tuổi trung bình 57,5).<strong> KẾT LUẬN:</strong><br>Các dữ liệu lâm sàng và điện tâm đồ có sẵn khi bệnh nhân đến<br>khoa cấp cứu có thể được dùng để phân tầng nguy cơ cho bệnh nhân<br>ngất. Thang điểm nguy cơ OESIL có thể là một công cụ tiên lượng đơn giản<br>có thể được sử dụng hữu ích cho việc phân loại (triage) và xử trí bệnh nhân<br>ngất tại khoa cấp cứu.</p>
+<p><strong>Các bản ghi điện tâm đồ được bác sĩ cấp cứu đánh giá<br>và sau đó được bác sĩ tim mạch xem lại,<br>chỉ khi có yêu cầu cụ thể.<br>Bản ghi được coi là bất thường<br>trong các trường hợp sau: </strong></p>
+<p>1. Bất thường nhịp (rung nhĩ hoặc<br>cuồng nhĩ, nhịp nhanh trên thất, nhịp nhanh nhĩ<br>đa ổ, phức bộ sớm trên thất hoặc thất thường xuyên<br>hay lặp lại, nhịp nhanh thất bền bỉ<br>hoặc không bền bỉ, nhịp<br>tạo nhịp),</p>
+<p>2. Rối loạn dẫn truyền nhĩ thất hoặc trong thất<br>(blốc nhĩ thất hoàn toàn,<br>blốc nhĩ thất Mobitz I hoặc Mobitz II,<br>blốc nhánh hoặc chậm dẫn truyền<br>trong thất),</p>
+<p>3. Phì đại thất trái hoặc thất phải,</p>
+<p>4. Trục lệch trái,</p>
+<p>5. Nhồi máu cơ tim cũ,</p>
+<p>6. Bất thường đoạn ST và sóng T phù hợp<br>hoặc có thể liên quan đến thiếu máu cục bộ<br>cơ tim.</p>
+<p>___________________________________________________________________________</p>
+<p>12)   <strong>Derivation of San Francisco rule</strong> (Xây dựng quy tắc San Francisco), Quinn JV, Stiell IG.<br>Ann Emerg Med 43(2):224; tháng Hai năm 2004</p>
+<p>Quy tắc San Francisco:<br>bệnh nhân <strong>tuổi </strong>trên 75, điện tâm đồ<sup> </sup>bất thường  (ECG),  <strong>hematocrit</strong> nhỏ hơn hoặc bằng 30,<sup> </sup>than phiền <strong>khó thở (SOB)</strong>, <strong>huyết áp dưới 90</strong>, hoặc <strong>tiền sử<br>suy tim sung huyết (CHF)</strong>,<sup> </sup>có độ nhạy 96% (KTC 95% 92-100) và độ đặc hiệu 62% (KTC 95%<sup><br></sup>58-62).</p>
+<p><strong>Mục tiêu:</strong> Nguyên nhân gây ngất thường lành tính, nhưng<sup><br></sup>đôi khi liên quan đến bệnh suất và tử suất đáng kể.<sup> </sup>Nghiên cứu<br>này so sánh một quy tắc quyết định lâm sàng với nhận định của bác sĩ<sup> </sup>trong<br>việc tiên đoán kết cục nghiêm trọng ở bệnh nhân ngất. <strong>Phương pháp:</strong><sup> </sup>Trong<br>một nghiên cứu đoàn hệ tiến cứu, các bác sĩ cấp cứu điều trị chính<sup> </sup>đánh giá<br>những bệnh nhân đến một bệnh viện đại học giảng dạy<sup> </sup>vì ngất<br>hoặc gần ngất. Khi có thể, một bác sĩ thứ hai<sup> </sup>cũng đánh giá<br>bệnh nhân. Trong quá trình đánh giá, các bác sĩ<sup> </sup>được yêu cầu<br>tiên đoán khả năng (0–100%) bệnh nhân<sup> </sup>gặp một kết cục nghiêm trọng<br>đã được định nghĩa trước. Tất cả bệnh nhân được theo dõi<sup> </sup>để xác định liệu<br>họ có gặp kết cục nghiêm trọng trong vòng<sup> </sup>bảy ngày sau lần đến khoa cấp cứu<br>hay không. Các phân tích gồm độ nhạy<sup> </sup>và độ đặc hiệu của một ngưỡng nhận định nguy cơ<br>thấp, và so sánh<sup> </sup>diện tích dưới đường cong đặc trưng hoạt động<br>của bộ thu nhận (ROC)<sup> </sup>với khoảng tin cậy 95%.<br>Hệ số Kappa được dùng<sup> </sup>để đo mức đồng thuận giữa người đánh giá. <strong>Kết quả:</strong><br>Trong thời gian nghiên cứu 20 tháng<sup> </sup>có 684 lượt khám vì ngất, 79<br>lượt dẫn đến kết cục<sup> </sup>nghiêm trọng. Trong số các bệnh nhân được bác sĩ ước tính<br>xác suất kết cục nghiêm trọng<sup> </sup>từ 2% trở xuống,<br>5 người sau đó gặp<sup> </sup>kết cục nghiêm trọng. Độ nhạy của ngưỡng nguy cơ<br>thấp 2% này<sup> </sup>là 94% (KTC 95% 86%–98%), với độ đặc hiệu 41%<br>(KTC 95%<sup> </sup>40%–42%). Mức đồng thuận cho việc xác định nguy cơ này<sup> </sup>chỉ<br>ở mức khá, kappa = 0,44 (KTC 95% 0,34–0,54). SFSR (San Francisco Syncope Rule) đã tiên đoán được<sup> </sup>cả 5<br>bệnh nhân có kết cục nghiêm trọng bị xếp vào nhóm nguy cơ thấp<sup> </sup>theo nhận định<br>của bác sĩ, và có độ nhạy chung tốt 96% (KTC 95%<sup> </sup>92%–100%) và<br>độ đặc hiệu 62% (KTC 95% 58%–66%).<sup> </sup>Diện tích dưới đường cong ROC là 0,90<br>(KTC 95% 0,86–0,94) đối với<sup> </sup>SFSR và tốt hơn có ý nghĩa (p =<br>0,01) so với nhận định<sup> </sup>của bác sĩ 0,82 (KTC 95% 0,77–0,88). <strong>Kết luận:</strong><br>SFSR<sup> </sup>hoạt động tốt hơn nhận định của bác sĩ trong việc tiên đoán<br>những<sup> </sup>bệnh nhân ngất nào sẽ gặp kết cục nghiêm trọng. Điều này<br>gợi ý<sup> </sup>tiềm năng lớn của quy tắc trong việc hỗ trợ bác sĩ<br>ra quyết định<sup> </sup>.</p>
+<p>_______________________________________________________________</p>
+<p><strong>Prospective Validation of the San Francisco Syncope Rule to<br>Predict Patients With Serious Outcomes. (Thẩm định tiến cứu San Francisco Syncope Rule để tiên đoán bệnh nhân có kết cục nghiêm trọng.)  Quinn và cs.  Annals of EM 2006:47(5):448; tháng Năm năm 2006</strong></p>
+<p>Mục tiêu nghiên cứu: Chúng tôi thẩm định tiến cứu quy tắc San Francisco Syncope Rule (tiền sử suy tim<br>sung huyết, hematocrit dưới 30%, kết quả điện tâm đồ bất thường [thay đổi mới hoặc nhịp không phải nhịp xoang], than phiền<br>khó thở, và huyết áp tâm thu dưới 90 mm Hg lúc phân loại).</p>
+<p>Phương pháp: Trong một nghiên cứu đoàn hệ tiến cứu, các bệnh nhân liên tiếp bị ngất hoặc gần ngất<br>đến khoa cấp cứu (ED) của một bệnh viện giảng dạy được xác định và đưa vào nghiên cứu từ<br>ngày 15 tháng Bảy năm 2002 đến ngày 31 tháng Tám năm 2004. Loại trừ những bệnh nhân mất ý thức do chấn thương, do rượu hoặc<br>liên quan đến thuốc/ma túy, và những bệnh nhân có co giật chắc chắn. Sau khi đánh giá, các bác sĩ áp dụng tiến cứu San<br>Francisco Syncope Rule, và bệnh nhân được theo dõi để xác định liệu<br>họ có gặp một kết cục nghiêm trọng đã định nghĩa trước trong vòng 30 ngày sau lần đến khoa cấp cứu hay không.</p>
+<p>Kết quả: Bảy trăm chín mươi mốt lượt khám liên tiếp vì ngất được đánh giá, chiếm 1,2%<br>tổng số lượt khám tại khoa cấp cứu. Tuổi trung bình là 61, 54% bệnh nhân là nữ, và 59% bệnh nhân<br>được nhập viện. Năm mươi ba lượt khám (6,7%) dẫn đến kết cục nghiêm trọng ở bệnh nhân mà<br>chưa được phát hiện trong lần khám tại khoa cấp cứu. Quy tắc có độ nhạy 98% (khoảng tin cậy [KTC] 95% 89% đến<br>100%) và độ đặc hiệu 56% (KTC 95% 52% đến 60%) trong tiên đoán các biến cố này. Trong đoàn hệ này, San<br>Francisco Syncope Rule xếp 52% bệnh nhân vào nhóm nguy cơ cao, có khả năng làm giảm tổng số<br>ca nhập viện 7%. Nếu quy tắc chỉ được áp dụng cho 453 bệnh nhân đã nhập viện, nó có thể đã<br>làm giảm số ca nhập viện 24%.</p>
+<p>Kết luận: San Francisco Syncope Rule đạt độ nhạy và độ đặc hiệu cao trong đoàn hệ<br>thẩm định này và là một công cụ có giá trị giúp phân tầng nguy cơ bệnh nhân. Nó có thể hỗ trợ bác sĩ<br>ra quyết định và cải thiện việc chỉ định nhập viện cho ngất. [Ann Emerg Med. 2006;47:<br>448-454.]</p>
+<p><strong>_____________________________________________________________________________</strong></p>
+<p>14)   <strong>External Validation of the San Francisco Syncope Rule<br>in the Canadian Setting</strong> (Thẩm định ngoài San Francisco Syncope Rule trong bối cảnh Canada). [Ann Emerg<br>Med. 2010;55:464-472.</p>
+<p><strong>Thẩm định ngoài cho độ nhạy và độ đặc hiệu thấp hơn nhiều: 90% và 33%</strong></p>
+<p>Mục tiêu nghiên cứu: Ngất là<br>một thách thức thường gặp trong quyết định hướng xử trí (disposition) đối với bác sĩ cấp cứu. Trong số các công cụ phân tầng<br>nguy cơ.  hiện có,<br>chỉ San Francisco Syncope Rule được xây dựng một cách chặt chẽ. Chúng tôi đánh giá<br>hiệu năng của nó ở bệnh nhân ngất tại khoa cấp cứu (ED) ở Canada. Phương pháp:<br>Nghiên cứu  hồi cứu này gồm<br>những bệnh nhân từ 16 tuổi trở lên thỏa định nghĩa ngất<br>(mất ý thức thoáng qua với hồi phục hoàn toàn) và đến một<br>khoa cấp cứu tuyến cuối trong khoảng thời gian 18 tháng. Chúng tôi loại trừ bệnh nhân có<br>rối loạn ý thức đang tiếp diễn, dùng rượu/ma túy, co giật, chấn thương đầu và<br>chấn thương nặng. <strong><u>Đặc điểm bệnh nhân,</u></strong> <strong>5 yếu tố tiên đoán của quy tắc (tiền sử<br>suy tim sung huyết, hematocrit dưới 30%, đặc điểm điện tâm đồ bất thường,<br>khó thở, và huyết áp tâm thu lúc phân loại dưới 90 mm Hg)</strong>, và<br>kết cục (theo nghiên cứu gốc) được trích xuất. Kết quả: Trong 915 lượt khám<br>được sàng lọc, 505 lượt được đưa vào. Bốn mươi chín (9,7%) lượt khám liên quan đến<br>kết cục nghiêm trọng. Quy tắc có độ nhạy 90% (44/49 kết cục;<br>khoảng tin cậy [KTC] 95% 79% đến 96%) và độ đặc hiệu 33% (KTC 95% 32%<br>đến 34%). Đưa các bất thường trên monitor vào biến số điện tâm đồ sẽ cải thiện<br>độ nhạy lên 96% (47/49 kết cục; KTC 95% 87% đến 99%). Mặc dù các bác sĩ<br>không tiên đoán được 2 ca tử vong, quy tắc lẽ ra đã tiên đoán được cả 3 ca tử vong<br>xảy ra sau khi xuất viện từ khoa cấp cứu. Áp dụng quy tắc trong bối cảnh của chúng tôi sẽ<br>làm tăng tỷ lệ nhập viện từ 12,3% lên 69,5%. Kết luận: Trong nghiên cứu<br>hồi cứu tại Canada này, San Francisco Syncope Rule đạt độ nhạy<br>tương đương nhưng độ đặc hiệu kém hơn đáng kể so với các báo cáo<br>trước đây. Áp dụng quy tắc sẽ làm tăng đáng kể tỷ lệ nhập viện.<br>Cần thêm nghiên cứu để hoặc tinh chỉnh San Francisco Syncope Rule, hoặc xây dựng<br>một quy tắc mới. [Ann Emerg Med. 2010;55:464-472.]</p>
+<p>_____________________________________________________________________________</p>
+<p>15)   <strong>STePS (tiên lượng ngắn hạn của ngất – Short-Term Prognosis of Syncope):</strong><br>(J Am Coll Cardiol 2008;51:276–83) ©</p>
+<p>a. Nguy cơ ngắn hạn: điện tâm đồ (EKG) bất thường, chấn thương, không có tiền triệu, nam giới.</p>
+<p>b. Kết cục nặng dài hạn là 9,3% (40 ca tử vong, 6,0%;<br>22 thủ thuật điều trị lớn, 3,3%), và sự xuất hiện của chúng tương quan<br>với tuổi _65 [người dịch: ký tự “_” trong bản gốc nhiều khả năng là dấu “≥” bị lỗi], tiền sử u tân sinh, bệnh mạch máu não, bệnh tim cấu trúc<br>và rối loạn nhịp thất.</p>
+<p>16)   Tác giả: <a href="http://gateway2.ovid.com/ovidweb.cgi?S=IDNJHKAGDECPEP00D&amp;Search+Link=%22Linzer+M%22.au." rel="noopener" target="_blank">Linzer M</a>.<br><a href="http://gateway2.ovid.com/ovidweb.cgi?S=IDNJHKAGDECPEP00D&amp;Search+Link=%22Yang+EH%22.au." rel="noopener" target="_blank">Yang EH</a>. <a href="http://gateway2.ovid.com/ovidweb.cgi?S=IDNJHKAGDECPEP00D&amp;Search+Link=%22Estes+NA+3rd%22.au." rel="noopener" target="_blank">Estes NA 3rd</a>. <a href="http://gateway2.ovid.com/ovidweb.cgi?S=IDNJHKAGDECPEP00D&amp;Search+Link=%22Wang+P%22.au." rel="noopener" target="_blank">Wang P</a>. <a href="http://gateway2.ovid.com/ovidweb.cgi?S=IDNJHKAGDECPEP00D&amp;Search+Link=%22Vorperian+VR%22.au." rel="noopener" target="_blank">Vorperian VR</a>. <a href="http://gateway2.ovid.com/ovidweb.cgi?S=IDNJHKAGDECPEP00D&amp;Search+Link=%22Kapoor+WN%22.au." rel="noopener" target="_blank">Kapoor WN</a>.</p>
+<p><strong>Diagnosing syncope. Part 1: Value of history, physical<br>examination, and electrocardiography.</strong> (Chẩn đoán ngất. Phần một: Giá trị của hỏi bệnh, khám lâm sàng và điện tâm đồ.)<br>Dự án Đánh giá Hiệu quả Lâm sàng của Hội Thầy thuốc Hoa Kỳ (American College of Physicians).<br>[Tổng quan] [34 tài liệu tham khảo].  Annals of Internal<br>Medicine. 126(12):989-96, ngày 15 tháng Sáu năm 1997.</p>
+<p><strong>Tóm tắt</strong> <strong>MỤC ĐÍCH:</strong> Tổng quan y văn về<br>các xét nghiệm chẩn đoán trong <strong>ngất</strong> và đưa ra khuyến nghị cho một cách tiếp cận toàn diện, hiệu quả về chi phí<br>nhằm xác định nguyên nhân ngất.<strong> NGUỒN<br>DỮ LIỆU:</strong> Các nghiên cứu được xác định qua tìm kiếm MEDLINE (1980 đến nay)<br>và rà soát thủ công danh mục tài liệu tham khảo của các bài đã xác định.<strong> LỰA CHỌN<br>NGHIÊN CỨU:</strong> Các bài đủ tiêu chuẩn nếu đề cập đến xét nghiệm chẩn đoán trong <strong>ngất</strong><br>hoặc gần <strong>ngất</strong> và báo cáo kết quả của ít nhất 10 bệnh nhân.<strong> TRÍCH XUẤT<br>DỮ LIỆU:</strong> Tính hữu ích của các xét nghiệm được đánh giá bằng cách tính hiệu suất chẩn đoán (diagnostic yield):<br>số bệnh nhân có kết quả xét nghiệm dương tính về mặt chẩn đoán chia cho<br>số bệnh nhân được làm xét nghiệm hoặc, với các nghiên cứu theo dõi liên tục (monitoring), tổng<br>số kết quả dương tính thật và âm tính thật chia cho số<br>bệnh nhân được làm xét nghiệm.<strong> TỔNG HỢP DỮ LIỆU:</strong> Mặc dù không có tiêu chuẩn vàng<br>chẩn đoán và dữ liệu từ các thử nghiệm ngẫu nhiên còn ít, một số điểm<br>vẫn nổi bật. Thứ nhất, hỏi bệnh, khám lâm sàng và điện tâm đồ là<br>cốt lõi của việc thăm dò ngất (hiệu suất chẩn đoán gộp, 50%).<br>Thứ hai, xét nghiệm thần kinh hiếm khi hữu ích trừ khi có thêm dấu hiệu<br>hoặc triệu chứng thần kinh (hiệu suất chẩn đoán của điện não đồ, chụp cắt lớp<br>vi tính và siêu âm Doppler là 2% đến 6%). Thứ ba, những bệnh nhân<br>đã biết hoặc nghi ngờ có bệnh tim, hoặc bệnh nhân ngất khi gắng sức,<br>có nguy cơ kết cục bất lợi cao hơn và cần được làm các xét nghiệm tim mạch, gồm<br>siêu âm tim, nghiệm pháp gắng sức. Holter, hoặc<br>thăm dò điện sinh lý trong buồng tim, đơn độc hoặc phối hợp (hiệu suất chẩn đoán 5% đến<br>35%). Thứ tư, ngất ở người cao tuổi thường do dùng nhiều thuốc (polypharmacy) và<br>do đáp ứng sinh lý bất thường với các sinh hoạt hằng ngày. Thứ năm, điện tâm đồ<br>ghi vòng lặp dài hạn (hiệu suất chẩn đoán 25% đến 35%) và nghiệm pháp bàn nghiêng (hiệu suất chẩn đoán<br>nhỏ hơn hoặc lớn hơn 60%) hữu ích nhất ở bệnh nhân ngất tái phát<br>không bị nghi ngờ có bệnh tim. Thứ sáu, đánh giá tâm thần<br>có thể phát hiện các rối loạn tâm thần liên quan đến ngất ở tới 25%<br>số ca. Thứ bảy, nhập viện có thể được chỉ định cho bệnh nhân có nguy cơ cao<br>ngất do tim (những người có điện tâm đồ bất thường, bệnh tim<br>thực tổn, đau ngực, tiền sử rối loạn nhịp, tuổi &gt; 70) hoặc có dấu hiệu<br>thần kinh cấp.<strong> KẾT LUẬN:</strong> Nhiều xét nghiệm cho ngất có<br>hiệu suất chẩn đoán thấp. Hỏi bệnh, khám lâm sàng và<br>điện tâm đồ cẩn thận sẽ giúp đưa ra chẩn đoán hoặc xác định có cần làm thêm<br>xét nghiệm chẩn đoán hay không ở phần lớn bệnh nhân. [Tài liệu tham khảo: 34]</p>
+<p>17) Shen WK và cs.  <strong>Syncope Evaluation in the Emergency Department Study (SEEDS);  </strong><strong>A Multidisciplinary Approach to Syncope Management. </strong> (Nghiên cứu đánh giá ngất tại khoa cấp cứu – SEEDS; một cách tiếp cận đa chuyên ngành trong xử trí ngất.) Circulation. 2004;110:3636-3645.</p>
+<p>Bối cảnh—Mục tiêu chính và giả thuyết trung tâm của nghiên cứu là: một đơn vị ngất chuyên biệt tại khoa cấp cứu giúp cải thiện hiệu suất chẩn đoán và giảm nhập viện ở những bệnh nhân ngất có nguy cơ trung bình về kết cục tim mạch bất lợi.  Phương pháp và Kết quả—Trong nghiên cứu tiến cứu, ngẫu nhiên, đơn trung tâm này, bệnh nhân được phân ngẫu nhiên vào 2 nhánh điều trị: đánh giá tại đơn vị ngất và chăm sóc chuẩn. 2 nhóm được so sánh bằng kiểm định  2 [người dịch: ký hiệu bị mất trong bản gốc, nhiều khả năng là kiểm định chi bình phương] về tính độc lập của các biến phân loại. Kiểm định tổng hạng Wilcoxon được dùng cho các biến liên tục. Thời gian sống còn được ước tính bằng phương pháp Kaplan-Meier. Một trăm lẻ ba bệnh nhân liên tiếp (53 nữ; tuổi trung bình 64 17 [người dịch: dấu “±” bị mất trong bản gốc]) được đưa vào nghiên cứu.  Năm mươi mốt bệnh nhân được phân ngẫu nhiên vào đơn vị ngất. Ở nhóm đơn vị ngất và nhóm chăm sóc chuẩn, chẩn đoán giả định được xác lập lần lượt ở 34 (67%) và 5 (10%) bệnh nhân (P  nhỏ hơn 0,001), cần nhập viện ở 22 (43%) và 51 (98%) bệnh nhân (P nhỏ hơn  0,001), và tổng số ngày nằm viện của bệnh nhân giảm từ 140 xuống 64. Tỷ lệ sống còn tính theo bảng sống (actuarial) là 97% và 90% (P =  0,30), và tỷ lệ sống còn không tái phát ngất là 88% và 89% (P  = 0,72) tại thời điểm 2 năm, lần lượt ở nhóm đơn vị ngất và nhóm chăm sóc chuẩn. Kết luận—Đơn vị ngất mới được thiết kế cho nghiên cứu này đã cải thiện đáng kể hiệu suất chẩn đoán tại khoa cấp cứu, giảm nhập viện và tổng thời gian nằm viện mà không ảnh hưởng đến tỷ lệ tái phát ngất và tử vong do mọi nguyên nhân ở bệnh nhân nguy cơ trung bình. Các quan sát từ nghiên cứu này cung cấp dữ liệu chuẩn so sánh (benchmark) để cải thiện chăm sóc bệnh nhân và sử dụng hiệu quả nguồn lực y tế.</p>
+<p>18) <a href="https://www.blogger.com/null" rel="noopener" target="_blank">Venkatesh Thiruganasambandamoorthy và cs. </a><a href="https://www.blogger.com/null" rel="noopener" target="_blank"> </a>Outcomes in <strong>Presyncope </strong>Patients: A Prospective Cohort Study (Kết cục ở bệnh nhân tiền ngất: một nghiên cứu đoàn hệ tiến cứu).  Annals of Emergency Medicine <a href="http://www.annemergmed.com/issue/S0196-0644(14)X0004-1" rel="noopener" target="_blank">tháng Ba năm 2015</a>; Tập 65, Số 3, Trang 268–276.e6</p>
+<p><a href="http://www.henryfordem.com/ground/ul/2166_20150430142556_ho.pdf" rel="noopener" target="_blank">http://www.henryfordem.com/ground/ul/2166_20150430142556_ho.pdf</a> (tài liệu phát tay PDF của khoa cấp cứu Henry Ford)</p>
+<p>Đến ngày thứ 30, 2 trong số 881 bệnh nhân đã tử vong, nhưng không rõ các ca này có phải do nguyên nhân tim mạch hay không.  Con số này thấp hơn đáng kể so với tỷ lệ tử vong của ngất.  5% có “kết cục nghiêm trọng”, nhưng do định nghĩa kém, bài báo này thổi phồng rất nhiều mức độ nguy hiểm.</p>
+<p><strong>Nghiên cứu này không loại trừ những bệnh nhân đã được tìm ra nguyên nhân gây triệu chứng ngay tại khoa cấp cứu.</strong>  Và khi xem danh sách các bệnh nhân gặp biến cố bất lợi, <strong>26 trong 39 ca đã được xác định ngay tại khoa cấp cứu</strong>.  Chúng không phải là những bí ẩn:   Nếu thực sự xem xét những bệnh nhân đó (tất cả đều được liệt kê trong Phụ lục), họ đều có vấn đề nghiêm trọng ngay khi còn ở khoa cấp cứu: rung nhĩ, cuồng nhĩ, khó thở, đau ngực, yếu toàn thân, SVT do nhân viên cấp cứu ngoài viện chẩn đoán, xuất huyết tiêu hóa trên 2 ngày trước đó, nhịp chậm nặng tại khoa cấp cứu, và nhiều trường hợp khác.  Chỉ có 13 bệnh nhân trông ổn tại khoa cấp cứu và có “biến cố bất lợi”.</p>
+<p>Đến ngày thứ 30, 2 trong số 881 bệnh nhân đã tử vong, nhưng không rõ các ca này có phải do nguyên nhân tim mạch hay không.  Con số này thấp hơn đáng kể so với tỷ lệ tử vong của ngất.  5% có “kết cục nghiêm trọng”, nhưng do định nghĩa kém, bài báo này thổi phồng rất nhiều mức độ nguy hiểm: việc được nhập viện trong vòng 30 ngày cũng bị tính là một “biến cố bất lợi”.</p>
+<p><strong>Tóm tắt</strong></p>
+<h2 id="muc-tieu-nghien-cuu">Mục tiêu nghiên cứu:</h2>
+<p>Tiền ngất (presyncope) là cảm giác khởi phát đột ngột như sắp mất ý thức nhưng không mất ý thức (điều này phân biệt nó với ngất). Mục tiêu của chúng tôi là xác định tần suất các lượt khám vì tiền ngất tại khoa cấp cứu (ED), cách xử trí, kết cục 30 ngày, và khả năng tiên đoán kết cục của bác sĩ cấp cứu.  <strong>Phương pháp</strong>: Nghiên cứu tiến cứu của chúng tôi tại 2 khoa cấp cứu thuộc bệnh viện đại học đưa vào người lớn bị tiền ngất và loại trừ bệnh nhân ngất, thay đổi ý thức, co giật và chấn thương đáng kể. Chúng tôi thu thập đặc điểm bệnh nhân, cách xử trí tại khoa cấp cứu, nguyên nhân (phản xạ phế vị, tư thế, do tim, hoặc không rõ) khi kết thúc lượt khám tại khoa cấp cứu, và kết cục 30 ngày. Kết cục nghiêm trọng gồm tử vong, rối loạn nhịp, nhồi máu cơ tim, bệnh tim cấu trúc, thuyên tắc phổi và xuất huyết. Chúng tôi cũng thu thập mức độ tự tin của bác sĩ khi xác định nguyên nhân và xác suất họ tiên đoán kết cục nghiêm trọng trong 30 ngày. <strong>Kết quả</strong>: Tiền ngất chiếm 0,5% số lượt khám tại khoa cấp cứu. Chúng tôi đưa vào 881 bệnh nhân: tuổi trung bình 55,5, 55,9% là nữ, và 4,7% phải nhập viện. Trong 780 bệnh nhân được theo dõi 30 ngày, 40 người (5,1%) gặp kết cục nghiêm trọng: tử vong 0,3%, tim mạch 3,1%, và ngoài tim 1,8%. Trong 840 bệnh nhân được cho về nhà, 740 người có dữ liệu theo dõi và 14 bệnh nhân (1,9%) gặp kết cục nghiêm trọng sau khi rời khoa cấp cứu. Diện tích dưới đường cong đặc trưng hoạt động của bộ thu nhận (ROC) đối với xác suất tiên đoán của bác sĩ là 0,58 (khoảng tin cậy 95% 0,38 đến 0,78). Tỷ lệ kết cục nghiêm trọng là tương tự, trong khi mức độ tự tin chẩn đoán và xác suất tiên đoán của bác sĩ khác nhau giữa 4 nhóm nguyên nhân.  <strong>Kết luận</strong>: Tiền ngất có thể do các bệnh lý nền nghiêm trọng gây ra. Bác sĩ cấp cứu gặp khó khăn trong việc tiên đoán những bệnh nhân có nguy cơ gặp kết cục nghiêm trọng sau khi xuất viện từ khoa cấp cứu. Cần thêm các nghiên cứu để xác định các yếu tố nguy cơ của kết cục nghiêm trọng sau khi rời khoa cấp cứu.</p>
+<p>Chưa được thẩm định hay đưa vào bài này, nhưng là một bản tóm tắt thú vị từ hội nghị SAEM 2015 (Hội Y học Cấp cứu Học thuật):</p>
+<p>107 Canadian Syncope Risk Score (Thang điểm nguy cơ ngất Canada) để xác định bệnh nhân có nguy cơ gặp biến cố bất lợi nghiêm trọng sau khi rời khoa cấp cứu</p>
+<p>Tác giả: Venkatesh Thiruganasambandamoorthy1,2,</p>
+<p>Tác giả (tiếp): Kenneth Kwong1, Monica Taljaard1,2, Marco</p>
+<p>Tác giả (tiếp): L.A. Sivilotti3, Brian H. Rowe4, Robert</p>
+<p>Tác giả (tiếp): Sheldon5, George A. Wells1, và Ian G. Stiell1,2</p>
+<p>1Đại học Ottawa, Ottawa, ON, Canada;</p>
+<p>2Viện Nghiên cứu Bệnh viện Ottawa, Ottawa, ON,</p>
+<p>Canada; 3Đại học Queen’s, Kingston, ON,</p>
+<p>Canada; 4Đại học Alberta, Edmonton, AB,</p>
+<p>Canada; 5Đại học Calgary, Calgary, AB,</p>
+<p>Canada</p>
+<p><strong>Bối cảnh</strong>: Hiện có sự khác biệt đáng kể trong cách xử trí tại khoa cấp cứu đối với</p>
+<p>ngất, trong khi có những bệnh nhân gặp biến cố bất lợi nghiêm trọng (SAE)</p>
+<p>ở ngoài bệnh viện.</p>
+<p><strong>Mục tiêu</strong>: Chúng tôi tìm cách xây dựng một hệ thống tính điểm nguy cơ để xác định</p>
+<p>những bệnh nhân ngất tại khoa cấp cứu có nguy cơ gặp SAE sau khi rời khoa cấp cứu.</p>
+<p>Phương pháp: Đây là một nghiên cứu đoàn hệ tiến cứu tại 6 khoa cấp cứu lớn</p>
+<p>ở Canada, đưa vào bệnh nhân ngất người lớn. Chúng tôi thu thập các biến số</p>
+<p>chuẩn hóa từ bệnh sử, khám lâm sàng, kết quả các thăm dò</p>
+<p>bao gồm điện tâm đồ, và hướng xử trí bệnh nhân ở lần khám chỉ điểm (index).</p>
+<p>Các SAE được thẩm định (adjudicated) gồm tử vong, nhồi máu cơ tim, rối loạn nhịp, bệnh tim</p>
+<p>cấu trúc, thuyên tắc phổi, xuất huyết đáng kể hoặc xuất huyết dưới nhện,</p>
+<p>các bệnh lý hoặc thủ thuật nghiêm trọng khác liên quan đến ngất</p>
+<p>trong vòng 30 ngày sau khi rời khoa cấp cứu. Quy gán đa trị (multiple imputation) cho dữ liệu thiếu,</p>
+<p>hồi quy logistic đa biến và thẩm định nội bộ bằng bootstrap đã</p>
+<p>được thực hiện.</p>
+<p><strong>Kết quả</strong>: Trong 4.611 bệnh nhân được đưa vào (tuổi trung bình 53,7, 55,0%</p>
+<p>là nữ, và 13,0% nhập viện), 285 người (6,2%) gặp SAE trong</p>
+<p>lần khám chỉ điểm và 292 người (6,3%) bị mất theo dõi, còn lại 4.034</p>
+<p>bệnh nhân, trong đó 147 người (3,6%) gặp SAE sau khi rời khoa cấp cứu. Chín</p>
+<p>biến số liên quan độc lập với SAE sau khi rời</p>
+<p>khoa cấp cứu: các yếu tố khởi phát ngất do phản xạ phế vị, tiền sử</p>
+<p>bệnh tim, troponin (&gt;bách phân vị thứ 99), chẩn đoán tại khoa cấp cứu là ngất do tim hoặc</p>
+<p>ngất do phản xạ phế vị, bất kỳ trị số huyết áp tâm thu nào tại khoa cấp cứu &lt;90 hoặc &gt;180</p>
+<p>mmHg, thời gian QRS &gt;130 ms, trục QRS bất thường và khoảng QTc</p>
+<p>&gt;480 ms (Bảng 107). Chúng tôi xây dựng Canadian Syncope Risk Score (Thang điểm nguy cơ ngất Canada)</p>
+<p>kết hợp các biến số này, với nguy cơ dao động từ 0,4% với</p>
+<p>điểm -3 đến 41,7% với điểm ≥7. Các điểm ngưỡng -2 và -1</p>
+<p>có độ nhạy lần lượt là 99,2% và 97,7%, và độ đặc hiệu lần lượt là 25,6% và</p>
+<p>47% đối với SAE.</p>
+<p><strong>Kết luận</strong>: Một số lượng đáng kể bệnh nhân ngất tại khoa cấp cứu gặp</p>
+<p>SAE sau khi rời khoa cấp cứu. Một khi được thẩm định, Canadian Syncope Risk</p>
+<p>Score có tiềm năng chuẩn hóa việc xử trí tại khoa cấp cứu, và cải thiện</p>
+<p>việc phân tầng nguy cơ và quyết định hướng xử trí.</p>
+<figure><a class="o-anh" href="2015-04-08-ed-syncope-workup-after-h-and-p-ecg-is_anh/2015_04_ScreenShot2015-08-12at1.53.59PM.jpg"><img src="2015-04-08-ed-syncope-workup-after-h-and-p-ecg-is_anh/2015_04_ScreenShot2015-08-12at1.53.59PM.jpg" alt="" width="813" height="316" loading="lazy" decoding="async"></a></figure>
+  </section>
+ </main>
+</div>
+<div class="thanh-nut">
+ <button id="nutMl" class="hien-ml" type="button" title="Mục lục">≡</button>
+ <button id="nutGiam" type="button" title="Chữ nhỏ hơn">A-</button>
+ <button id="nutTang" type="button" title="Chữ lớn hơn">A+</button>
+ <button id="nutNen" type="button" title="Nền sáng/tối">◐</button>
+</div>
+<div class="xem-anh" id="xemAnh" role="dialog" aria-label="Xem ảnh">
+ <span class="xa-dem"></span>
+ <button class="xa-dong" type="button" title="Đóng (Esc)">✕</button>
+ <button class="xa-truoc" type="button" title="Ảnh trước (←)">‹</button>
+ <img alt="">
+ <button class="xa-sau" type="button" title="Ảnh sau (→)">›</button>
+ <div class="xa-chu"></div>
+</div>
+<script>
+(function(){
+ var goc=document.documentElement, ds=document.getElementById('dsMuc'),
+     giay=document.getElementById('toGiay'), pt=document.getElementById('phanTram'),
+     ml=document.getElementById('mucLuc');
+ var dau=[].slice.call(giay.querySelectorAll('h2,h3,h4,h5,h6'));
+
+ // mục lục
+ dau.forEach(function(h){
+  var li=document.createElement('li');
+  li.className='cap-'+(+h.tagName[1]-1);
+  var a=document.createElement('a');
+  a.href='#'+h.id; a.textContent=h.textContent;
+  a.addEventListener('click',function(){ ml.classList.remove('mo'); });
+  li.appendChild(a); ds.appendChild(li);
+ });
+ var neo=[].slice.call(ds.querySelectorAll('a'));
+
+ function capNhat(){
+  var i=0;
+  for(var k=0;k<dau.length;k++){ if(dau[k].getBoundingClientRect().top<140) i=k; }
+  neo.forEach(function(a,k){ a.classList.toggle('dang-doc',k===i); });
+  var a=neo[i];
+  if(a){ var cuon=a.closest('.ml-cuon');
+   if(cuon){ var h=a.getBoundingClientRect(), c=cuon.getBoundingClientRect();
+    if(h.top<c.top||h.bottom>c.bottom) cuon.scrollTop+=h.top-c.top-c.height/3; } }
+  var het=document.documentElement.scrollHeight-innerHeight;
+  pt.textContent=(het>0?Math.min(100,Math.round(scrollY/het*100)):100)+'%';
+ }
+ addEventListener('scroll',capNhat,{passive:true});
+ addEventListener('resize',capNhat); capNhat();
+
+ // cỡ chữ + nền tối, nhớ lựa chọn
+ function docNho(k,md){ try{ return localStorage.getItem(k)||md; }catch(e){ return md; } }
+ function ghiNho(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+ var co=parseInt(docNho('gl-co','16'),10);
+ function apCo(){ goc.style.setProperty('--co',co+'px'); ghiNho('gl-co',co); capNhat(); }
+ apCo();
+ goc.setAttribute('data-nen',docNho('gl-nen','sang'));
+ document.getElementById('nutTang').onclick=function(){ co=Math.min(24,co+1); apCo(); };
+ document.getElementById('nutGiam').onclick=function(){ co=Math.max(12,co-1); apCo(); };
+ document.getElementById('nutNen').onclick=function(){
+  var v=goc.getAttribute('data-nen')==='toi'?'sang':'toi';
+  goc.setAttribute('data-nen',v); ghiNho('gl-nen',v);
+ };
+ // thu gọn / mở lại cột mục lục (nhớ lựa chọn)
+ goc.setAttribute('data-ml',docNho('gl-ml',''));
+ function datMl(v){ goc.setAttribute('data-ml',v); ghiNho('gl-ml',v); capNhat(); }
+ document.getElementById('nutThu').onclick=function(){ datMl('thu'); };
+ document.getElementById('nutMl').onclick=function(){
+  // màn hình rộng: nút ≡ mở lại cột đã thu; màn hình hẹp: kéo cột ra/vào
+  if(innerWidth>980 && goc.getAttribute('data-ml')==='thu'){ datMl(''); return; }
+  ml.classList.toggle('mo');
+ };
+
+ // tìm trong bài
+ var o=document.getElementById('oTim'), dem=document.getElementById('demTim'), hit=[], vt=-1;
+ function xoaDanh(){
+  hit=[]; vt=-1;
+  var m=giay.querySelectorAll('mark.danh');
+  for(var i=0;i<m.length;i++){ var p=m[i].parentNode;
+   p.replaceChild(document.createTextNode(m[i].textContent),m[i]); p.normalize(); }
+ }
+ function danhDau(q){
+  xoaDanh();
+  if(q.length<2){ dem.textContent=''; return; }
+  var tw=document.createTreeWalker(giay,NodeFilter.SHOW_TEXT,null), nut=[], n;
+  while((n=tw.nextNode())) if(n.nodeValue.trim()) nut.push(n);
+  var kq=q.toLowerCase();
+  nut.forEach(function(n){
+   var s=n.nodeValue, l=s.toLowerCase(), i=l.indexOf(kq);
+   if(i<0) return;
+   var cha=n.parentNode, sau=n, dich=0;
+   while(i>=0){
+    var giua=sau.splitText(i-dich); dich=i+q.length;
+    sau=giua.splitText(q.length);
+    var mk=document.createElement('mark'); mk.className='danh';
+    cha.replaceChild(mk,giua); mk.appendChild(giua); hit.push(mk);
+    i=l.indexOf(kq,dich);
+   }
+  });
+  dem.textContent=hit.length?('1/'+hit.length):'0';
+  if(hit.length){ vt=0; toi(0); }
+ }
+ function toi(i){
+  if(!hit.length) return;
+  hit.forEach(function(m){ m.classList.remove('dang'); });
+  vt=(i+hit.length)%hit.length;
+  hit[vt].classList.add('dang');
+  hit[vt].scrollIntoView({block:'center',behavior:'smooth'});
+  dem.textContent=(vt+1)+'/'+hit.length;
+ }
+ var cho;
+ o.addEventListener('input',function(){ clearTimeout(cho);
+  cho=setTimeout(function(){ danhDau(o.value.trim()); },250); });
+ o.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault();
+  toi(vt+(e.shiftKey?-1:1)); } });
+ document.getElementById('timTruoc').onclick=function(){ toi(vt-1); };
+ document.getElementById('timSau').onclick=function(){ toi(vt+1); };
+ addEventListener('beforeprint',xoaDanh);
+})();
+// xem ảnh phóng to: bấm ảnh để mở, ←/→ chuyển ảnh trong cùng bộ, Esc để đóng
+(function(){
+ var hop=document.getElementById('xemAnh'), anh=hop.querySelector('img'),
+     chu=hop.querySelector('.xa-chu'), dem=hop.querySelector('.xa-dem'), bo=[], vt=0;
+ function hien(i){
+  vt=(i+bo.length)%bo.length; var a=bo[vt], im=a.querySelector('img');
+  anh.src=a.getAttribute('href'); anh.alt=im.alt; chu.textContent=im.alt;
+  chu.style.display=im.alt?'':'none';
+  dem.textContent=bo.length>1?(vt+1)+' / '+bo.length:'';
+  hop.querySelector('.xa-truoc').style.display=hop.querySelector('.xa-sau').style.display=bo.length>1?'':'none';
+ }
+ function dong(){ hop.classList.remove('mo'); anh.removeAttribute('src'); document.body.style.overflow=''; }
+ document.getElementById('toGiay').addEventListener('click',function(e){
+  var a=e.target.closest('a.o-anh'); if(!a) return;
+  e.preventDefault();
+  var cha=a.closest('.bo-anh');
+  bo=cha?[].slice.call(cha.querySelectorAll('a.o-anh')):[a];
+  hien(bo.indexOf(a)); hop.classList.add('mo'); document.body.style.overflow='hidden';
+ });
+ hop.querySelector('.xa-dong').onclick=dong;
+ hop.querySelector('.xa-truoc').onclick=function(e){ e.stopPropagation(); hien(vt-1); };
+ hop.querySelector('.xa-sau').onclick=function(e){ e.stopPropagation(); hien(vt+1); };
+ hop.addEventListener('click',function(e){ if(e.target===hop) dong(); });
+ addEventListener('keydown',function(e){
+  if(!hop.classList.contains('mo')) return;
+  if(e.key==='Escape') dong();
+  else if(e.key==='ArrowLeft') hien(vt-1);
+  else if(e.key==='ArrowRight') hien(vt+1);
+ });
+ var x0=null;
+ hop.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+ hop.addEventListener('touchend',function(e){ if(x0===null) return;
+  var dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)>50) hien(vt+(dx<0?1:-1)); });
+})();
+// video YouTube: chỉ tải khi bấm. YouTube trả "Lỗi 153" khi trang không gửi được referrer
+// (mở từ ổ đĩa file:// hoặc khung sandbox) — khi đó mở thẳng tab YouTube.
+(function(){
+ var giay=document.getElementById('toGiay'), ds=giay.querySelectorAll('.yt');
+ if(!ds.length) return;
+ var canEmbed=/^https?:$/.test(location.protocol) &&
+   (typeof window.origin==='undefined' || (window.origin && window.origin!=='null'));
+ var PLAY='<span class="play"><svg viewBox="0 0 68 48"><path fill="#f00" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/><path fill="#fff" d="M27 34l18-10-18-10z"/></svg></span>';
+ [].forEach.call(ds,function(b){
+  var id=b.getAttribute('data-id'), n=b.getAttribute('data-n')||'Video', watch='https://www.youtube.com/watch?v='+id;
+  b.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+n+'">'+PLAY+'<span class="badge">▶ '+n+'</span>';
+  b.setAttribute('role','button'); b.setAttribute('tabindex','0');
+  var fig=b.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+  if(!cap&&fig){ cap=document.createElement('figcaption'); fig.appendChild(cap); }
+  if(cap){ var a=document.createElement('a'); a.className='ytlink'; a.href=watch; a.target='_blank';
+   a.rel='noopener'; a.textContent='Mở trên YouTube ↗'; cap.appendChild(a); }
+  function load(){
+   if(!canEmbed){ window.open(watch,'_blank','noopener'); return; }
+   b.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&autoplay=1" '+
+    'referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer;autoplay;clipboard-write;'+
+    'encrypted-media;gyroscope;picture-in-picture" allowfullscreen title="'+n+'"></iframe>';
+   b.style.cursor='default';
+  }
+  b.addEventListener('click',load);
+  b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
+ });
+ if(!canEmbed){
+  var w=document.createElement('div'); w.className='canh-bao';
+  w.innerHTML='<b>Lưu ý:</b> trang đang mở trực tiếp từ ổ đĩa (hoặc trong khung xem trước) nên YouTube chặn phát nhúng '+
+   '(<i>Lỗi 153</i>). Bấm vào video sẽ mở tab YouTube. Đăng trang lên web (https) thì video phát ngay trong trang.';
+  giay.insertBefore(w, giay.firstChild);
+ }
+})();
+</script>
+</body>
+</html>
