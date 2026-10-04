@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="vi" data-nen="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>09/08/2014 — Tái tưới máu vi mạch kém (“không tái lưu” – no reflow): chẩn đoán tốt nhất bằng điện tâm đồ</title>
+<style>
+:root{
+ --nen:#f2f4f6; --giay:#ffffff; --chu:#172033; --nhat:#5b6675; --vien:#e3e7ec;
+ --do:#b30000; --xanh:#004b87; --diu:#f6f8fa; --danh:#fff3cd;
+}
+:root[data-nen="toi"]{
+ --nen:#12151b; --giay:#1b2029; --chu:#e6eaf0; --nhat:#9aa5b4; --vien:#2c333f;
+ --do:#ff8a8a; --xanh:#7fb6e6; --diu:#232a35; --danh:#5a4a12;
+}
+*{box-sizing:border-box}
+html{font-size:var(--co,16px)}
+body{margin:0;background:var(--nen);color:var(--chu);
+ font-family:"Noto Sans","Segoe UI",Roboto,Arial,sans-serif;
+ font-size:1rem;line-height:1.7;-webkit-text-size-adjust:100%}
+a{color:var(--xanh)}
+.bo-cuc{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px;
+ max-width:1500px;margin:0 auto;padding:22px}
+/* ---- cột mục lục ---- */
+.muc-luc{position:sticky;top:22px;align-self:start;height:calc(100vh - 44px);
+ background:var(--giay);border-radius:16px;padding:16px 10px;display:flex;
+ flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ml-dau{display:flex;justify-content:space-between;align-items:center;
+ padding:2px 10px 10px;font-size:.78rem;font-weight:800;letter-spacing:.09em;
+ color:var(--do);border-bottom:1px solid var(--vien)}
+#phanTram{color:var(--nhat)}
+/* Thu gọn / mở lại cột mục lục. Trang nhớ lựa chọn, vì người đọc guideline
+   mở lại nhiều lần và không muốn mỗi lần lại phải thu tay. */
+.ml-dau .nut-thu{margin-left:8px;border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:1px 8px;cursor:pointer;font:inherit;
+ font-size:.9rem;line-height:1.4}
+@media(min-width:981px){
+ :root[data-ml="thu"] .bo-cuc{grid-template-columns:minmax(0,1fr)}
+ :root[data-ml="thu"] .muc-luc{display:none}
+ :root[data-ml="thu"] .hien-ml{display:block}
+}
+.o-tim{padding:10px 8px 6px}
+.o-tim input{width:100%;padding:8px 10px;border:1px solid var(--vien);
+ border-radius:9px;background:var(--diu);color:var(--chu);font:inherit;font-size:.85rem}
+.tim-dieu-khien{display:flex;gap:6px;align-items:center;margin-top:6px;
+ font-size:.76rem;color:var(--nhat)}
+.tim-dieu-khien button{border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:2px 9px;cursor:pointer;font:inherit}
+.ml-cuon{overflow-y:auto;flex:1;margin-top:4px}
+#dsMuc{list-style:none;margin:0;padding:0}
+#dsMuc a{display:block;padding:7px 12px;border-radius:9px;text-decoration:none;
+ color:var(--chu);font-size:.87rem;line-height:1.4}
+#dsMuc a:hover{background:var(--diu)}
+#dsMuc a.dang-doc{background:var(--diu);color:var(--do);font-weight:700;
+ box-shadow:inset 3px 0 0 var(--do)}
+#dsMuc .cap-1>a{font-weight:700}
+#dsMuc .cap-2>a{padding-left:26px;font-size:.85rem}
+#dsMuc .cap-3>a{padding-left:40px;font-size:.82rem;color:var(--nhat)}
+#dsMuc .cap-4>a,#dsMuc .cap-5>a{padding-left:54px;font-size:.8rem;color:var(--nhat)}
+/* ---- thân bài ---- */
+.dau-bai,.to-giay{background:var(--giay);border-radius:16px;
+ box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.dau-bai{padding:28px 34px;margin-bottom:22px}
+.nhan{font-size:.76rem;font-weight:800;letter-spacing:.16em;color:var(--nhat)}
+.dau-bai h1{margin:.25em 0 .35em;font-size:2rem;line-height:1.25;color:var(--do)}
+.dich-gia{color:var(--nhat);font-size:.92rem;margin:0}
+.dich-gia b{color:var(--xanh)}
+.to-giay{padding:34px 40px 60px}
+.to-giay h2{color:var(--do);font-size:1.65rem;margin:1.7em 0 .5em;
+ padding-bottom:4px;border-bottom:2px solid var(--vien)}
+.to-giay h2:first-child{margin-top:0}
+.to-giay h3{color:var(--xanh);font-size:1.3rem;margin:1.5em 0 .4em}
+.to-giay h4{font-size:1.08rem;margin:1.3em 0 .3em}
+.to-giay h5,.to-giay h6{font-size:1rem;margin:1.2em 0 .3em;color:var(--nhat)}
+.to-giay p{margin:0 0 .85em;text-align:justify}
+.to-giay p.cham{padding-left:1.35em;text-indent:-1.1em;text-align:left}
+figure{margin:1.4em 0;text-align:center}
+figure img{max-width:100%;height:auto;border:1px solid var(--vien);border-radius:10px}
+/* ---- bảng ---- */
+.tham-chieu{color:var(--xanh);font-weight:600;text-decoration:none;
+ border-bottom:1px dotted currentColor}
+.tham-chieu:hover{border-bottom-style:solid}
+.chu-thich-float{font-weight:600;margin:0 0 .4em}
+.khung-bang{overflow-x:auto;margin:1.4em 0;border-radius:10px;
+ border:1px solid var(--vien)}
+.khung-bang table{border-collapse:collapse;width:100%;font-size:.88rem;
+ table-layout:fixed}
+.to-giay p,.to-giay li,.to-giay dd{overflow-wrap:break-word}
+.to-giay sup{overflow-wrap:anywhere}
+.khung-bang td{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;
+ line-height:1.5;word-wrap:break-word}
+.khung-bang td.sat{padding-left:0;padding-right:0}
+.khung-bang td.giua{text-align:center;vertical-align:middle}
+.khung-bang td.ky-hieu{font-weight:800;white-space:nowrap}
+.khung-bang td.nen-toi,.khung-bang td.nen-toi *{color:#fff}
+.khung-bang td.nen-sang,.khung-bang td.nen-sang *{color:#12151b}
+.khung-bang td span{display:block}
+.khung-bang td span.cham{padding-left:1.1em;text-indent:-1em}
+mark.danh{background:var(--danh);color:inherit;border-radius:3px}
+/* Ô có màu ép màu chữ cho cả con cháu, kể cả <mark> của phần tìm trong bài — chữ
+   trắng trên nền vàng nhạt là tìm thấy mà không nhìn thấy. Trả chữ về màu trang. */
+.khung-bang td.nen-toi mark.danh,.khung-bang td.nen-sang mark.danh,
+.khung-bang td.nen-toi mark.danh *,.khung-bang td.nen-sang mark.danh *{color:var(--chu)}
+mark.danh.dang{outline:2px solid var(--do)}
+/* ---- nút nổi ---- */
+.thanh-nut{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:9}
+.thanh-nut button{width:42px;height:42px;border-radius:50%;cursor:pointer;
+ border:1px solid var(--vien);background:var(--giay);color:var(--chu);
+ font-size:1rem;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.hien-ml{display:none}
+/* ---- màn hình hẹp ---- */
+@media(max-width:980px){
+ .bo-cuc{grid-template-columns:minmax(0,1fr);padding:12px}
+ .muc-luc{position:fixed;inset:0 auto 0 0;width:88%;max-width:340px;z-index:20;
+  border-radius:0;height:100vh;transform:translateX(-102%);transition:transform .2s}
+ .muc-luc.mo{transform:none}
+ .hien-ml{display:block}
+ .to-giay{padding:22px 18px 44px}
+ /* Màn hình điện thoại: giữ bề rộng tối thiểu cho bảng rồi cho cuộn ngang,
+    thay vì bóp cột hẹp tới mức "Trung bình" xuống dòng thành "Tr un g bì nh". */
+ .khung-bang table{min-width:620px}
+ .dau-bai{padding:20px}
+ .dau-bai h1{font-size:1.5rem}
+}
+/* ---- in ra giấy ---- */
+@media print{
+ /* Nền tối được nhớ trong localStorage: bật một lần là mọi lần in sau đều dính.
+    Giấy luôn trắng, nên trả bảng màu về bản sáng trước khi in — nếu không, chữ
+    #e6eaf0 in lên giấy trắng là mất hẳn. */
+ :root,:root[data-nen="toi"]{--nen:#fff;--giay:#fff;--chu:#172033;--nhat:#4a5462;
+  --vien:#c9ced5;--do:#b30000;--xanh:#004b87;--diu:#f6f8fa;--danh:#fff3cd}
+ body{background:#fff;font-size:11.5pt}
+ .muc-luc,.thanh-nut{display:none!important}
+ .bo-cuc{display:block;max-width:none;padding:0}
+ .dau-bai,.to-giay{box-shadow:none;border-radius:0;padding:0}
+ .to-giay h2,.to-giay h3{break-after:avoid}
+ .khung-bang,figure{break-inside:avoid}
+ .khung-bang td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.c-xanh{color:var(--xanh)} .c-do{color:var(--do)} .c-luc{color:var(--luc)} .c-nhat{color:var(--nhat)}
+:root{--luc:#1d7a3a} :root[data-nen="toi"]{--luc:#7fd49a}
+.ban-quyen{display:inline-block;margin:.4em 0 1.2em!important;padding:6px 14px;border-radius:9px;
+ background:var(--diu);border:1px solid var(--vien);color:var(--nhat);font-size:.88rem}
+.note{background:var(--diu);border-left:4px solid var(--xanh);border-radius:0 10px 10px 0;padding:10px 16px;margin:1.1em 0}
+.note p:last-child{margin-bottom:0}
+.canh-bao{background:#fff4d6;border:1px solid #e8c97a;color:#4a3a10;border-radius:10px;padding:12px 16px;margin:0 0 18px;font-size:.93em}
+:root[data-nen="toi"] .canh-bao{background:#3a2f12;border-color:#6b5a1a;color:#f0e2bd}
+.to-giay blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid var(--vien);background:var(--diu);border-radius:0 10px 10px 0}
+.to-giay ul,.to-giay ol{padding-left:1.5em;margin:0 0 .9em}
+.to-giay li{margin:.2em 0}
+.to-giay hr{border:0;border-top:1px solid var(--vien);margin:1.6em 0}
+.khung-bang th{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;background:var(--diu);text-align:left;line-height:1.5}
+.khung-bang td[style*="background"],.khung-bang th[style*="background"]{color:#12151b}
+.tk p,.tk li{font-size:.9em;color:var(--nhat);text-align:left}
+figcaption,.chu-thich-anh{font-size:.88rem;color:var(--nhat);margin-top:.45em;text-align:center;line-height:1.55}
+figcaption b{color:var(--chu)}
+figure.anh-dau img{width:100%;max-height:420px;object-fit:cover}
+figure video{width:100%;max-height:78vh;background:#000;border-radius:10px;display:block}
+.khung-video{position:relative;padding-top:56.25%;margin:0;border-radius:10px;overflow:hidden;background:#000}
+.khung-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer;display:block;border-radius:10px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;border:0!important;border-radius:0!important;transition:opacity .2s}
+.yt:hover img{opacity:1}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.yt .play svg{width:58px;height:58px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.badge{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:2px 8px;border-radius:20px;pointer-events:none}
+.ytlink{display:inline-block;margin-left:8px;font-size:.92em;color:var(--xanh);text-decoration:none;border:1px solid var(--vien);border-radius:20px;padding:1px 10px;white-space:nowrap}
+.bo-anh{display:grid;gap:8px;margin:1em 0 1.4em;align-items:start}
+.bo-anh.cot-1{grid-template-columns:repeat(1,minmax(0,1fr))}
+.bo-anh.cot-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bo-anh.cot-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bo-anh.cot-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.bo-anh.cot-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bo-anh.cot-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.o-anh{display:block;border-radius:8px;overflow:hidden;background:#000;
+ border:1px solid var(--vien);cursor:zoom-in;line-height:0}
+.o-anh img{display:block;width:100%;height:auto}
+figure .o-anh{display:inline-block;background:none;border:0}
+figure .o-anh img{border:1px solid var(--vien);border-radius:10px}
+@media(max-width:980px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.xem-anh{position:fixed;inset:0;z-index:50;background:rgba(8,10,14,.94);display:none;
+ flex-direction:column;align-items:center;justify-content:center;padding:14px}
+.xem-anh.mo{display:flex}
+.xem-anh img{max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;border-radius:6px;background:#000}
+.xem-anh .xa-chu{color:#dfe5ec;font-size:.85rem;max-width:1100px;margin-top:10px;text-align:center;
+ line-height:1.5;max-height:5.2em;overflow:auto}
+.xem-anh .xa-dem{position:absolute;top:14px;left:18px;color:#c4ccd6;font-size:.85rem}
+.xem-anh button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;
+ width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+.xem-anh button:hover{background:rgba(255,255,255,.25)}
+.xem-anh .xa-dong{top:12px;right:14px}
+.xem-anh .xa-truoc{left:14px;top:50%;transform:translateY(-50%)}
+.xem-anh .xa-sau{right:14px;top:50%;transform:translateY(-50%)}
+@media print{
+ .xem-anh,.canh-bao,.ytlink{display:none!important}
+ .bo-anh{break-inside:avoid}
+ .o-anh{background:none}
+}
+</style>
+</head>
+<body>
+<div class="bo-cuc">
+ <aside class="muc-luc" id="mucLuc">
+  <div class="ml-dau"><span>NỘI DUNG</span><span id="phanTram">0%</span><button
+    id="nutThu" class="nut-thu" type="button" title="Thu gọn mục lục">«</button></div>
+  <div class="o-tim">
+   <input id="oTim" type="search" placeholder="Tìm trong tài liệu…" autocomplete="off">
+   <div class="tim-dieu-khien">
+    <button id="timTruoc" type="button">↑</button>
+    <button id="timSau" type="button">↓</button>
+    <span id="demTim"></span>
+   </div>
+  </div>
+  <div class="ml-cuon"><ul id="dsMuc"></ul></div>
+ </aside>
+ <main>
+  <section class="dau-bai">
+   <div class="nhan">CASE ECG #436 · DR. SMITH’S ECG BLOG</div>
+   <h1>09/08/2014 — Tái tưới máu vi mạch kém (“không tái lưu” – no reflow): chẩn đoán tốt nhất bằng điện tâm đồ</h1>
+   <p class="dich-gia"><a href="https://doctor-gau-1607.github.io/case-ecg-smith/">← Mục lục Case ECG</a></p><p class="dich-gia">Bản dịch tiếng Việt của bài <a href="https://drsmithsecgblog.com/poor-microvascular-reperfusion-no/" target="_blank" rel="noopener">"Poor Microvascular Reperfusion (“No Reflow”): Best Diagnosed by ECG"</a> – Dr. Smith’s ECG Blog. Giữ nguyên toàn bộ 4 hình ảnh của bản gốc.</p>
+  </section>
+  <section class="to-giay" id="toGiay">
+<p>Một phụ nữ khoảng 50 tuổi, trước đây khỏe mạnh, không có tiền sử bệnh lý hay yếu tố nguy cơ mạch vành, đến viện 30 phút sau khi đột ngột đau ngực dữ dội sau xương ức.  Điện tâm đồ được ghi và đọc trong vòng 13 phút:</p>
+<figure><a class="o-anh" href="2014-08-09-poor-microvascular-reperfusion-no_anh/2014_08_1stEDECGpoormicrovascularreperfusion.jpg"><img src="2014-08-09-poor-microvascular-reperfusion-no_anh/2014_08_1stEDECGpoormicrovascularreperfusion.jpg" alt="" width="1502" height="539" loading="lazy" decoding="async"></a><figcaption>Nhịp xoang.  Chậm dẫn truyền trong thất (IVCD) với QRS 117 ms (thực chất là LBBB không hoàn toàn)
+Có sóng T tối cấp (hyperacute) ở V4-V6, I và aVL, kèm ST chênh xuống soi gương (reciprocal) và sóng T đảo ngược ở III và aVF.  V4 có sóng T de Winter, kèm ST chênh xuống nhẹ.
+  Hình ảnh này có giá trị chẩn đoán tắc LAD đoạn gần, và tôi đã kích hoạt phòng thông tim (cath lab) ngay khi nhìn thấy điện tâm đồ này.</figcaption></figure>
+<p>Chúng tôi cho clopidogrel 600 mg, aspirin và heparin liều bolus.  Còn kịp ghi thêm một điện tâm đồ nữa, 13 phút sau, trước khi chuyển vào phòng thông tim:</p>
+<figure><a class="o-anh" href="2014-08-09-poor-microvascular-reperfusion-no_anh/2014_08_13minuteECG-poormicrovascularreperfusion.jpg"><img src="2014-08-09-poor-microvascular-reperfusion-no_anh/2014_08_13minuteECG-poormicrovascularreperfusion.jpg" alt="" width="1477" height="552" loading="lazy" decoding="async"></a><figcaption>Lúc này đã tiến triển thành ST chênh lên ở V2-V6.</figcaption></figure>
+<h3 id="ket-qua-thong-tim">Kết quả thông tim</h3>
+<p>Bệnh nhân được đưa vào phòng thông tim với thời gian từ cửa đến bóng (door-to-balloon) là 50 phút, tổng thời gian từ khởi phát triệu chứng đến bóng là 80 phút (rất nhanh).  LAD đoạn gần bị tắc hoàn toàn; sau khi được mở thông, mạch này để lộ ra một <strong>nhánh chéo thứ nhất rất lớn</strong> (điều này giải thích vì sao V4-V6 chiếm ưu thế trên điện tâm đồ).   Sau tái tưới máu, mức <strong>“ngấm thuốc” (blush) có phần kém hơn (tức tái tưới máu vi mạch</strong>, được thể hiện bằng việc thuốc cản quang làm vùng cơ tim bị ảnh hưởng mờ đục nhẹ).</p>
+<p>Lúc này đã có dòng chảy TIMI-3, <strong>và bệnh nhân hết đau</strong>, <strong>nhưng <u>ST vẫn chênh lên dai dẳng</u> ở chuyển đạo V5 trên monitor 6 chuyển đạo trong phòng thông tim.   </strong>Vì vậy, ngoài việc lấy huyết khối, bác sĩ can thiệp đã bơm adenosine (một thuốc giãn mạch) trong mạch vành để cố cải thiện dòng chảy vi mạch phía xa.  Như thường quy, ông cũng bơm nitroglycerin trong mạch vành.  Và dĩ nhiên, ông dùng eptifibatide liều bolus rồi truyền liên tục để ức chế tiểu cầu tối đa.  Ông không thấy mạch máu nào bị “cắt cụt” ở phía xa trong vùng phân bố của nhánh chéo lớn hay của LAD, nhưng dựa vào ST chênh lên dai dẳng, ông nghi ngờ bệnh nhân đã bị một trận “mưa” mảnh vụn đáng kể trôi xuống vùng phân bố của nhánh chéo.  Ông cho biết “điều này có lẽ đã xảy ra vào lúc mạch bị tắc cấp, vì chúng tôi không gặp vấn đề “không có dòng chảy” (no flow) hay “dòng chảy chậm” (slow flow) nào xuất hiện cấp tính trong suốt thủ thuật.”</p>
+<p>Đây là điện tâm đồ sau thông tim:</p>
+<figure><a class="o-anh" href="2014-08-09-poor-microvascular-reperfusion-no_anh/2014_08_postcathpoorresolutionofSTelevation.jpg"><img src="2014-08-09-poor-microvascular-reperfusion-no_anh/2014_08_postcathpoorresolutionofSTelevation.jpg" alt="" width="1490" height="552" loading="lazy" decoding="async"></a><figcaption>Nhịp xoang và QRS hẹp hơn.<br>Có <strong>ST chênh lên dai dẳng, và sóng T vẫn dương dai dẳng</strong> (không có sóng T tái tưới máu) ở V4-V6.  Dù sóng T đảo ngược ở aVL, chúng không đảo ngược ở chuyển đạo I, và ST vẫn chênh lên dai dẳng ở aVL.</figcaption></figure>
+<p>Sau thông tim, troponin I đã là 107 ng/mL tại thời điểm 5 giờ sau khi đến viện, và đạt đỉnh 178 ng/mL (nhồi máu cơ tim rất rộng).</p>
+<p>Bệnh nhân có <strong>phân suất tống máu sau thông tim là 36%</strong> và đau ngực dai dẳng gần như suốt cả ngày.  Do nguy cơ cao bị sốc tim và rối loạn nhịp, việc nhập ICU là cần thiết (thường không cần khi tái tưới máu thành công hoàn toàn).</p>
+<p>Thông thường, phân suất tống máu thấp ở một bệnh nhân được khôi phục nhanh dòng chảy TIMI-3 có nghĩa là bệnh nhân có cơ tim bị choáng (stunned myocardium) và vùng cơ tim này sẽ hồi phục.  Tuy nhiên, ở đây việc ST chênh lên không hồi phục phù hợp với tái tưới máu vi mạch kém, cũng như troponin I rất cao, và do đó chức năng nhiều khả năng sẽ không hồi phục tốt.</p>
+<p>Cuối cùng cơn đau cũng hết, nhưng tổn thương đáng kể đã xảy ra.  Chẳng hạn, nguy cơ đột tử do rối loạn nhịp cao hơn nhiều so với khi tái tưới máu vi mạch tốt, và bệnh nhân có thể phải ra viện với một <strong><a href="http://www.sciencedirect.com/science/article/pii/S0733865113001367" rel="noopener" target="_blank">máy khử rung tự động bên ngoài tạm thời</a></strong>.</p>
+<p>2 ngày sau khi đến viện, đây là điện tâm đồ:</p>
+<figure><a class="o-anh" href="2014-08-09-poor-microvascular-reperfusion-no_anh/2014_08_2dayslaterwithpersistentSTE.jpg"><img src="2014-08-09-poor-microvascular-reperfusion-no_anh/2014_08_2dayslaterwithpersistentSTE.jpg" alt="" width="1503" height="527" loading="lazy" decoding="async"></a><figcaption>ST vẫn còn chênh lên dai dẳng ở các chuyển đạo bên, dù lúc này đã có sóng T đảo ngược.  Có sóng Q mới ở chuyển đạo I.</figcaption></figure>
+<h2 id="khong-tai-luu-no-reflow">Không tái lưu (No Reflow)</h2>
+<p>Bệnh nhân này có thời gian từ khởi phát triệu chứng đến bóng nhanh đáng kể, được điều trị tái tưới máu tối ưu, vậy mà vẫn không được tái tưới máu tốt vì tái tưới máu vi mạch kém (được cho là chủ yếu do tắc nghẽn vi mạch ở phía hạ lưu và/hoặc co mạch).  Khoảng 2-5% bệnh nhân được PCI thành công bị hiện tượng không tái lưu (no-reflow).  <strong>Việc ST chênh lên không hồi phục trên điện tâm đồ là chỉ điểm tốt nhất của hiện tượng không tái lưu.</strong>   <a href="http://www.ajconline.org/article/S0002-9149%2811%2903028-1/abstract" rel="noopener" target="_blank">Chỉ cần nói rằng những bệnh nhân này có kết cục xấu hơn nhiều so với bệnh nhân có tái tưới máu vi mạch tốt.</a> Nguyên nhân của hiện tượng này không giống nhau ở mọi bệnh nhân.  Bên cạnh các yếu tố khác, nó có liên quan với <a href="http://journals.lww.com/coronary-artery/Abstract/2012/12000/Impact_of_clopidogrel_resistance_on_ST_segment.3.aspx" rel="noopener" target="_blank">tình trạng kháng clopidogrel</a>.  (Chúng ta thường nghĩ tới việc dùng prasugrel hoặc ticagrelor để phòng tắc lại; có lẽ chúng ta nên dùng các thuốc thay thế clopidogrel này để phòng “không tái lưu.”    Điều trị “không tái lưu” dựa vào các thuốc giãn mạch như adenosine, verapamil và nitroprusside, cũng như liệu pháp ba thuốc kháng tiểu cầu; chưa có một biện pháp cơ học hay dược lý đơn lẻ nào được chứng minh là hiệu quả một cách nhất quán.</p>
+<p><a href="http://onlinelibrary.wiley.com/doi/10.1111/j.1540-8183.2010.00561.x/abstract;jsessionid=4F039D8C17EF24462A77531122A42F41.f03t01?systemMessage=Wiley+Online+Library+will+be+disrupted+9th+Aug+from+10-2+BST+for+essential+maintenance.+Pay+Per+View+will+be+unavailable+from+10-6+BST.&amp;userIsAuthenticated=false&amp;deniedAccessCustomisedMessage=" rel="noopener" target="_blank">Đây là một bài tổng quan năm 2010</a>.</p>
+<p><a href="http://www.ingentaconnect.com/content/ben/chamc/2012/00000010/00000003/art00008" rel="noopener" target="_blank">Đây là một bài tổng quan khác năm 2012</a>.</p>
+<h2 id="tai-tuoi-mau-tren-dien-tam-do-tom-tat">Tái tưới máu trên điện tâm đồ: Tóm tắt</h2>
+<p>Tôi xin để phần chi tiết cho chương sách của tôi ở bên dưới.</p>
+<p>1. Điện tâm đồ là yếu tố tiên đoán tốt nhất tình trạng tái tưới máu của hệ vi mạch, thậm chí tốt hơn cả đánh giá trên chụp mạch bằng dòng chảy TIMI.  <strong>Hãy để ý rằng bác sĩ can thiệp đã dựa vào điện tâm đồ để chẩn đoán “không tái lưu” ở bệnh nhân này.</strong></p>
+<p>2. Phân độ tưới máu cơ tim TIMI (TIMI myocardial perfusion grading, TMP) từ 1-3 phân độ mức tái tưới máu vi mạch thấy trên phim chụp mạch, gọi là mức “ngấm thuốc” (blush).  Tình trạng không có tưới máu vi mạch trong khi dòng máu ở động mạch thượng tâm mạc tốt được gọi là “không tái lưu” (no reflow).</p>
+<p>3. “Không tái lưu” có lẽ chủ yếu do “mưa” thuyên tắc gồm các khối kết tập tiểu cầu trôi xuống phía hạ lưu, và cũng do co mạch.</p>
+<p>4.  Sau tái tưới máu, dấu ấn điện tâm đồ đầu tiên của tái tưới máu vi mạch là sóng T đảo ngược</p>
+<p>5.  Sau tái tưới máu, dấu ấn điện tâm đồ tốt nhất của tái tưới máu vi mạch là ST chênh lên hồi phục ít nhất 50% so với mức tối đa, và tốt hơn nữa là hồi phục &gt; 70% (hoặc hồi phục hoàn toàn).</p>
+<p>6.  Điện tâm đồ đáng tin cậy hơn nhiều so với việc hết đau ngực trong đánh giá tái tưới máu vi mạch.</p>
+<h2 id="dien-tam-do-trong-tai-tuoi-mau-va-tac-lai">Điện tâm đồ trong TÁI TƯỚI MÁU VÀ TẮC LẠI</h2>
+<p>Đây là Chương 27 (Tái tưới máu và tắc lại) trong cuốn sách của tôi, The ECG in Acute MI.  Chương này dài, và có một thư mục có chú giải chi tiết.  Nội dung dựa trên y văn trước năm 2002, nhưng vẫn chính xác và bao gồm gần như mọi điều bạn cần biết (trừ khi bạn là bác sĩ can thiệp) về điện tâm đồ trong tái tưới máu và tắc lại.</p>
+<h2 id="chuong-27">Chương 27:</h2>
+<h3 id="boi-canh-chung">BỐI CẢNH CHUNG</h3>
+<h3 id="su-thong-thoang-cua-dong-mach-vatuan-hoan-vi-mach">Sự thông thoáng của động mạch vàtuần hoàn vi mạch</h3>
+<p>Điều trị tái tưới máu được định hướng bằng việc đánh giá liên tục<br>tình trạng tái tưới máu cơ tim.<br>Điều này phụ thuộc vào hai yếu tố: 1) <strong>tái tưới máu<br></strong>động mạch thượng tâm mạc liên quan đến nhồi máu<br>(IRA); và 2) tái tưới máu <strong>tuần hoàn vi mạch</strong>, vốn có thể bị tổn thương do thiếu máu cục bộ và<br>tái tưới máu (hiện tượng “không tái lưu” – no-reflow) và dẫn tới cản trở dòng chảy<br>mao mạch.</p>
+<p><strong>Tình trạng huyết động</strong> và <strong>tuổi</strong> là các chỉ điểm tiên lượng lâm sàng<br>tốt nhất đối với kết cục của nhồi máu cơ tim cấp (AMI).<br>Chỉ điểm điện tâm đồ tốt nhất đối với kết cục của AMI là <strong>hồi phục đoạn ST</strong> hoặc<br>việc không hồi phục (<strong>318-322</strong>).  <strong>Yếu tố tiên đoán<br>tổng thể tốt nhất</strong> của tái tưới máu cơ tim thất bại là phát hiện<strong> đoạn ST hồi phục &lt; 50% so với<br>mức chênh lên tối đa</strong>.  Tuy nhiên, điện tâm đồ<br>không thể xác định nguyên nhân tái tưới máu thất bại là do động mạch vẫn tắc dai dẳng<br>hay do tổn thương vi mạch.  Cần chụp mạch để đánh giá và<br>phân độ sự thông thoáng của IRA và tuần hoàn vi mạch, cũng như để định hướng điều trị<br>tiếp theo.  <strong>PCI</strong><strong> cứu vãn</strong>, mà chúng tôi định nghĩa là PCI được thực hiện trong vòng 6 giờ kể từ<br>khi bắt đầu điều trị tiêu sợi huyết, <strong>(323)</strong> cần được cân nhắc mạnh mẽ khi<br>bác sĩ lâm sàng đã xác định tái tưới máu bằng tiêu sợi huyết thất bại, và cần được thực hiện ngay sau khi chuyển tới cơ sở có PCI nếu không có bằng chứng điện tâm đồ của tái tưới máu tốt <strong>(324).  </strong>Điều này<br>đặc biệt đúng với <strong>AMI diện rộng</strong>, thể hiện qua vị trí thành trước,<br>ST chênh lên cao, hoặc ST lệch khỏi đường nền ở nhiều chuyển đạo.  Một IRA đã thông nhưng dòng chảy không đủ có thể là do<br>mức hẹp tồn lưu hoặc tuần hoàn vi mạch bất thường, và có thể được điều trị<br>bằng <strong>thuốc giãn mạch,</strong> <strong>thuốc kháng tiểu cầu<br>và thuốc chống huyết khối +/- PCI.</strong></p>
+<h3 id="phan-do-timi-ve-su-thong-thoangcua-ira">Phân độ TIMI về sự thông thoángcủa IRA</h3>
+<p>Sự thông thoáng của IRA chỉ có thể được đánh giá chắc chắn bằng<br>chụp mạch.  Các đánh giá trên chụp mạch<br>sau đó được hệ thống hóa bằng phân độ TIMI,<strong> </strong>như sau (325):</p>
+<p>·       TIMI-0 = không có dòng chảy</p>
+<p>·       TIMI-1 = thuốc cản quang đi qua chỗ tắc<br>nhưng không tưới máu.  Những<br>bệnh nhân này có ST chênh lên dai dẳng, tiên lượng xấu và cần được<br>nhận diện để làm PCI cứu vãn</p>
+<p>·       TIMI-2 = tái tưới máu<br>một phần. Những bệnh nhân này có thể có hồi phục ST chênh lên và tiên lượng<br>ở mức trung gian giữa dòng chảy TIMI 0/1 và TIMI 3.</p>
+<p>·       TIMI-3 = tái tưới máu<br>hoàn toàn.  Những bệnh nhân này thường (nhưng<br>không phải luôn luôn) có hồi phục đoạn ST.  Dòng chảy TIMI-3<br>sau tái tưới máu đi kèm tỷ lệ tử vong thấp hơn và tỷ lệ mắc<br>suy tim sung huyết (CHF) thấp hơn (<strong>326</strong>,<strong> </strong>327), nhưng giá trị tiên lượng của nó <strong>có thể không<br>độc lập</strong> <strong>với việc hồi phục ST chênh lên (318)</strong>.</p>
+<p>Xét theo các chỉ số kết cục, phân độ dòng chảy<strong> &lt; TIMI-3 cho thấy tái tưới máu thất bại</strong> (26, 328).  Sau điều trị tái tưới máu cho AMI, dòng chảy TIMI-3<br>đi kèm tỷ lệ tử vong 30-42 ngày là 3,6%, so với dòng chảy TIMI-2<br>(tử vong 6,6%) và dòng chảy TIMI-0/1 (tử vong 9,5%) (327).</p>
+<h5 id="so-khung-hinh-timi-timi-frame-count">Số khung hình TIMI (TIMI Frame Count)</h5>
+<p>Số khung hình TIMI (TFC) giúp hệ thống hóa thêm việc phân loại dòng chảy<br>TIMI.  TFC là số đo<br>chính xác số khung hình chụp mạch điện ảnh (cineangiography) cần thiết để thuốc cản quang<br>tới được một đoạn xa đã xác định của IRA (xem phần bàn luận Bối cảnh trong mục<br>Các mức tái tưới máu trên chụp mạch thuộc<br>thư mục có chú giải của chương này).</p>
+<h3 id="phan-do-tuoi-mau-co-tim-timidoi-voi-he-vi-mach">Phân độ tưới máu cơ tim TIMIđối với hệ vi mạch</h3>
+<p>Dòng chảy TIMI và TFC chịu ảnh hưởng của cả mức độ nặng<br>của chỗ hẹp và huyết khối bên dưới lẫn của hệ vi mạch.  Hệ vi mạch nguyên vẹn được<br>đánh giá chính xác nhất qua hình ảnh trên phim chụp mạch, trong đó cơ tim được thuốc cản quang làm sáng lên một cách lan tỏa và mờ nhạt,<br>gọi là “ngấm thuốc cơ tim” (myocardial blush).  Các đánh giá này được hệ thống hóa bằng phân độ tưới máu cơ tim TIMI (TMP),<br>dựa trên thang từ 0-3 như sau (<strong>319, 326, 329</strong>):</p>
+<p>·       TMP độ 0 = không có<br>tưới máu vi mạch</p>
+<p>·       TMP độ 1 = thuốc cản quang không<br>được thải</p>
+<p>·       TMP độ 2 = thuốc cản quang được thải<br>chậm</p>
+<p>·       TMP độ 3 = thải thuốc<br>bình thường.</p>
+<p>Một động mạch vành đã thông có thể có dòng chảy TIMI-3 nhanh<br>nhưng có TMP độ 0 hoặc 1 <strong>(326)</strong>; bệnh nhân có những dấu hiệu này có<br>ST chênh lên dai dẳng (<strong>318, 319, 329</strong>).<br><strong>TMP độ 3 đi kèm<br>tiên lượng tốt, độc lập với dòng chảy TIMI.<br></strong></p>
+<h6 id="chan-doan-tai-tuoi-mau-bang-dien-tam-do">CHẨN ĐOÁN TÁI TƯỚI MÁU BẰNG ĐIỆN TÂM ĐỒ</h6>
+<h6 id="doan-st-trong-tai-tuoi-mau">Đoạn ST trong tái tưới máu</h6>
+<p>Khi <strong>IRA đã được tái tưới máu VÀ vi tuần hoàn còn nguyên vẹn</strong>, đoạn ST thường<br>giảm <strong>nhanh</strong> và gần về đường nền <strong>trong vòng<br>3 giờ</strong> sau tái tưới máu (xem Ca 27-1).<br>Khoảng 80% trường hợp IRA được tái tưới máu có đoạn ST hồi phục 50%<br>trong vòng 90 phút.  Phần lớn trong số<br>20% còn lại nhiều khả năng có tổn thương vi mạch dẫn đến dòng chảy mao mạch kém; tiên lượng<br>của họ cũng xấu như bệnh nhân có dòng chảy kém trong IRA (<strong>318, 319, 329</strong>).<br><strong> </strong>Điều này trái ngược với <strong>IRA không</strong><strong> được tái tưới máu</strong>, trong đó đoạn ST giảm <strong>từ từ rồi đi ngang (plateau)</strong>,<br>có hoặc không có chênh lên dai dẳng.<br>Hiện tượng đi ngang xuất hiện sớm nhất từ 6 đến 12 giờ, <strong>do tế bào cơ tim<br>chết</strong> (330).</p>
+<p><strong>Hồi phục đoạn ST là một yếu tố tiên đoán<br>chính xác của tái tưới máu, </strong>đặc biệt ở những bệnh nhân có điện tâm đồ cho thấy ST chênh lên &gt; 4 mm<br>(331).  Trong lúc hoặc ngay trước khi tái tưới máu, đoạn ST thường tiếp tục tăng lên<br>trước khi hồi phục, thường kèm đau ngực tăng lên (<strong>156</strong>, 157, <strong>332</strong>, 333, 334).  Một số bệnh nhân trải qua “<strong>tái tưới máu theo chu kỳ</strong>” (cyclic reperfusion), trong đó có<br>tái tưới máu rồi sau đó tắc lại.<br>Hiện tượng này có thể xảy ra dù có hay không có điều trị.<br>Tái tưới máu theo chu kỳ xảy ra ở 25-30% các trường hợp AMI trước khi điều trị tái tưới máu<br>và có thể được phát hiện bằng theo dõi đoạn ST (<strong>335</strong>).</p>
+<h3 id="song-t-trong-tai-tuoi-mau">Sóng T trong tái tưới máu</h3>
+<p>Trong <strong>AMI đã được tái tưới máu,</strong> <strong>sóng T đảo ngược<br>phần cuối</strong> thường xuất hiện <strong>nhanh</strong><br>(trong vòng 90 phút) ở các chuyển đạo có ST chênh lên nhiều nhất lúc<br>đến viện, và trước khi đoạn ST hồi phục hoàn toàn (<strong>156,</strong> 157).  Điều này trái ngược với <strong>AMI không</strong><strong> được tái tưới máu</strong>, <strong>với 90% số ca có sóng T đảo ngược từ từ </strong>(trong 48 đến 72<br>giờ), độ sâu &lt; 3 mm (<strong>94</strong>)<br>(<strong>Hình 8-3</strong>).  Nếu có một mức <strong>tổn thương cơ tim</strong> nào đó,<br>được đo bằng troponin tăng, có thể dự đoán sóng T đảo ngược phần cuối sẽ <strong>tiến triển<br>thành sóng T đảo ngược sâu và đối xứng trong 48 giờ đầu</strong> sau khi<br>khởi phát AMI (<strong>94</strong>) (xem Ca 27-2). Theo đó, sóng T đảo ngược sớm (&lt; 24 giờ) đi<br>kèm IRA thông tốt hơn, phân độ tưới máu tốt hơn và diễn biến<br>tại bệnh viện lành tính hơn so với đảo ngược muộn hơn (<strong>336</strong>). Ở một số bệnh nhân được<br>tái tưới máu rất sớm và có rất ít hoặc không có tế bào cơ tim chết, khi đo<br>bằng troponin, có thể không có sóng T đảo ngược, đảo ngược rất muộn, hoặc<br>đảo ngược có hồi phục (<strong>94</strong>).</p>
+<p>Các thay đổi sóng Q và<br>sóng R <strong>không</strong> phải là dấu ấn chính xác của tái tưới máu trong AMI (337).</p>
+<h5 id="theo-doi-tai-tuoi-mau">Theo dõi tái tưới máu</h5>
+<p>Theo dõi tái tưới máu có thể<br>bao gồm quan sát 5 yếu tố như sau: 1) hồi phục đoạn ST, hay<br>“phục hồi” (recovery); 2) sóng T đảo ngược phần cuối; 3) hết đau ngực; 4) rối loạn nhịp do<br>tái tưới máu; và 5) các dấu ấn sinh hóa.</p>
+<p><u>1.  Hồi phục<br>đoạn ST </u></p>
+<p><strong>Hồi phục đoạn ST, hay “phục hồi” (recovery), là dấu ấn<br>tốt nhất của tái tưới máu</strong> (xem Ca 27-1 và 27-2).  Đoạn<br>ST có thể được theo dõi liên tục hoặc bằng các điện tâm đồ tĩnh (ghi từng lần) mỗi 5 phút<br>kể từ lúc dùng thuốc tiêu sợi huyết.<br><strong>Nếu ST chênh lên &gt; 4 mm mà<br>KHÔNG có hồi phục &gt;/= 50% tại<br>phút thứ 60 CŨNG KHÔNG có sóng T đảo ngược phần cuối, thì ít khả năng có dòng chảy TIMI-3.  Hãy cân nhắc mạnh mẽ PCI cứu vãn. </strong></p>
+<p>Theo dõi đoạn ST liên tục là phương pháp tốt nhất<br>để theo dõi các thay đổi đoạn ST (<strong>156, 159, 338, 339</strong>) (xem Ca<br>27-3).  Đã có các sản phẩm thương mại<br>trên thị trường.  Chọn một chuyển đạo có<br>ST chênh lên nhiều nhất, vẽ đồ thị liên tục mức ST chênh lên, và quan sát<br>các đỉnh và đáy.  Theo quy ước,<strong> </strong>ST chênh lên được đo trên các monitor liên tục tại thời điểm 80 ms sau<br>điểm J.  Xem <strong>Bảng 27-1.</strong></p>
+<p>·       <strong>Đoạn ST hồi phục &gt;/= 50% so với</strong> mức ST chênh lên <strong>TỐI ĐA</strong><br>(mức đỉnh đạt được) trong vòng 60 phút và không chênh lên trở lại là một yếu tố tiên đoán<br>rất tốt của tái tưới máu.  Những bệnh nhân này<strong> </strong>không cần chụp mạch sớm hay<br>PCI cứu vãn.<strong>  </strong>Hồi phục ST  &gt;/= 50%<strong> </strong>có giá trị tiên đoán dương (PPV) đối với sự thông thoáng (dòng chảy TIMI-2 hoặc -3)<br>là 87%.</p>
+<p>·       <strong>Hồi phục ST &lt; 50%, cân nhắc PCI cứu vãn.</strong>  Giá trị tiên đoán âm (NPV) đối với<br>tắc mạch (không hồi phục) là 71%; nghĩa là 71 % bệnh nhân không có hồi phục ST<br>&gt;/= 50% có động mạch bị tắc và 29% có dòng chảy TIMI 2-3.  Những bệnh nhân này <strong>là</strong> đối tượng của<br>PCI cứu vãn.  Quan trọng nhất, <strong>hồi phục<br>ST &lt; 50% mà không có sóng T đảo ngược phần cuối cho thấy dòng chảy TIMI<br>0-2 với PPV là 86%</strong>.  Dòng chảy TIMI-3<br>mới là tái tưới máu thành công thực sự.  Trong số<br>bệnh nhân có ST chênh lên dai dẳng (hồi phục &lt; 50%), 14% có dòng chảy TIMI-3<br>nhưng có lẽ vẫn còn ST chênh lên do tổn thương vi mạch.<strong> </strong></p>
+<p>·       ST chênh lên tối đa hoặc<br>ban đầu càng cao thì việc tiên đoán sự thông thoáng càng chính xác (331).</p>
+<p>Mặc dù <strong>các điện tâm đồ tĩnh</strong> kém hơn so với<br>theo dõi đoạn ST liên tục (<strong>339</strong>), nếu không có sẵn theo dõi liên tục,<br>thì ghi <strong>điện tâm đồ tĩnh mỗi 5 phút</strong> kể từ lúc<br>dùng thuốc tiêu sợi huyết là một biện pháp thay thế hợp lý (<strong>158</strong>).  Dùng một chuyển đạo duy nhất có ST<br>chênh lên cao nhất và đo mức hồi phục so với độ cao tối đa.  Hồi phục ST &gt; 50% tại thời điểm 60 phút sau<br>điều trị là chỉ điểm tốt của tái tưới máu (<strong>158</strong>).  Hồi phục ST hoàn toàn bảo đảm có tái tưới máu<br>nhưng hiếm khi đạt được trước phút thứ 60 sau điều trị (<strong>339</strong>).</p>
+<p><u>2.  Sóng T đảo ngược phần cuối</u></p>
+<p>(Xem<br>thêm Chương 8)</p>
+<p><strong>Sóng T đảo ngược phần cuối trong vòng 90<br>phút đầu </strong>là<br>một dấu ấn đặc hiệu của tái tưới máu và có độ nhạy khoảng 60% (<strong>156,<br></strong>157,<strong> 158)</strong>.  Nếu các chuyển đạo có ST<br>chênh lên xuất hiện sóng T đảo ngược phần cuối trong vòng 60 phút sau tiêu sợi huyết,<br>nhiều khả năng đã có tái tưới máu.  Vì sóng<strong> </strong>T đảo ngược thường cho thấy đã có một mức<br>tổn thương cơ tim nào đó, nên đoạn ST hồi phục nhanh mà không có bất kỳ sóng T đảo ngược nào có thể là<br>bằng chứng cho thấy tái tưới máu đã xảy ra trước khi tế bào cơ tim chết; trong những trường hợp này,<br>các dấu ấn sinh học có thể không tăng.  Sóng T đảo ngược<br>phần cuối thường xuất hiện trước khi đoạn ST hồi phục hoàn toàn.</p>
+<p><strong>Sóng T đảo ngược sâu,<br>đối xứng </strong>(&gt; 3 mm) cho thấy tình trạng tái tưới máu <strong>đã xảy ra lâu<br>hơn</strong> so với tái tưới máu được chỉ điểm bằng sóng T đảo ngược phần cuối (xem Ca 27-2).  Sóng T đảo ngược phần cuối tiếp tục<br>tiến triển thành sóng T đảo ngược đối xứng (<strong>94</strong>).  Sóng T đảo ngược sâu, đối xứng không nhất thiết<br>phải có ST chênh lên đi trước, mặc dù thường không hình thành sóng Q<br>nếu không có ST chênh lên.  Sóng T<br>đảo ngược đối xứng nói chung có mặt sau khi đoạn ST đã hồi phục hoàn toàn.</p>
+<p><strong>Sóng T cuối cùng cũng<br>đảo ngược ở các mạch máu bị tắc dai dẳng</strong>.  Sóng T đảo ngược khi có sóng Q<br>sâu, đặc biệt là sóng QS,<strong> </strong>có thể là<br>biểu hiện của tái tưới máu muộn trong diễn tiến AMI hoặc của một <strong>AMI đã hình thành rõ,<br>không được tái tưới máu</strong> (<strong>94, </strong>340).<br>Các sóng T đảo ngược này thường &lt; 3 mm, trái với sóng T đảo ngược<br>của AMI đã được tái tưới máu, vốn &gt; 3 mm (<strong>94</strong>).  Sóng T đảo ngược như vậy có thể thấy ngay lúc<br>đến viện nếu bệnh nhân đến muộn sau khởi phát (xem Ca 33-3).</p>
+<p><strong>Với AMI<br>thành sau</strong>, nếu sóng T dương trước tái tưới máu và có hồi phục ST,<br>tái tưới máu thường làm sóng T ở các chuyển đạo trước tim (đặc biệt V2) trở nên<br>dương hoàn toàn, cao hơn và rộng hơn so với trước khi khởi phát AMI.  Đây là hình ảnh soi gương của các sóng T đảo ngược<br>ở thành sau.  Tắc lại trong trường hợp<br>này ít khả năng gây sóng T đảo ngược.<br>Nếu sóng T đảo ngược không đối xứng trước tái tưới máu, tái tưới máu<br>thường làm sóng T giả bình thường hóa<br>(chuyển thành dương) và trở nên cao hơn, rộng hơn so với trước khi khởi phát AMI;<br>tắc lại nói chung làm sóng T đảo ngược trở lại.  Xem Ca 27-1.  (Xem thêm: Ca 16-10 và 13-4).</p>
+<p><u>3.  Hết đau ngực</u></p>
+<p>Hai nghiên cứu cho thấy<strong> hết đau ngực hoàn toàn</strong>, thường kèm theo đau <strong>tăng</strong> thoáng qua<br>lúc đầu, có PPV tốt, với khả năng<br>tái tưới máu từ 84% (<strong>339</strong>) đến 96% (156).  Tuy nhiên, hết đau ngực mà<br>không có bất kỳ sự hồi phục đoạn ST nào cũng như không có sóng T đảo ngược phần cuối thì ít khả năng<br>phản ánh tái tưới máu.  Nếu hết đau ngực,<br>hãy ghi các điện tâm đồ liên tiếp; tiến hành nong mạch cứu vãn nếu không có bằng chứng điện tâm đồ của<br>tái tưới máu.</p>
+<p>Khi <strong>tự hết đau ngực, </strong>đừng ngừng điều trị tái tưới máu<br>trừ khi có kèm theo một mức hồi phục ST nào đó:<strong></strong></p>
+<p>·<br>Nếu ST chênh lên tăng, không đổi, hoặc hồi phục &lt; 25%, hãy tiếp tục<br>điều trị tái tưới máu.</p>
+<p>·<br>Nếu hồi phục 25%-50%, hoặc có sóng T đảo ngược phần cuối, hãy ghi các<br>điện tâm đồ liên tiếp hoặc theo dõi liên tục và tìm mức hồi phục ST &gt;/= 50%.</p>
+<p>·       Nếu hồi phục 50%-100%,<br>có thể tạm ngừng điều trị tái tưới máu trong khi chờ đánh giá thêm, đặc biệt là<br>theo dõi ST liên tục.<strong></strong></p>
+<p><strong>Hết đau ngực có NPV kém</strong>, ở chỗ đau dai dẳng<br>không nhất thiết có nghĩa là tắc dai dẳng (<strong>159, 339</strong>).<strong><u></u></strong></p>
+<p><u>4.  Rối loạn nhịp do tái tưới máu </u></p>
+<p><strong>            </strong>Sự xuất hiện sớm của nhịp tự thất gia tốc (AIVR) cho thấy<br>tái tưới máu với độ đặc hiệu 97% nhưng độ nhạy chỉ 45% (<strong>335</strong>).  Một loạt nhịp nhanh thất xuất hiện đột ngột cũng có thể<br>chỉ điểm tái tưới máu.</p>
+<p><u>5.  Các dấu ấn sinh hóa của tái tưới máu</u></p>
+<p>Các dấu ấn sinh hóa cũng có thể hữu ích trong đánh giá tái tưới máu; xem<br>Chương 29 để biết chi tiết.</p>
+<p>Xem các Ca 27-1 đến 27-3 để có ví dụ về<br>tái tưới máu.  (Xem thêm: Ca 6-4, 12-3,<br>16-10, 20-11 và 32-1).</p>
+<p>.</p>
+<h3 id="xu-tri">Xử trí</h3>
+<p>Một<br>phân tích gộp các thử nghiệm ngẫu nhiên cho thấy nong mạch cứu vãn được thực hiện ở<br>bệnh nhân tái tưới máu thất bại làm giảm tỷ lệ suy tim sung huyết,<br>tử vong và nhồi máu cơ tim tái phát, mà không có tác dụng bất lợi đáng kể (<strong>324</strong>).  Các thử nghiệm này được thực hiện <strong>không có</strong><br>công nghệ mới nhất và với khoảng thời gian kéo dài từ lúc tiêu sợi huyết đến lúc<br>can thiệp cứu vãn.  Trong thời đại của abciximab và<br>đặt stent, <strong>chúng tôi rất khuyến cáo PCI<br>cứu vãn nhanh chóng khi tái tưới máu thất bại</strong> như được chứng minh bằng các chỉ điểm điện tâm đồ<br>nêu trên hoặc bằng tình trạng lâm sàng không ổn định dai dẳng.  Nếu<br>có dòng chảy TIMI-3 nhưng phân độ TMP thấp, điều trị bằng thuốc giãn mạch,<br>thuốc kháng tiểu cầu và thuốc chống huyết khối đặc biệt quan trọng.</p>
+<h6 id="tac-lai">TẮC LẠI</h6>
+<p>Một khi đã đạt được tái tưới máu, hãy theo dõi đoạn ST<br>để phát hiện tắc lại.  Triệu chứng <strong>không</strong><br>phải là chỉ điểm đáng tin cậy của tắc lại và nhiều trường hợp AMI tái phát không có triệu chứng<br>(69,<strong> 89</strong>).  Nếu không có sẵn theo dõi<br>liên tục, <strong>hãy ghi<br>điện tâm đồ tĩnh thường xuyên mỗi 30 đến 60 phút cho tới khi chắc chắn đã ổn định. </strong> Tối thiểu, hãy ghi điện tâm đồ mỗi giờ trong vài<br>giờ sau tái tưới máu.</p>
+<h5 id="bieu-hien-dien-tam-do-cua-tac-lai">Biểu hiện điện tâm đồ của tắc lại</h5>
+<p>Mỗi AMI có một “dấu vân tay thiếu máu cục bộ” (ischemic fingerprint), nghĩa là<br>tắc lại cùng một mạch máu tại cùng vị trí sẽ tái tạo các dấu hiệu điện tâm đồ giống hệt<br>(83, <strong>190</strong>).  Do đó,<br>tắc lại biểu hiện trên điện tâm đồ ngược với tái tưới máu, như sau:</p>
+<p>·       <strong>Ban đầu sóng T nhanh chóng</strong><strong> “giả bình thường hóa”</strong>, trong đó sóng T đảo ngược chuyển thành dương. <strong></strong></p>
+<p>·       <strong>Sau đó đoạn ST</strong><strong> chênh lên trở lại</strong>.</p>
+<p>Thận trọng:<strong> viêm màng ngoài tim khu trú sau nhồi máu</strong><br>(PIRP)<strong> </strong>có thể giống tắc lại<strong> </strong>(xem Chương 28) (<strong>94</strong>).  Bệnh cảnh này đặc trưng bởi sự giả bình thường hóa <strong>từ từ </strong>của<br>sóng T hoặc sóng T dương dai dẳng ở các chuyển đạo có ST<br>chênh lên nhiều nhất lúc nhập viện.  Cũng có<br><strong>ST chênh lên trở lại từ từ</strong>, trong 24-72 giờ.  PIRP không có hình ảnh ST chênh lên lan tỏa điển hình<br>của viêm màng ngoài tim không đặc hiệu.</p>
+<p>Xem Ca 27-3 về tắc lại.  (Xem thêm: Ca 8-12, về giả bình thường hóa<br>sóng T đảo ngược đối xứng; Ca<br>13-4 về nhồi máu cơ tim cấp (AMI) dưới-sau có tái tưới máu và tắc lại; và Ca 3-3<br>về tắc lại một tuần sau tái tưới máu).</p>
+<h5 id="xu-tri-2">Xử trí</h5>
+<p>Tắc lại sau tiêu sợi huyết đòi hỏi hoặc<br>tiêu sợi huyết lại, hoặc tốt hơn là chụp mạch vành cứu vãn +/- PCI.</p>
+<h3 id="thu-muc-co-chu-giai">THƯ MỤC CÓ CHÚ GIẢI</h3>
+<h4 id="tai-tuoi-mau-boi-canh-chung">Tái tưới máu: Bối cảnh chung</h4>
+<p><strong><em>Krucoff MW và cs., Continuously<br>updated 12-lead ST-segment recovery analysis for myocardial infarct artery<br>patency assessment and its correlation with multiple simultaneous early<br>angiographic observations, 1993 (Phân tích hồi phục đoạn ST trên điện tâm đồ đủ chuyển đạo cập nhật liên tục để đánh giá độ thông của động mạch gây nhồi máu và tương quan với nhiều quan sát chụp mạch sớm đồng thời)</em></strong><em>. </em></p>
+<p><u>Phương pháp:</u>  Krucoff và cs.<br>(341) đã chụp mạch vành và theo dõi đoạn ST liên tục ở 22 bệnh nhân<br>AMI.</p>
+<p><u>Kết quả:</u>  Bốn mươi bốn<br>đợt động mạch thông và nhiều lần chuyển đổi xu hướng ST ở 11 trong 22 bệnh nhân<br>sau tiêu sợi huyết gợi ý những thay đổi có tính chu kỳ của dòng chảy mạch vành trước khi<br>thông tim.</p>
+<p><u>Bình luận:</u>  Các tác giả này và những người khác (158, 159) đã nhiều lần chứng minh rằng phải đo mức hồi phục ST<br>tính từ mức ST chênh lên <strong>tối đa</strong> thì mới đánh giá chính xác được tình trạng tái tưới máu.  Đỉnh ST chênh lên có thể xảy ra khi không<br>điều trị tiêu sợi huyết hoặc vào bất kỳ thời điểm nào sau điều trị tiêu sợi huyết.<br>Điện tâm đồ tĩnh kém hiệu quả hơn theo dõi liên tục vì đoạn ST<br>có thể tăng lên từ mức nền trước khi tái tưới máu thực sự rồi lại giảm xuống (hoặc<br>ngược lại) về gần cùng mức đó mà không bị phát hiện.</p>
+<h3 id="cac-muc-tai-tuoi-mau-tren-chup-mach-st-chenh-len-dai-dang-va-tien-luong">Các mức tái tưới máu trên chụp mạch, ST chênh lên dai dẳng và tiên lượng</h3>
+<p><u>Bối cảnh:</u> <strong>Mức dòng chảy TIMI</strong> là thước đo<br>tái tưới máu của một mạch vành, còn <strong>mức tưới máu cơ tim TIMI (TMP)</strong> là thước đo<br>tưới máu vi mạch cơ tim.  Số khung hình TIMI (TFC)<br>là số đo chính xác số khung hình chụp mạch (cine) cần thiết<br>để thuốc cản quang tới một đoạn xa xác định của động mạch liên quan đến nhồi máu (IRA). TFC đặc biệt<br>hữu ích để phân loại sâu hơn dòng chảy TIMI-2 và TIMI-3.  TFC trung bình bình thường là: 36,2 +/- 2,6 đối với<br>LAD, 20,4 +/- 3,0 đối với RCA, và 22,2 +/- 4,1 đối với động mạch mũ<br>(342).  Để chuẩn hóa TFC cho mọi<br>động mạch, TFC của LAD được chia cho 1,7 để có TFC “hiệu chỉnh” (CTFC)<br>(342).  Lúc 90 phút sau tiêu sợi huyết<br>điều trị STEMI ở mọi vị trí, CTFC 0-13 là dòng máu trên mức bình thường và<br>đi kèm tỷ lệ tử vong 0%.  CTFC<br>14-40 đi kèm tỷ lệ tử vong 2,7%, và CTFC &gt; 40 đi kèm<br>tỷ lệ tử vong 6,4% (343).  Trong số<br>bệnh nhân có dòng chảy TIMI-3, CTFC &lt;/= 20 so với &gt; 20 đi kèm<br>tỷ lệ biến chứng lần lượt là 7,9% so với 15,5% (343).</p>
+<p><strong><em>Van’t Hof và cs., Clinical value of 12-lead electrocardiogram after<br>successful reperfusion therapy for acute myocardial infarction, 1998 (Giá trị lâm sàng của điện tâm đồ đủ chuyển đạo sau điều trị tái tưới máu thành công nhồi máu cơ tim cấp).</em></strong></p>
+<p><u>Phương pháp:</u>  Van ‘t Hof và cs. (320) đã nghiên cứu sự hồi phục ST<br>ở 403 bệnh nhân AMI có dòng chảy TIMI-3 sau nong bóng tiên phát.</p>
+<p><u>Kết quả:</u>  Đoạn ST trở về bình thường ở 51% bệnh nhân (ST<br>&lt; 0,1 mV).  Trở về bình thường một phần<br>(30-70% chiều cao ban đầu) đi kèm nguy cơ tương đối (RR) tử vong là<br>3,6 (KTC =  1,6-8,3) so với trở về<br>bình thường hoàn toàn (&lt; 30% chiều cao ban đầu).<br>Không hồi phục hoặc ST chênh lên tăng thêm đi kèm RR<br>tử vong là 8,7 (khoảng = 3,7-20,1).</p>
+<p><strong><em>Van’t Hof và cs., Angiographic assessment of myocardial reperfusion in<br>patients treated with primary angioplasty for acute myocardial infarction:<br>myocardial blush grade, 1998 (Đánh giá tái tưới máu cơ tim trên chụp mạch ở bệnh nhân nhồi máu cơ tim cấp được nong bóng tiên phát: mức ngấm thuốc cơ tim – blush).</em></strong></p>
+<p><u>Phương pháp:</u>  Van ‘t Hof và cs. (329) đã nghiên cứu mức ngấm thuốc cơ tim (blush)<br>trong khi nong bóng tiên phát ở 777 bệnh nhân AMI.</p>
+<p><u>Kết quả:</u>  Nong bóng đạt dòng chảy TIMI-3 ở 89%<br>bệnh nhân và dòng chảy TIMI-0, -1 hoặc -2 ở 11%.<br>Bệnh nhân có mức TMP 3, 2 và 0/1 lần lượt có:  1) kích thước ổ nhồi máu theo CK là 757 IU/L, 1143 IU/L<br>và 1623 IU/L; 2) phân suất tống máu (EF) là 50%, 46% và 39%; và 3) tỷ lệ tử vong (sau thời gian theo dõi<br>trung bình 1,9 +/- 1,7 năm) là 3%, 6% và 23%.  Mức TMP dự báo tử vong độc lập<br>với Killip độ, mức dòng chảy TIMI, EF và các biến số lâm sàng khác.  Mức TMP là yếu tố dự báo tốt nhất tỷ lệ tử vong 3<br>năm, với tỷ lệ lần lượt là 3%, 15% và 37% ở bệnh nhân có mức 3 (19%<br>bệnh nhân), 2 và 0/1.<br>Trong số bệnh nhân có mức TMP 3, ST chênh lên trở về bình thường ở 65% và ST<br>chênh lên giảm ở thêm 28%.</p>
+<p><strong><em>Gibson CM và cs., Relationship of TIMI myocardial<br>perfusion grade to mortality after administration of thrombolytic drugs, 2000 (Mối liên quan giữa mức tưới máu cơ tim TIMI và tử vong sau dùng thuốc tiêu sợi huyết).</em></strong></p>
+<p><u>Phương pháp:</u>  Gibson và cs. (326) đã nghiên cứu 762 bệnh nhân trong<br>thử nghiệm TIMI-10B, trong đó 854 bệnh nhân AMI được phân ngẫu nhiên dùng TNK-tPA<br>hoặc alteplase chuẩn và được chụp mạch vành lúc 90 phút sau khi dùng thuốc tiêu sợi<br>huyết.</p>
+<p><u>Kết quả:</u>  Tưới máu cơ tim mức TMP 3 đi kèm<br>một cách độc lập với tỷ lệ tử vong 30 ngày thấp 2,0%, so với 3,5%<br>ở bệnh nhân có dòng chảy TIMI-3.  Mức<br>giảm nguy cơ này cộng thêm vào nguy cơ thấp của dòng chảy TIMI-3, đến mức tỷ lệ tử vong<br>chỉ còn 0,73% (1 trên 137) ở bệnh nhân có dòng chảy TIMI-3 <strong>và</strong> tưới máu mức TMP<br>3, so với tỷ lệ tử vong 10,9% (14 trên 129) ở những bệnh nhân có cả dòng chảy TIMI<br>0-2 <strong>và</strong> tưới máu xếp mức TMP 0/1<br>theo phân loại.   Tỷ lệ tử vong xấp xỉ<br>như nhau ở các bệnh nhân có: (1) cả dòng chảy TIMI 0-2 và tưới máu mức TMP 3,<br>có lẽ nhờ tuần hoàn bàng hệ; và (2) cả dòng chảy TIMI-3 và tưới máu mức TMP 0/1.</p>
+<h3 id="hoi-phuc-st-va-tien-luong">Hồi phục ST và tiên lượng</h3>
+<p>Hồi phục<br>ST có thể là một chỉ dấu tiên lượng tốt, ngay cả khi có một<br>mạch máu bị tắc.  Không hồi phục ST<br>báo hiệu tiên lượng xấu, ngay cả khi động mạch đã thông.</p>
+<p><strong><em>Claeys MJ, Determinants and prognostic<br>implications of persistent ST-segment elevation after primary angioplasty for<br>acute myocardial infarction: importance of microvascular reperfusion injury on<br>clinical outcome, 1999 (Các yếu tố quyết định và ý nghĩa tiên lượng của ST chênh lên dai dẳng sau nong bóng tiên phát trong nhồi máu cơ tim cấp: tầm quan trọng của tổn thương tái tưới máu vi mạch đối với kết cục lâm sàng).</em></strong></p>
+<p><u>Phương pháp:</u><br>Claeys và cs. (319) đã nghiên cứu 91 bệnh nhân AMI được tái tưới máu sau<br>nong bóng.</p>
+<p><u>Kết quả:</u><br>Trong 91 bệnh nhân, 75 có dòng chảy TIMI-3 và 16 có dòng chảy TIMI-2.  ST chênh lên dai dẳng, định nghĩa là ST &gt;/=<br>50% chiều cao ban đầu, gặp ở 33 (36%) bệnh nhân và đi kèm<br>tỷ lệ tử vong một năm cao (15% so với 2%) và tỷ lệ biến cố tim mạch bất lợi<br>chính tổng cộng cao (45% so với 15%).  <strong>ST chênh lên dai dẳng là yếu tố quyết định độc lập<br>quan trọng nhất của tỷ lệ biến cố tim mạch bất lợi chính,</strong> với<br>RR hiệu chỉnh là 3,4, và cả hai đều được quy cho tình trạng tuần hoàn<br>vi mạch bị suy giảm.</p>
+<p><strong><em>Shah A và cs.,<br>Prognostic implications of TIMI flow grade<br>in the infarct related artery compared with continuous 12-lead ST-segment<br>resolution analysis.  Reexamining the<br>“gold standard” for myocardial reperfusion treatment, 2000 (Ý nghĩa tiên lượng của mức dòng chảy TIMI ở động mạch liên quan đến nhồi máu so với phân tích hồi phục đoạn ST liên tục trên đủ chuyển đạo. Xem xét lại “tiêu chuẩn vàng” của điều trị tái tưới máu cơ tim).</em></strong></p>
+<p><u>Phương pháp:</u>  Shah và cs. (318) đã xác định 258 bệnh nhân AMI được<br>tiêu sợi huyết rồi chụp mạch vành trong các thử nghiệm TIMI-7 và GUSTO-1<br>(xem Phụ lục).  Bệnh nhân được phân tầng<br>theo mức tái tưới máu TIMI 0-3 và theo mức hồi phục ST &gt;/= 50% so với &lt;<br>50%.</p>
+<p><u>Kết quả:</u>  <strong>Hồi phục<br>ST LÀ yếu tố dự báo độc lập cho kết cục lâm sàng gộp gồm<br>tử vong hoặc suy tim sung huyết (CHF), nhưng mức dòng chảy TIMI thì KHÔNG.<br></strong>Hồi phục ST ở những bệnh nhân<br>có dòng chảy TIMI mức 0-1 xác định một nhóm có diễn biến lâm sàng tương đối<br>lành tính.</p>
+<p><strong><em>Dissman R và cs., Early<br>assessment of outcome by ST segment analysis after thrombolytic therapy in<br>acute myocardial infarction, 1994 (Đánh giá sớm kết cục bằng phân tích đoạn ST sau điều trị tiêu sợi huyết trong nhồi máu cơ tim cấp).</em></strong></p>
+<p><u>Phương pháp:</u>  Dissman và cs. (321) đã nghiên cứu nồng độ CK và<br>EF ở 77 bệnh nhân AMI để đối chiếu mức hồi phục ST với kích thước ổ nhồi máu.</p>
+<p><u>Kết quả:</u>  Kích thước ổ nhồi máu xác định bằng men tim và<br>EF tương ứng tương quan chặt chẽ với mức hồi phục ST hoàn toàn (&gt;70%), một phần (30-70%), hoặc<br>không hồi phục ST (&lt;30%) lúc 3 giờ sau tiêu sợi huyết. EF ở bệnh nhân hồi phục hoàn toàn, một phần hoặc không hồi phục lần lượt là 58%, 53% và 43%. [người dịch: phần cuối câu này trong bản gốc bị lỗi mã HTML, chỉ còn các từ và số rời rạc; câu được dựng lại theo các từ và số còn sót, thứ tự gán số liệu là suy đoán]</p>
+<p><strong><em>Schroder R và cs., Extent of<br>early ST segment elevation resolution: a strong predictor of outcome in<br>patients with acute myocardial infarction and a sensitive measure to compare<br>thrombolytic regimens, 1995 (Mức độ hồi phục sớm ST chênh lên: yếu tố dự báo mạnh về kết cục ở bệnh nhân nhồi máu cơ tim cấp và là thước đo nhạy để so sánh các phác đồ tiêu sợi huyết). </em></strong></p>
+<p><u>Phương pháp:</u>  Schroder và cs. (322) đã phân tích điện tâm đồ, nồng độ<br>CK và dữ liệu tử vong của 1909 bệnh nhân AMI được phân ngẫu nhiên dùng reteplase hoặc<br>streptokinase (SK).</p>
+<p><u>Kết quả:</u>  Ở 1398 bệnh nhân đến viện &lt;/= 6 giờ<br>kể từ khi khởi phát AMI, tỷ lệ tử vong 35 ngày đối với hồi phục ST hoàn toàn (&gt;/= 70%), một phần<br>(30-70 %) hoặc không hồi phục (&lt; 30%) lúc 3 giờ sau dùng thuốc tiêu sợi huyết<br>lần lượt là 2,5%, 4,3% và 17,5%.</p>
+<p><strong><em>Saran<br>RK và cs., Reduction in ST segment elevation after thrombolysis predicts either<br>coronary reperfusion or preservation of left ventricular function, 1990 (Mức giảm ST chênh lên sau tiêu sợi huyết dự báo hoặc tái tưới máu mạch vành, hoặc chức năng thất trái được bảo tồn).</em></strong></p>
+<p><u>Phương pháp:</u><br>Saran và cs. (344) đã nghiên cứu các thay đổi đoạn<br>ST và dấu hiệu chụp mạch ở 45 bệnh nhân (xem phần chú giải chi tiết hơn<br>bên dưới).</p>
+<p><u>Kết quả:</u>  Chức năng<br>thất trái được bảo tồn tốt nếu đoạn ST đã giảm &gt;/= 25% lúc 3<br>giờ.</p>
+<h3 id="theo-doi-dien-tam-do-lien-tuc-de-du-bao-tai-tuoi-mau">Theo dõi điện tâm đồ liên tục để dự báo tái tưới máu</h3>
+<p><strong>Lưu ý:</strong>  Khi đánh giá các nghiên cứu sau đây, điều quan trọng cần nhớ là<br>15% số IRA tự thông <strong>mà không cần điều trị</strong> trong vòng<br>6-8 giờ sau khi tắc mạch vành (345).</p>
+<p><strong><em>Krucoff MW và cs., Continuous 12-lead ST-segment recovery analysis in the<br>TAMI 7 study.  Performance of a<br>non-invasive method for real-time detection of failed myocardial reperfusion,<br>1993 (Phân tích hồi phục đoạn ST liên tục trên đủ chuyển đạo trong nghiên cứu TAMI. Hiệu năng của một phương pháp không xâm lấn để phát hiện theo thời gian thực tình trạng tái tưới máu cơ tim thất bại).</em></strong></p>
+<p><u>Phương pháp:</u>  Krucoff và cs. (159) đã thử nghiệm một phương pháp phân tích hồi phục đoạn ST liên tục trên<br>12 chuyển đạo trong một nghiên cứu mù, tiến cứu, có đối chiếu<br>với chụp mạch ở 144 bệnh nhân TAMI-7 được dùng<br>thuốc tiêu sợi huyết trong giai đoạn sớm của nhồi máu cơ tim.  Tổng ST<br>chênh lên được vẽ theo thời gian bằng phần mềm chạy trên máy tính cá nhân (PC) và được các bác sĩ tim mạch có kinh nghiệm<br>đọc.  Đoạn ST được<br>vẽ và đánh giá các đỉnh, các đáy và xu hướng chung.  Điểm ST tại thời điểm chụp mạch được<br>so sánh với mức chênh lên đỉnh đã đạt.<br>Tình trạng thông được dự báo dựa trên sự hồi phục ST, định nghĩa là giảm 50% so với<br>tổng ST chênh lên tối đa, kèm xu hướng tiếp tục đi xuống.   Tình trạng tắc được dự báo khi (1) ST<br>chênh lên dai dẳng, (2) chênh lên trở lại sau khi đã hồi phục hoặc đã có xu hướng đi xuống, hoặc (3)<br>ST chênh lên tăng thêm.  Nghiên cứu được<br>coi là không xác định nếu không phân biệt được các đỉnh hoặc đáy rõ ràng và<br>các xu hướng tương ứng.</p>
+<p><u>Kết quả:</u>  Có 144 lần phân tích đoạn ST.  Trong 35 lần chụp mạch thực hiện trong các giai đoạn chênh lên (trở lại) rõ ràng<br>(chỉ điểm <strong>tắc</strong>), 25 IRA bị<br>tắc trên chụp mạch.  Trong 91<br>lần chụp mạch thực hiện trong các giai đoạn hồi phục rõ ràng (chỉ điểm <strong>tái tưới máu</strong>), 81<br>IRA thông trên chụp mạch.  Trong<br>18 lần phân tích không xác định, 14 thông trên chụp mạch.  Nếu nhóm không xác định được coi là<br>“có lẽ không tắc”, thì IRA thông ở 95 trong 109 trường hợp (87%) được<br>dự báo như vậy và tắc ở 25 trong 35 trường hợp (71%) được dự báo như vậy.  Trong 35 bệnh nhân có phân tích hồi phục ST<br>xác định IRA là “tắc” (dựa trên ST chênh lên dai dẳng<br>hoặc tái phát), chỉ 5 người có dòng chảy TIMI-3.  Trong<br>109 bệnh nhân, phân tích xác định “có lẽ không tắc” (“không xác định” hoặc<br>“thông”) và trong số này 73 có dòng chảy TIMI-3, 22 có dòng chảy TIMI-2, và 14 có<br>dòng chảy TIMI-0 hoặc 1.  Như vậy, <strong>“tắc” có giá trị tiên đoán dương (PPV) đối với dòng chảy TIMI 0-2 là<br>86%, và “có lẽ không tắc” có độ nhạy 94% và PPV 67% đối với<br>dòng chảy TIMI-3, và PPV 87% đối với dòng chảy TIMI-2 hoặc -3.<br></strong></p>
+<p><u>Bình luận:</u>  Dòng chảy TIMI-3 sau tiêu sợi huyết đi kèm<br>kết cục tốt hơn nhiều so với ngay cả dòng chảy TIMI-2 (26, 328).  Do đó, khả năng phân biệt dòng chảy TIMI-3<br>với dòng chảy TIMI-0 đến -2 trên điện tâm đồ là quan trọng.</p>
+<p><strong><em>Klootwijk P và cs.,<br>Non-invasive prediction of reperfusion and coronary artery patency by<br>continuous ST segment monitoring in the GUSTO-I trial, 1996 (Dự báo không xâm lấn tình trạng tái tưới máu và độ thông động mạch vành bằng theo dõi đoạn ST liên tục trong thử nghiệm GUSTO-I).</em></strong></p>
+<p><u>Phương pháp:</u>  Klootwijk và cs. (331) đã nghiên cứu điện tâm đồ của 373<br>bệnh nhân GUSTO-1 (xem Phụ lục) bằng phương pháp phân tích<br>hồi phục đoạn ST liên tục trên 12 chuyển đạo.</p>
+<p><u>Kết quả:</u>  Các giá trị dự báo đối với tái tưới máu hoặc<br>tắc dai dẳng không tốt bằng trong nghiên cứu của Krucoff và cs.<br>đã mô tả ở trên (159).  Các lần chụp mạch được<br>thực hiện muộn hơn đáng kể (trong khoảng 90-180 phút) trong nghiên cứu này.  Do đó, độ chính xác dự báo<br>được dự kiến sẽ thấp hơn vì đoạn ST ở những vùng nhồi máu dai dẳng<br>giảm dần theo thời gian do tế bào cơ tim chết.  Mức giảm &gt;/= 50% so với đỉnh và không có<br>chênh lên trở lại dai dẳng trước khi chụp mạch được dùng làm dự báo<br>“thông”. Độ chính xác rất cao (79-100%) ở bệnh nhân có ST chênh lên nhiều<br>(&gt; 4 mm).  Ở 116 bệnh nhân có ST chênh lên đỉnh<br>&gt;/= 4 mm, dự báo “thông” có PPV 79% và giá trị tiên đoán âm (NPV)<br>75%.</p>
+<p><strong><em>Doevendans PA và cs.,<br>Electrocardiographic diagnosis of reperfusion during thrombolytic therapy in<br>acute myocardial infarction, 1995 (Chẩn đoán tái tưới máu bằng điện tâm đồ trong khi điều trị tiêu sợi huyết nhồi máu cơ tim cấp).</em></strong></p>
+<p><u>Phương pháp:</u>  Doevendans và cs. (156) đã theo dõi đoạn ST liên tục<br>ở 61 bệnh nhân AMI trong 60 phút sau điều trị tiêu sợi<br>huyết.</p>
+<p><u>Kết quả:</u>  <strong>Tái tưới máu<br>đi kèm hồi phục ST nhanh, thường sau một đợt chênh lên thoáng qua</strong>.  Trong 44 bệnh nhân có tái tưới máu, 42 người có<br>mức giảm ST chênh lên &gt;/= 25% so với chiều cao tối đa (độ nhạy 95%), nhưng<br>chỉ một trong 17 bệnh nhân không tái tưới máu có mức trở về bình thường như vậy<br>(độ đặc hiệu 94%).  Khi dùng mức giảm 50%<br>ST chênh lên làm điểm cắt, độ nhạy là 85% (38 trong 44 bệnh nhân) và<br>độ đặc hiệu vẫn là 94%.  <strong>Hết đau ngực </strong>cũng là một dấu hiệu rất nhạy<br>của tái tưới máu; 25 trong 26 bệnh nhân có tái tưới máu hết đau trong vòng 1<br>giờ.  Mười tám bệnh nhân hết<br>đau sau một đợt đau tăng lên thoáng qua, thường rõ rệt.  <strong>Sóng T đảo ngược phần cuối<br>rất đặc hiệu cho tái tưới máu</strong>; 28 trong 44 bệnh nhân có<br>tái tưới máu có sóng T đảo ngược phần cuối, trong khi chỉ 1 trong 17 bệnh nhân không có<br>tái tưới máu có sóng T đảo ngược phần cuối.<br><strong>Nhịp tự thất gia tốc (AIVR) là chỉ dấu đặc hiệu nhưng<br>không nhạy của tái tưới máu</strong>; 16 trong 42 bệnh nhân ở nhóm được tái tưới máu có<br>AIVR so với một trong 17 ở nhóm không được tái tưới máu.<br>Các “rối loạn nhịp do tái tưới máu” khác ít gặp và ít có giá trị<br>tiên lượng.  CK-MB đạt đỉnh sớm hơn ở<br>nhóm được tái tưới máu.</p>
+<p><strong><em>Veldkamp RF và cs., Comparison<br>of continuous ST-segment recovery analysis with methods using static<br>electrocardiograms for noninvasive patency assessment during acute myocardial<br>infarction, 1994 (So sánh phân tích hồi phục đoạn ST liên tục với các phương pháp dùng điện tâm đồ tĩnh để đánh giá không xâm lấn độ thông mạch trong nhồi máu cơ tim cấp).</em></strong></p>
+<p><u>Phương pháp:</u><strong>  Veldkamp và<br>cs. (346) đã phân tích điện tâm đồ và dữ liệu lâm sàng của 82 bệnh nhân trong nghiên cứu nói trên<br>của Krucoff và cs. (159) để so sánh phân tích hồi phục ST liên tục với 5<br>phương pháp tĩnh.  </strong></p>
+<p><strong><u>Kết quả:</u></strong><strong>  Các phương pháp<br>tĩnh như các phương pháp mà Saran và cs. (344), Hackworthy và cs. (347) và<br>Clemmensen và cs. (348) sử dụng có độ chính xác tương đương phân tích hồi phục ST<br>liên tục; xem phần bên dưới về điện tâm đồ tĩnh.</strong></p>
+<p><strong><em>Hohnloser SH và cs., Assessment<br>of coronary artery patency after thrombolytic therapy: accurate prediction<br>using the combined analysis of three noninvasive markers, 1991 (Đánh giá độ thông động mạch vành sau điều trị tiêu sợi huyết: dự báo chính xác bằng phân tích kết hợp ba chỉ dấu không xâm lấn).</em></strong></p>
+<p><u>Phương pháp:</u>  Hohnloser và cs. (338) đã dùng Holter<strong> </strong>và chụp mạch vành trong một nghiên cứu tiến cứu<br>trên 82 bệnh nhân được tiêu sợi huyết vì nhồi máu cơ tim lần đầu.</p>
+<p><u>Kết quả:</u>  Trong 82 bệnh nhân, 63 người có tái tưới máu<br>TIMI-2 hoặc -3.  Mức giảm 50% ST<br>chênh lên đo lúc 60 đến 90 phút sau tiêu sợi huyết có PPV 97% và<br>NPV 43% đối với tái tưới máu. <strong> CK<br>đạt đỉnh &lt; 12 giờ là chỉ dấu chính xác của tái tưới máu.</strong></p>
+<h3 id="dien-tam-do-tinh-ghi-thuong-xuyen">Điện tâm đồ tĩnh ghi thường xuyên</h3>
+<p><strong><em>Shah PK và cs., Angiographic<br>validation of bedside markers of reperfusion, 1993 (Thẩm định bằng chụp mạch các chỉ dấu tái tưới máu tại giường)</em></strong>.</p>
+<p><u>Phương pháp:</u>  <strong>Shah và cs. (158) đã ghi điện tâm đồ tĩnh mỗi 5-10<br>phút sau điều trị tiêu sợi huyết ở 82 bệnh nhân AMI, trong tối đa 3 giờ, cho tới khi<br>chụp mạch.  </strong></p>
+<p><strong><u>Kết quả:</u></strong><strong>  Các<br>kết quả của họ rất giống với kết quả của Doevendans và cs. (156) đã mô tả<br>ở trên.  Chụp mạch cho thấy 69<br>trong 82 bệnh nhân có IRA thông với dòng chảy TIMI-3 và những bệnh nhân này<br>đều biểu hiện giảm nhanh, tiến triển cả đau ngực lẫn ST<br>chênh lên.</strong><strong> </strong><strong>Đau hết trong 24 +/- 23 phút (tối đa 50 phút) và ST chênh lên giảm<br>&gt;/= 50% xảy ra trong vòng 16 +/- 14 phút (tối đa 41 phút)<br>sau khi phục hồi dòng chảy TIMI-3.  Sóng T đảo ngược<br>phần cuối và AIVR cũng là những chỉ dấu đặc hiệu nhưng không nhạy của<br>tái tưới máu.</strong><strong>  Nghiên cứu này cho thấy tầm quan trọng của việc<br>ghi điện tâm đồ tĩnh thường xuyên và sự kém nhạy khi chỉ dùng 2 điện tâm đồ tĩnh để<br>phát hiện tái tưới máu.  Ở 58% bệnh nhân,<br>đoạn ST không ổn định, tăng lên rồi giảm xuống, trước khi hồi phục hẳn.</strong></p>
+<h3 id="dien-tam-do-tinh-ghi-thua">Điện tâm đồ tĩnh ghi thưa</h3>
+<p><strong><em>Califf RM và cs., Failure of<br>simple clinical measurements to predict perfusion status after intravenous<br>thrombolysis, 1988 (Thất bại của các phép đo lâm sàng đơn giản trong dự báo tình trạng tưới máu sau tiêu sợi huyết đường tĩnh mạch).</em></strong></p>
+<p><u>Phương pháp:</u>  Califf và cs. (339)<br>đã chụp mạch vành ở 386 bệnh nhân TAMI lúc 60 và 90 phút<br>sau khi dùng chất hoạt hóa plasminogen mô (tPA).  Họ ghi một điện tâm đồ nền và một điện tâm đồ khác lúc<br>90 phút sau tPA, trước lần bơm thuốc cản quang mạch vành lúc 90 phút.</p>
+<p><u>Kết quả:</u>  <strong>Họ<br>không tìm thấy chỉ dấu tái tưới máu nào vừa nhạy VỪA đặc hiệu khi dùng điện tâm đồ tĩnh<br>ghi thưa</strong>.  Sự hồi phục hoàn toàn các thay đổi<br>đoạn ST và sóng T đi kèm tỷ lệ IRA thông 96% lúc 90<br>phút sau tPA, nhưng điều này chỉ xảy ra ở 6% bệnh nhân.  Chỉ 38% bệnh nhân có “hồi phục một phần”<br>đoạn ST, trong đó 84% có tái tưới máu.<br>Hết đau ngực hoàn toàn xảy ra ở 29%, trong đó 84% có tái tưới máu<br>IRA.  Đau ngực không đổi hoặc nặng hơn<br>xảy ra ở 20%, trong đó 60% có tái tưới máu.  IRA thông được ghi nhận ở 56%<br>bệnh nhân không hết triệu chứng cũng không hồi phục ST, và 63% bệnh nhân không<br>thay đổi đoạn ST có tái tưới máu.<br>Mặc dù rối loạn nhịp xảy ra thường xuyên trong 90 phút đầu<br>điều trị, không loại nào đi kèm tỷ lệ thông mạch cao hơn.</p>
+<p><strong><em>Saran RK và cs., Reduction in<br>ST segment elevation after thrombolysis predicts either coronary reperfusion or<br>preservation of left ventricular function, 1990 (Mức giảm ST chênh lên sau tiêu sợi huyết dự báo hoặc tái tưới máu mạch vành, hoặc chức năng thất trái được bảo tồn).</em></strong></p>
+<p><u>Phương pháp:</u>  Saran và cs. (344) đã chụp mạch vành ở<br>45 bệnh nhân AMI trong vòng 3 giờ sau khi dùng anistreplase.</p>
+<p><u>Kết quả:</u>  Khi dùng chuyển đạo có ST chênh lên nhiều nhất<br>trên <strong>điện tâm đồ tĩnh</strong>, mức hồi phục ST<br>&gt;/= 25% lúc 3 giờ là không đặc hiệu.<br>Đoạn ST đã giảm &gt;/= 25% ở 30 trong 31 bệnh nhân có tái tưới máu TIMI-2 hoặc<br>-3, nhưng cũng ở 8 trong 14 bệnh nhân chỉ có dòng chảy<br>TIMI-0 hoặc -1.  Như vậy, nếu đoạn ST giảm<br>&gt;/= 25%, độ đặc hiệu chỉ là 43%; nghĩa là nhiều IRA vẫn<br>tắc.  <strong>Ba giờ sau điều trị tiêu sợi huyết là quá muộn để sự hồi phục ST </strong>trở thành một chỉ dấu có ý nghĩa của tái tưới máu<strong> </strong>vì đoạn ST giảm dần,<br>ngay cả ở cơ tim bị nhồi máu dai dẳng.<br>Thời điểm đó<strong> cũng quá muộn để đưa ra<br>quyết định PCI cứu vãn.</strong>  Nếu đoạn ST<br>giảm &lt; 25%, nhiều khả năng tắc dai dẳng, với PPV<br>86%.  Điều quan trọng là <strong>EF toàn bộ được duy trì tốt </strong>ở những bệnh nhân có<strong> đoạn ST<br>giảm &gt; 25% và động mạch bị tắc</strong>.  Saran và cs. kết luận rằng mức giảm ST<br>chênh lên &gt; 25% trong vòng 3 giờ sau tiêu sợi huyết cho thấy hoặc IRA<br>thông, hoặc chức năng thất trái được bảo tồn.</p>
+<p><strong><em>Clemmensen P và cs., Changes in<br>standard electrocardiographic ST-segment elevation predictive of successful<br>reperfusion in acute myocardial infarction, 1990 (Các thay đổi ST chênh lên trên điện tâm đồ chuẩn có giá trị dự báo tái tưới máu thành công trong nhồi máu cơ tim cấp).</em></strong></p>
+<p><u>Phương pháp:</u>  Clemmensen và cs. (348) đã nghiên cứu 53 bệnh nhân<br>trong tối đa 8 giờ sau khi dùng SK.<br>Họ tính điểm ST bằng tổng mức ST chênh lên ở 11 chuyển đạo,<br>dựa trên điện tâm đồ tĩnh ghi trong vòng 5 phút quanh thời điểm chụp mạch.</p>
+<p><u>Kết quả:</u>  Chụp mạch cho thấy tái tưới máu (dòng chảy TIMI-2<br>hoặc -3) ở 33 trong 53 bệnh nhân.  Mức<br>giảm ST chênh lên &gt;/= 20% có độ nhạy 88% và độ đặc hiệu 80% đối với<br>tái tưới máu, với PPV 88% và NPV 80%.  Clemmensen và cs. kết luận rằng <strong>mức giảm chỉ 20% điểm ST<br>sau điều trị tiêu sợi huyết là một yếu tố dự báo hữu ích và không xâm lấn về<br>tình trạng tái tưới máu ở bệnh nhân AMI đang tiến triển.  </strong></p>
+<p><u>Bình luận:</u>  Việc đánh giá độ thông mạch trên chụp mạch muộn tới<br>8 giờ sau điều trị làm giảm giá trị của dữ liệu này.</p>
+<h3 id="song-t-dao-nguoc-va-tien-luong">Sóng T đảo ngược và tiên lượng</h3>
+<p>Xem thêm Doevendans và<br>cs. (156) ở trên.</p>
+<p><strong><em>Oliva<br>PB và cs., Electrocardiographic diagnosis of postinfarction regional<br>pericarditis: ancillary observations regarding the effect of reperfusion on the<br>rapidity and amplitude of T wave inversion after acute myocardial infarction,<br>1993 (Chẩn đoán viêm màng ngoài tim khu trú sau nhồi máu bằng điện tâm đồ: các quan sát bổ sung về ảnh hưởng của tái tưới máu lên tốc độ và biên độ sóng T đảo ngược sau nhồi máu cơ tim cấp).</em></strong></p>
+<p><u>Phương pháp:</u><br>Oliva và cs. (94) đã nghiên cứu 200 bệnh nhân AMI để đánh giá các thay đổi sóng T<br>liên tiếp như những chỉ dấu tiên lượng.</p>
+<p><u>Kết quả:</u><br>Chín mươi phần trăm bệnh nhân có tái tưới máu có mức âm tối đa<br>của sóng T &gt;/= 3 mm ở chuyển đạo ban đầu có ST chênh lên nhiều nhất<br>trong vòng 48 giờ kể từ khi khởi phát đau ngực.<br>Bảy mươi sáu phần trăm bệnh nhân không tái tưới máu có<br>mức âm tối đa của sóng T &lt;/= 2 mm trong vòng 72 giờ.  Oliva và cs. kết luận rằng <strong>sự tiến triển nhanh và sâu dần của sóng T<br>có thể là những chỉ dấu không xâm lấn hữu ích của tái tưới máu.</strong></p>
+<p><strong><em>Matetzky S và cs., Early T wave<br>inversion after thrombolytic therapy predicts better coronary perfusion:<br>clinical and angiographic study, 1994 (Sóng T đảo ngược sớm sau điều trị tiêu sợi huyết dự báo tưới máu mạch vành tốt hơn: nghiên cứu lâm sàng và chụp mạch).</em></strong></p>
+<p><u>Phương pháp:</u>  Matetzky (336) và cs. đã chụp mạch vành lúc nhập viện và<br>trước khi ra viện, cùng chụp thất bằng đồng vị phóng xạ ở 94 bệnh nhân AMI liên tiếp<br>được dùng tPA.</p>
+<p><u>Kết quả:</u>  <strong>Sóng<br>T đảo ngược sớm (&lt; 24 giờ) đi kèm tỷ lệ IRA thông cao hơn,<br>mức tưới máu tốt hơn và diễn biến trong bệnh viện lành tính hơn</strong>.  Ngoài ra, mặc dù số bệnh nhân<br>có EF bình thường (&gt;55%) lúc nhập viện là tương đương, 71% bệnh nhân có<br>sóng T đảo ngược sớm có EF bình thường lúc ra viện, so với 44% bệnh nhân<br>không có sóng T đảo ngược sớm.</p>
+<h3 id="dau-tang-va-st-chenh-len-tang-sau-dieu-tri-tieu-soi-huyet">Đau tăng và ST chênh lên tăng sau điều trị tiêu sợi huyết</h3>
+<p><strong><em>Dissman R và cs., Sudden<br>increase of the ST segment elevation at a time of reperfusion predicts<br>extensive infarcts in patients with intravenous thrombolysis, 1993 (ST chênh lên tăng đột ngột vào thời điểm tái tưới máu dự báo ổ nhồi máu rộng ở bệnh nhân được tiêu sợi huyết đường tĩnh mạch).</em></strong></p>
+<p><u>Phương pháp:</u>  Dissman và cs. (332) đã đo ST chênh lên<br>và CK mỗi 15 phút sau khi dùng thuốc tiêu sợi huyết ở 61 bệnh nhân<br>AMI.</p>
+<p><u>Kết quả:</u>  Tám bệnh nhân có ST chênh lên tăng<br>ngay sau tái tưới máu.  Điều này<br>đi kèm AMI rất rộng theo men tim, đỉnh men tim rất sớm và<br>EF thất trái kém hơn nhiều (39% +/- 14 so với 58% +/- 11, p &lt; 0,0005).  Sáu bệnh nhân cũng bị<br>đau ngực tăng lên rất rõ vào thời điểm ST chênh lên.<br>Nghiên cứu của Doevendans và cs. (156) đã mô tả ở trên và nghiên cứu của<br>Wehrens và cs. (157) đều ghi nhận đau ngực tăng lên tương tự sau điều trị và<br>trước khi có bằng chứng tái tưới máu trên điện tâm đồ.</p>
+<h3 id="st-chenh-xuong-soi-guong-va-tai-tuoi-mau">ST chênh xuống soi gương và tái tưới máu</h3>
+<p><strong><em>Shah A và cs., Comparative<br>prognostic significance of simultaneous versus independent resolution of ST<br>segment depression relative to ST segment elevation during acute myocardial<br>infarction, 1997 (So sánh ý nghĩa tiên lượng của sự hồi phục ST chênh xuống đồng thời với hồi phục độc lập so với ST chênh lên trong nhồi máu cơ tim cấp).</em></strong></p>
+<p><u>Phương pháp:</u>  Shah và cs. (143) đã theo dõi đoạn ST<br>liên tục ở 413 bệnh nhân AMI được dùng thuốc tiêu sợi huyết; 261 bệnh nhân<br>đáp ứng tiêu chuẩn kỹ thuật để phân tích mù các kiểu hồi phục<br>ST chênh xuống.</p>
+<p><u>Kết quả:</u>  Tỷ lệ tử vong trong bệnh viện là 13% ở những bệnh nhân<br>có ST chênh xuống soi gương tồn tại sau khi ST chênh lên đã hồi phục, so với<br>tỷ lệ tử vong 1% ở những bệnh nhân có ST chênh lên <strong>và </strong>ST chênh xuống hồi phục<br>đồng thời.</p>
+<h3 id="roi-loan-nhip-do-tai-tuoi-mau">Rối loạn nhịp do tái tưới máu</h3>
+<p>Mặc dù<br>có ít y văn ủng hộ tình trạng rối loạn nhịp thất ác tính do tái tưới<br>máu, nhiều bác sĩ can thiệp và bác sĩ lâm sàng điều trị AMI tin chắc<br>rằng các loạt nhịp nhanh thất có liên quan trực tiếp với việc mở thông IRA,<br>đặc biệt ở những ổ nhồi máu rộng được tái tưới máu rất sớm.</p>
+<p><strong><em>Gorgels AP và cs., Usefulness<br>of the accelerated idioventricular rhythm as a marker for myocardial necrosis<br>and reperfusion during thrombolytic therapy in acute myocardial infarction,<br>1988 (Giá trị của nhịp tự thất gia tốc như một chỉ dấu hoại tử cơ tim và tái tưới máu trong khi điều trị tiêu sợi huyết nhồi máu cơ tim cấp) </em></strong><u>và</u><strong><em> Goldberg S và cs., Limitation of infarct size with<br>thrombolytic agents: electrocardiographic indexes, 1983 (Hạn chế kích thước ổ nhồi máu bằng thuốc tiêu sợi huyết: các chỉ số điện tâm đồ) </em></strong><u>và</u><strong><em> Miller FC<br>và cs., Ventricular arrhythmias during reperfusion, 1986 (Rối loạn nhịp thất trong lúc tái tưới máu).</em></strong></p>
+<p><u>Phương pháp:</u>  Gorgels và cs. (349) và Goldberg và cs.<br>(350) nằm trong số những người đầu tiên mô tả “rối loạn nhịp do tái tưới máu” (reperfusion arrhythmias). Gorgels và<br>cs. nghiên cứu tiến cứu 87 bệnh nhân nhập viện vì đau ngực do thiếu máu cục bộ và Goldberg và<br>cs. nghiên cứu 44 bệnh nhân nhồi máu cơ tim cấp (AMI) được chụp mạch vành.  Miller và cs. (351) tiến hành theo dõi<br>Holter trên 52 bệnh nhân.</p>
+<p><u>Kết quả:</u>  Gorgels và cs. ghi nhận nhịp tự thất gia tốc (AIVR) ở 27 trong số 70 bệnh nhân AMI<br>có tái tưới máu.  Goldberg và<br>cs. ghi nhận một dạng rối loạn nhịp do tái tưới máu nào đó, thường gặp nhất là AIVR, ở 20 trong số 27<br>bệnh nhân AMI có tái tưới máu.  Miller và<br>cs. không thấy mối liên quan có ý nghĩa nào giữa AIVR hoặc nhịp nhanh thất<br>với tái tưới máu hay với tình trạng tắc kéo dài.</p>
+<p><strong><em>Hohnloser SH và cs., Assessment<br>of coronary artery patency after thrombolytic therapy: accurate prediction<br>using the combined analysis of three noninvasive markers, 1991 (Đánh giá độ thông động mạch vành sau điều trị tiêu sợi huyết: dự báo chính xác bằng phân tích kết hợp ba chỉ dấu không xâm lấn).</em></strong></p>
+<p><u>Phương pháp:</u>  Hohnloser và cs. (338)<br>nghiên cứu tiến cứu 82 bệnh nhân AMI lần đầu được điều trị bằng thuốc tiêu sợi huyết.</p>
+<p><u>Kết quả:</u>  AIVR chỉ liên quan với tái tưới máu trong<br>AMI thành dưới.</p>
+<p><strong><em>Shah PK và cs., Angiographic<br>validation of bedside markers of reperfusion, 1993 (Thẩm định bằng chụp mạch các chỉ dấu tái tưới máu tại giường).</em></strong><strong><em> </em></strong></p>
+<p><u>Kết quả:</u>  Shah và cs. (158) (đã mô tả ở trên) ghi nhận<br>49% bệnh nhân có tái tưới máu xuất hiện AIVR.</p>
+<p><strong><em>Gore JM và cs., Arrhythmias in<br>the assessment of coronary artery reperfusion following thrombolytic therapy,<br>1988 (Rối loạn nhịp trong đánh giá tái tưới máu động mạch vành sau điều trị tiêu sợi huyết).</em></strong></p>
+<p><u>Phương pháp:</u><strong><em> </em></strong> Gore và cs. (352) chụp mạch vành<br>trong vòng 8 giờ kể từ khi khởi phát triệu chứng cho 67 bệnh nhân AMI được điều trị bằng<br>thuốc tiêu sợi huyết.</p>
+<p><u>Kết quả:</u>   Năm mươi sáu bệnh nhân bị tắc hoàn toàn động mạch liên quan đến nhồi máu (IRA),<br>25 người trong số đó được tái tưới máu trong vòng 90 phút sau điều trị.  Các rối loạn nhịp (bao gồm AIVR) không<br>liên quan có ý nghĩa với tái tưới máu.</p>
+<p><strong><em>Gressin V và cs., Holter<br>recording of ventricular arrhythmias during intravenous thrombolysis for acute<br>myocardial infarction, 1992 (Ghi Holter rối loạn nhịp thất trong khi tiêu sợi huyết đường tĩnh mạch điều trị nhồi máu cơ tim cấp).</em></strong></p>
+<p><u>Phương pháp:</u>  Gressin và cs. (353) theo dõi Holter 24 giờ<br>trên 40 bệnh nhân AMI được điều trị bằng thuốc tiêu sợi huyết.</p>
+<p><u>Kết quả:</u>  Tỷ lệ AIVR tăng có liên quan<br>với tình trạng thông của IRA.</p>
+<p><strong><em>Clements IP, The<br>electrocardiogram in acute myocardial infarction, 1998 (Điện tâm đồ trong nhồi máu cơ tim cấp).</em></strong></p>
+<p><u>Kết quả:</u>  Clements (335) trích dẫn một luận án của Veldkamp,<br>trong đó phân tích gộp 6 nghiên cứu (317 bệnh nhân) và thấy rằng AIVR sớm<br>dự đoán tình trạng thông của động mạch với độ đặc hiệu 97% nhưng độ nhạy chỉ 45%.</p>
+<h3 id="vecto-tim-do-vectorcardiography">Vectơ tim đồ (vectorcardiography)</h3>
+<p><strong><em>Dellborg M và cs., Dynamic QRS<br>complex and ST segment vectorcardiographic monitoring can identify vessel patency<br>in patients with acute myocardial infarction treated with reperfusion therapy,<br>1991 (Theo dõi động phức bộ QRS và đoạn ST bằng vectơ tim đồ có thể xác định độ thông mạch ở bệnh nhân nhồi máu cơ tim cấp được điều trị tái tưới máu).</em></strong></p>
+<p><u>Kết quả:</u>  Dellborg và cs. (354) xác định được 15 trong 16<br>bệnh nhân có tái tưới máu và 5 trong 6 bệnh nhân tắc kéo dài bằng<br>phân tích vectơ tim đồ các vectơ ST.<br>Chi tiết hơn nằm ngoài phạm vi của cuốn sách này.  Xem Clements (335) để có một<br>bàn luận xuất sắc về các phương pháp điện tâm đồ thay thế như<br>vectơ tim đồ và lập bản đồ trước tim (precordial mapping).<br>Xem thêm von Essen và cs. (355) và Badir và cs. (356) về các phân tích vectơ tim đồ<br>đối với tái tưới máu.</p>
+<h3 id="pci-cuu-van-rescue-pci">PCI cứu vãn (rescue PCI)</h3>
+<p><strong><em>Ross AM và cs., Rescue<br>angioplasty after failed thrombolysis: technical and clinical outcomes in a<br>large thrombolysis trial, 1998 (Nong bóng cứu vãn sau tiêu sợi huyết thất bại: kết cục kỹ thuật và lâm sàng trong một thử nghiệm tiêu sợi huyết lớn). </em></strong></p>
+<p><u>Phương pháp:</u>  Ross và cs. (323) phân tích dữ liệu của GUSTO-1 (xem<br>Phụ lục) về nong bóng cứu vãn, được định nghĩa là nong bóng tiến hành trong vòng<br>6 giờ kể từ khi bắt đầu điều trị tiêu sợi huyết.<br>Họ so sánh 198 bệnh nhân được chọn không ngẫu nhiên để nong bóng cứu vãn,<br>226 bệnh nhân tiêu sợi huyết thất bại được xử trí bảo tồn, và 1058<br>bệnh nhân tiêu sợi huyết thành công.</p>
+<p><u>Kết quả:</u>  Bệnh nhân được nong bóng cứu vãn có chức năng thất trái<br>suy giảm nhiều hơn trước can thiệp.<br>Nong bóng cứu vãn thành công ở 88,4% số động mạch bị tắc, đạt dòng chảy TIMI-3<br>ở 68%.  Nong bóng cứu vãn thành công<br>đi kèm <strong>chức năng thất trái tốt hơn và tử vong thấp hơn</strong> so với<br>xử trí bảo tồn các động mạch bị tắc.<br>Cả biến chứng chảy máu (8,6% so với 6,8%) lẫn nhu cầu phẫu thuật bắc cầu chủ vành (CABG)<br>(1,0% so với 0,4%) đều không khác biệt có ý nghĩa giữa 2 nhóm.</p>
+<p><strong><em>Ellis SG và cs., Randomized<br>comparison of rescue angioplasty with conservative management of patients with<br>early failure of thrombolysis for acute anterior myocardial infarction, 1994 (So sánh ngẫu nhiên nong bóng cứu vãn với xử trí bảo tồn ở bệnh nhân tiêu sợi huyết thất bại sớm trong nhồi máu cơ tim cấp thành trước).</em></strong></p>
+<p><u>Phương pháp:</u>  Ellis và cs. (357) phân ngẫu nhiên 151 bệnh nhân<br>AMI thành trước lần đầu và tiêu sợi huyết thất bại, được xác định bằng chụp mạch vành<br>thực hiện trong vòng 8 giờ sau điều trị, vào nhóm nong bóng hoặc nhóm xử trí<br>bảo tồn.</p>
+<p><u>Kết quả:</u>  Nong bóng thực hiện vào thời điểm trung bình 4,5 +/-<br>1,9 giờ sau điều trị tiêu sợi huyết đã thành công ở 72 trong 78 (92%)<br>bệnh nhân.  Kết cục ở nhóm nong bóng<br>so với nhóm xử trí bảo tồn lần lượt là: tử vong 5% so với 10% (P =<br>0,18), suy tim nặng 1% so với 7% (P = 0,11), và tử vong hoặc suy tim<br>nặng 6% so với 17% (P = 0,05).<br>Chức năng thất trái lúc nghỉ không khác biệt.</p>
+<p><strong><em>McKendall GR và cs., Value of<br>rescue percutaneous transluminal coronary angioplasty following unsuccessful<br>thrombolytic therapy in patients with acute myocardial infarction, 1995 (Giá trị của nong mạch vành qua da cứu vãn sau điều trị tiêu sợi huyết không thành công ở bệnh nhân nhồi máu cơ tim cấp).</em></strong></p>
+<p><u>Phương pháp:</u>  McKendall và cs. (358) nghiên cứu 133 bệnh nhân<br>tham gia các thử nghiệm TIMI Pha I Nhãn mở (Open Label) và Pha II; 100 bệnh nhân không được<br>nong bóng cứu vãn và 33 bệnh nhân được nong bóng cứu vãn theo đề cương nghiên cứu<br>(không theo lựa chọn của bác sĩ) nếu phim chụp mạch vành lúc 90 phút cho thấy IRA tắc<br>kéo dài.</p>
+<p><u>Kết quả:</u>  Thời gian từ khởi phát triệu chứng hoặc<br>từ điều trị tiêu sợi huyết đến nong bóng không được nêu, nhưng có vẻ là <strong>90 đến 120<br>phút</strong>.  Hai nhóm có đặc điểm<br>ban đầu tương tự.  Nong bóng cứu vãn<br>thành công về mặt kỹ thuật ở 26 trong 33 bệnh nhân (82%).  Tỷ lệ tử vong tại thời điểm 21 ngày là 12% ở nhóm<br>cứu vãn và 7% ở nhóm không cứu vãn (p=NS).<br>Cứu vãn thất bại đi kèm tỷ lệ tử vong 33%.  EF thất trái trung bình như nhau ở cả hai nhóm.</p>
+<p><strong><em>CORAMI Study Group, Outcome of<br>attempted rescue coronary angioplasty after failed thrombolysis for acute<br>myocardial infarction, 1994 (Kết cục của nong mạch vành cứu vãn sau tiêu sợi huyết thất bại trong nhồi máu cơ tim cấp).</em></strong></p>
+<p><u>Phương pháp:</u>  Nhóm Nghiên cứu CORAMI (CORAMI Study Group) (359) đánh giá kết cục ngắn<br>hạn và trung hạn của 299 bệnh nhân AMI liên tiếp được dùng<br>thuốc tiêu sợi huyết &lt; 6 giờ sau khởi phát triệu chứng và được chụp mạch vành lúc 90<br>phút sau dùng thuốc tiêu sợi huyết.</p>
+<p><u>Kết quả:</u>  Trong 299 bệnh nhân, 87 (29%) tiêu sợi huyết<br>thất bại (dòng chảy TIMI-0 đến -1), trong đó 72 người được nong bóng cứu vãn <strong>trong vòng<br>8 giờ kể từ khi khởi phát triệu chứng</strong>.  Bảy<br>bệnh nhân (10%) đang trong tình trạng sốc tim tại thời điểm chụp mạch vành.  Thành công về kỹ thuật (dòng chảy TIMI-3) đạt được<br>ở 65 bệnh nhân (90%) vào thời điểm trung bình 300 +/- 101 phút sau điều trị<br>tiêu sợi huyết.    Chín bệnh nhân (12%) bị<br>tụ máu tại vị trí đường vào mạch máu.  Ba bệnh nhân<br>(4%) tử vong, 2 trong 65 ca cứu vãn thành công và 1 trong 7 ca cứu vãn thất bại.</p>
+<p><strong><em>Gibson C và cs., Rescue<br>angioplasty in the Thrombolysis in Myocardial Infarction (TIMI) 4 trial, 1997 (Nong bóng cứu vãn trong thử nghiệm Tiêu sợi huyết trong Nhồi máu cơ tim (TIMI) thứ tư).</em></strong></p>
+<p><u>Phương pháp:</u>  Gibson và cs. (360) nghiên cứu 95 bệnh nhân AMI<br>tiêu sợi huyết thất bại (dòng chảy TIMI 0-1) trong thử nghiệm TIMI-4.</p>
+<p><u>Kết quả:</u>  Năm mươi tám bệnh nhân được nong bóng<br>cứu vãn <strong>120 phút </strong>sau điều trị tiêu sợi huyết và 37 người không được nong bóng<br>cứu vãn.  Nhóm cứu vãn và nhóm không<br>cứu vãn có đặc điểm ban đầu tương tự.<br>Năm mươi hai trong 58 thủ thuật thành công.  Các kết cục bất lợi trong bệnh viện, bao gồm<br>tử vong, AMI tái phát, suy tim sung huyết (CHF) nặng, sốc tim và EF &lt; 40%, xảy ra<br>ở 35% số ca cứu vãn (29% số ca cứu vãn thành công<strong> </strong>và 83% số ca cứu vãn thất bại, p = 0,01), và cũng ở 35% số ca<br>không cứu vãn (p = NS).</p>
+<p><strong><em>Miller JM và cs., Effectiveness<br>of early coronary angioplasty and abciximab for failed thrombolysis (reteplase<br>or alteplase) during acute myocardial infarction (results from the GUSTO-III<br>trial), 1999 (Hiệu quả của nong mạch vành sớm và abciximab khi tiêu sợi huyết (reteplase hoặc alteplase) thất bại trong nhồi máu cơ tim cấp (kết quả từ thử nghiệm GUSTO-III)).</em></strong></p>
+<p><u>Phương pháp:</u>  Miller và cs. (361) nghiên cứu tiến cứu 392<br>bệnh nhân tham gia thử nghiệm GUSTO-III (reteplase so với tPA cho STEMI) (362)<br>được nong bóng cứu vãn theo cách không ngẫu nhiên; 83 bệnh nhân<br>được dùng abciximab và 309 người không dùng.</p>
+<p><u>Kết quả:</u>  Khi đã hiệu chỉnh theo các khác biệt ban đầu,<br>bệnh nhân được dùng abciximab có tỷ lệ tử vong thấp hơn có ý nghĩa.  Tỷ lệ chảy máu nặng (không kèm xuất huyết nội sọ [ICH]),<br>khi có so với khi không dùng abciximab trong lúc nong bóng là 3,5% so với 1,0% (p =<br>0,08).</p>
+<p><strong><em>Ellis SG và cs., Review of<br>immediate angioplasty after fibrinolytic therapy for acute myocardial<br>infarction, 2000 (Tổng quan về nong bóng ngay sau điều trị tiêu sợi huyết trong nhồi máu cơ tim cấp).</em></strong></p>
+<p><u>Phương pháp:</u> Ellis và cs. (324)<br>thực hiện một phân tích gộp 9 thử nghiệm ngẫu nhiên không đồng nhất về nong bóng<br>cứu vãn (1456 bệnh nhân).</p>
+<p><u>Kết quả:</u>  Nong bóng cứu vãn làm giảm tỷ lệ<br>CHF, tử vong và nhồi máu cơ tim tái phát.</p>
+<p><strong>Tóm lại</strong>, mặc dù<br>giá trị của PCI cứu vãn là hợp lý cả về trực giác lẫn khoa học, các<br>nghiên cứu hiện có quá nhỏ và phương pháp chưa đầy đủ để đưa ra kết luận<br>chắc chắn.  Tất cả các nghiên cứu đều có<br>độ trễ tối thiểu 2 giờ và độ trễ trung bình 4-5 giờ giữa điều trị tiêu sợi huyết<br>và bơm bóng.  Không nghiên cứu nào sử dụng<br>kỹ thuật hiện đại bao gồm stent, abciximab và/hoặc clopidogrel.  <strong>C</strong><strong>húng tôi khuyến cáo<br>PCI cứu vãn cho các ổ nhồi máu lớn không có bằng chứng tái tưới máu trên điện tâm đồ<br>sau điều trị tiêu sợi huyết một giờ </strong>trừ khi và cho đến khi có các nghiên cứu xét đến<br>những yếu tố này và chứng minh được <strong>sự thiếu hiệu quả</strong><strong>. </strong></p>
+<h5 id="tac-lai-reocclusion">Tắc lại (reocclusion)</h5>
+<p><strong><em>Langer A và cs., Prognostic<br>significance of ST segment shift early after resolution of ST elevation in<br>patients with myocardial infarction treated with thrombolytic therapy: the<br>GUSTO-I ST Segment Monitoring Substudy, 1998 (Ý nghĩa tiên lượng của dịch chuyển đoạn ST sớm sau khi ST chênh lên hồi phục ở bệnh nhân nhồi máu cơ tim được điều trị tiêu sợi huyết: nghiên cứu phụ Theo dõi đoạn ST của GUSTO-I).</em></strong></p>
+<p><u>Phương pháp:</u>  Langer và cs. (363) theo dõi đoạn ST<br>trong vòng 30 phút sau điều trị tiêu sợi huyết ở 734 bệnh nhân AMI.</p>
+<p><u>Kết quả:</u>  “Dịch chuyển đoạn ST” (ST segment shift), được định nghĩa là ST chênh lên<br>&gt;/= 1 mm trong 6-24 giờ sau tái tưới máu, tương quan với tỷ lệ tử vong 7,8%<br>tại 30 ngày và 10,3% tại 1 năm, so với tỷ lệ tử vong lần lượt là 2,3% và 5,7%<br>ở bệnh nhân không có dịch chuyển ST.</p>
+<p><strong><em>Ohman EM và cs., Consequences<br>of reocclusion after successful reperfusion therapy in acute myocardial<br>infarction, 1991 (Hậu quả của tắc lại sau điều trị tái tưới máu thành công trong nhồi máu cơ tim cấp).</em></strong></p>
+<p><u>Phương pháp:</u>  Ohman và cs. (89) nghiên cứu 810 bệnh nhân AMI<br>được chụp mạch vành 90 phút sau điều trị tiêu sợi huyết.</p>
+<p><u>Kết quả:</u>  Tái tưới máu xảy ra trong giai đoạn cấp ở 735 bệnh nhân,<br>645 người trong số đó (88%) được chụp mạch vành 7 ngày sau.  Tình trạng tắc <strong>LẠI</strong> IRA xảy ra ở 91<br>bệnh nhân (14%) và có triệu chứng ở 53 người.<br>Tắc lại đi kèm tỷ lệ tử vong trong bệnh viện cao hơn (11% so với<br>4,5%), diễn biến tại bệnh viện phức tạp hơn, và các dấu hiệu trên phim chụp mạch vành ban đầu gồm<br>hẹp RCA, mức độ hẹp nặng hơn và mức dòng chảy TIMI thấp hơn.</p>
+<p><strong><em>Dissman R và cs., Early<br>recurrence of ST-segment elevation in patients with initial reperfusion during<br>thrombolytic therapy: impact on in-hospital reinfarction and long-term vessel<br>patency, 1994 (ST chênh lên tái phát sớm ở bệnh nhân đã tái tưới máu ban đầu trong khi điều trị tiêu sợi huyết: ảnh hưởng lên tái nhồi máu trong bệnh viện và độ thông mạch lâu dài).</em></strong></p>
+<p><u>Phương pháp:</u>  Dissman và cs. (364) theo dõi<br>Holter 24 giờ trên 81 bệnh nhân AMI.</p>
+<p><u>Kết quả:</u>  Hồi phục đoạn ST trong 4 giờ đầu<br>xảy ra ở 67 bệnh nhân (83%), trong đó 31 người (46%, Nhóm 1a) có ST chênh lên trở lại<br>sau đó và 36 người (54%, Nhóm 1b) thì không.  Nhóm 1a có tỷ lệ<br>tái nhồi máu được xác nhận bằng CK-MB (26% so với 6%) và tắc mạch trên phim chụp mạch vành lúc<br>theo dõi (40% so với 17%) cao hơn nhiều so với Nhóm 1b.</p>
+<p><strong><em>Veldkamp RF và cs., Performance<br>of an automated real-time ST segment analysis program to detect coronary<br>occlusion and reperfusion, 1996 (Hiệu năng của một chương trình phân tích đoạn ST tự động theo thời gian thực trong phát hiện tắc và tái tưới máu mạch vành).</em></strong></p>
+<p><u>Phương pháp:</u>  Veldkamp và cs. (212) sử dụng một chương trình<br>phân tích đoạn ST tự động theo thời gian thực để phát hiện tắc lại trong 78 lần bơm bóng<br>gây tắc ở 31 bệnh nhân.</p>
+<p><u>Kết quả:</u>  Chương trình phát hiện được tắc do bóng và<br>tái tưới máu trong vòng vài giây ở tất cả các lần tắc gây ST chênh lên tối đa<br>&gt;/= 0,2 mV.</p>
+<p><strong><em>Krucoff MW và cs., Stability of<br>multilead ST-segment “fingerprints” over time after percutaneous<br>transluminal coronary angioplasty and its usefulness in detecting reocclusion,<br>1988 (Độ ổn định theo thời gian của “dấu vân tay” đoạn ST nhiều chuyển đạo sau nong mạch vành qua da và giá trị của nó trong phát hiện tắc lại).</em></strong></p>
+<p><u>Phương pháp:</u>  Krucoff và cs. (190) phân tích các bản ghi đoạn ST nhiều chuyển đạo<br>thực hiện trong lúc nong bóng ở 39 bệnh nhân.</p>
+<p><u>Kết quả:</u>  Tương tự Bush và cs. (83) đã mô tả ở trên,<br>trong vòng một giờ, việc bơm bóng gây tắc trong lần nong bóng lặp lại tạo ra một<br>“dấu vân tay thiếu máu cục bộ” (ischemic fingerprint) giống hệt trong 90% trường hợp.  AMI ở cùng mạch máu đó trong vòng 24 giờ sau<br>lần bơm bóng tạo ra dấu vân tay thiếu máu cục bộ này trong 87% trường hợp.<br>Như vậy,<strong> tắc lại tạo ra một cách đáng tin cậy<br>hình ảnh điện tâm đồ ban đầu của nhồi máu.<br></strong>Có thể theo dõi tắc lại<br>bằng theo dõi đoạn ST liên tục.</p>
+<h2 id="tai-lieu-tham-khao">TÀI LIỆU THAM KHẢO</h2>
+<p>318.     Shah A, Wagner GS, O’Connor CM, và cs.<br>Prognostic implications of TIMI flow grade in the infarct related artery<br>compared with continuous 12-lead ST-segment resolution analysis.  Reexamining the “gold standard” for<br>myocardial reperfusion treatment. J Am Coll Cardiol 2000; 35:666-672. (Ý nghĩa tiên lượng của mức dòng chảy TIMI ở động mạch liên quan đến nhồi máu so với phân tích hồi phục đoạn ST liên tục trên đủ chuyển đạo. Xem xét lại “tiêu chuẩn vàng” của điều trị tái tưới máu cơ tim)</p>
+<p>319.     Claeys<br>MJ, Bosmans J, Veenstra L, và cs. Determinants and prognostic<br>implications of persistent ST-segment elevation after primary angioplasty for<br>acute myocardial infarction: importance of microvascular reperfusion injury on<br>clinical outcome. Circulation<br>1999; 99:1972-1977. (Các yếu tố quyết định và ý nghĩa tiên lượng của ST chênh lên dai dẳng sau nong bóng tiên phát trong nhồi máu cơ tim cấp: tầm quan trọng của tổn thương tái tưới máu vi mạch đối với kết cục lâm sàng)</p>
+<p>320.     van’t<br>Hof AW, Liem A, de Boer MJ, và cs. Clinical value of 12-lead<br>electrocardiogram after successful reperfusion therapy for acute myocardial<br>infarction.  Zwolle Myocardial Infarction<br>Study Group. Lancet 1997; 350:615-619. (Giá trị lâm sàng của điện tâm đồ đủ chuyển đạo sau điều trị tái tưới máu thành công nhồi máu cơ tim cấp)</p>
+<p>321.     Dissman R, Schroder R, Busse U, và cs.<br>Early assessment of outcome by ST segment analysis after thrombolytic therapy<br>in acute myocardial infarction. Am Heart J 1994; 128:851-857. (Đánh giá sớm kết cục bằng phân tích đoạn ST sau điều trị tiêu sợi huyết trong nhồi máu cơ tim cấp)</p>
+<p>322.     Schroder R, Wegscheider K, Schroder K,<br>Dissmann R, Meyer-Sabellek W. Extent of early ST segment elevation resolution:<br>a strong predictor of outcome in patients with acute myocardial infarction and<br>a sensitive measure to compare thrombolytic regimens.  A substudy of the International Joint<br>Efficacy Comparison of Thrombolytics (INJECT) trial. J Am Coll Cardiol 1995;<br>26:1657-1664. (Mức độ hồi phục sớm ST chênh lên: yếu tố dự báo mạnh về kết cục ở bệnh nhân nhồi máu cơ tim cấp và là thước đo nhạy để so sánh các phác đồ tiêu sợi huyết. Một nghiên cứu phụ của thử nghiệm INJECT)</p>
+<p>323.     Ross AM, Lundergan CF, Rohrbeck SC,<br>và cs. Rescue angioplasty after failed thrombolysis: technical and clinical<br>outcomes in a large thrombolysis trial. J Am Coll Cardiol 1998; 31:1511-1517. (Nong bóng cứu vãn sau tiêu sợi huyết thất bại: kết cục kỹ thuật và lâm sàng trong một thử nghiệm tiêu sợi huyết lớn)</p>
+<p>324.     Ellis SG, da Silva ER, Spaulding CM,<br>Nobuyoshi M, Weiner B, Talley D. Review of immediate angioplasty after<br>fibrinolytic therapy for acute myocardial infarction. Am Heart J 2000;<br>139:1046-1053. (Tổng quan về nong bóng ngay sau điều trị tiêu sợi huyết trong nhồi máu cơ tim cấp)</p>
+<p>325.     The TIMI Study Group. The thrombolysis in<br>myocardial infarction (TIMI) trial. N Engl J Med 1985; 312:932-936. (Thử nghiệm Tiêu sợi huyết trong Nhồi máu cơ tim (TIMI))</p>
+<p>326.     Gibson CM, Cannon CP, Murphy SA, và cs.<br>Relationship of TIMI myocardial perfusion grade to mortality after<br>administration of thrombolytic drugs. Circulation 2000; 101:125-130. (Mối liên quan giữa mức tưới máu cơ tim TIMI và tử vong sau dùng thuốc tiêu sợi huyết)</p>
+<p>327.     Cannon CP, Braunwald E. GUSTO, TIMI and the<br>Case for Rapid Reperfusion (editorial). Acta Cardiologica 1994; 49:1-8. (GUSTO, TIMI và lập luận ủng hộ tái tưới máu nhanh (bài xã luận))</p>
+<p>328.     Lenderink T, Maarten L, Van Es GA, Van de<br>Werf F, Verstraete M, Arnold A. Benefit of thrombolytic therapy is sustained<br>throughout five years and is related to TIMI perfusion grade 3 but not grade 2<br>flow at discharge.  Clinical<br>investigation and reports. Circulation 1995; 92:1110-1116. (Lợi ích của điều trị tiêu sợi huyết được duy trì suốt năm năm và liên quan đến dòng chảy mức ba chứ không phải mức hai theo phân độ tưới máu TIMI lúc ra viện)</p>
+<p>329.     van’t Hof AW, Liem A, Suryapranata H, và<br>cs. Angiographic assessment of myocardial reperfusion in patients treated with<br>primary angioplasty for acute myocardial infarction: myocardial blush<br>grade.  Zwolle Myocardial Infarction<br>Study Group. Circulation 1998; 97:2303-2306. (Đánh giá tái tưới máu cơ tim trên chụp mạch ở bệnh nhân nhồi máu cơ tim cấp được nong bóng tiên phát: mức ngấm thuốc cơ tim – blush)</p>
+<p>330.     von Essen R, Merx W, Effert S. Spontaneous<br>course of ST-segment elevation in acute anterior myocardial infarction.<br>Circulation 1979; 59:105-112. (Diễn tiến tự nhiên của ST chênh lên trong nhồi máu cơ tim cấp thành trước)</p>
+<p>331.     Klootwijk P, Langer A, Meij S, và cs.<br>Non-invasive prediction of reperfusion and coronary artery patency by<br>continuous ST segment monitoring in the GUSTO-I trial. Eur Heart J 1996;<br>17:689-698. (Dự báo không xâm lấn tình trạng tái tưới máu và độ thông động mạch vành bằng theo dõi đoạn ST liên tục trong thử nghiệm GUSTO-I)</p>
+<p>332.     Dissman R, Linderer T, Goerke M, von Ameln<br>H, Rennhak U, Schroder R. Sudden increase of the ST segment elevation at a time<br>of reperfusion predicts extensive infarcts in patients with intravenous<br>thrombolysis. Am Heart J 1993; 126:832-839. (ST chênh lên tăng đột ngột vào thời điểm tái tưới máu dự báo ổ nhồi máu rộng ở bệnh nhân được tiêu sợi huyết đường tĩnh mạch)</p>
+<p>333.     Figueras J, Bermejo B. Additional elevation<br>of the ST segment: a possible early electrocardiographic marker of experimental<br>myocardial reperfusion. Cardiovasc Res 1996; 32:1141-1147. (ST chênh lên thêm: một chỉ dấu điện tâm đồ sớm khả dĩ của tái tưới máu cơ tim trên thực nghiệm)</p>
+<p>334.     Figueras J, Cortadellas J. Further elevation<br>of the ST segment during the first hour of thrombolysis.  A possible early marker of reperfusion. Eur<br>Heart J 1995; 16:1807-1813. (ST chênh lên thêm trong giờ đầu tiên của tiêu sợi huyết. Một chỉ dấu sớm khả dĩ của tái tưới máu)</p>
+<p>335.     Clements IP. The electrocardiogram in acute<br>myocardial infarction. Armonk,<br>NY: Futura Publishing Company,<br>Inc., 1998. (Điện tâm đồ trong nhồi máu cơ tim cấp)</p>
+<p>336.     Matetzky S, Barabash GI, Shahar A, và cs.<br>Early T wave inversion after thrombolytic therapy predicts better coronary<br>perfusion: clinical and angiographic study. J Am Coll Card 1994; 24:378-383. (Sóng T đảo ngược sớm sau điều trị tiêu sợi huyết dự báo tưới máu mạch vành tốt hơn: nghiên cứu lâm sàng và chụp mạch)</p>
+<p>337.     Mikell FL, Petrovich J, Snyder M, và cs.<br>Reliability of Q-wave formation and QRS score in predicting regional and global<br>left ventricular performance in acute myocardial infarction with successful<br>reperfusion. Am J Cardiol 1986; 57:923-926. (Độ tin cậy của sự hình thành sóng Q và điểm QRS trong dự báo chức năng thất trái vùng và toàn bộ ở nhồi máu cơ tim cấp được tái tưới máu thành công)</p>
+<p>338.     Hohnloser SH, Zabel M, Kasper W, Meinertz<br>T, Just H. Assessment of coronary artery patency after thrombolytic therapy:<br>accurate prediction using the combined analysis of three noninvasive markers. J<br>Am Coll Cardiol 1991; 18:44-49. (Đánh giá độ thông động mạch vành sau điều trị tiêu sợi huyết: dự báo chính xác bằng phân tích kết hợp ba chỉ dấu không xâm lấn)</p>
+<p>339.     Califf RM, O’Neill WW, Stack RS, và cs.<br>Failure of simple clinical measurements to predict perfusion status after<br>intravenous thrombolysis. Ann Int Med 1988; 108:658-662. (Thất bại của các phép đo lâm sàng đơn giản trong dự báo tình trạng tưới máu sau tiêu sợi huyết đường tĩnh mạch)</p>
+<p>340.     Corey KE, Maynard C, Pahlm O, và cs.<br>Combined historical and electrocardiographic timing of acute anterior and<br>inferior myocardial infarcts for prediction of reperfusion achievable size<br>limitation. Am J Cardiol 1999; 83:826-831. (Kết hợp bệnh sử và điện tâm đồ để định thời điểm nhồi máu cơ tim cấp thành trước và thành dưới nhằm dự báo mức hạn chế kích thước ổ nhồi máu có thể đạt được nhờ tái tưới máu)</p>
+<p>341.     Krucoff MW, Croll MA, Pope JE, và cs.<br>Continuously updated 12-lead ST-segment recovery analysis for myocardial<br>infarct artery patency assessment and its correlation with multiple simultaneous<br>early angiographic observations. Am J Cardiol 1993; 71:145-151. (Phân tích hồi phục đoạn ST trên điện tâm đồ đủ chuyển đạo cập nhật liên tục để đánh giá độ thông của động mạch gây nhồi máu và tương quan với nhiều quan sát chụp mạch sớm đồng thời)</p>
+<p>342.     Gibson CM, Cannon CP, Daley WL, và cs. The<br>TIMI frame count: a quantitative method of assessing coronary artery flow.<br>Circulation 1996; 93:879-888. (Số khung hình TIMI: một phương pháp định lượng đánh giá dòng chảy động mạch vành)</p>
+<p>343.     Gibson CM, Murphy SA, Rizzo MJ, và cs.<br>Relationship between TIMI frame count and clinical outcomes after thrombolytic<br>administration. Circulation 1999; 99:April 20. (Mối liên quan giữa số khung hình TIMI và kết cục lâm sàng sau dùng thuốc tiêu sợi huyết)</p>
+<p>344.     Saran RK, Been M, Furniss SS. Reduction in<br>ST segment elevation after thrombolysis predicts either coronary reperfusion or<br>preservation of left ventricular function. Br Heart J 1990; 64:113-117. (Mức giảm ST chênh lên sau tiêu sợi huyết dự báo hoặc tái tưới máu mạch vành, hoặc chức năng thất trái được bảo tồn)</p>
+<p>345.     De<br>Wood MA, Spores J, Notske R, và cs. Prevalence of total coronary<br>occlusion during the early hours of transmural myocardial infarction. N Engl J Med 1980; 303:897-902. (Tỷ lệ tắc hoàn toàn động mạch vành trong những giờ đầu của nhồi máu cơ tim xuyên thành)</p>
+<p>346.     Veldkamp<br>RF, Green CL, Wilkins ML, và cs. Comparison of continuous ST-segment<br>recovery analysis with methods using static electrocardiograms for noninvasive<br>patency assessment during acute myocardial infarction.  Thrombolysis and Angioplasty in Myocardial<br>Infarction (TAMI) 7 Study Group. Am J Cardiol 1994; 73:1069-1074. (So sánh phân tích hồi phục đoạn ST liên tục với các phương pháp dùng điện tâm đồ tĩnh để đánh giá không xâm lấn độ thông mạch trong nhồi máu cơ tim cấp. Nhóm nghiên cứu Tiêu sợi huyết và Nong mạch trong Nhồi máu cơ tim (TAMI))</p>
+<p>347.     Hackworthy RA, Vogel MB,<br>Harris PJ. Relationship between changes in ST segment elevation and patency of<br>the infarct-related coronary artery in acute myocardial infarction. Am Heart J<br>1986; 112:279-284. (Mối liên quan giữa thay đổi ST chênh lên và độ thông của động mạch vành liên quan đến nhồi máu trong nhồi máu cơ tim cấp)</p>
+<p>348.     Clemmensen P, Ohman EM, Sevilla DC,<br>và cs. Changes in standard electrocardiographic ST-segment elevation predictive<br>of succussful reperfusion in acute myocardial infarction. Am J Cardiol 1990;<br>66:1407-1411. (Các thay đổi ST chênh lên trên điện tâm đồ chuẩn có giá trị dự báo tái tưới máu thành công trong nhồi máu cơ tim cấp)</p>
+<p>349.     Gorgels AP, Vos MA, Letsh IS, và cs.<br>Usefulness of the accelerated idioventricular rhythm as a marker for myocardial<br>necrosis and reperfusion during thrombolytic therapy in acute myocardial<br>infarction. Am J Cardiol 1988; 61:231-235. (Giá trị của nhịp tự thất gia tốc như một chỉ dấu hoại tử cơ tim và tái tưới máu trong khi điều trị tiêu sợi huyết nhồi máu cơ tim cấp)</p>
+<p>350.     Goldberg S, Urban P, Greenspon, và cs.<br>Limitation of infarct size with thrombolytic agents: electrocardiographic<br>indexes. Circulation 1983; 68:I77-I82. (Hạn chế kích thước ổ nhồi máu bằng thuốc tiêu sợi huyết: các chỉ số điện tâm đồ)</p>
+<p>351.     Miller FC, Krucoff MW, Satler LF, và cs.<br>Ventricular arrhythmias during reperfusion. Am Heart J 1986; 112:928-932. (Rối loạn nhịp thất trong lúc tái tưới máu)</p>
+<p>352.     Gore JM, Ball SP, Corrao JM, Goldberg R.<br>Arrhythmias in the assessment of coronary artery reperfusion following<br>thrombolytic therapy. Chest 1988; 94:727-730. (Rối loạn nhịp trong đánh giá tái tưới máu động mạch vành sau điều trị tiêu sợi huyết)</p>
+<p>353.     Gressin V, Louvard Y, Pezzano M,<br>Lardoux  H. Holter recording of<br>ventricular arrhythmias during intravenous thrombolysis for acute myocardial<br>infarction. Am J Cardiol 1992; 69:152-159. (Ghi Holter rối loạn nhịp thất trong khi tiêu sợi huyết đường tĩnh mạch điều trị nhồi máu cơ tim cấp)</p>
+<p>354.     Dellborg M, Topol EJ, Swedberg K. Dynamic<br>QRS complex and ST segment vectorcardiographic monitoring can identify vessel<br>patency in patients with acute myocardial infarction treated with reperfusion<br>therapy. Am Heart J 1991; 122:94-948. (Theo dõi động phức bộ QRS và đoạn ST bằng vectơ tim đồ có thể xác định độ thông mạch ở bệnh nhân nhồi máu cơ tim cấp được điều trị tái tưới máu)</p>
+<p>355.     von Essen R, Schmidt W, Uebis R, và cs.<br>Myocardial infarction and thrombolysis: Electrocardiographic short term and<br>long term results using precordial mapping. Br Heart J 1985; 54:6-10. (Nhồi máu cơ tim và tiêu sợi huyết: kết quả điện tâm đồ ngắn hạn và dài hạn bằng lập bản đồ trước tim)</p>
+<p>356.     Badir BF, Nasmith JB, Dutoy JL, và cs. Continuous ST<br>segment recording during thrombolysis in acute myocardial infarction: a report<br>on orthogonal ECG monitoring. Can J Cardiol 1995; 11:545-552. (Ghi đoạn ST liên tục trong khi tiêu sợi huyết ở nhồi máu cơ tim cấp: báo cáo về theo dõi điện tâm đồ trực giao)</p>
+<p>357.     Ellis SG, da Silva ER, Heyndricks G, và cs.<br>Randomized comparison of rescue angioplasty with conservative management of<br>patients with early failure of thrombolysis for acute anterior myocardial<br>infarction. Circulation 1994; 90:2280-2284. (So sánh ngẫu nhiên nong bóng cứu vãn với xử trí bảo tồn ở bệnh nhân tiêu sợi huyết thất bại sớm trong nhồi máu cơ tim cấp thành trước)</p>
+<p>358.     McKendall GR, Forman S, Sopko G, Braunwald<br>E, Williams DO. Value of rescue percutaneous<strong> </strong>transluminal coronary angioplasty following unsuccessful<br>thrombolytic therapy in patients with acute myocardial infarction. Thrombolysis<br>in Myocardial Infarction Investigators. Am J Cardiol 1995; 76:1108-1111. (Giá trị của nong mạch vành qua da cứu vãn sau điều trị tiêu sợi huyết không thành công ở bệnh nhân nhồi máu cơ tim cấp)</p>
+<p>359.     Anonymous. Outcome of attempted rescue<br>coronary angioplasty after failed thrombolysis for acute myocardial infarction.<br>The CORAMI Study Group. Cohort of Rescue Angioplasty in Myocardial Infarction.<br>Am J Cardiol 1994; 74:172-174. (Kết cục của nong mạch vành cứu vãn sau tiêu sợi huyết thất bại trong nhồi máu cơ tim cấp)</p>
+<p>360.     Gibson CM, Cannon CP, Greene RM, và cs.<br>Rescue angioplasty in the Thrombolysis in Myocardial Infarction (TIMI) 4 trial.<br>Am J Cardiol 1997; 80:21-26. (Nong bóng cứu vãn trong thử nghiệm Tiêu sợi huyết trong Nhồi máu cơ tim (TIMI) thứ tư)</p>
+<p>361.     Miller JM, Smalling R, Ohman EM, và cs.<br>Effectiveness of early coronary angioplasty and abciximab for failed<br>thrombolysis (reteplase or alteplase) during acute myocardial infarction<br>(results from the <strong>GUSTO-III</strong> trial).<br>Global Use of Strategies To Open occluded coronary arteries. Am J Cardiol 1999;<br>84:779-784. (Hiệu quả của nong mạch vành sớm và abciximab khi tiêu sợi huyết (reteplase hoặc alteplase) thất bại trong nhồi máu cơ tim cấp (kết quả từ thử nghiệm GUSTO-III))</p>
+<p>362.     GUSTO III. A comparison of reteplase with<br>alteplase for acute myocardial infarction. N Engl J Med 1997; 337:1118-1123. (So sánh reteplase với alteplase trong nhồi máu cơ tim cấp)</p>
+<p>363.     Langer<br>A, Krucoff MW, Klootwijk P, và cs. Prognostic significance of ST segment<br>shift early after resolution of ST elevation in patients with myocardial<br>infarction treated with thrombolyitc therapy:<br>the GUSTO-I ST Segment Monitoring Substudy. J Am Coll Cardiol 1998;<br>31:783-789. (Ý nghĩa tiên lượng của dịch chuyển đoạn ST sớm sau khi ST chênh lên hồi phục ở bệnh nhân nhồi máu cơ tim được điều trị tiêu sợi huyết: nghiên cứu phụ Theo dõi đoạn ST của GUSTO-I)</p>
+<p>364.     Dissman R, Schroder R, Bruggemann T, Voller<br>H, Schafer H, Linderer T. Early recurrence of ST-segment elevation in patients<br>with initial reperfusion during thrombolytic therapy: impact on in-hospital<br>reinfarction and long-term vessel patency. Coron Artery Dis 1994; 5:745-753. (ST chênh lên tái phát sớm ở bệnh nhân đã tái tưới máu ban đầu trong khi điều trị tiêu sợi huyết: ảnh hưởng lên tái nhồi máu trong bệnh viện và độ thông mạch lâu dài)</p>
+  </section>
+ </main>
+</div>
+<div class="thanh-nut">
+ <button id="nutMl" class="hien-ml" type="button" title="Mục lục">≡</button>
+ <button id="nutGiam" type="button" title="Chữ nhỏ hơn">A-</button>
+ <button id="nutTang" type="button" title="Chữ lớn hơn">A+</button>
+ <button id="nutNen" type="button" title="Nền sáng/tối">◐</button>
+</div>
+<div class="xem-anh" id="xemAnh" role="dialog" aria-label="Xem ảnh">
+ <span class="xa-dem"></span>
+ <button class="xa-dong" type="button" title="Đóng (Esc)">✕</button>
+ <button class="xa-truoc" type="button" title="Ảnh trước (←)">‹</button>
+ <img alt="">
+ <button class="xa-sau" type="button" title="Ảnh sau (→)">›</button>
+ <div class="xa-chu"></div>
+</div>
+<script>
+(function(){
+ var goc=document.documentElement, ds=document.getElementById('dsMuc'),
+     giay=document.getElementById('toGiay'), pt=document.getElementById('phanTram'),
+     ml=document.getElementById('mucLuc');
+ var dau=[].slice.call(giay.querySelectorAll('h2,h3,h4,h5,h6'));
+
+ // mục lục
+ dau.forEach(function(h){
+  var li=document.createElement('li');
+  li.className='cap-'+(+h.tagName[1]-1);
+  var a=document.createElement('a');
+  a.href='#'+h.id; a.textContent=h.textContent;
+  a.addEventListener('click',function(){ ml.classList.remove('mo'); });
+  li.appendChild(a); ds.appendChild(li);
+ });
+ var neo=[].slice.call(ds.querySelectorAll('a'));
+
+ function capNhat(){
+  var i=0;
+  for(var k=0;k<dau.length;k++){ if(dau[k].getBoundingClientRect().top<140) i=k; }
+  neo.forEach(function(a,k){ a.classList.toggle('dang-doc',k===i); });
+  var a=neo[i];
+  if(a){ var cuon=a.closest('.ml-cuon');
+   if(cuon){ var h=a.getBoundingClientRect(), c=cuon.getBoundingClientRect();
+    if(h.top<c.top||h.bottom>c.bottom) cuon.scrollTop+=h.top-c.top-c.height/3; } }
+  var het=document.documentElement.scrollHeight-innerHeight;
+  pt.textContent=(het>0?Math.min(100,Math.round(scrollY/het*100)):100)+'%';
+ }
+ addEventListener('scroll',capNhat,{passive:true});
+ addEventListener('resize',capNhat); capNhat();
+
+ // cỡ chữ + nền tối, nhớ lựa chọn
+ function docNho(k,md){ try{ return localStorage.getItem(k)||md; }catch(e){ return md; } }
+ function ghiNho(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+ var co=parseInt(docNho('gl-co','16'),10);
+ function apCo(){ goc.style.setProperty('--co',co+'px'); ghiNho('gl-co',co); capNhat(); }
+ apCo();
+ goc.setAttribute('data-nen',docNho('gl-nen','sang'));
+ document.getElementById('nutTang').onclick=function(){ co=Math.min(24,co+1); apCo(); };
+ document.getElementById('nutGiam').onclick=function(){ co=Math.max(12,co-1); apCo(); };
+ document.getElementById('nutNen').onclick=function(){
+  var v=goc.getAttribute('data-nen')==='toi'?'sang':'toi';
+  goc.setAttribute('data-nen',v); ghiNho('gl-nen',v);
+ };
+ // thu gọn / mở lại cột mục lục (nhớ lựa chọn)
+ goc.setAttribute('data-ml',docNho('gl-ml',''));
+ function datMl(v){ goc.setAttribute('data-ml',v); ghiNho('gl-ml',v); capNhat(); }
+ document.getElementById('nutThu').onclick=function(){ datMl('thu'); };
+ document.getElementById('nutMl').onclick=function(){
+  // màn hình rộng: nút ≡ mở lại cột đã thu; màn hình hẹp: kéo cột ra/vào
+  if(innerWidth>980 && goc.getAttribute('data-ml')==='thu'){ datMl(''); return; }
+  ml.classList.toggle('mo');
+ };
+
+ // tìm trong bài
+ var o=document.getElementById('oTim'), dem=document.getElementById('demTim'), hit=[], vt=-1;
+ function xoaDanh(){
+  hit=[]; vt=-1;
+  var m=giay.querySelectorAll('mark.danh');
+  for(var i=0;i<m.length;i++){ var p=m[i].parentNode;
+   p.replaceChild(document.createTextNode(m[i].textContent),m[i]); p.normalize(); }
+ }
+ function danhDau(q){
+  xoaDanh();
+  if(q.length<2){ dem.textContent=''; return; }
+  var tw=document.createTreeWalker(giay,NodeFilter.SHOW_TEXT,null), nut=[], n;
+  while((n=tw.nextNode())) if(n.nodeValue.trim()) nut.push(n);
+  var kq=q.toLowerCase();
+  nut.forEach(function(n){
+   var s=n.nodeValue, l=s.toLowerCase(), i=l.indexOf(kq);
+   if(i<0) return;
+   var cha=n.parentNode, sau=n, dich=0;
+   while(i>=0){
+    var giua=sau.splitText(i-dich); dich=i+q.length;
+    sau=giua.splitText(q.length);
+    var mk=document.createElement('mark'); mk.className='danh';
+    cha.replaceChild(mk,giua); mk.appendChild(giua); hit.push(mk);
+    i=l.indexOf(kq,dich);
+   }
+  });
+  dem.textContent=hit.length?('1/'+hit.length):'0';
+  if(hit.length){ vt=0; toi(0); }
+ }
+ function toi(i){
+  if(!hit.length) return;
+  hit.forEach(function(m){ m.classList.remove('dang'); });
+  vt=(i+hit.length)%hit.length;
+  hit[vt].classList.add('dang');
+  hit[vt].scrollIntoView({block:'center',behavior:'smooth'});
+  dem.textContent=(vt+1)+'/'+hit.length;
+ }
+ var cho;
+ o.addEventListener('input',function(){ clearTimeout(cho);
+  cho=setTimeout(function(){ danhDau(o.value.trim()); },250); });
+ o.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault();
+  toi(vt+(e.shiftKey?-1:1)); } });
+ document.getElementById('timTruoc').onclick=function(){ toi(vt-1); };
+ document.getElementById('timSau').onclick=function(){ toi(vt+1); };
+ addEventListener('beforeprint',xoaDanh);
+})();
+// xem ảnh phóng to: bấm ảnh để mở, ←/→ chuyển ảnh trong cùng bộ, Esc để đóng
+(function(){
+ var hop=document.getElementById('xemAnh'), anh=hop.querySelector('img'),
+     chu=hop.querySelector('.xa-chu'), dem=hop.querySelector('.xa-dem'), bo=[], vt=0;
+ function hien(i){
+  vt=(i+bo.length)%bo.length; var a=bo[vt], im=a.querySelector('img');
+  anh.src=a.getAttribute('href'); anh.alt=im.alt; chu.textContent=im.alt;
+  chu.style.display=im.alt?'':'none';
+  dem.textContent=bo.length>1?(vt+1)+' / '+bo.length:'';
+  hop.querySelector('.xa-truoc').style.display=hop.querySelector('.xa-sau').style.display=bo.length>1?'':'none';
+ }
+ function dong(){ hop.classList.remove('mo'); anh.removeAttribute('src'); document.body.style.overflow=''; }
+ document.getElementById('toGiay').addEventListener('click',function(e){
+  var a=e.target.closest('a.o-anh'); if(!a) return;
+  e.preventDefault();
+  var cha=a.closest('.bo-anh');
+  bo=cha?[].slice.call(cha.querySelectorAll('a.o-anh')):[a];
+  hien(bo.indexOf(a)); hop.classList.add('mo'); document.body.style.overflow='hidden';
+ });
+ hop.querySelector('.xa-dong').onclick=dong;
+ hop.querySelector('.xa-truoc').onclick=function(e){ e.stopPropagation(); hien(vt-1); };
+ hop.querySelector('.xa-sau').onclick=function(e){ e.stopPropagation(); hien(vt+1); };
+ hop.addEventListener('click',function(e){ if(e.target===hop) dong(); });
+ addEventListener('keydown',function(e){
+  if(!hop.classList.contains('mo')) return;
+  if(e.key==='Escape') dong();
+  else if(e.key==='ArrowLeft') hien(vt-1);
+  else if(e.key==='ArrowRight') hien(vt+1);
+ });
+ var x0=null;
+ hop.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+ hop.addEventListener('touchend',function(e){ if(x0===null) return;
+  var dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)>50) hien(vt+(dx<0?1:-1)); });
+})();
+// video YouTube: chỉ tải khi bấm. YouTube trả "Lỗi 153" khi trang không gửi được referrer
+// (mở từ ổ đĩa file:// hoặc khung sandbox) — khi đó mở thẳng tab YouTube.
+(function(){
+ var giay=document.getElementById('toGiay'), ds=giay.querySelectorAll('.yt');
+ if(!ds.length) return;
+ var canEmbed=/^https?:$/.test(location.protocol) &&
+   (typeof window.origin==='undefined' || (window.origin && window.origin!=='null'));
+ var PLAY='<span class="play"><svg viewBox="0 0 68 48"><path fill="#f00" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/><path fill="#fff" d="M27 34l18-10-18-10z"/></svg></span>';
+ [].forEach.call(ds,function(b){
+  var id=b.getAttribute('data-id'), n=b.getAttribute('data-n')||'Video', watch='https://www.youtube.com/watch?v='+id;
+  b.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+n+'">'+PLAY+'<span class="badge">▶ '+n+'</span>';
+  b.setAttribute('role','button'); b.setAttribute('tabindex','0');
+  var fig=b.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+  if(!cap&&fig){ cap=document.createElement('figcaption'); fig.appendChild(cap); }
+  if(cap){ var a=document.createElement('a'); a.className='ytlink'; a.href=watch; a.target='_blank';
+   a.rel='noopener'; a.textContent='Mở trên YouTube ↗'; cap.appendChild(a); }
+  function load(){
+   if(!canEmbed){ window.open(watch,'_blank','noopener'); return; }
+   b.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&autoplay=1" '+
+    'referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer;autoplay;clipboard-write;'+
+    'encrypted-media;gyroscope;picture-in-picture" allowfullscreen title="'+n+'"></iframe>';
+   b.style.cursor='default';
+  }
+  b.addEventListener('click',load);
+  b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
+ });
+ if(!canEmbed){
+  var w=document.createElement('div'); w.className='canh-bao';
+  w.innerHTML='<b>Lưu ý:</b> trang đang mở trực tiếp từ ổ đĩa (hoặc trong khung xem trước) nên YouTube chặn phát nhúng '+
+   '(<i>Lỗi 153</i>). Bấm vào video sẽ mở tab YouTube. Đăng trang lên web (https) thì video phát ngay trong trang.';
+  giay.insertBefore(w, giay.firstChild);
+ }
+})();
+</script>
+</body>
+</html>
