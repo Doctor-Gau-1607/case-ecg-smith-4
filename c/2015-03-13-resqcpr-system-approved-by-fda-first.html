@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="vi" data-nen="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>13/03/2015 — Hệ thống ResQCPR được FDA phê duyệt. Thiết bị hỗ trợ hồi sinh tim phổi (CPR) đầu tiên và duy nhất từng được phê duyệt</title>
+<style>
+:root{
+ --nen:#f2f4f6; --giay:#ffffff; --chu:#172033; --nhat:#5b6675; --vien:#e3e7ec;
+ --do:#b30000; --xanh:#004b87; --diu:#f6f8fa; --danh:#fff3cd;
+}
+:root[data-nen="toi"]{
+ --nen:#12151b; --giay:#1b2029; --chu:#e6eaf0; --nhat:#9aa5b4; --vien:#2c333f;
+ --do:#ff8a8a; --xanh:#7fb6e6; --diu:#232a35; --danh:#5a4a12;
+}
+*{box-sizing:border-box}
+html{font-size:var(--co,16px)}
+body{margin:0;background:var(--nen);color:var(--chu);
+ font-family:"Noto Sans","Segoe UI",Roboto,Arial,sans-serif;
+ font-size:1rem;line-height:1.7;-webkit-text-size-adjust:100%}
+a{color:var(--xanh)}
+.bo-cuc{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px;
+ max-width:1500px;margin:0 auto;padding:22px}
+/* ---- cột mục lục ---- */
+.muc-luc{position:sticky;top:22px;align-self:start;height:calc(100vh - 44px);
+ background:var(--giay);border-radius:16px;padding:16px 10px;display:flex;
+ flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ml-dau{display:flex;justify-content:space-between;align-items:center;
+ padding:2px 10px 10px;font-size:.78rem;font-weight:800;letter-spacing:.09em;
+ color:var(--do);border-bottom:1px solid var(--vien)}
+#phanTram{color:var(--nhat)}
+/* Thu gọn / mở lại cột mục lục. Trang nhớ lựa chọn, vì người đọc guideline
+   mở lại nhiều lần và không muốn mỗi lần lại phải thu tay. */
+.ml-dau .nut-thu{margin-left:8px;border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:1px 8px;cursor:pointer;font:inherit;
+ font-size:.9rem;line-height:1.4}
+@media(min-width:981px){
+ :root[data-ml="thu"] .bo-cuc{grid-template-columns:minmax(0,1fr)}
+ :root[data-ml="thu"] .muc-luc{display:none}
+ :root[data-ml="thu"] .hien-ml{display:block}
+}
+.o-tim{padding:10px 8px 6px}
+.o-tim input{width:100%;padding:8px 10px;border:1px solid var(--vien);
+ border-radius:9px;background:var(--diu);color:var(--chu);font:inherit;font-size:.85rem}
+.tim-dieu-khien{display:flex;gap:6px;align-items:center;margin-top:6px;
+ font-size:.76rem;color:var(--nhat)}
+.tim-dieu-khien button{border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:2px 9px;cursor:pointer;font:inherit}
+.ml-cuon{overflow-y:auto;flex:1;margin-top:4px}
+#dsMuc{list-style:none;margin:0;padding:0}
+#dsMuc a{display:block;padding:7px 12px;border-radius:9px;text-decoration:none;
+ color:var(--chu);font-size:.87rem;line-height:1.4}
+#dsMuc a:hover{background:var(--diu)}
+#dsMuc a.dang-doc{background:var(--diu);color:var(--do);font-weight:700;
+ box-shadow:inset 3px 0 0 var(--do)}
+#dsMuc .cap-1>a{font-weight:700}
+#dsMuc .cap-2>a{padding-left:26px;font-size:.85rem}
+#dsMuc .cap-3>a{padding-left:40px;font-size:.82rem;color:var(--nhat)}
+#dsMuc .cap-4>a,#dsMuc .cap-5>a{padding-left:54px;font-size:.8rem;color:var(--nhat)}
+/* ---- thân bài ---- */
+.dau-bai,.to-giay{background:var(--giay);border-radius:16px;
+ box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.dau-bai{padding:28px 34px;margin-bottom:22px}
+.nhan{font-size:.76rem;font-weight:800;letter-spacing:.16em;color:var(--nhat)}
+.dau-bai h1{margin:.25em 0 .35em;font-size:2rem;line-height:1.25;color:var(--do)}
+.dich-gia{color:var(--nhat);font-size:.92rem;margin:0}
+.dich-gia b{color:var(--xanh)}
+.to-giay{padding:34px 40px 60px}
+.to-giay h2{color:var(--do);font-size:1.65rem;margin:1.7em 0 .5em;
+ padding-bottom:4px;border-bottom:2px solid var(--vien)}
+.to-giay h2:first-child{margin-top:0}
+.to-giay h3{color:var(--xanh);font-size:1.3rem;margin:1.5em 0 .4em}
+.to-giay h4{font-size:1.08rem;margin:1.3em 0 .3em}
+.to-giay h5,.to-giay h6{font-size:1rem;margin:1.2em 0 .3em;color:var(--nhat)}
+.to-giay p{margin:0 0 .85em;text-align:justify}
+.to-giay p.cham{padding-left:1.35em;text-indent:-1.1em;text-align:left}
+figure{margin:1.4em 0;text-align:center}
+figure img{max-width:100%;height:auto;border:1px solid var(--vien);border-radius:10px}
+/* ---- bảng ---- */
+.tham-chieu{color:var(--xanh);font-weight:600;text-decoration:none;
+ border-bottom:1px dotted currentColor}
+.tham-chieu:hover{border-bottom-style:solid}
+.chu-thich-float{font-weight:600;margin:0 0 .4em}
+.khung-bang{overflow-x:auto;margin:1.4em 0;border-radius:10px;
+ border:1px solid var(--vien)}
+.khung-bang table{border-collapse:collapse;width:100%;font-size:.88rem;
+ table-layout:fixed}
+.to-giay p,.to-giay li,.to-giay dd{overflow-wrap:break-word}
+.to-giay sup{overflow-wrap:anywhere}
+.khung-bang td{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;
+ line-height:1.5;word-wrap:break-word}
+.khung-bang td.sat{padding-left:0;padding-right:0}
+.khung-bang td.giua{text-align:center;vertical-align:middle}
+.khung-bang td.ky-hieu{font-weight:800;white-space:nowrap}
+.khung-bang td.nen-toi,.khung-bang td.nen-toi *{color:#fff}
+.khung-bang td.nen-sang,.khung-bang td.nen-sang *{color:#12151b}
+.khung-bang td span{display:block}
+.khung-bang td span.cham{padding-left:1.1em;text-indent:-1em}
+mark.danh{background:var(--danh);color:inherit;border-radius:3px}
+/* Ô có màu ép màu chữ cho cả con cháu, kể cả <mark> của phần tìm trong bài — chữ
+   trắng trên nền vàng nhạt là tìm thấy mà không nhìn thấy. Trả chữ về màu trang. */
+.khung-bang td.nen-toi mark.danh,.khung-bang td.nen-sang mark.danh,
+.khung-bang td.nen-toi mark.danh *,.khung-bang td.nen-sang mark.danh *{color:var(--chu)}
+mark.danh.dang{outline:2px solid var(--do)}
+/* ---- nút nổi ---- */
+.thanh-nut{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:9}
+.thanh-nut button{width:42px;height:42px;border-radius:50%;cursor:pointer;
+ border:1px solid var(--vien);background:var(--giay);color:var(--chu);
+ font-size:1rem;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.hien-ml{display:none}
+/* ---- màn hình hẹp ---- */
+@media(max-width:980px){
+ .bo-cuc{grid-template-columns:minmax(0,1fr);padding:12px}
+ .muc-luc{position:fixed;inset:0 auto 0 0;width:88%;max-width:340px;z-index:20;
+  border-radius:0;height:100vh;transform:translateX(-102%);transition:transform .2s}
+ .muc-luc.mo{transform:none}
+ .hien-ml{display:block}
+ .to-giay{padding:22px 18px 44px}
+ /* Màn hình điện thoại: giữ bề rộng tối thiểu cho bảng rồi cho cuộn ngang,
+    thay vì bóp cột hẹp tới mức "Trung bình" xuống dòng thành "Tr un g bì nh". */
+ .khung-bang table{min-width:620px}
+ .dau-bai{padding:20px}
+ .dau-bai h1{font-size:1.5rem}
+}
+/* ---- in ra giấy ---- */
+@media print{
+ /* Nền tối được nhớ trong localStorage: bật một lần là mọi lần in sau đều dính.
+    Giấy luôn trắng, nên trả bảng màu về bản sáng trước khi in — nếu không, chữ
+    #e6eaf0 in lên giấy trắng là mất hẳn. */
+ :root,:root[data-nen="toi"]{--nen:#fff;--giay:#fff;--chu:#172033;--nhat:#4a5462;
+  --vien:#c9ced5;--do:#b30000;--xanh:#004b87;--diu:#f6f8fa;--danh:#fff3cd}
+ body{background:#fff;font-size:11.5pt}
+ .muc-luc,.thanh-nut{display:none!important}
+ .bo-cuc{display:block;max-width:none;padding:0}
+ .dau-bai,.to-giay{box-shadow:none;border-radius:0;padding:0}
+ .to-giay h2,.to-giay h3{break-after:avoid}
+ .khung-bang,figure{break-inside:avoid}
+ .khung-bang td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.c-xanh{color:var(--xanh)} .c-do{color:var(--do)} .c-luc{color:var(--luc)} .c-nhat{color:var(--nhat)}
+:root{--luc:#1d7a3a} :root[data-nen="toi"]{--luc:#7fd49a}
+.ban-quyen{display:inline-block;margin:.4em 0 1.2em!important;padding:6px 14px;border-radius:9px;
+ background:var(--diu);border:1px solid var(--vien);color:var(--nhat);font-size:.88rem}
+.note{background:var(--diu);border-left:4px solid var(--xanh);border-radius:0 10px 10px 0;padding:10px 16px;margin:1.1em 0}
+.note p:last-child{margin-bottom:0}
+.canh-bao{background:#fff4d6;border:1px solid #e8c97a;color:#4a3a10;border-radius:10px;padding:12px 16px;margin:0 0 18px;font-size:.93em}
+:root[data-nen="toi"] .canh-bao{background:#3a2f12;border-color:#6b5a1a;color:#f0e2bd}
+.to-giay blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid var(--vien);background:var(--diu);border-radius:0 10px 10px 0}
+.to-giay ul,.to-giay ol{padding-left:1.5em;margin:0 0 .9em}
+.to-giay li{margin:.2em 0}
+.to-giay hr{border:0;border-top:1px solid var(--vien);margin:1.6em 0}
+.khung-bang th{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;background:var(--diu);text-align:left;line-height:1.5}
+.khung-bang td[style*="background"],.khung-bang th[style*="background"]{color:#12151b}
+.tk p,.tk li{font-size:.9em;color:var(--nhat);text-align:left}
+figcaption,.chu-thich-anh{font-size:.88rem;color:var(--nhat);margin-top:.45em;text-align:center;line-height:1.55}
+figcaption b{color:var(--chu)}
+figure.anh-dau img{width:100%;max-height:420px;object-fit:cover}
+figure video{width:100%;max-height:78vh;background:#000;border-radius:10px;display:block}
+.khung-video{position:relative;padding-top:56.25%;margin:0;border-radius:10px;overflow:hidden;background:#000}
+.khung-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer;display:block;border-radius:10px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;border:0!important;border-radius:0!important;transition:opacity .2s}
+.yt:hover img{opacity:1}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.yt .play svg{width:58px;height:58px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.badge{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:2px 8px;border-radius:20px;pointer-events:none}
+.ytlink{display:inline-block;margin-left:8px;font-size:.92em;color:var(--xanh);text-decoration:none;border:1px solid var(--vien);border-radius:20px;padding:1px 10px;white-space:nowrap}
+.bo-anh{display:grid;gap:8px;margin:1em 0 1.4em;align-items:start}
+.bo-anh.cot-1{grid-template-columns:repeat(1,minmax(0,1fr))}
+.bo-anh.cot-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bo-anh.cot-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bo-anh.cot-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.bo-anh.cot-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bo-anh.cot-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.o-anh{display:block;border-radius:8px;overflow:hidden;background:#000;
+ border:1px solid var(--vien);cursor:zoom-in;line-height:0}
+.o-anh img{display:block;width:100%;height:auto}
+figure .o-anh{display:inline-block;background:none;border:0}
+figure .o-anh img{border:1px solid var(--vien);border-radius:10px}
+@media(max-width:980px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.xem-anh{position:fixed;inset:0;z-index:50;background:rgba(8,10,14,.94);display:none;
+ flex-direction:column;align-items:center;justify-content:center;padding:14px}
+.xem-anh.mo{display:flex}
+.xem-anh img{max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;border-radius:6px;background:#000}
+.xem-anh .xa-chu{color:#dfe5ec;font-size:.85rem;max-width:1100px;margin-top:10px;text-align:center;
+ line-height:1.5;max-height:5.2em;overflow:auto}
+.xem-anh .xa-dem{position:absolute;top:14px;left:18px;color:#c4ccd6;font-size:.85rem}
+.xem-anh button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;
+ width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+.xem-anh button:hover{background:rgba(255,255,255,.25)}
+.xem-anh .xa-dong{top:12px;right:14px}
+.xem-anh .xa-truoc{left:14px;top:50%;transform:translateY(-50%)}
+.xem-anh .xa-sau{right:14px;top:50%;transform:translateY(-50%)}
+@media print{
+ .xem-anh,.canh-bao,.ytlink{display:none!important}
+ .bo-anh{break-inside:avoid}
+ .o-anh{background:none}
+}
+</style>
+</head>
+<body>
+<div class="bo-cuc">
+ <aside class="muc-luc" id="mucLuc">
+  <div class="ml-dau"><span>NỘI DUNG</span><span id="phanTram">0%</span><button
+    id="nutThu" class="nut-thu" type="button" title="Thu gọn mục lục">«</button></div>
+  <div class="o-tim">
+   <input id="oTim" type="search" placeholder="Tìm trong tài liệu…" autocomplete="off">
+   <div class="tim-dieu-khien">
+    <button id="timTruoc" type="button">↑</button>
+    <button id="timSau" type="button">↓</button>
+    <span id="demTim"></span>
+   </div>
+  </div>
+  <div class="ml-cuon"><ul id="dsMuc"></ul></div>
+ </aside>
+ <main>
+  <section class="dau-bai">
+   <div class="nhan">CASE ECG #513 · DR. SMITH’S ECG BLOG</div>
+   <h1>13/03/2015 — Hệ thống ResQCPR được FDA phê duyệt. Thiết bị hỗ trợ hồi sinh tim phổi (CPR) đầu tiên và duy nhất từng được phê duyệt</h1>
+   <p class="dich-gia"><a href="https://doctor-gau-1607.github.io/case-ecg-smith/">← Mục lục Case ECG</a></p><p class="dich-gia">Bản dịch tiếng Việt của bài <a href="https://drsmithsecgblog.com/resqcpr-system-approved-by-fda-first/" target="_blank" rel="noopener">"ResQCPR System Approved by FDA.  First and only CPR adjunct ever approved."</a> – Dr. Smith’s ECG Blog. Giữ nguyên toàn bộ 6 hình ảnh của bản gốc.</p>
+  </section>
+  <section class="to-giay" id="toGiay">
+<p>Keith Lurie và các đồng nghiệp đã dành hơn 25 năm nỗ lực cải thiện kết cục của ngừng tim. Tôi quen biết ông ấy. Ông ấy rất thông minh, rất chăm chỉ và có sự chính trực không tì vết. Ông ấy tận tâm với việc cứu sống người bệnh hơn bất kỳ ai tôi biết.</p>
+<p>Tôi đã mời Dr. Lurie kể cho chúng ta nghe về thiết bị mà ông đã dày công nghiên cứu bấy lâu nay và cuối cùng đã được FDA phê duyệt.</p>
+<p>Tôi không quảng bá bất kỳ sản phẩm thương mại nào trên trang của mình, cũng không đăng quảng cáo nào.</p>
+<p>Tôi quảng bá thiết bị này vì nó cứu sống người bệnh, với chức năng thần kinh còn nguyên vẹn.</p>
+<p>Chúng tôi đã sử dụng thiết bị ngưỡng hít vào (inspiratory threshold device) trong nhiều năm tại khoa cấp cứu (ED) của chúng tôi và trên khắp Minnesota, nơi <a href="http://circ.ahajournals.org/cgi/content/meeting_abstract/128/22_MeetingAbstracts/A172" rel="noopener" target="_blank">chúng tôi có tỷ lệ sống sót sau ngừng tim cao nhất cả nước, theo Sổ đăng ký CARES</a>.</p>
+<p>Keith đã phát triển hệ thống này và sáng lập Advanced Circulatory Systems, công ty sản xuất và phân phối thiết bị. Advanced Circulatory Systems gần đây đã được Zoll mua lại.</p>
+<p>Ông ấy không còn lợi ích cá nhân nào liên quan đến việc này, nên không còn xung đột lợi ích. Ông ấy chỉ muốn cứu sống người bệnh.</p>
+<p><strong><a href="http://europepmc.org/articles/pmc3057398" rel="noopener" target="_blank">Toàn văn ResQTrial, do NIH tài trợ.</a></strong> Một trong những nghiên cứu y học cấp cứu xuất sắc do NIH tài trợ.</p>
+<h2 id="he-thong-resqcpr">Hệ thống ResQCPR</h2>
+<p>Hệ thống <br>ResQCPR đã được FDA phê duyệt vào thứ Sáu, ngày 7 tháng Ba năm 2015. Hệ thống <br>ResQCPR là sự kết hợp giữa ResQPUMP, một thiết bị hồi sinh tim phổi (CPR) ép-giãn chủ động <br>(ACD) bằng tay <br>, và ResQPOD, một van ngưỡng trở kháng (ITD). <strong>Đây là <br>thiết bị hỗ trợ CPR đầu tiên và duy nhất từng được FDA phê duyệt để làm tăng <br>khả năng sống sót sau ngừng tim không do chấn thương.</strong> ZOLL Medical là nhà sản xuất thiết bị mới này <br>(<a href="http://www.advancedcirculatory.com/resqcpr-system/" rel="noopener" target="_blank">http://www.advancedcirculatory.com/resqcpr-system/</a>).<br><u></u><u></u></p>
+<p>Hệ thống <br>ResQCPR được phê duyệt dựa trên dữ liệu lâm sàng từ một thử nghiệm <br>lâm sàng có tên <a href="http://europepmc.org/articles/pmc3057398" rel="noopener" target="_blank">ResQTRIAL, công bố trên Lancet, cho thấy hệ thống này làm tăng tương đối 49% tỷ lệ sống sót sau 1 năm với chức năng thần kinh <strong><em>còn nguyên vẹn</em></strong> sau ngừng tim so với CPR quy ước ở những bệnh nhân ngừng tim có căn nguyên tim nguyên phát</a>,<sup>1</sup> (link toàn văn) và tăng 34% ở tất cả bệnh nhân ngừng tim không do chấn thương, bất kể căn nguyên.<sup>2</sup> Đây là một cột mốc quan trọng <br>trong lịch sử CPR. Nếu được sử dụng rộng rãi, Hệ thống ResQCPR sẽ cứu sống nhiều người.<u></u><u></u></p>
+<p>Sự <br>kết hợp giữa ResQPUMP và ResQPOD hoạt động bằng cách làm giảm áp lực <br>trong lồng ngực sau mỗi lần giãn. Áp lực âm trong lồng ngực <br>này kéo nhiều máu tĩnh mạch <br>hơn trở về tim từ não và phần còn lại của cơ thể, từ đó <br>làm tăng sự đổ đầy của tim. Với lần ép tiếp theo, <br>tuần hoàn đến tim và não cao gần gấp ba lần khi dùng <br>Hệ thống ResQCPR so với CPR quy ước. Ngoài <br>ra, ResQPUMP có đồng hồ đo lực và máy đếm nhịp (metronome) giúp hướng dẫn <br>độ sâu ép, độ cao giãn chủ động và tần số <br>ép đúng. ResQPOD có đèn báo thời gian giúp hướng dẫn <br>tần số thông khí đúng. Có thể tìm thêm thông tin chi tiết về Hệ thống <br>ResQCPR trên trang web của ZOLL (<a href="http://www.zoll.com/" rel="noopener" target="_blank">www.zoll.com</a>). Các nghiên cứu ủng hộ chỉ định sử dụng mới của Hệ thống ResQCPR gồm: Aufderheide – Lancet 2011 (<a href="http://www.ncbi.nlm.nih.gov/pubmed/21251705" rel="noopener" target="_blank">http://www.ncbi.nlm.nih.gov/pubmed/21251705</a>) <br>và Frascone – Resuscitation 2013 (<a href="http://www.ncbi.nlm.nih.gov/pubmed/23669489" rel="noopener" target="_blank">http://www.ncbi.nlm.nih.gov/pubmed/23669489</a>).<u></u><u></u></p>
+<p>Để <br>tránh mọi hiểu lầm: Hệ thống ResQCPR không chỉ đơn thuần là một phiên bản bằng tay <br>của thiết bị LUCAS (có hoặc không có ITD). Thiết bị LUCAS <br>không thực hiện giãn chủ động <br>ở bất kỳ mức độ đáng kể nào (nó chỉ kéo lên 3 lbs [pound]), mặc dù nó có <br>giúp đảm bảo thành ngực nảy về hoàn toàn. Hệ thống ResQCPR là thiết bị <br>duy nhất được FDA phê duyệt cho phép người dùng thực hiện giãn chủ động thành ngực <br>hoàn toàn (lực kéo lên trung bình ~15 lbs), <br>nhờ đó giúp làm giảm áp lực trong lồng ngực và giảm áp lực nội sọ (ICP) <br>sau mỗi lần giãn. Điều này làm tăng tuần hoàn đến <br>tim và não. Hiện tại, chưa có thiết bị CPR tự động nào có chỉ định <br>được phê duyệt về cải thiện sống sót như Hệ thống ResQCPR. <br>Giờ đây khi Hệ thống ResQCPR đã được phê duyệt, các nỗ lực đang được tiến hành để <br>phát triển một hệ thống tự động tốt hơn, mang lại lợi ích tương tự <br>Hệ thống ResQCPR.<u></u><u></u></p>
+<p>Một <br>ngộ nhận khác là Hệ thống ResQCPR đã được đánh giá trong <br>Nghiên cứu PRIMED của Liên minh Kết cục Hồi sức (Resuscitation Outcomes Consortium – ROC). Thực tế không <br>phải vậy. Trong nghiên cứu ROC PRIMED, <br>bệnh nhân chỉ được điều trị bằng CPR bằng tay quy ước. Sau đó họ được <br>phân ngẫu nhiên dùng ITD giả (sham, hay giả dược) hoặc <br>ITD thật (có chức năng), <br><u>và</u> được CPR 30 giây hoặc 3 phút trước khi phân tích nhịp và <br>sốc điện. Bài báo ROC PRIMED đầu tiên báo cáo không có khác biệt giữa <br>thiết bị thật và thiết bị giả,<sup>3</sup> cũng như giữa CPR 30 giây và 3 phút.<sup>4</sup><br>Như chúng ta biết, đó là một nghiên cứu phức tạp. <br>Gần đây hơn, các nhà nghiên cứu ROC đã công bố thêm ba bài báo cho thấy <br>tần số ép và độ sâu ép dao động trong một khoảng rộng ở <br>nghiên cứu ROC PRIMED.<sup>5,6</sup> Khi tần số và độ sâu nằm ngoài <br>khoảng khuyến cáo của AHA, tỷ lệ sống sót giảm. Khi <br>tần số và độ sâu ép nằm trong khoảng khuyến cáo của AHA, <br>việc sử dụng ITD thật làm tăng hơn 25% số bệnh nhân sống sót với <br>chức năng não tốt so với ITD giả.<sup>7</sup><br>Nghiên cứu ROC PRIMED và phân tích lại của nó <br>đã chứng minh việc thực hiện CPR chất lượng cao, đúng tần số và độ sâu, quan trọng <br>đến mức nào, cũng như việc hướng dẫn người cứu hộ để họ có thể thực hiện CPR chất lượng <br>cao. (Yannopoulos Circulation 2014: <br><a href="http://circ.ahajournals.org/content/130/Suppl_2/A9.abstract?sid=aefe5b91-bc4b-4ac4-9415-b0bbc86a2284" rel="noopener" target="_blank"><br>http://circ.ahajournals.org/content/130/Suppl_2/A9.abstract?sid=aefe5b91-bc4b-4ac4-9415-b0bbc86a2284</a>).<br>Có thể kết luận một cách hợp lý rằng nên khuyến cáo sử dụng ITD <br>nếu người cấp cứu có thể theo dõi <br>chất lượng CPR của mình và dùng các công cụ phản hồi để đảm bảo các lần ép được <br>thực hiện đúng tần số và độ sâu. Chúng tôi làm điều đó ở Minnesota và <br>thường dùng thiết bị LUCAS để thực hiện CPR sau khi đội hồi sức nâng cao (ALS) đến. Dựa trên <br>Sổ đăng ký Ngừng tim nhằm Cải thiện Sống sót <br>(CARES)(<a href="http://www.mycares.net/" rel="noopener" target="_blank">www.mycares.net</a>), <br>Minnesota dẫn đầu cả nước với tỷ lệ sống sót kèm chức năng thần kinh <br>tốt cao nhất (13%) trong số các bang có trong cơ sở dữ liệu CARES. Tỷ lệ <br>sống sót trung bình <br>kèm chức năng thần kinh tốt trên toàn quốc ở những nơi tham gia <br>CARES là 8%. <br><u></u><u></u></p>
+<blockquote><sup>1</sup>Aufderheide<br>TP, Frascone RJ, Wayne MA, và cs. Standard cardiopulmonary<br>resuscitation versus<br>active compression-decompression cardiopulmonary resuscitation with<br>augmentation of negative intrathoracic pressure for out-of-hospital<br>cardiac arrest: a randomized trial. Lancet 2011;377(9762):301-311.<u></u><u></u>
+<sup>2</sup>Frascone<br>RJ, Wayne MA, Swor RA, và cs. Treatment of non-traumatic<br>out-of-hospital cardiac<br>arrest with active compression decompression cardiopulmonary<br>resuscitation plus an impedance threshold device. Resuscitation<br>2013;84:1214-1222.<u></u><u></u>
+<sup>3</sup>Aufderheide TP, Nichol G, Rea TD, và cs. A trial of an impedance threshold device in out-of-hospital<br>cardiac arrest. N Engl J Med 2011;365(9):798-806.<u></u><u></u>
+<sup>4</sup>Stiell IG, Nichol G, Leroux BG, và cs. Early versus later rhythm analysis in patients with<br>out-of-hospital cardiac arrest. N Engl J Med 2011;365(9):787-797.<u></u><u></u>
+<sup>5</sup>Idris AH, Guffey D, Aufderheide TP, và cs. Relationship between chest compression rates and<br>outcomes from cardiac arrest. Circulation 2012;125:3004-3012.<u></u><u></u>
+<sup>6</sup>Stiell IG, Brown SP, Nichol G, và cs. What is the optimal chest compression depth during<br>out-of-hospital cardiac arrest resuscitation of adult patients? Circulation 2014;130(22):1962-1970.<u></u><u></u>
+<sup>7</sup>Yannopoulos D, Abella B, Duval S, Aufderheide T. The effect of CPR quality: a potential confounder<br>of CPR clinical trials. Circulation 2014;130:A9.</blockquote>
+<p>Đường cong Kaplan Meier về tỷ lệ sống sót với chức năng thần kinh còn nguyên vẹn:</p>
+<figure><a class="o-anh" href="2015-03-13-resqcpr-system-approved-by-fda-first_anh/2015_03_KaplanMeiercurve.jpg"><img src="2015-03-13-resqcpr-system-approved-by-fda-first_anh/2015_03_KaplanMeiercurve.jpg" alt="" width="480" height="360" loading="lazy" decoding="async"></a></figure>
+<h2 id="to-thong-tin-ve-he-thong-resqcpr">Tờ thông tin về Hệ thống ResQCPR</h2>
+<h3 id="he-thong-resqcpr-mot-he-thong-vi-su-song-con">Hệ thống ResQCPR™: Một hệ thống vì sự sống còn</h3>
+<h3 id="van-de">Vấn đề</h3>
+<p>Mỗi ngày, ngừng tim đột ngột, nguyên nhân gây tử vong hàng <br>đầu tại Hoa Kỳ, cướp đi sinh mạng của 1500 người Mỹ. Tỷ lệ <br>sống sót hiện nay nhìn chung thấp, với dưới 10% bệnh nhân sống sót <br>sau ngừng tim ngoài bệnh viện. Giờ đây đã có hy vọng mới cho những người bị <br>ngừng tim.</p>
+<h3 id="giai-phap">Giải pháp</h3>
+<p><strong>Hệ thống ResQCPR™</strong> mới được phê duyệt thực hiện Liệu pháp Điều hòa Áp lực Trong lồng ngực (Intrathoracic Pressure Regulation – IPR) <br>trong quá trình hồi sức ngừng tim. Liệu pháp IPR điều hòa áp lực trong <br>lồng ngực để tăng cường tưới máu trong các tình trạng lưu lượng máu thấp, như ngừng <br>tim và sốc. Trong một thử nghiệm lâm sàng then chốt, việc sử dụng Hệ thống ResQCPR làm tăng <br>tỷ lệ sống sót sau một năm thêm 49% so với bệnh nhân được CPR quy ước.<sup>1,2</sup><br>Hệ thống ResQCPR là <u>thiết bị CPR duy nhất có chỉ định được phê duyệt để <br>làm tăng khả năng sống sót</u>.<sup>3</sup> Nếu được triển khai rộng rãi, <br>điều này có thể đồng nghĩa với việc mỗi năm có thêm hàng nghìn người sống sót sau ngừng <br>tim.</p>
+<h3 id="mo-ta-san-pham">Mô tả sản phẩm</h3>
+<p><strong>Hệ thống ResQCPR<sup>™</sup></strong> là một tổ hợp thiết bị bao gồm cả <br><strong>ResQPUMP</strong><strong><sup>â</sup></strong><strong> </strong></p>
+<p>– thiết bị ép-giãn chủ động (ACD-CPR) – và <strong>ResQPOD</strong><strong><sup>â</sup></strong><strong> ITD 16</strong>.</p>
+<p><strong>Thiết bị ACD-CPR <br>ResQPUMP</strong> là một thiết bị cầm tay, dùng lại được, gồm một giác hút <br>đặt lên ngực và một tay cầm có đồng hồ đo lực và máy đếm nhịp. <u>Đây <br>là thiết bị duy nhất được phê duyệt tại Hoa Kỳ cho phép người cấp cứu thực hiện <br>hồi sinh tim phổi ép-giãn chủ động (ACD-CPR)</u>, vốn ép ngực <br>giống như CPR bằng tay nhưng cho phép người dùng chủ động làm lồng ngực giãn nở trở lại để tạo ra <br>áp lực âm (hay chân không) giúp đổ đầy tim trở lại (tức là tạo <br>tiền tải).</p>
+<figure><a class="o-anh" href="2015-03-13-resqcpr-system-approved-by-fda-first_anh/2015_03_ResQPump.jpg"><img src="2015-03-13-resqcpr-system-approved-by-fda-first_anh/2015_03_ResQPump.jpg" alt="" width="142" height="178" loading="lazy" decoding="async"></a></figure>
+<p><strong>ResQPOD ITD 16</strong> là một van ngưỡng trở kháng (ITD) giúp <br>tăng cường thêm áp lực âm trong lồng ngực bằng cách ngăn luồng khí không cần thiết <br>tràn vào qua đường thở mở trong lúc thành ngực nảy về chủ động. Thiết bị này dùng một lần <br>và được lắp vào hệ thống đường thở, giữa dụng cụ hỗ trợ đường thở (ví dụ mặt nạ, <br>ống nội khí quản) và nguồn thông khí (ví dụ bóng bóp).</p>
+<figure><a class="o-anh" href="2015-03-13-resqcpr-system-approved-by-fda-first_anh/2015_03_ResQPod.jpg"><img src="2015-03-13-resqcpr-system-approved-by-fda-first_anh/2015_03_ResQPod.jpg" alt="" width="110" height="173" loading="lazy" decoding="async"></a></figure>
+<h3 id="tac-dong-cua-he-thong-resqcpr">Tác động của Hệ thống ResQCPR</h3>
+<p>Khi dùng cùng nhau, ResQPUMP và <br>ResQPOD hoạt động hiệp đồng, giúp tăng cường chân không trong lồng ngực khi CPR hiệu quả <br>hơn so với từng thiết bị riêng lẻ:<strong></strong></p>
+<p><strong>Áp lực đường thở trong <br>hồi sinh tim phổi quy ước:</strong></p>
+<figure><a class="o-anh" href="2015-03-13-resqcpr-system-approved-by-fda-first_anh/2015_03_GraphchestpressurewithstandardCPR.jpg"><img src="2015-03-13-resqcpr-system-approved-by-fda-first_anh/2015_03_GraphchestpressurewithstandardCPR.jpg" alt="" width="287" height="245" loading="lazy" decoding="async"></a></figure>
+<p><strong><br></strong><br><br>và <strong>hồi sinh tim phổi <br>với hệ thống ResQCPR:</strong></p>
+<figure><a class="o-anh" href="2015-03-13-resqcpr-system-approved-by-fda-first_anh/2015_03_GraphChestpressureswithResQSystem.jpg"><img src="2015-03-13-resqcpr-system-approved-by-fda-first_anh/2015_03_GraphChestpressureswithResQSystem.jpg" alt="" width="298" height="261" loading="lazy" decoding="async"></a></figure>
+<h2 id="tom-tat-nghien-cuu">Tóm tắt nghiên cứu</h2>
+<p>Hệ thống ResQCPR đã được nghiên cứu <br>rộng rãi. Các nghiên cứu tiền lâm sàng<sup>4</sup> đã được tiến hành và cho thấy <br>việc dùng van ngưỡng trở kháng (ITD) trong hồi sinh tim phổi ép-giãn chủ động (ACD-CPR):</p>
+<p>·<br>Làm giảm <br>áp lực nội sọ (ICP), nhờ đó cải thiện áp lực tưới máu não<sup>5</sup></p>
+<p>·<br>Làm tăng lưu lượng <br>máu trong lúc hồi sức lên gần mức bình thường<sup>6</sup></p>
+<p>·<br>Cải thiện <br>tỷ lệ sống sót với chức năng thần kinh còn nguyên vẹn<sup>5</sup></p>
+<p>Các nghiên cứu lâm sàng đã cho thấy việc dùng <br>ITD trong ACD-CPR:</p>
+<p>·<br>Làm tăng <br>tỷ lệ sống sót sau một năm thêm 34% ở những bệnh nhân ngừng tim do nguyên nhân <br>không chấn thương<sup>2</sup></p>
+<p>·<br>Làm tăng <br>tỷ lệ sống sót sau một năm thêm 49% ở những bệnh nhân ngừng tim do nguyên nhân tim<sup>2</sup></p>
+<p>·<br>Tạo ra <br>huyết áp tâm thu và tâm trương gần mức bình thường<sup>7</sup></p>
+<p>·<br>Làm tăng <br>đáng kể áp lực âm (chân không) trong lồng ngực, cả khi dùng mặt nạ lẫn ống nội khí quản<sup>8</sup></p>
+<h2 id="dac-diem-va-loi-ich">Đặc điểm và lợi ích</h2>
+<p>·<br>Thiết bị duy nhất có <br>chỉ định được phê duyệt nhằm tăng khả năng sống sót<sup>3</sup></p>
+<p>·<br>Thiết bị duy nhất <br>cho phép người cứu hộ thực hiện ACD-CPR</p>
+<p>·<br>Hiệu quả về chi phí</p>
+<p>·<br>Nhẹ, <br>dễ mang theo và gọn</p>
+<p>·<br>Không chứa latex</p>
+<p>·<br>Có thể được áp dụng <br>nhanh chóng bởi nhân viên hỗ trợ sự sống cơ bản hoặc nâng cao</p>
+<p>·<br>Được thiết kế để <br>thúc đẩy hồi sức chất lượng cao:</p>
+<p>o  ResQPOD có đèn định thời, nhằm giúp duy trì <br>tần số thông khí phù hợp</p>
+<p>o  ResQPUMP có máy đếm nhịp (metronome), nhằm giúp duy trì <br>tần số ép phù hợp</p>
+<p>o  ResQPUMP có đồng hồ đo lực, nhằm hướng dẫn <br>lực ép và lực kéo lên</p>
+<figure><a class="o-anh" href="2015-03-13-resqcpr-system-approved-by-fda-first_anh/2015_03_UseofResQSystem.jpg"><img src="2015-03-13-resqcpr-system-approved-by-fda-first_anh/2015_03_UseofResQSystem.jpg" alt="" width="377" height="276" loading="lazy" decoding="async"></a></figure>
+<h2 id="thuc-hien-resqcpr-huong-dan-tom-tat9">Thực hiện ResQCPR: Hướng dẫn tóm tắt9</h2>
+<p>1. Đánh giá các dấu hiệu <br>sự sống.</p>
+<p>2. Cho người đi lấy máy khử rung tự động bên ngoài (AED).</p>
+<p>3. Bắt đầu ép tim kiểu ACD-CPR <br>càng sớm càng tốt:</p>
+<p>A. Đặt ResQPUMP ở giữa hai núm vú <br>và phía trên mỏm mũi kiếm.</p>
+<p>B. Thực hiện ACD-CPR:</p>
+<p>Ép: tới độ sâu 2” (5 cm) và ghi nhận <br>lực cần thiết để đạt độ sâu đó.</p>
+<p>Giãn: Kéo lên với lực -10 kg.</p>
+<p>Tần số: 80 lần/phút</p>
+<p>4. Lắp van ResQPOD <br>ITD</p>
+<p>A. Gắn sớm vào mặt nạ.<br>Giữ mặt nạ áp kín.</p>
+<p>B. Bắt đầu thông khí theo tỷ lệ ép tim/thông khí <br>phù hợp.</p>
+<p>C. Chuyển sang đường thở nâng cao ngay khi vị trí ống <br>đã được xác nhận và cố định chắc chắn.</p>
+<p>D. Dùng đèn để hướng dẫn thông khí.<br>Không thông khí quá mức.</p>
+<p>5. Tháo CẢ HAI <br>thiết bị khi có mạch trở lại.</p>
+<h2 id="ma-so-san-pham">Mã số sản phẩm</h2>
+<div class="khung-bang"><table><tbody>
+<tr>
+<td>
+<strong>Mã sản phẩm (Part #)</strong>
+</td>
+<td>
+<strong>Mô tả</strong>
+</td>
+<td>
+<strong>Mô tả</strong>
+</td>
+</tr>
+<tr>
+<td>
+12-0825-000
+</td>
+<td>
+Hệ thống ResQCPR
+</td>
+<td>
+Gồm một thiết bị ACD-CPR ResQPUMP <br>và hai van ResQPOD ITD 16
+</td>
+</tr>
+<tr>
+<td>
+12-0823-000
+</td>
+<td>
+Thiết bị ACD-CPR ResQPUMP 
+</td>
+<td>
+Bộ phận thay thế 
+</td>
+</tr>
+<tr>
+<td>
+12-0822-000
+</td>
+<td>
+ResQPOD ITD 16
+</td>
+<td>
+Bộ phận thay thế
+</td>
+</tr>
+<tr>
+<td>
+12-0586-000
+</td>
+<td>
+Cốc hút cho thiết bị ACD-CPR
+</td>
+<td>
+Bộ phận thay thế
+</td>
+</tr>
+<tr>
+<td>
+12-0935-000
+</td>
+<td>
+Túi đựng ResQCPR
+</td>
+<td>
+Được thiết kế để đựng một ResQPUMP, hai <br>ResQPOD và các phụ kiện khác cần thiết để bắt đầu ResQCPR nhanh chóng
+</td>
+</tr>
+<tr>
+<td>
+12-2116-000
+</td>
+<td>
+ManiKIT
+</td>
+<td>
+Cho phép điều chỉnh nhiều loại manơcanh hồi sinh tim phổi <br>để huấn luyện ResQCPR
+</td>
+</tr>
+<tr>
+<td>
+12-2117-000
+</td>
+<td>
+ResQTRAINER
+</td>
+<td>
+Dụng cụ huấn luyện giúp học <br>các kỹ năng tâm vận động của ACD-CPR
+</td>
+</tr>
+<tr>
+<td>
+12-0869-000
+</td>
+<td>
+Bộ trình diễn ResQCPR (Demo Kit)
+</td>
+<td>
+Mô hình trình diễn ResQMAN kèm van ResQPOD ITD<br></td>
+</tr>
+</tbody></table></div>
+<h2 id="phan-phoi-va-dich-vu-khach-hang">Phân phối và dịch vụ khách hàng</h2>
+<p>Hệ thống ResQCPR chỉ được cung cấp độc quyền <br>qua ZOLL Medical Corporation. Bộ phận Dịch vụ khách hàng sẵn sàng <br>giải đáp các thắc mắc về đặc điểm và lợi ích của sản phẩm, việc mua lẻ, <br>giá cả, hoàn tiền, chiết khấu, tình trạng vận chuyển, hoặc các thông tin <br>khác liên quan đến dịch vụ. Hãy liên hệ với nhân viên Dịch vụ khách hàng của chúng tôi qua điện thoại hoặc <br>e-mail:</p>
+<p>ZOLL <br>– Chelmsford (Sản phẩm hồi sức)</p>
+<p>Thứ Hai – Thứ Sáu; 8:30 sáng đến 7:00 tối, giờ chuẩn miền Đông (Hoa Kỳ)</p>
+<p>Điện thoại trực tiếp:              978-421-9440</p>
+<p>Số miễn phí:          800-348-9011</p>
+<p>Số fax:                 978-421-0015</p>
+<p>Thư điện tử (E-mail):  info@zoll.com</p>
+<p>Thư điện tử (Email): <br>esales@zoll.com<u><span class="c-xanh"></span></u></p>
+<p>Trang web: <br>www.zoll.com</p>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo</h2>
+<p>1Bệnh nhân ngừng tim do nguyên nhân tim</p>
+<p><sup>2</sup>Tóm tắt dữ liệu về an toàn và hiệu quả của hệ thống ResQCPR (ResQCPR System Summary of Safety and Effectiveness Data) <br>được Cục Quản lý Thực phẩm và Dược phẩm Hoa Kỳ (FDA) phê duyệt năm 2015</p>
+<p><sup>3</sup>Chỉ định sử dụng được FDA phê duyệt: <br>Hệ thống ResQCPR được dùng như một biện pháp hỗ trợ hồi sinh tim phổi nhằm tăng khả năng <br>sống sót ở bệnh nhân người lớn bị ngừng tim không do chấn thương.</p>
+<p><sup>4</sup>Kết quả nghiên cứu tiền lâm sàng không <br>nhất thiết đại diện cho kết quả nghiên cứu lâm sàng.</p>
+<p><sup>5</sup>Metzger và cs. Improved cerebral<br>perfusion pressures and 24-hour neurological survival in a porcine model of<br>cardiac arrest with ACD-CPR and augmentation of negative intrathoracic<br>pressure. Crit Care Med 2012;40(6):1851-6.</p>
+<p><sup>6</sup>Voelckel và cs. Effects of ACD-CPR with the inspiratory<br>threshold valve in a young porcine model of cardiac arrest. Pediatr Res<br>2002;51(4):523-7.</p>
+<p><sup>7</sup>Plaisance <br>và cs. Inspiratory impedance during ACD-CPR: a randomized evaluation in<br>patients in cardiac arrest.</p>
+<p><sup>8</sup>Plaisance <br>và cs. Use of an inspiratory ITD on a facemask and ET tube to reduce<br>intrathoracic pressure during the decompression phase of ACD-CPR. Crit Care Med<br>2005;33(5):990-994.</p>
+<p><sup>9</sup>Xem <br>tờ hướng dẫn kèm sản phẩm để biết hướng dẫn sử dụng đầy đủ.</p>
+<p>Sử dụng hệ thống ResQCPR <br>không đúng cách có thể làm cho các động tác ép và giãn lồng ngực <br>kém hiệu quả, dẫn đến tuần hoàn không tối ưu trong lúc hồi sinh tim phổi <br>và có thể gây tổn thương nghiêm trọng cho bệnh nhân. Hệ thống <br>ResQCPR chỉ nên được sử dụng bởi nhân viên đã được huấn luyện về cách <br>sử dụng. Không nên dùng ResQPUMP ở bệnh nhân mới mở xương ức <br>gần đây vì việc này có thể gây tổn thương nghiêm trọng. Đặt cốc hút của ResQPUMP <br>sai vị trí có thể gây tổn thương khung xương sườn <br>và/hoặc các cơ quan bên trong, và cũng có thể dẫn đến tuần hoàn không tối ưu trong lúc <br>ACD-CPR.<em></em></p>
+  </section>
+ </main>
+</div>
+<div class="thanh-nut">
+ <button id="nutMl" class="hien-ml" type="button" title="Mục lục">≡</button>
+ <button id="nutGiam" type="button" title="Chữ nhỏ hơn">A-</button>
+ <button id="nutTang" type="button" title="Chữ lớn hơn">A+</button>
+ <button id="nutNen" type="button" title="Nền sáng/tối">◐</button>
+</div>
+<div class="xem-anh" id="xemAnh" role="dialog" aria-label="Xem ảnh">
+ <span class="xa-dem"></span>
+ <button class="xa-dong" type="button" title="Đóng (Esc)">✕</button>
+ <button class="xa-truoc" type="button" title="Ảnh trước (←)">‹</button>
+ <img alt="">
+ <button class="xa-sau" type="button" title="Ảnh sau (→)">›</button>
+ <div class="xa-chu"></div>
+</div>
+<script>
+(function(){
+ var goc=document.documentElement, ds=document.getElementById('dsMuc'),
+     giay=document.getElementById('toGiay'), pt=document.getElementById('phanTram'),
+     ml=document.getElementById('mucLuc');
+ var dau=[].slice.call(giay.querySelectorAll('h2,h3,h4,h5,h6'));
+
+ // mục lục
+ dau.forEach(function(h){
+  var li=document.createElement('li');
+  li.className='cap-'+(+h.tagName[1]-1);
+  var a=document.createElement('a');
+  a.href='#'+h.id; a.textContent=h.textContent;
+  a.addEventListener('click',function(){ ml.classList.remove('mo'); });
+  li.appendChild(a); ds.appendChild(li);
+ });
+ var neo=[].slice.call(ds.querySelectorAll('a'));
+
+ function capNhat(){
+  var i=0;
+  for(var k=0;k<dau.length;k++){ if(dau[k].getBoundingClientRect().top<140) i=k; }
+  neo.forEach(function(a,k){ a.classList.toggle('dang-doc',k===i); });
+  var a=neo[i];
+  if(a){ var cuon=a.closest('.ml-cuon');
+   if(cuon){ var h=a.getBoundingClientRect(), c=cuon.getBoundingClientRect();
+    if(h.top<c.top||h.bottom>c.bottom) cuon.scrollTop+=h.top-c.top-c.height/3; } }
+  var het=document.documentElement.scrollHeight-innerHeight;
+  pt.textContent=(het>0?Math.min(100,Math.round(scrollY/het*100)):100)+'%';
+ }
+ addEventListener('scroll',capNhat,{passive:true});
+ addEventListener('resize',capNhat); capNhat();
+
+ // cỡ chữ + nền tối, nhớ lựa chọn
+ function docNho(k,md){ try{ return localStorage.getItem(k)||md; }catch(e){ return md; } }
+ function ghiNho(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+ var co=parseInt(docNho('gl-co','16'),10);
+ function apCo(){ goc.style.setProperty('--co',co+'px'); ghiNho('gl-co',co); capNhat(); }
+ apCo();
+ goc.setAttribute('data-nen',docNho('gl-nen','sang'));
+ document.getElementById('nutTang').onclick=function(){ co=Math.min(24,co+1); apCo(); };
+ document.getElementById('nutGiam').onclick=function(){ co=Math.max(12,co-1); apCo(); };
+ document.getElementById('nutNen').onclick=function(){
+  var v=goc.getAttribute('data-nen')==='toi'?'sang':'toi';
+  goc.setAttribute('data-nen',v); ghiNho('gl-nen',v);
+ };
+ // thu gọn / mở lại cột mục lục (nhớ lựa chọn)
+ goc.setAttribute('data-ml',docNho('gl-ml',''));
+ function datMl(v){ goc.setAttribute('data-ml',v); ghiNho('gl-ml',v); capNhat(); }
+ document.getElementById('nutThu').onclick=function(){ datMl('thu'); };
+ document.getElementById('nutMl').onclick=function(){
+  // màn hình rộng: nút ≡ mở lại cột đã thu; màn hình hẹp: kéo cột ra/vào
+  if(innerWidth>980 && goc.getAttribute('data-ml')==='thu'){ datMl(''); return; }
+  ml.classList.toggle('mo');
+ };
+
+ // tìm trong bài
+ var o=document.getElementById('oTim'), dem=document.getElementById('demTim'), hit=[], vt=-1;
+ function xoaDanh(){
+  hit=[]; vt=-1;
+  var m=giay.querySelectorAll('mark.danh');
+  for(var i=0;i<m.length;i++){ var p=m[i].parentNode;
+   p.replaceChild(document.createTextNode(m[i].textContent),m[i]); p.normalize(); }
+ }
+ function danhDau(q){
+  xoaDanh();
+  if(q.length<2){ dem.textContent=''; return; }
+  var tw=document.createTreeWalker(giay,NodeFilter.SHOW_TEXT,null), nut=[], n;
+  while((n=tw.nextNode())) if(n.nodeValue.trim()) nut.push(n);
+  var kq=q.toLowerCase();
+  nut.forEach(function(n){
+   var s=n.nodeValue, l=s.toLowerCase(), i=l.indexOf(kq);
+   if(i<0) return;
+   var cha=n.parentNode, sau=n, dich=0;
+   while(i>=0){
+    var giua=sau.splitText(i-dich); dich=i+q.length;
+    sau=giua.splitText(q.length);
+    var mk=document.createElement('mark'); mk.className='danh';
+    cha.replaceChild(mk,giua); mk.appendChild(giua); hit.push(mk);
+    i=l.indexOf(kq,dich);
+   }
+  });
+  dem.textContent=hit.length?('1/'+hit.length):'0';
+  if(hit.length){ vt=0; toi(0); }
+ }
+ function toi(i){
+  if(!hit.length) return;
+  hit.forEach(function(m){ m.classList.remove('dang'); });
+  vt=(i+hit.length)%hit.length;
+  hit[vt].classList.add('dang');
+  hit[vt].scrollIntoView({block:'center',behavior:'smooth'});
+  dem.textContent=(vt+1)+'/'+hit.length;
+ }
+ var cho;
+ o.addEventListener('input',function(){ clearTimeout(cho);
+  cho=setTimeout(function(){ danhDau(o.value.trim()); },250); });
+ o.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault();
+  toi(vt+(e.shiftKey?-1:1)); } });
+ document.getElementById('timTruoc').onclick=function(){ toi(vt-1); };
+ document.getElementById('timSau').onclick=function(){ toi(vt+1); };
+ addEventListener('beforeprint',xoaDanh);
+})();
+// xem ảnh phóng to: bấm ảnh để mở, ←/→ chuyển ảnh trong cùng bộ, Esc để đóng
+(function(){
+ var hop=document.getElementById('xemAnh'), anh=hop.querySelector('img'),
+     chu=hop.querySelector('.xa-chu'), dem=hop.querySelector('.xa-dem'), bo=[], vt=0;
+ function hien(i){
+  vt=(i+bo.length)%bo.length; var a=bo[vt], im=a.querySelector('img');
+  anh.src=a.getAttribute('href'); anh.alt=im.alt; chu.textContent=im.alt;
+  chu.style.display=im.alt?'':'none';
+  dem.textContent=bo.length>1?(vt+1)+' / '+bo.length:'';
+  hop.querySelector('.xa-truoc').style.display=hop.querySelector('.xa-sau').style.display=bo.length>1?'':'none';
+ }
+ function dong(){ hop.classList.remove('mo'); anh.removeAttribute('src'); document.body.style.overflow=''; }
+ document.getElementById('toGiay').addEventListener('click',function(e){
+  var a=e.target.closest('a.o-anh'); if(!a) return;
+  e.preventDefault();
+  var cha=a.closest('.bo-anh');
+  bo=cha?[].slice.call(cha.querySelectorAll('a.o-anh')):[a];
+  hien(bo.indexOf(a)); hop.classList.add('mo'); document.body.style.overflow='hidden';
+ });
+ hop.querySelector('.xa-dong').onclick=dong;
+ hop.querySelector('.xa-truoc').onclick=function(e){ e.stopPropagation(); hien(vt-1); };
+ hop.querySelector('.xa-sau').onclick=function(e){ e.stopPropagation(); hien(vt+1); };
+ hop.addEventListener('click',function(e){ if(e.target===hop) dong(); });
+ addEventListener('keydown',function(e){
+  if(!hop.classList.contains('mo')) return;
+  if(e.key==='Escape') dong();
+  else if(e.key==='ArrowLeft') hien(vt-1);
+  else if(e.key==='ArrowRight') hien(vt+1);
+ });
+ var x0=null;
+ hop.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+ hop.addEventListener('touchend',function(e){ if(x0===null) return;
+  var dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)>50) hien(vt+(dx<0?1:-1)); });
+})();
+// video YouTube: chỉ tải khi bấm. YouTube trả "Lỗi 153" khi trang không gửi được referrer
+// (mở từ ổ đĩa file:// hoặc khung sandbox) — khi đó mở thẳng tab YouTube.
+(function(){
+ var giay=document.getElementById('toGiay'), ds=giay.querySelectorAll('.yt');
+ if(!ds.length) return;
+ var canEmbed=/^https?:$/.test(location.protocol) &&
+   (typeof window.origin==='undefined' || (window.origin && window.origin!=='null'));
+ var PLAY='<span class="play"><svg viewBox="0 0 68 48"><path fill="#f00" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/><path fill="#fff" d="M27 34l18-10-18-10z"/></svg></span>';
+ [].forEach.call(ds,function(b){
+  var id=b.getAttribute('data-id'), n=b.getAttribute('data-n')||'Video', watch='https://www.youtube.com/watch?v='+id;
+  b.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+n+'">'+PLAY+'<span class="badge">▶ '+n+'</span>';
+  b.setAttribute('role','button'); b.setAttribute('tabindex','0');
+  var fig=b.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+  if(!cap&&fig){ cap=document.createElement('figcaption'); fig.appendChild(cap); }
+  if(cap){ var a=document.createElement('a'); a.className='ytlink'; a.href=watch; a.target='_blank';
+   a.rel='noopener'; a.textContent='Mở trên YouTube ↗'; cap.appendChild(a); }
+  function load(){
+   if(!canEmbed){ window.open(watch,'_blank','noopener'); return; }
+   b.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&autoplay=1" '+
+    'referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer;autoplay;clipboard-write;'+
+    'encrypted-media;gyroscope;picture-in-picture" allowfullscreen title="'+n+'"></iframe>';
+   b.style.cursor='default';
+  }
+  b.addEventListener('click',load);
+  b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
+ });
+ if(!canEmbed){
+  var w=document.createElement('div'); w.className='canh-bao';
+  w.innerHTML='<b>Lưu ý:</b> trang đang mở trực tiếp từ ổ đĩa (hoặc trong khung xem trước) nên YouTube chặn phát nhúng '+
+   '(<i>Lỗi 153</i>). Bấm vào video sẽ mở tab YouTube. Đăng trang lên web (https) thì video phát ngay trong trang.';
+  giay.insertBefore(w, giay.firstChild);
+ }
+})();
+</script>
+</body>
+</html>
