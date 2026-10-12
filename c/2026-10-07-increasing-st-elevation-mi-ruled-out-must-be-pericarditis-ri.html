@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="vi" data-nen="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>07/10/2026 — ST chênh lên tăng dần. Đã loại trừ nhồi máu cơ tim. Hẳn là viêm màng ngoài tim, đúng không?</title>
+<style>
+:root{
+ --nen:#f2f4f6; --giay:#ffffff; --chu:#172033; --nhat:#5b6675; --vien:#e3e7ec;
+ --do:#b30000; --xanh:#004b87; --diu:#f6f8fa; --danh:#fff3cd;
+}
+:root[data-nen="toi"]{
+ --nen:#12151b; --giay:#1b2029; --chu:#e6eaf0; --nhat:#9aa5b4; --vien:#2c333f;
+ --do:#ff8a8a; --xanh:#7fb6e6; --diu:#232a35; --danh:#5a4a12;
+}
+*{box-sizing:border-box}
+html{font-size:var(--co,16px)}
+body{margin:0;background:var(--nen);color:var(--chu);
+ font-family:"Noto Sans","Segoe UI",Roboto,Arial,sans-serif;
+ font-size:1rem;line-height:1.7;-webkit-text-size-adjust:100%}
+a{color:var(--xanh)}
+.bo-cuc{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px;
+ max-width:1500px;margin:0 auto;padding:22px}
+/* ---- cột mục lục ---- */
+.muc-luc{position:sticky;top:22px;align-self:start;height:calc(100vh - 44px);
+ background:var(--giay);border-radius:16px;padding:16px 10px;display:flex;
+ flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ml-dau{display:flex;justify-content:space-between;align-items:center;
+ padding:2px 10px 10px;font-size:.78rem;font-weight:800;letter-spacing:.09em;
+ color:var(--do);border-bottom:1px solid var(--vien)}
+#phanTram{color:var(--nhat)}
+/* Thu gọn / mở lại cột mục lục. Trang nhớ lựa chọn, vì người đọc guideline
+   mở lại nhiều lần và không muốn mỗi lần lại phải thu tay. */
+.ml-dau .nut-thu{margin-left:8px;border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:1px 8px;cursor:pointer;font:inherit;
+ font-size:.9rem;line-height:1.4}
+@media(min-width:981px){
+ :root[data-ml="thu"] .bo-cuc{grid-template-columns:minmax(0,1fr)}
+ :root[data-ml="thu"] .muc-luc{display:none}
+ :root[data-ml="thu"] .hien-ml{display:block}
+}
+.o-tim{padding:10px 8px 6px}
+.o-tim input{width:100%;padding:8px 10px;border:1px solid var(--vien);
+ border-radius:9px;background:var(--diu);color:var(--chu);font:inherit;font-size:.85rem}
+.tim-dieu-khien{display:flex;gap:6px;align-items:center;margin-top:6px;
+ font-size:.76rem;color:var(--nhat)}
+.tim-dieu-khien button{border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:2px 9px;cursor:pointer;font:inherit}
+.ml-cuon{overflow-y:auto;flex:1;margin-top:4px}
+#dsMuc{list-style:none;margin:0;padding:0}
+#dsMuc a{display:block;padding:7px 12px;border-radius:9px;text-decoration:none;
+ color:var(--chu);font-size:.87rem;line-height:1.4}
+#dsMuc a:hover{background:var(--diu)}
+#dsMuc a.dang-doc{background:var(--diu);color:var(--do);font-weight:700;
+ box-shadow:inset 3px 0 0 var(--do)}
+#dsMuc .cap-1>a{font-weight:700}
+#dsMuc .cap-2>a{padding-left:26px;font-size:.85rem}
+#dsMuc .cap-3>a{padding-left:40px;font-size:.82rem;color:var(--nhat)}
+#dsMuc .cap-4>a,#dsMuc .cap-5>a{padding-left:54px;font-size:.8rem;color:var(--nhat)}
+/* ---- thân bài ---- */
+.dau-bai,.to-giay{background:var(--giay);border-radius:16px;
+ box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.dau-bai{padding:28px 34px;margin-bottom:22px}
+.nhan{font-size:.76rem;font-weight:800;letter-spacing:.16em;color:var(--nhat)}
+.dau-bai h1{margin:.25em 0 .35em;font-size:2rem;line-height:1.25;color:var(--do)}
+.dich-gia{color:var(--nhat);font-size:.92rem;margin:0}
+.dich-gia b{color:var(--xanh)}
+.to-giay{padding:34px 40px 60px}
+.to-giay h2{color:var(--do);font-size:1.65rem;margin:1.7em 0 .5em;
+ padding-bottom:4px;border-bottom:2px solid var(--vien)}
+.to-giay h2:first-child{margin-top:0}
+.to-giay h3{color:var(--xanh);font-size:1.3rem;margin:1.5em 0 .4em}
+.to-giay h4{font-size:1.08rem;margin:1.3em 0 .3em}
+.to-giay h5,.to-giay h6{font-size:1rem;margin:1.2em 0 .3em;color:var(--nhat)}
+.to-giay p{margin:0 0 .85em;text-align:justify}
+.to-giay p.cham{padding-left:1.35em;text-indent:-1.1em;text-align:left}
+figure{margin:1.4em 0;text-align:center}
+figure img{max-width:100%;height:auto;border:1px solid var(--vien);border-radius:10px}
+/* ---- bảng ---- */
+.tham-chieu{color:var(--xanh);font-weight:600;text-decoration:none;
+ border-bottom:1px dotted currentColor}
+.tham-chieu:hover{border-bottom-style:solid}
+.chu-thich-float{font-weight:600;margin:0 0 .4em}
+.khung-bang{overflow-x:auto;margin:1.4em 0;border-radius:10px;
+ border:1px solid var(--vien)}
+.khung-bang table{border-collapse:collapse;width:100%;font-size:.88rem;
+ table-layout:fixed}
+.to-giay p,.to-giay li,.to-giay dd{overflow-wrap:break-word}
+.to-giay sup{overflow-wrap:anywhere}
+.khung-bang td{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;
+ line-height:1.5;word-wrap:break-word}
+.khung-bang td.sat{padding-left:0;padding-right:0}
+.khung-bang td.giua{text-align:center;vertical-align:middle}
+.khung-bang td.ky-hieu{font-weight:800;white-space:nowrap}
+.khung-bang td.nen-toi,.khung-bang td.nen-toi *{color:#fff}
+.khung-bang td.nen-sang,.khung-bang td.nen-sang *{color:#12151b}
+.khung-bang td span{display:block}
+.khung-bang td span.cham{padding-left:1.1em;text-indent:-1em}
+mark.danh{background:var(--danh);color:inherit;border-radius:3px}
+/* Ô có màu ép màu chữ cho cả con cháu, kể cả <mark> của phần tìm trong bài — chữ
+   trắng trên nền vàng nhạt là tìm thấy mà không nhìn thấy. Trả chữ về màu trang. */
+.khung-bang td.nen-toi mark.danh,.khung-bang td.nen-sang mark.danh,
+.khung-bang td.nen-toi mark.danh *,.khung-bang td.nen-sang mark.danh *{color:var(--chu)}
+mark.danh.dang{outline:2px solid var(--do)}
+/* ---- nút nổi ---- */
+.thanh-nut{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:9}
+.thanh-nut button{width:42px;height:42px;border-radius:50%;cursor:pointer;
+ border:1px solid var(--vien);background:var(--giay);color:var(--chu);
+ font-size:1rem;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.hien-ml{display:none}
+/* ---- màn hình hẹp ---- */
+@media(max-width:980px){
+ .bo-cuc{grid-template-columns:minmax(0,1fr);padding:12px}
+ .muc-luc{position:fixed;inset:0 auto 0 0;width:88%;max-width:340px;z-index:20;
+  border-radius:0;height:100vh;transform:translateX(-102%);transition:transform .2s}
+ .muc-luc.mo{transform:none}
+ .hien-ml{display:block}
+ .to-giay{padding:22px 18px 44px}
+ /* Màn hình điện thoại: giữ bề rộng tối thiểu cho bảng rồi cho cuộn ngang,
+    thay vì bóp cột hẹp tới mức "Trung bình" xuống dòng thành "Tr un g bì nh". */
+ .khung-bang table{min-width:620px}
+ .dau-bai{padding:20px}
+ .dau-bai h1{font-size:1.5rem}
+}
+/* ---- in ra giấy ---- */
+@media print{
+ /* Nền tối được nhớ trong localStorage: bật một lần là mọi lần in sau đều dính.
+    Giấy luôn trắng, nên trả bảng màu về bản sáng trước khi in — nếu không, chữ
+    #e6eaf0 in lên giấy trắng là mất hẳn. */
+ :root,:root[data-nen="toi"]{--nen:#fff;--giay:#fff;--chu:#172033;--nhat:#4a5462;
+  --vien:#c9ced5;--do:#b30000;--xanh:#004b87;--diu:#f6f8fa;--danh:#fff3cd}
+ body{background:#fff;font-size:11.5pt}
+ .muc-luc,.thanh-nut{display:none!important}
+ .bo-cuc{display:block;max-width:none;padding:0}
+ .dau-bai,.to-giay{box-shadow:none;border-radius:0;padding:0}
+ .to-giay h2,.to-giay h3{break-after:avoid}
+ .khung-bang,figure{break-inside:avoid}
+ .khung-bang td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.c-xanh{color:var(--xanh)} .c-do{color:var(--do)} .c-luc{color:var(--luc)} .c-nhat{color:var(--nhat)}
+:root{--luc:#1d7a3a} :root[data-nen="toi"]{--luc:#7fd49a}
+.ban-quyen{display:inline-block;margin:.4em 0 1.2em!important;padding:6px 14px;border-radius:9px;
+ background:var(--diu);border:1px solid var(--vien);color:var(--nhat);font-size:.88rem}
+.note{background:var(--diu);border-left:4px solid var(--xanh);border-radius:0 10px 10px 0;padding:10px 16px;margin:1.1em 0}
+.note p:last-child{margin-bottom:0}
+.canh-bao{background:#fff4d6;border:1px solid #e8c97a;color:#4a3a10;border-radius:10px;padding:12px 16px;margin:0 0 18px;font-size:.93em}
+:root[data-nen="toi"] .canh-bao{background:#3a2f12;border-color:#6b5a1a;color:#f0e2bd}
+.to-giay blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid var(--vien);background:var(--diu);border-radius:0 10px 10px 0}
+.to-giay ul,.to-giay ol{padding-left:1.5em;margin:0 0 .9em}
+.to-giay li{margin:.2em 0}
+.to-giay hr{border:0;border-top:1px solid var(--vien);margin:1.6em 0}
+.khung-bang th{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;background:var(--diu);text-align:left;line-height:1.5}
+.khung-bang td[style*="background"],.khung-bang th[style*="background"]{color:#12151b}
+.tk p,.tk li{font-size:.9em;color:var(--nhat);text-align:left}
+figcaption,.chu-thich-anh{font-size:.88rem;color:var(--nhat);margin-top:.45em;text-align:center;line-height:1.55}
+figcaption b{color:var(--chu)}
+figure.anh-dau img{width:100%;max-height:420px;object-fit:cover}
+figure video{width:100%;max-height:78vh;background:#000;border-radius:10px;display:block}
+.khung-video{position:relative;padding-top:56.25%;margin:0;border-radius:10px;overflow:hidden;background:#000}
+.khung-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer;display:block;border-radius:10px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;border:0!important;border-radius:0!important;transition:opacity .2s}
+.yt:hover img{opacity:1}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.yt .play svg{width:58px;height:58px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.badge{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:2px 8px;border-radius:20px;pointer-events:none}
+.ytlink{display:inline-block;margin-left:8px;font-size:.92em;color:var(--xanh);text-decoration:none;border:1px solid var(--vien);border-radius:20px;padding:1px 10px;white-space:nowrap}
+.bo-anh{display:grid;gap:8px;margin:1em 0 1.4em;align-items:start}
+.bo-anh.cot-1{grid-template-columns:repeat(1,minmax(0,1fr))}
+.bo-anh.cot-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bo-anh.cot-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bo-anh.cot-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.bo-anh.cot-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bo-anh.cot-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.o-anh{display:block;border-radius:8px;overflow:hidden;background:#000;
+ border:1px solid var(--vien);cursor:zoom-in;line-height:0}
+.o-anh img{display:block;width:100%;height:auto}
+figure .o-anh{display:inline-block;background:none;border:0}
+figure .o-anh img{border:1px solid var(--vien);border-radius:10px}
+@media(max-width:980px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.xem-anh{position:fixed;inset:0;z-index:50;background:rgba(8,10,14,.94);display:none;
+ flex-direction:column;align-items:center;justify-content:center;padding:14px}
+.xem-anh.mo{display:flex}
+.xem-anh img{max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;border-radius:6px;background:#000}
+.xem-anh .xa-chu{color:#dfe5ec;font-size:.85rem;max-width:1100px;margin-top:10px;text-align:center;
+ line-height:1.5;max-height:5.2em;overflow:auto}
+.xem-anh .xa-dem{position:absolute;top:14px;left:18px;color:#c4ccd6;font-size:.85rem}
+.xem-anh button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;
+ width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+.xem-anh button:hover{background:rgba(255,255,255,.25)}
+.xem-anh .xa-dong{top:12px;right:14px}
+.xem-anh .xa-truoc{left:14px;top:50%;transform:translateY(-50%)}
+.xem-anh .xa-sau{right:14px;top:50%;transform:translateY(-50%)}
+@media print{
+ .xem-anh,.canh-bao,.ytlink{display:none!important}
+ .bo-anh{break-inside:avoid}
+ .o-anh{background:none}
+}
+</style>
+</head>
+<body>
+<div class="bo-cuc">
+ <aside class="muc-luc" id="mucLuc">
+  <div class="ml-dau"><span>NỘI DUNG</span><span id="phanTram">0%</span><button
+    id="nutThu" class="nut-thu" type="button" title="Thu gọn mục lục">«</button></div>
+  <div class="o-tim">
+   <input id="oTim" type="search" placeholder="Tìm trong tài liệu…" autocomplete="off">
+   <div class="tim-dieu-khien">
+    <button id="timTruoc" type="button">↑</button>
+    <button id="timSau" type="button">↓</button>
+    <span id="demTim"></span>
+   </div>
+  </div>
+  <div class="ml-cuon"><ul id="dsMuc"></ul></div>
+ </aside>
+ <main>
+  <section class="dau-bai">
+   <div class="nhan">CASE ECG #2049 · DR. SMITH’S ECG BLOG</div>
+   <h1>07/10/2026 — ST chênh lên tăng dần. Đã loại trừ nhồi máu cơ tim. Hẳn là viêm màng ngoài tim, đúng không?</h1>
+   <p class="dich-gia"><a href="https://doctor-gau-1607.github.io/case-ecg-smith/">← Mục lục Case ECG</a></p><p class="dich-gia">Bản dịch tiếng Việt của bài <a href="https://drsmithsecgblog.com/increasing-st-elevation-mi-ruled-out-must-be-pericarditis-right/" target="_blank" rel="noopener">"Increasing ST Elevation.  MI ruled out.  Must be pericarditis, right?"</a> – Dr. Smith’s ECG Blog. Giữ nguyên toàn bộ 12 hình ảnh của bản gốc.</p>
+  </section>
+  <section class="to-giay" id="toGiay">
+<figure class="anh-dau"><a class="o-anh" href="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Untitled-2-scaled.jpg"><img src="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Untitled-2-scaled.jpg" alt="" width="1600" height="589" loading="lazy" decoding="async"></a></figure>
+<hr>
+<h2 id="phan-trinh-bay-ca-benh-cua-willy-frick">Phần trình bày ca bệnh của Willy Frick</h2>
+<p><strong>Smith</strong>: Ca này làm tôi nhớ đến ca sau: <a href="https://drsmithsecgblog.com/31-year-old-male-with-ruq-pain-and/" rel="noopener" target="_blank">31 Year Old Male with RUQ Pain and a History of Pericarditis. Submitted by a Med Student, with Great Commentary on Bias!</a> (Nam 31 tuổi đau hạ sườn phải và có tiền sử viêm màng ngoài tim. Do một sinh viên y khoa gửi, kèm bình luận tuyệt vời về thiên kiến!)<br><br><span class="c-nhat">= = =</span></p>
+<h2 id="ca-benh">Ca bệnh</h2>
+<p>Một người đàn ông 30 tuổi có tăng huyết áp được đưa vào bệnh viện với lý do chính đến khám là đau ngực.</p>
+<p><strong>Bệnh sử do đội cấp cứu ngoài viện (EMS) ghi nhận:</strong> “Bệnh nhân xanh xao, da ấm và vã mồ hôi, đang ngồi bên ngoài và than đau ngực. […] Bệnh nhân được cho dùng 324 mg aspirin đường uống (PO) và 0.4 mg nitroglycerin ngậm dưới lưỡi theo phác đồ. Sau khi dùng nitroglycerin, huyết áp của bệnh nhân giảm từ 160/100 mmHg xuống 130/80 mmHg. Bệnh nhân cho biết đau ngực đã đỡ. Bệnh nhân được chuyển đến [bệnh viện]. Không ghi nhận thay đổi nào về tình trạng bệnh nhân trong quá trình vận chuyển.”</p>
+<p>Đội EMS đã ghi bốn điện tâm đồ trong quá trình vận chuyển; mốc thời gian được kèm theo để tham chiếu.</p>
+<p><strong>Điện tâm đồ 1</strong></p>
+<figure><a class="o-anh" href="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Screenshot-2026-07-29-at-2.14.14-PM-scaled.jpg"><img src="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Screenshot-2026-07-29-at-2.14.14-PM-scaled.jpg" alt="" width="1600" height="786" loading="lazy" decoding="async"></a></figure>
+<p><strong>Điện tâm đồ 2</strong></p>
+<figure><a class="o-anh" href="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Screenshot-2026-07-29-at-2.14.35-PM-scaled.jpg"><img src="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Screenshot-2026-07-29-at-2.14.35-PM-scaled.jpg" alt="" width="1600" height="786" loading="lazy" decoding="async"></a></figure>
+<p><strong>Điện tâm đồ 3</strong></p>
+<figure><a class="o-anh" href="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Screenshot-2026-07-29-at-2.14.57-PM-scaled.jpg"><img src="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Screenshot-2026-07-29-at-2.14.57-PM-scaled.jpg" alt="" width="1600" height="786" loading="lazy" decoding="async"></a></figure>
+<p><strong>Điện tâm đồ 4</strong></p>
+<figure><a class="o-anh" href="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Screenshot-2026-07-29-at-2.15.15-PM-scaled.jpg"><img src="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Screenshot-2026-07-29-at-2.15.15-PM-scaled.jpg" alt="" width="1600" height="786" loading="lazy" decoding="async"></a></figure>
+<p><span class="c-nhat">= = =</span></p>
+<p><strong>Smith</strong>: Mô hình AI điện tâm đồ thử nghiệm của PMCardio đánh giá điện tâm đồ này là 76.6% tái cực sớm (dương tính) và 33.7% viêm màng ngoài tim (không xác định).</p>
+<p><span class="c-nhat">= = =</span></p>
+<p>Khi bệnh nhân đến bệnh viện, bệnh sử được ghi nhận bổ sung.</p>
+<ul><li><strong>Bệnh sử do điều dưỡng ghi nhận:</strong> “Bệnh nhân [được EMS đưa đến] than đau ngực (CP) x 1 giờ, đã được EMS cho nitroglycerin và aspirin (ASA). Khai rằng cơn đau xuất hiện đột ngột khi đang ở trạm xe buýt.”</li>
+<li>Điện tâm đồ được ghi lại tại khoa cấp cứu lúc 11:48, 12 phút sau điện tâm đồ 4.</li></ul>
+<p><strong>Điện tâm đồ 5</strong></p>
+<figure><a class="o-anh" href="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Screenshot-2026-07-29-at-2.17.42-PM-scaled.jpg"><img src="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Screenshot-2026-07-29-at-2.17.42-PM-scaled.jpg" alt="" width="1600" height="1020" loading="lazy" decoding="async"></a></figure>
+<p><strong>Bệnh sử do bác sĩ cấp cứu ghi nhận:</strong> “Bệnh nhân khai đang chờ xe buýt vào khoảng 1100 thì xuất hiện đau ngực bên trái. Mô tả là cảm giác đè ép sâu. Lan xuống bụng. Khai rằng trước đây từng có những cơn đau ngực đến rồi đi, nhưng chưa lần nào đau dữ dội như lần này. Có vã mồ hôi và khó thở kèm theo cơn đau.”</p>
+<ul><li>Bác sĩ cấp cứu đã mời hội chẩn tim mạch. </li>
+<li>Một điện tâm đồ nữa được ghi lúc 12:37, 49 phút sau điện tâm đồ 4 [người dịch: theo các mốc giờ thì đúng hơn là sau điện tâm đồ thứ năm, nhiều khả năng là lỗi đánh máy].</li></ul>
+<p><strong>Điện tâm đồ 6</strong></p>
+<figure><a class="o-anh" href="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Screenshot-2026-07-29-at-2.21.18-PM.jpg"><img src="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Screenshot-2026-07-29-at-2.21.18-PM.jpg" alt="" width="1600" height="865" loading="lazy" decoding="async"></a></figure>
+<p><strong>Smith</strong>: Mô hình AI điện tâm đồ thử nghiệm của PMCardio đánh giá điện tâm đồ này là 88.2% tái cực sớm (dương tính) và 3.8% viêm màng ngoài tim (cực kỳ ít khả năng).</p>
+<p><strong>Bệnh sử do bác sĩ tim mạch ghi nhận:</strong> “Bệnh nhân được đội cấp cứu ngoài viện đưa đến (BIBEMS) vì đau ngực bắt đầu 3-4 giờ trước khi đến viện. Trên đường cùng EMS, bệnh nhân đã được dùng nitroglycerin ngậm dưới lưỡi (SL NTG) và liều nạp aspirin (ASA), được ghi nhận là triệu chứng cải thiện. Tại khoa cấp cứu (ED), hội chẩn tim mạch cấp cứu vì <strong>thay đổi ST chênh lên (STE) có tính động, với STE ở gần như mọi chuyển đạo, một số chỗ đoạn PR chênh xuống, không có thay đổi soi gương.</strong> Khi tôi thăm khám, bệnh nhân khai đau ngực bên trái mức 6-7/10, không lan, nặng lên đột ngột vào sáng nay. Bệnh nhân cho biết đã để ý thấy đau ngực dai dẳng trong khoảng 4 tháng gần đây. Cơn đau thay đổi theo tư thế, tăng khi nằm thẳng, giảm khi cúi người ra trước. Cơn đau không tăng khi gắng sức và bệnh nhân cảm thấy đau tăng khi nghỉ ngơi. Bệnh nhân không nhớ có mắc bệnh gì trước khi khởi phát đau ngực 4 tháng trước.”</p>
+<ul><li>Ghi chép của khoa tim mạch cũng đề cập không có tiếng cọ màng ngoài tim. Bệnh nhân được nhập viện để làm thêm xét nghiệm và theo dõi.</li></ul>
+<p><strong>Bệnh sử khi nhập viện do khoa nội ghi nhận:</strong> Bệnh nhân kể có cảm giác khó chịu ở ngực từng lúc trong vài tháng qua. Bệnh nhân ghi nhận trong 2 tuần gần đây cũng bị đau đầu thường xuyên hơn. Bệnh nhân cho biết đã để ý thấy đau ngực trở nên dữ dội hơn trước vào khoảng 11 giờ sáng ngày 26/7, đánh giá mức độ đau là 10/10. Bệnh nhân mô tả cơn đau là cảm giác đè ép liên tục, không lan, tăng khi nghỉ ngơi hoặc nằm thẳng và giảm khi cúi người ra trước. Bệnh nhân cũng khai có sốt/rét run và khó thở vào ngày nhập viện, kèm theo cơn đau ngực.”</p>
+<p><span class="c-nhat">= = =</span></p>
+<p><strong>Trước khi đọc tiếp, bạn nghĩ chẩn đoán đúng là gì?</strong></p>
+<ul><li><strong>A)</strong> Nhồi máu cơ tim cấp</li>
+<li><strong>B)</strong> Viêm màng ngoài tim</li>
+<li><strong>C)</strong> Viêm cơ tim</li>
+<li><strong>D)</strong> Khác</li></ul>
+<p><span class="c-nhat">= = =</span></p>
+<h2 id="ca-benh-tiep-dien">Ca bệnh tiếp diễn …</h2>
+<p>Bác sĩ tim mạch hội chẩn nghi ngờ viêm màng ngoài tim và khuyến nghị điều trị bằng aspirin và colchicine, kèm siêu âm tim qua thành ngực và các dấu ấn viêm (ESR/CRP).</p>
+<ul><li>Năm lần đo troponin I độ nhạy cao liên tiếp đều dưới ngưỡng phát hiện</li>
+<li>NT-proBNP dưới ngưỡng phát hiện</li>
+<li>ESR là 6 (tham chiếu: 1-15)</li>
+<li>CRP là 0.7 (tham chiếu: 0.7)</li>
+<li>Siêu âm tim cho thấy LVEF bình thường, vận động thành bình thường và “màng ngoài tim bình thường, không có tràn dịch màng ngoài tim”</li></ul>
+<p>Cuối cùng, đây là các điện tâm đồ đã ghi trước đây của bệnh nhân, trải dài trong <strong>9 năm</strong> trước đó.  Hãy nhớ rằng “sóng T đảo ngược lành tính” (Benign T-wave Inversion) là một dạng của tái cực sớm.</p>
+<p><strong>Năm 2017</strong></p>
+<figure><a class="o-anh" href="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Screenshot-2026-07-29-at-2.40.38-PM-scaled.jpg"><img src="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Screenshot-2026-07-29-at-2.40.38-PM-scaled.jpg" alt="" width="1600" height="904" loading="lazy" decoding="async"></a></figure>
+<p><strong>Năm 2019</strong></p>
+<figure><a class="o-anh" href="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Screenshot-2026-07-29-at-2.42.52-PM-scaled.jpg"><img src="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Screenshot-2026-07-29-at-2.42.52-PM-scaled.jpg" alt="" width="1600" height="943" loading="lazy" decoding="async"></a></figure>
+<p><strong>Smith</strong>: Mô hình AI điện tâm đồ thử nghiệm của PMCardio đánh giá điện tâm đồ này là 78.8% tái cực sớm (dương tính) và 24.5% viêm màng ngoài tim (âm tính).</p>
+<p><span class="c-nhat">= = =</span></p>
+<p><strong>Năm 2020</strong></p>
+<figure><a class="o-anh" href="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Screenshot-2026-07-29-at-2.43.47-PM-scaled.jpg"><img src="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Screenshot-2026-07-29-at-2.43.47-PM-scaled.jpg" alt="" width="1600" height="752" loading="lazy" decoding="async"></a></figure>
+<p><strong>Smith</strong>: Mô hình AI điện tâm đồ thử nghiệm của PMCardio đánh giá điện tâm đồ này là 65.2% tái cực sớm (dương tính) và 21.9% viêm màng ngoài tim (âm tính).</p>
+<p><span class="c-nhat">= = =</span></p>
+<p><strong>Năm 2022</strong></p>
+<figure><a class="o-anh" href="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Screenshot-2026-07-29-at-2.44.43-PM-scaled.jpg"><img src="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Screenshot-2026-07-29-at-2.44.43-PM-scaled.jpg" alt="" width="1600" height="752" loading="lazy" decoding="async"></a></figure>
+<p><strong>Năm 2023</strong></p>
+<figure><a class="o-anh" href="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Screenshot-2026-07-29-at-2.46.21-PM-scaled.jpg"><img src="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Screenshot-2026-07-29-at-2.46.21-PM-scaled.jpg" alt="" width="1600" height="884" loading="lazy" decoding="async"></a></figure>
+<p>Chẩn đoán cuối cùng mà các bác sĩ điều trị đưa ra là <strong>viêm màng ngoài tim</strong> — và bệnh nhân được xuất viện với 3 tháng colchicine và một đợt ngắn ibuprofen.</p>
+<p><span class="c-nhat">= = =</span></p>
+<p>Quay lại câu hỏi đặt ra ở trên —<strong> Chẩn đoán đúng là gì? </strong></p>
+<ul><li><strong>– – – –  D) </strong>Khác.  ==&gt; <strong><em>Đây là một điện tâm đồ biến thể bình thường</em>.</strong>
+<ul>
+<li>Nguyên nhân gây đau ngực chưa rõ, nhưng không liên quan gì đến tim hay điện tâm đồ.</li>
+</ul>
+</li></ul>
+<p><span class="c-nhat">= = =</span></p>
+<h2 id="ban-luan">Bàn luận</h2>
+<p>Blog đã đăng vô số ca về biến thể bình thường này, được gọi là “sóng T đảo ngược lành tính” (benign T wave inversion). <a href="https://drsmithsecgblog.com/syncope-with-st-elevation-and-t-wave-inversion/" rel="noopener" target="_blank">Đây</a> là một ca gần đây, và <a href="https://drsmithsecgblog.com/understanding-this-pathognomonic-ecg-2/" rel="noopener" target="_blank">đây</a> là một danh mục đầy đủ hơn về các ca tương tự.</p>
+<p>Chúng tôi đã điểm lại vấn đề này trong các bài trước, nhưng vẫn đáng nói ra bằng những lời rõ ràng, minh bạch:</p>
+<ul><li>Điện tâm đồ này KHÔNG phải thiếu máu cục bộ</li>
+<li>Điện tâm đồ này KHÔNG biểu hiện viêm màng ngoài tim</li>
+<li>Điện tâm đồ này KHÔNG biểu hiện LVH</li></ul>
+<p><strong>Đây là một SỰ THẬT gây bực bội và khó hiểu: bệnh nhân có thể đến viện với thay đổi điện tâm đồ có tính động và ST chênh lên, nhưng vẫn không có bất kỳ bệnh lý tim cấp tính nào.</strong></p>
+<ul><li><strong>Mô hình STEMI đã đầu độc bộ não chúng ta, khiến ta nghĩ rằng mọi ST chênh lên đều là bệnh lý, và ý tưởng độc hại này chính là mấu chốt của sai sót chẩn đoán trong ca này.</strong></li></ul>
+<p><span class="c-nhat">= = =</span></p>
+<p>Tôi nghĩ ở đây còn ít nhất hai bài học hay nữa về chăm sóc bệnh nhân.</p>
+<h3 id="1-rat-de-khai-thac-duoc-benh-su-xac-nhan-dieu-minh-dang-nghi-ngo">1. Rất dễ khai thác được bệnh sử xác nhận điều mình đang nghi ngờ.</h3>
+<p>Ở đây ta thấy một sự thay đổi rõ ràng trong bệnh sử được ghi chép.</p>
+<ul><li>Bệnh sử của EMS và điều dưỡng cho thấy đau ngực cấp kèm vã mồ hôi, cải thiện với nitroglycerin, phù hợp với chẩn đoán ACS mà họ nhận định.</li></ul>
+<ul><li>Bệnh sử của bác sĩ cấp cứu mô tả đau ngực bên trái lan xuống bụng kèm vã mồ hôi và khó thở. Cơn đau được mô tả là cảm giác đè ép sâu, một lần nữa phù hợp với ACS.</li></ul>
+<ul><li>Bệnh sử của bác sĩ tim mạch đã thay đổi đáng kể, giờ là cấp tính trên nền mạn tính, không lan, và đau tăng khi nằm ngửa. Phù hợp với viêm màng ngoài tim hơn nhiều.</li></ul>
+<ul><li>Bệnh sử của khoa nội có một số đặc điểm của cả hai — đau kiểu đè ép cấp tính trên nền mạn tính, tăng khi nghỉ ngơi và khi nằm ngửa, kèm sốt và rét run.</li></ul>
+<p>Vấn đề KHÔNG phải là một số bác sĩ khai thác bệnh sử tốt còn số khác khai thác kém. Mà là việc khai thác bệnh sử là một quá trình hai bên (bác sĩ và bệnh nhân) với ảnh hưởng qua lại hai chiều. Đặt câu hỏi dẫn dắt là một thiên kiến cố hữu của con người. Chúng tôi không có mặt khi các bác sĩ nói trên khai thác bệnh sử, nên chúng tôi không biết họ có đặt câu hỏi dẫn dắt hay không.</p>
+<ul><li>Một câu hỏi dẫn dắt là: “Cơn đau có tăng lên khi anh nằm xuống không?”</li>
+<li>Một câu hỏi không dẫn dắt là: “Có điều gì làm cơn đau tăng lên không?”</li></ul>
+<p>Cần nhớ rằng <strong>bệnh sử là một xét nghiệm chẩn đoán, và giống như mọi xét nghiệm chẩn đoán, nó không hoàn hảo.</strong></p>
+<p><span class="c-nhat">= = =</span></p>
+<h3 id="2-thien-kien-neo-anchoring-bias-la-mot-nguon-gay-sai-sot-chan-doan-rat-manh">2. Thiên kiến neo (anchoring bias) là một nguồn gây sai sót chẩn đoán rất mạnh.</h3>
+<p>Trong ca này, các bác sĩ điều trị cho bệnh nhân có thể không phải là độc giả của blog, hoặc nếu có thì họ đã quên mất sóng T đảo ngược lành tính. Điện tâm đồ rất khó. Đa số bác sĩ sẽ không chẩn đoán được điều này bằng điện tâm đồ, và đó là sự thật. Với sự xuất hiện của AI, khả năng chẩn đoán bằng điện tâm đồ của chúng ta sẽ cải thiện đáng kể. (Queen of Hearts (QOH) đánh giá không phải OMI ở tất cả các điện tâm đồ). Chắc chắn trong vòng vài năm tới chúng ta sẽ có những mô hình có thể chẩn đoán hoặc loại trừ viêm màng ngoài tim với độ chính xác tốt.</p>
+<p>Nhưng CẢ viêm màng ngoài tim lẫn OMI đều là <strong>chẩn đoán lâm sàng</strong>, không được định nghĩa bằng điện tâm đồ. Trong trường hợp của bệnh nhân này, chúng ta có nhiều lý do để bác bỏ chẩn đoán viêm màng ngoài tim.</p>
+<ul><li>Các dấu ấn viêm bình thường</li>
+<li>Không có tràn dịch màng ngoài tim</li>
+<li>Không có tiếng cọ màng ngoài tim</li>
+<li>Đau kiểu đè ép (đau do viêm màng ngoài tim phải là đau nhói)</li>
+<li>Điện tâm đồ ổn định (hoặc ít nhất là tương đối ổn định) suốt 9 năm</li></ul>
+<p>AI sẽ không phải là lời giải cho thiên kiến nhận thức; thực tế nó còn có thể củng cố các thiên kiến của chúng ta, đặc biệt vì nó cần khối lượng lớn dữ liệu đã được chú giải để huấn luyện. Nếu các bác sĩ tim mạch nhận định điện tâm đồ này là phù hợp với viêm màng ngoài tim — <em>tôi lo ngại điều đó có thể có ý nghĩa gì đối với các mô hình AI trong tương lai.</em></p>
+<p><span class="c-nhat">= = =</span></p>
+<h2 id="nhung-diem-can-hoc">Những điểm cần học</h2>
+<ul><li>Hãy học cách nhận ra điện tâm đồ ST chênh lên biến thể bình thường này.</li>
+<li>Giữ các câu hỏi bệnh sử ở dạng mở, cố gắng không dẫn dắt bệnh nhân.</li>
+<li>Khi tích lũy thêm dữ liệu, hãy quay lại chẩn đoán phân biệt và tự hỏi điều gì phù hợp và điều gì không.</li>
+<li><strong>Tái cực sớm có thể thay đổi động! </strong> Không phải mọi sự tiến triển và không phải mọi ST chênh lên tăng dần đều là tiến triển do thiếu máu cục bộ hay STE.  Xem các bài/ca trên blog sau, kèm hai tài liệu tham khảo hỗ trợ:
+<ul>
+<li><a href="https://drsmithsecgblog.com/chest-pain-and-convex-st-elevation-in/" rel="noopener" target="_blank">1. Chest pain and Convex ST Elevation in Precordial Leads</a> (Đau ngực và ST chênh lên dạng lồi ở các chuyển đạo trước tim)</li>
+<li><a href="https://drsmithsecgblog.com/increasing-st-elevation-stemi-vs/" rel="noopener" target="_blank">2. Increasing ST elevation. STEMI vs. dynamic early repolarization vs. pericarditis.</a> (ST chênh lên tăng dần. STEMI so với tái cực sớm có tính động so với viêm màng ngoài tim.)<br><br><br><br><br></li>
+</ul>
+</li></ul>
+<p><span class="c-nhat">= = =</span></p>
+<hr>
+<p><span class="c-do">==================================</span></p>
+<h2 id="binh-luan-cua-toi-boi-ken-grauer-md-7-10-2026">BÌNH LUẬN CỦA TÔI, bởi KEN GRAUER, MD (7/10/2026):</h2>
+<hr>
+<p><em>Một ca quan trọng của Dr. Frick!</em> Nhiều điểm được làm nổi bật:</p>
+<ul><li>Nếu bạn đang tìm kiếm một chẩn đoán nhất định — bạn sẽ dễ khai thác được những dấu hiệu ủng hộ chẩn đoán <em>đang được tìm kiếm</em> đó hơn.</li>
+<li><strong>Viêm màng ngoài tim cấp <em>không</em> thường gặp</strong>. Khi tỷ lệ hiện mắc của một bệnh thấp — thì đa số các ca mơ hồ sẽ là dương tính giả. Ngược lại, khi tỷ lệ hiện mắc của một bệnh cao hơn nhiều — thì tỷ lệ phần trăm các ca mơ hồ hóa ra là dương tính thật sẽ lớn hơn đáng kể.</li>
+<li>Mặc dù tôi đã cố công tìm kiếm các bất thường điện tâm đồ — tôi <em>không</em> nghĩ rằng nhiều điện tâm đồ liên tiếp trong ca hôm nay có giá trị chẩn đoán viêm màng ngoài tim cấp hay OMI cấp. <strong>(</strong><em>Xem phần bàn luận về Hình 1 bên dưới</em><strong>)</strong>.</li>
+<li>Thay vào đó, điều gây ấn tượng nhất với tôi ở nhiều bản ghi trong ca hôm nay — là <strong>sự thay đổi của tần số tim và của vị trí đặt điện cực các chuyển đạo trước tim</strong>. Ví dụ — sóng T đảo ngược tăng lên đặc biệt ở các chuyển đạo thành dưới trong <strong>điện tâm đồ #2</strong>, là bản ghi có tần số tim nhanh nhất. Tác động của việc đặt điện cực trước tim không nhất quán có lẽ được nhận ra rõ nhất khi lướt qua 6 điện tâm đồ liên tiếp và tập trung vào <strong>chuyển đạo V4</strong>, nơi biên độ sóng R nhỏ chỉ 5 mm <strong>(</strong><em>ở điện tâm đồ #6</em><strong>)</strong> — nhưng lớn tới 40 mm ở điện tâm đồ #5. <strong>Điều cốt lõi:</strong> Tôi <em>không</em> nghĩ những khác biệt nhỏ về hình thái QRST quan sát được qua 6 bản ghi liên tiếp trong ca hôm nay đủ để được coi là những thay đổi “động” thực sự.</li>
+<li><strong>LƯU Ý:</strong> Có một xét nghiệm xác định chẩn đoán viêm màng ngoài tim cấp = <strong>MRI tim (</strong><em>đặc biệt với LGE = ngấm thuốc muộn gadolinium</em><strong>)</strong>. Do còn chưa chắc chắn về chẩn đoán ở người đàn ông 30 tuổi này, người đã được ghi nhiều điện tâm đồ trong 9 năm trước đó — đánh giá bằng MRI tim có vẻ là có chỉ định <strong>(</strong><em>Bài tổng quan hay của Baser và cs. về việc</em> sử dụng <em>và giá trị chẩn đoán của MRI tim trong xác định viêm màng ngoài tim cấp tại liên kết này </em>— <strong><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12985800/" rel="noopener" target="_blank">Methodist Debakey Cardiovascular J: 22(2):41-49, 2026</a>)</strong>.</li></ul>
+<p><span class="c-nhat">= = =</span></p>
+<h3 id="dien-tam-do-ban-dau-cua-ca-hom-nay">Điện tâm đồ ban đầu của ca hôm nay …</h3>
+<p>Việc đánh giá các điện tâm đồ liên tiếp của bệnh nhân này trở nên phức tạp do tiền sử tăng huyết áp, yếu tố dễ dẫn đến LVH. Dù vậy — có những đặc điểm gợi ý một <strong>biến thể <em>tái cực</em></strong> trên các bản ghi liên tiếp của bệnh nhân này. Như tôi đã đề cập ở trên — những đặc điểm này thay đổi đôi chút từ bản ghi này sang bản ghi khác <strong>(</strong><em>ít nhất một phần do tần số tim thay đổi và vị trí đặt điện cực trước tim không nhất quán</em><strong>)</strong>. Để đơn giản — tôi giới hạn bình luận của mình ở <strong>điện tâm đồ <em>ban đầu</em></strong> <strong>(</strong><em>được ghi lúc 11:23:07 trong ca hôm nay</em><strong>)</strong> — mà tôi đã đặt lại trong <strong>Hình 1</strong>. Tôi cho rằng 5 bản ghi sau đó phản ánh các biến tấu trên cùng “chủ đề” mà chúng ta thấy ở điện tâm đồ #1. Hãy lưu ý những điểm sau trong <strong>điện tâm đồ <em>ban đầu</em> này:</strong></p>
+<ul><li>Biên độ QRS tăng rõ rệt, với sóng R chồng lấn lên sóng S ở nhiều chuyển đạo. Do biên độ QRS lớn như vậy — mức ST chênh lên quan sát được không có vẻ quá mức.</li>
+<li>Tăng tiến sóng R bình thường.</li>
+<li>QTc có vẻ tương đối ngắn.</li>
+<li><strong><em>Trát đậm</em></strong> phần cuối của QRS <strong>(</strong><em>“trát đậm” nhìn chung được chấp nhận như một dấu hiệu biến thể tái cực thay thế cho khía điểm J</em><strong>)</strong> — được thấy ở nhiều chuyển đạo <strong>(</strong><em>các mũi tên VÀNG trong Hình 1</em><strong>)</strong>.</li></ul>
+<p>Những suy nghĩ bổ sung về ca hôm nay:</p>
+<ul><li><strong>Sóng T đảo ngược</strong> là một đặc điểm xuất hiện từng lúc trong 6 bản ghi liên tiếp của ca hôm nay — nhưng khi có mặt, nó đi kèm với biên độ QRS tăng rõ rệt, “trát đậm” phần cuối QRS, và ST chênh lên <em>ở chính những chuyển đạo</em> có sóng T đảo ngược. Hình ảnh tổng hợp này được nhận thấy rõ nhất ở các chuyển đạo ngực bên V4,V5,V6 của <strong>điện tâm đồ #4</strong> — các chuyển đạo có dáng vẻ “trông” lành tính.
+<ul>
+<li>Để biết thêm về sự phức tạp của các hình ảnh tái cực sớm và sự kín đáo của “trát đậm” phần cuối QRS — <em>Hãy xem</em> Bình luận của tôi ở cuối trang trong <strong>bài <a href="https://drsmithsecgblog.com/a-male-in-his-30s-with-cardiac-arrest-what-is-the-etiology/" rel="noopener" target="_blank">ngày 5 tháng Hai năm 2026</a></strong>.</li>
+</ul>
+</li>
+<li>Ngược lại, với viêm màng ngoài tim cấp — sóng T đảo ngược thường <em>không</em> xuất hiện ở thời điểm vẫn còn ST chênh lên. Vì vậy, sóng T đảo ngược nổi bật ở điện tâm đồ #2 và 4, đi kèm ST chênh lên ở chính các chuyển đạo đó, là một điểm nữa <em>chống lại</em> chẩn đoán viêm màng ngoài tim cấp.</li></ul>
+<p><span class="c-nhat">= = =</span></p>
+<hr>
+<p><strong>Hình 1:</strong> Điện tâm đồ đầu tiên trong số nhiều điện tâm đồ được ghi trong ca hôm nay.</p>
+<figure><a class="o-anh" href="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Figure-1-ECG-1-7-29.32-2026-USE-1-scaled.jpg"><img src="2026-10-07-increasing-st-elevation-mi-ruled-out-must-be-pericarditis-ri_anh/2026_07_Figure-1-ECG-1-7-29.32-2026-USE-1-scaled.jpg" alt="" width="1600" height="685" loading="lazy" decoding="async"></a></figure>
+<hr>
+<p><span class="c-nhat">= = =</span></p>
+<h3 id="nhung-khai-niem-can-nho-bo-sung">Những khái niệm “cần nhớ” bổ sung:</h3>
+<ul><li>Các bản ghi biến thể tái cực đôi khi cho thấy thay đổi hình thái ST-T qua các bản ghi liên tiếp. Đây <em>không</em> phải là thay đổi động do thiếu máu cục bộ.</li>
+<li>Điều thiết yếu là phải đảm bảo rằng <strong><em>trục mặt phẳng trán</em></strong> và <strong>dáng vẻ <em>các chuyển đạo ngực</em> (</strong>tức là <em>tăng tiến sóng R &amp; biên độ QRS tương đối</em><strong>)</strong> <strong>là tương tự nhau khi so sánh các điện tâm đồ <em>liên tiếp</em></strong>. Nếu không, bạn <em>không</em> so sánh “táo với táo” — mà đang trộn lẫn cả “cam” vào. Theo kinh nghiệm của tôi — khái niệm này <em>quá thường xuyên</em> bị bỏ qua (kể cả bởi những người đọc điện tâm đồ giàu kinh nghiệm) khi so sánh các bản ghi liên tiếp.</li>
+<li>Hình ảnh điện tâm đồ của viêm màng ngoài tim cấp tiến triển theo thời gian — <strong>nhưng <em>không</em> phải trong khoảng vài phút (</strong><em>như các nhận xét của bác sĩ lâm sàng trong ca hôm nay gợi ý</em><strong>)</strong>. Sự thay đổi vị trí đặt điện cực trước tim có vẻ là lời giải thích hợp lý hơn nhiều cho những khác biệt rõ rệt đến bất ngờ về dáng vẻ các chuyển đạo ngực giữa một số bản ghi liên tiếp.</li>
+<li>Ngoài sóng T đảo ngược và ST chênh lên xuất hiện <em>đồng thời</em> — <strong>các dấu hiệu điện tâm đồ <em>khác</em> </strong>xuất hiện trên 6 bản ghi liên tiếp hôm nay <strong><em>không</em> điển hình cho viêm màng ngoài tim cấp</strong>. Bao gồm: <strong>i<span class="c-do">)</span></strong> “Trát đậm” phần cuối QRS ở nhiều chuyển đạo, vốn rất thường gặp ở các biến thể tái cực; — <strong>ii<span class="c-do">)</span></strong> Hình thái ST-T của chuyển đạo II giống chuyển đạo III hơn ở một số bản ghi liên tiếp <strong>(</strong><em>thay vì giống chuyển đạo I</em><strong>)</strong>; — và, <strong>iii<span class="c-do">)</span></strong> Tỷ số ST/sóng T giảm <strong>(</strong><em>Xem Bình luận của tôi ở cuối trang trong</em> <strong>bài <a href="https://drsmithsecgblog.com/a-woman-in-her-50s-with-acute-chest-pain-2/" rel="noopener" target="_blank">ngày 15 tháng Sáu năm 2025</a></strong> — <em>để biết thêm “Quan điểm của tôi” về các dấu hiệu điện tâm đồ trong viêm màng ngoài tim cấp</em><strong>)</strong>.</li></ul>
+<p><span class="c-nhat">= = =</span></p>
+<h3 id="suy-nghi-cuoi-cung">Suy nghĩ cuối cùng …</h3>
+<p>Vậy — <strong><em>TẠI SAO</em> bệnh nhân hôm nay tiếp tục bị đau ngực dữ dội</strong> <strong>(</strong><em>tới 10/10</em><strong>) đến vậy?</strong></p>
+<ul><li>Cơn đau ngực (CP) này dường như đã kéo dài dai dẳng theo thời gian, xét theo nhiều điện tâm đồ lặp lại trong hồ sơ của bệnh nhân được ghi trong 9 năm qua. <em>Tôi nghi rằng bệnh nhân này sẽ tiếp tục </em>đến các khoa cấp cứu vì triệu chứng của mình trừ khi (<em>cho đến khi</em>) chúng ta xác định được nguyên nhân gây ra cơn đau ngực đôi lúc rất <em>dữ dội</em> của bệnh nhân. </li>
+<li>Nhận thấy rằng chúng ta không biết thêm chi tiết về ca này — tôi xin suy đoán rằng nguyên nhân gây đau ngực của bệnh nhân này nhiều khả năng nhất là: <strong>i<span class="c-do">)</span></strong> Do cơ xương khớp; — hoặc <strong>ii<span class="c-do">)</span> </strong>Nhiều khả năng hơn, do <strong>tâm lý-xã hội</strong> — với lo âu mạn tính, hoảng loạn, trầm cảm, hoặc lạm dụng chất là “thủ phạm” có khả năng.</li></ul>
+<p>Nếu tôi khám bệnh nhân này tại phòng khám của mình — tôi sẽ:</p>
+<ul><li>Làm một nghiệm pháp gắng sức trên thảm lăn đơn giản với sự có mặt của tôi — mong khuyến khích bệnh nhân này đạt gần nhất có thể tần số tim tối đa dự đoán trên thảm lăn <strong>(</strong><em>Xem liệu điều này có gây ra bất kỳ thay đổi ST-T bất thường nào với cùng vị trí đặt điện cực trước tim hay không — cũng như mong xem liệu tôi có thể tái hiện triệu chứng của bệnh nhân ở một mức gắng sức nào đó hay không</em><strong>)</strong>; </li>
+<li>Tôi sẽ khai thác đầy đủ tiền sử tâm lý-xã hội — tìm các yếu tố lo âu mạn tính, hoảng loạn, trầm cảm, và/hoặc lạm dụng chất.</li></ul>
+<p><span class="c-nhat">= = =</span></p>
+<p><span class="c-nhat">= = =</span></p>
+  </section>
+ </main>
+</div>
+<div class="thanh-nut">
+ <button id="nutMl" class="hien-ml" type="button" title="Mục lục">≡</button>
+ <button id="nutGiam" type="button" title="Chữ nhỏ hơn">A-</button>
+ <button id="nutTang" type="button" title="Chữ lớn hơn">A+</button>
+ <button id="nutNen" type="button" title="Nền sáng/tối">◐</button>
+</div>
+<div class="xem-anh" id="xemAnh" role="dialog" aria-label="Xem ảnh">
+ <span class="xa-dem"></span>
+ <button class="xa-dong" type="button" title="Đóng (Esc)">✕</button>
+ <button class="xa-truoc" type="button" title="Ảnh trước (←)">‹</button>
+ <img alt="">
+ <button class="xa-sau" type="button" title="Ảnh sau (→)">›</button>
+ <div class="xa-chu"></div>
+</div>
+<script>
+(function(){
+ var goc=document.documentElement, ds=document.getElementById('dsMuc'),
+     giay=document.getElementById('toGiay'), pt=document.getElementById('phanTram'),
+     ml=document.getElementById('mucLuc');
+ var dau=[].slice.call(giay.querySelectorAll('h2,h3,h4,h5,h6'));
+
+ // mục lục
+ dau.forEach(function(h){
+  var li=document.createElement('li');
+  li.className='cap-'+(+h.tagName[1]-1);
+  var a=document.createElement('a');
+  a.href='#'+h.id; a.textContent=h.textContent;
+  a.addEventListener('click',function(){ ml.classList.remove('mo'); });
+  li.appendChild(a); ds.appendChild(li);
+ });
+ var neo=[].slice.call(ds.querySelectorAll('a'));
+
+ function capNhat(){
+  var i=0;
+  for(var k=0;k<dau.length;k++){ if(dau[k].getBoundingClientRect().top<140) i=k; }
+  neo.forEach(function(a,k){ a.classList.toggle('dang-doc',k===i); });
+  var a=neo[i];
+  if(a){ var cuon=a.closest('.ml-cuon');
+   if(cuon){ var h=a.getBoundingClientRect(), c=cuon.getBoundingClientRect();
+    if(h.top<c.top||h.bottom>c.bottom) cuon.scrollTop+=h.top-c.top-c.height/3; } }
+  var het=document.documentElement.scrollHeight-innerHeight;
+  pt.textContent=(het>0?Math.min(100,Math.round(scrollY/het*100)):100)+'%';
+ }
+ addEventListener('scroll',capNhat,{passive:true});
+ addEventListener('resize',capNhat); capNhat();
+
+ // cỡ chữ + nền tối, nhớ lựa chọn
+ function docNho(k,md){ try{ return localStorage.getItem(k)||md; }catch(e){ return md; } }
+ function ghiNho(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+ var co=parseInt(docNho('gl-co','16'),10);
+ function apCo(){ goc.style.setProperty('--co',co+'px'); ghiNho('gl-co',co); capNhat(); }
+ apCo();
+ goc.setAttribute('data-nen',docNho('gl-nen','sang'));
+ document.getElementById('nutTang').onclick=function(){ co=Math.min(24,co+1); apCo(); };
+ document.getElementById('nutGiam').onclick=function(){ co=Math.max(12,co-1); apCo(); };
+ document.getElementById('nutNen').onclick=function(){
+  var v=goc.getAttribute('data-nen')==='toi'?'sang':'toi';
+  goc.setAttribute('data-nen',v); ghiNho('gl-nen',v);
+ };
+ // thu gọn / mở lại cột mục lục (nhớ lựa chọn)
+ goc.setAttribute('data-ml',docNho('gl-ml',''));
+ function datMl(v){ goc.setAttribute('data-ml',v); ghiNho('gl-ml',v); capNhat(); }
+ document.getElementById('nutThu').onclick=function(){ datMl('thu'); };
+ document.getElementById('nutMl').onclick=function(){
+  // màn hình rộng: nút ≡ mở lại cột đã thu; màn hình hẹp: kéo cột ra/vào
+  if(innerWidth>980 && goc.getAttribute('data-ml')==='thu'){ datMl(''); return; }
+  ml.classList.toggle('mo');
+ };
+
+ // tìm trong bài
+ var o=document.getElementById('oTim'), dem=document.getElementById('demTim'), hit=[], vt=-1;
+ function xoaDanh(){
+  hit=[]; vt=-1;
+  var m=giay.querySelectorAll('mark.danh');
+  for(var i=0;i<m.length;i++){ var p=m[i].parentNode;
+   p.replaceChild(document.createTextNode(m[i].textContent),m[i]); p.normalize(); }
+ }
+ function danhDau(q){
+  xoaDanh();
+  if(q.length<2){ dem.textContent=''; return; }
+  var tw=document.createTreeWalker(giay,NodeFilter.SHOW_TEXT,null), nut=[], n;
+  while((n=tw.nextNode())) if(n.nodeValue.trim()) nut.push(n);
+  var kq=q.toLowerCase();
+  nut.forEach(function(n){
+   var s=n.nodeValue, l=s.toLowerCase(), i=l.indexOf(kq);
+   if(i<0) return;
+   var cha=n.parentNode, sau=n, dich=0;
+   while(i>=0){
+    var giua=sau.splitText(i-dich); dich=i+q.length;
+    sau=giua.splitText(q.length);
+    var mk=document.createElement('mark'); mk.className='danh';
+    cha.replaceChild(mk,giua); mk.appendChild(giua); hit.push(mk);
+    i=l.indexOf(kq,dich);
+   }
+  });
+  dem.textContent=hit.length?('1/'+hit.length):'0';
+  if(hit.length){ vt=0; toi(0); }
+ }
+ function toi(i){
+  if(!hit.length) return;
+  hit.forEach(function(m){ m.classList.remove('dang'); });
+  vt=(i+hit.length)%hit.length;
+  hit[vt].classList.add('dang');
+  hit[vt].scrollIntoView({block:'center',behavior:'smooth'});
+  dem.textContent=(vt+1)+'/'+hit.length;
+ }
+ var cho;
+ o.addEventListener('input',function(){ clearTimeout(cho);
+  cho=setTimeout(function(){ danhDau(o.value.trim()); },250); });
+ o.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault();
+  toi(vt+(e.shiftKey?-1:1)); } });
+ document.getElementById('timTruoc').onclick=function(){ toi(vt-1); };
+ document.getElementById('timSau').onclick=function(){ toi(vt+1); };
+ addEventListener('beforeprint',xoaDanh);
+})();
+// xem ảnh phóng to: bấm ảnh để mở, ←/→ chuyển ảnh trong cùng bộ, Esc để đóng
+(function(){
+ var hop=document.getElementById('xemAnh'), anh=hop.querySelector('img'),
+     chu=hop.querySelector('.xa-chu'), dem=hop.querySelector('.xa-dem'), bo=[], vt=0;
+ function hien(i){
+  vt=(i+bo.length)%bo.length; var a=bo[vt], im=a.querySelector('img');
+  anh.src=a.getAttribute('href'); anh.alt=im.alt; chu.textContent=im.alt;
+  chu.style.display=im.alt?'':'none';
+  dem.textContent=bo.length>1?(vt+1)+' / '+bo.length:'';
+  hop.querySelector('.xa-truoc').style.display=hop.querySelector('.xa-sau').style.display=bo.length>1?'':'none';
+ }
+ function dong(){ hop.classList.remove('mo'); anh.removeAttribute('src'); document.body.style.overflow=''; }
+ document.getElementById('toGiay').addEventListener('click',function(e){
+  var a=e.target.closest('a.o-anh'); if(!a) return;
+  e.preventDefault();
+  var cha=a.closest('.bo-anh');
+  bo=cha?[].slice.call(cha.querySelectorAll('a.o-anh')):[a];
+  hien(bo.indexOf(a)); hop.classList.add('mo'); document.body.style.overflow='hidden';
+ });
+ hop.querySelector('.xa-dong').onclick=dong;
+ hop.querySelector('.xa-truoc').onclick=function(e){ e.stopPropagation(); hien(vt-1); };
+ hop.querySelector('.xa-sau').onclick=function(e){ e.stopPropagation(); hien(vt+1); };
+ hop.addEventListener('click',function(e){ if(e.target===hop) dong(); });
+ addEventListener('keydown',function(e){
+  if(!hop.classList.contains('mo')) return;
+  if(e.key==='Escape') dong();
+  else if(e.key==='ArrowLeft') hien(vt-1);
+  else if(e.key==='ArrowRight') hien(vt+1);
+ });
+ var x0=null;
+ hop.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+ hop.addEventListener('touchend',function(e){ if(x0===null) return;
+  var dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)>50) hien(vt+(dx<0?1:-1)); });
+})();
+// video YouTube: chỉ tải khi bấm. YouTube trả "Lỗi 153" khi trang không gửi được referrer
+// (mở từ ổ đĩa file:// hoặc khung sandbox) — khi đó mở thẳng tab YouTube.
+(function(){
+ var giay=document.getElementById('toGiay'), ds=giay.querySelectorAll('.yt');
+ if(!ds.length) return;
+ var canEmbed=/^https?:$/.test(location.protocol) &&
+   (typeof window.origin==='undefined' || (window.origin && window.origin!=='null'));
+ var PLAY='<span class="play"><svg viewBox="0 0 68 48"><path fill="#f00" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/><path fill="#fff" d="M27 34l18-10-18-10z"/></svg></span>';
+ [].forEach.call(ds,function(b){
+  var id=b.getAttribute('data-id'), n=b.getAttribute('data-n')||'Video', watch='https://www.youtube.com/watch?v='+id;
+  b.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+n+'">'+PLAY+'<span class="badge">▶ '+n+'</span>';
+  b.setAttribute('role','button'); b.setAttribute('tabindex','0');
+  var fig=b.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+  if(!cap&&fig){ cap=document.createElement('figcaption'); fig.appendChild(cap); }
+  if(cap){ var a=document.createElement('a'); a.className='ytlink'; a.href=watch; a.target='_blank';
+   a.rel='noopener'; a.textContent='Mở trên YouTube ↗'; cap.appendChild(a); }
+  function load(){
+   if(!canEmbed){ window.open(watch,'_blank','noopener'); return; }
+   b.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&autoplay=1" '+
+    'referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer;autoplay;clipboard-write;'+
+    'encrypted-media;gyroscope;picture-in-picture" allowfullscreen title="'+n+'"></iframe>';
+   b.style.cursor='default';
+  }
+  b.addEventListener('click',load);
+  b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
+ });
+ if(!canEmbed){
+  var w=document.createElement('div'); w.className='canh-bao';
+  w.innerHTML='<b>Lưu ý:</b> trang đang mở trực tiếp từ ổ đĩa (hoặc trong khung xem trước) nên YouTube chặn phát nhúng '+
+   '(<i>Lỗi 153</i>). Bấm vào video sẽ mở tab YouTube. Đăng trang lên web (https) thì video phát ngay trong trang.';
+  giay.insertBefore(w, giay.firstChild);
+ }
+})();
+</script>
+</body>
+</html>
