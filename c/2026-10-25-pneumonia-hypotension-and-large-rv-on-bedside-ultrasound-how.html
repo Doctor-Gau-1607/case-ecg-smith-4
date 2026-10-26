@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="vi" data-nen="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>25/10/2026 — Viêm phổi, tụt huyết áp và thất phải lớn trên siêu âm tại giường. Làm sao tránh “vòng xoáy tử vong” của tim phải?</title>
+<style>
+:root{
+ --nen:#f2f4f6; --giay:#ffffff; --chu:#172033; --nhat:#5b6675; --vien:#e3e7ec;
+ --do:#b30000; --xanh:#004b87; --diu:#f6f8fa; --danh:#fff3cd;
+}
+:root[data-nen="toi"]{
+ --nen:#12151b; --giay:#1b2029; --chu:#e6eaf0; --nhat:#9aa5b4; --vien:#2c333f;
+ --do:#ff8a8a; --xanh:#7fb6e6; --diu:#232a35; --danh:#5a4a12;
+}
+*{box-sizing:border-box}
+html{font-size:var(--co,16px)}
+body{margin:0;background:var(--nen);color:var(--chu);
+ font-family:"Noto Sans","Segoe UI",Roboto,Arial,sans-serif;
+ font-size:1rem;line-height:1.7;-webkit-text-size-adjust:100%}
+a{color:var(--xanh)}
+.bo-cuc{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px;
+ max-width:1500px;margin:0 auto;padding:22px}
+/* ---- cột mục lục ---- */
+.muc-luc{position:sticky;top:22px;align-self:start;height:calc(100vh - 44px);
+ background:var(--giay);border-radius:16px;padding:16px 10px;display:flex;
+ flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ml-dau{display:flex;justify-content:space-between;align-items:center;
+ padding:2px 10px 10px;font-size:.78rem;font-weight:800;letter-spacing:.09em;
+ color:var(--do);border-bottom:1px solid var(--vien)}
+#phanTram{color:var(--nhat)}
+/* Thu gọn / mở lại cột mục lục. Trang nhớ lựa chọn, vì người đọc guideline
+   mở lại nhiều lần và không muốn mỗi lần lại phải thu tay. */
+.ml-dau .nut-thu{margin-left:8px;border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:1px 8px;cursor:pointer;font:inherit;
+ font-size:.9rem;line-height:1.4}
+@media(min-width:981px){
+ :root[data-ml="thu"] .bo-cuc{grid-template-columns:minmax(0,1fr)}
+ :root[data-ml="thu"] .muc-luc{display:none}
+ :root[data-ml="thu"] .hien-ml{display:block}
+}
+.o-tim{padding:10px 8px 6px}
+.o-tim input{width:100%;padding:8px 10px;border:1px solid var(--vien);
+ border-radius:9px;background:var(--diu);color:var(--chu);font:inherit;font-size:.85rem}
+.tim-dieu-khien{display:flex;gap:6px;align-items:center;margin-top:6px;
+ font-size:.76rem;color:var(--nhat)}
+.tim-dieu-khien button{border:1px solid var(--vien);background:var(--giay);
+ color:var(--chu);border-radius:7px;padding:2px 9px;cursor:pointer;font:inherit}
+.ml-cuon{overflow-y:auto;flex:1;margin-top:4px}
+#dsMuc{list-style:none;margin:0;padding:0}
+#dsMuc a{display:block;padding:7px 12px;border-radius:9px;text-decoration:none;
+ color:var(--chu);font-size:.87rem;line-height:1.4}
+#dsMuc a:hover{background:var(--diu)}
+#dsMuc a.dang-doc{background:var(--diu);color:var(--do);font-weight:700;
+ box-shadow:inset 3px 0 0 var(--do)}
+#dsMuc .cap-1>a{font-weight:700}
+#dsMuc .cap-2>a{padding-left:26px;font-size:.85rem}
+#dsMuc .cap-3>a{padding-left:40px;font-size:.82rem;color:var(--nhat)}
+#dsMuc .cap-4>a,#dsMuc .cap-5>a{padding-left:54px;font-size:.8rem;color:var(--nhat)}
+/* ---- thân bài ---- */
+.dau-bai,.to-giay{background:var(--giay);border-radius:16px;
+ box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.dau-bai{padding:28px 34px;margin-bottom:22px}
+.nhan{font-size:.76rem;font-weight:800;letter-spacing:.16em;color:var(--nhat)}
+.dau-bai h1{margin:.25em 0 .35em;font-size:2rem;line-height:1.25;color:var(--do)}
+.dich-gia{color:var(--nhat);font-size:.92rem;margin:0}
+.dich-gia b{color:var(--xanh)}
+.to-giay{padding:34px 40px 60px}
+.to-giay h2{color:var(--do);font-size:1.65rem;margin:1.7em 0 .5em;
+ padding-bottom:4px;border-bottom:2px solid var(--vien)}
+.to-giay h2:first-child{margin-top:0}
+.to-giay h3{color:var(--xanh);font-size:1.3rem;margin:1.5em 0 .4em}
+.to-giay h4{font-size:1.08rem;margin:1.3em 0 .3em}
+.to-giay h5,.to-giay h6{font-size:1rem;margin:1.2em 0 .3em;color:var(--nhat)}
+.to-giay p{margin:0 0 .85em;text-align:justify}
+.to-giay p.cham{padding-left:1.35em;text-indent:-1.1em;text-align:left}
+figure{margin:1.4em 0;text-align:center}
+figure img{max-width:100%;height:auto;border:1px solid var(--vien);border-radius:10px}
+/* ---- bảng ---- */
+.tham-chieu{color:var(--xanh);font-weight:600;text-decoration:none;
+ border-bottom:1px dotted currentColor}
+.tham-chieu:hover{border-bottom-style:solid}
+.chu-thich-float{font-weight:600;margin:0 0 .4em}
+.khung-bang{overflow-x:auto;margin:1.4em 0;border-radius:10px;
+ border:1px solid var(--vien)}
+.khung-bang table{border-collapse:collapse;width:100%;font-size:.88rem;
+ table-layout:fixed}
+.to-giay p,.to-giay li,.to-giay dd{overflow-wrap:break-word}
+.to-giay sup{overflow-wrap:anywhere}
+.khung-bang td{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;
+ line-height:1.5;word-wrap:break-word}
+.khung-bang td.sat{padding-left:0;padding-right:0}
+.khung-bang td.giua{text-align:center;vertical-align:middle}
+.khung-bang td.ky-hieu{font-weight:800;white-space:nowrap}
+.khung-bang td.nen-toi,.khung-bang td.nen-toi *{color:#fff}
+.khung-bang td.nen-sang,.khung-bang td.nen-sang *{color:#12151b}
+.khung-bang td span{display:block}
+.khung-bang td span.cham{padding-left:1.1em;text-indent:-1em}
+mark.danh{background:var(--danh);color:inherit;border-radius:3px}
+/* Ô có màu ép màu chữ cho cả con cháu, kể cả <mark> của phần tìm trong bài — chữ
+   trắng trên nền vàng nhạt là tìm thấy mà không nhìn thấy. Trả chữ về màu trang. */
+.khung-bang td.nen-toi mark.danh,.khung-bang td.nen-sang mark.danh,
+.khung-bang td.nen-toi mark.danh *,.khung-bang td.nen-sang mark.danh *{color:var(--chu)}
+mark.danh.dang{outline:2px solid var(--do)}
+/* ---- nút nổi ---- */
+.thanh-nut{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:9}
+.thanh-nut button{width:42px;height:42px;border-radius:50%;cursor:pointer;
+ border:1px solid var(--vien);background:var(--giay);color:var(--chu);
+ font-size:1rem;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.hien-ml{display:none}
+/* ---- màn hình hẹp ---- */
+@media(max-width:980px){
+ .bo-cuc{grid-template-columns:minmax(0,1fr);padding:12px}
+ .muc-luc{position:fixed;inset:0 auto 0 0;width:88%;max-width:340px;z-index:20;
+  border-radius:0;height:100vh;transform:translateX(-102%);transition:transform .2s}
+ .muc-luc.mo{transform:none}
+ .hien-ml{display:block}
+ .to-giay{padding:22px 18px 44px}
+ /* Màn hình điện thoại: giữ bề rộng tối thiểu cho bảng rồi cho cuộn ngang,
+    thay vì bóp cột hẹp tới mức "Trung bình" xuống dòng thành "Tr un g bì nh". */
+ .khung-bang table{min-width:620px}
+ .dau-bai{padding:20px}
+ .dau-bai h1{font-size:1.5rem}
+}
+/* ---- in ra giấy ---- */
+@media print{
+ /* Nền tối được nhớ trong localStorage: bật một lần là mọi lần in sau đều dính.
+    Giấy luôn trắng, nên trả bảng màu về bản sáng trước khi in — nếu không, chữ
+    #e6eaf0 in lên giấy trắng là mất hẳn. */
+ :root,:root[data-nen="toi"]{--nen:#fff;--giay:#fff;--chu:#172033;--nhat:#4a5462;
+  --vien:#c9ced5;--do:#b30000;--xanh:#004b87;--diu:#f6f8fa;--danh:#fff3cd}
+ body{background:#fff;font-size:11.5pt}
+ .muc-luc,.thanh-nut{display:none!important}
+ .bo-cuc{display:block;max-width:none;padding:0}
+ .dau-bai,.to-giay{box-shadow:none;border-radius:0;padding:0}
+ .to-giay h2,.to-giay h3{break-after:avoid}
+ .khung-bang,figure{break-inside:avoid}
+ .khung-bang td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.c-xanh{color:var(--xanh)} .c-do{color:var(--do)} .c-luc{color:var(--luc)} .c-nhat{color:var(--nhat)}
+:root{--luc:#1d7a3a} :root[data-nen="toi"]{--luc:#7fd49a}
+.ban-quyen{display:inline-block;margin:.4em 0 1.2em!important;padding:6px 14px;border-radius:9px;
+ background:var(--diu);border:1px solid var(--vien);color:var(--nhat);font-size:.88rem}
+.note{background:var(--diu);border-left:4px solid var(--xanh);border-radius:0 10px 10px 0;padding:10px 16px;margin:1.1em 0}
+.note p:last-child{margin-bottom:0}
+.canh-bao{background:#fff4d6;border:1px solid #e8c97a;color:#4a3a10;border-radius:10px;padding:12px 16px;margin:0 0 18px;font-size:.93em}
+:root[data-nen="toi"] .canh-bao{background:#3a2f12;border-color:#6b5a1a;color:#f0e2bd}
+.to-giay blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid var(--vien);background:var(--diu);border-radius:0 10px 10px 0}
+.to-giay ul,.to-giay ol{padding-left:1.5em;margin:0 0 .9em}
+.to-giay li{margin:.2em 0}
+.to-giay hr{border:0;border-top:1px solid var(--vien);margin:1.6em 0}
+.khung-bang th{border:1px solid var(--vien);padding:9px 11px;vertical-align:top;background:var(--diu);text-align:left;line-height:1.5}
+.khung-bang td[style*="background"],.khung-bang th[style*="background"]{color:#12151b}
+.tk p,.tk li{font-size:.9em;color:var(--nhat);text-align:left}
+figcaption,.chu-thich-anh{font-size:.88rem;color:var(--nhat);margin-top:.45em;text-align:center;line-height:1.55}
+figcaption b{color:var(--chu)}
+figure.anh-dau img{width:100%;max-height:420px;object-fit:cover}
+figure video{width:100%;max-height:78vh;background:#000;border-radius:10px;display:block}
+.khung-video{position:relative;padding-top:56.25%;margin:0;border-radius:10px;overflow:hidden;background:#000}
+.khung-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt{position:relative;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer;display:block;border-radius:10px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;border:0!important;border-radius:0!important;transition:opacity .2s}
+.yt:hover img{opacity:1}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.yt .play svg{width:58px;height:58px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.badge{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:2px 8px;border-radius:20px;pointer-events:none}
+.ytlink{display:inline-block;margin-left:8px;font-size:.92em;color:var(--xanh);text-decoration:none;border:1px solid var(--vien);border-radius:20px;padding:1px 10px;white-space:nowrap}
+.bo-anh{display:grid;gap:8px;margin:1em 0 1.4em;align-items:start}
+.bo-anh.cot-1{grid-template-columns:repeat(1,minmax(0,1fr))}
+.bo-anh.cot-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bo-anh.cot-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bo-anh.cot-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.bo-anh.cot-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bo-anh.cot-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.o-anh{display:block;border-radius:8px;overflow:hidden;background:#000;
+ border:1px solid var(--vien);cursor:zoom-in;line-height:0}
+.o-anh img{display:block;width:100%;height:auto}
+figure .o-anh{display:inline-block;background:none;border:0}
+figure .o-anh img{border:1px solid var(--vien);border-radius:10px}
+@media(max-width:980px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .bo-anh.cot-3,.bo-anh.cot-4,.bo-anh.cot-5,.bo-anh.cot-6{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.xem-anh{position:fixed;inset:0;z-index:50;background:rgba(8,10,14,.94);display:none;
+ flex-direction:column;align-items:center;justify-content:center;padding:14px}
+.xem-anh.mo{display:flex}
+.xem-anh img{max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;border-radius:6px;background:#000}
+.xem-anh .xa-chu{color:#dfe5ec;font-size:.85rem;max-width:1100px;margin-top:10px;text-align:center;
+ line-height:1.5;max-height:5.2em;overflow:auto}
+.xem-anh .xa-dem{position:absolute;top:14px;left:18px;color:#c4ccd6;font-size:.85rem}
+.xem-anh button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;
+ width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+.xem-anh button:hover{background:rgba(255,255,255,.25)}
+.xem-anh .xa-dong{top:12px;right:14px}
+.xem-anh .xa-truoc{left:14px;top:50%;transform:translateY(-50%)}
+.xem-anh .xa-sau{right:14px;top:50%;transform:translateY(-50%)}
+@media print{
+ .xem-anh,.canh-bao,.ytlink{display:none!important}
+ .bo-anh{break-inside:avoid}
+ .o-anh{background:none}
+}
+</style>
+</head>
+<body>
+<div class="bo-cuc">
+ <aside class="muc-luc" id="mucLuc">
+  <div class="ml-dau"><span>NỘI DUNG</span><span id="phanTram">0%</span><button
+    id="nutThu" class="nut-thu" type="button" title="Thu gọn mục lục">«</button></div>
+  <div class="o-tim">
+   <input id="oTim" type="search" placeholder="Tìm trong tài liệu…" autocomplete="off">
+   <div class="tim-dieu-khien">
+    <button id="timTruoc" type="button">↑</button>
+    <button id="timSau" type="button">↓</button>
+    <span id="demTim"></span>
+   </div>
+  </div>
+  <div class="ml-cuon"><ul id="dsMuc"></ul></div>
+ </aside>
+ <main>
+  <section class="dau-bai">
+   <div class="nhan">CASE ECG #2053 · DR. SMITH’S ECG BLOG</div>
+   <h1>25/10/2026 — Viêm phổi, tụt huyết áp và thất phải lớn trên siêu âm tại giường. Làm sao tránh “vòng xoáy tử vong” của tim phải?</h1>
+   <p class="dich-gia"><a href="https://doctor-gau-1607.github.io/case-ecg-smith/">← Mục lục Case ECG</a></p><p class="dich-gia">Bản dịch tiếng Việt của bài <a href="https://drsmithsecgblog.com/pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how-to-avoid-the-right-sided-death-spiral/" target="_blank" rel="noopener">"Pneumonia, hypotension, and large RV on bedside ultrasound.  How to avoid the right sided death spiral?"</a> – Dr. Smith’s ECG Blog. Giữ nguyên toàn bộ 11 hình ảnh của bản gốc.</p>
+  </section>
+  <section class="to-giay" id="toGiay">
+<figure class="anh-dau"><a class="o-anh" href="2026-10-25-pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how_anh/2026_10_Shock-sent-by-LP-first-ECG-slightly-different-ARHS-99.7.jpg"><img src="2026-10-25-pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how_anh/2026_10_Shock-sent-by-LP-first-ECG-slightly-different-ARHS-99.7.jpg" alt="" width="1600" height="738" loading="lazy" decoding="async"></a></figure>
+<p>Ca này do một cựu bác sĩ nội trú gửi tới, nay cô đã là bác sĩ điều trị chính mới vào nghề.</p>
+<p>Một bệnh nhân đến viện với <strong>viêm phổi trên lâm sàng và thiếu oxy</strong>, kèm tụt huyết áp.</p>
+<p>Siêu âm tim tại giường được làm ngay và cựu bác sĩ nội trú lập tức nhận ra thất phải (RV) lớn.  Cô ghi nhận thất phải không chỉ lớn mà còn có thành dày, và nghi ngờ phì đại thất phải (RVH).</p>
+<p>Sau đó cô ghi điện tâm đồ.  Đây là bản ghi:</p>
+<figure><a class="o-anh" href="2026-10-25-pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how_anh/2026_09_Shock-sent-by-LP-first-ECG-slightly-different-ARHS-99.7-scaled.jpg"><img src="2026-10-25-pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how_anh/2026_09_Shock-sent-by-LP-first-ECG-slightly-different-ARHS-99.7-scaled.jpg" alt="" width="1600" height="738" loading="lazy" decoding="async"></a></figure>
+<p>Bản ghi này có 1) nhịp nhanh, 2) sóng T đảo ngược ở V1-V3 và chuyển đạo III, và 3) dấu hiệu S1Q3T3. Vì vậy cần coi đây là tăng gánh tim phải cấp (acute right heart strain, ARHS) cho tới khi chứng minh được điều ngược lại. Ngoài ra, hình thái sóng T đảo ngược ở các chuyển đạo trước tim bên phải gợi ý tăng gánh tim phải hơn là hội chứng vành cấp (ACS).</p>
+<p><a href="https://drsmithsecgblog.com/is-this-ecg-easy-for-you-yet/" rel="noopener" target="_blank">Xem bài này: Is this ECG easy for you yet?</a> (Điện tâm đồ này đã dễ với bạn chưa?)</p>
+<p>Cựu bác sĩ nội trú này đã nhận ra hình ảnh đó.</p>
+<p>Hãy nhớ rằng tăng gánh tim phải cấp không chỉ do thuyên tắc phổi gây ra, mà còn do bất kỳ nguyên nhân nào làm tăng cấp tính sức cản mạch phổi, chẳng hạn thiếu oxy.</p>
+<p>Mô hình AI điện tâm đồ của PMCardio có tên <strong>haRVey</strong> cho điểm tăng gánh tim phải cấp là 99,7, gần như đặc hiệu hoàn toàn.</p>
+<p>Tuy nhiên, như đã nói ở trên, cựu bác sĩ nội trú thấy thất phải <strong>phì đại</strong> trên siêu âm, nên cô nghi ngờ <strong>RVH mạn tính kèm theo khả năng tăng gánh tim phải cấp.</strong></p>
+<p>Cô cho chụp CT mạch phổi (CTPA), hay như một số người gọi là CTPE (cách gọi mà tôi thấy hơi buồn cười!). <strong>Kết quả âm tính.</strong></p>
+<p>Cô ghi lại điện tâm đồ:</p>
+<figure><a class="o-anh" href="2026-10-25-pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how_anh/2026_09_Shock-sent-by-LP-what-is-it-ARHS-98.8-scaled.jpg"><img src="2026-10-25-pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how_anh/2026_09_Shock-sent-by-LP-what-is-it-ARHS-98.8-scaled.jpg" alt="" width="1600" height="691" loading="lazy" decoding="async"></a></figure>
+<p>Bạn có thấy khác biệt không?</p>
+<p><strong>Trên bản ghi này, sóng R lớn ở V1 hiện rõ. </strong>Dấu hiệu này gặp trong RVH, không gặp trong PE. Tôi không biết vì sao nó khác với điện tâm đồ đầu tiên. Ngoài ra, sóng T không còn đảo ngược ở chuyển đạo III.</p>
+<p><strong>Bản ghi này gần như chẩn đoán xác định RVH</strong>.</p>
+<p><a href="https://drsmithsecgblog.com/tag/rvh/" rel="noopener" target="_blank">Xem tại đây nhiều ca điện tâm đồ phì đại thất phải (RVH)</a></p>
+<p><strong>Vậy đây là đợt nặng lên của suy tim phải do viêm phổi và thiếu oxy.</strong></p>
+<p>Cựu bác sĩ nội trú muốn điều trị tụt huyết áp, nhưng cô biết dịch truyền có thể giết chết bệnh nhân suy thất phải (dù cấp hay mạn). Cô bắt đầu dùng norepinephrine. Cô cho bệnh nhân nhập ICU và kể lại: “Tôi gọi ICU và nói với họ rằng tôi lo ngại tăng gánh tim phải cấp, và truyền dịch có thể đẩy bệnh nhân vào ‘<strong>vòng xoáy tử vong của tim phải</strong>‘ (right sided death spiral).”</p>
+<p>Dù vậy, <strong>bác sĩ hồi sức tích cực kỳ cựu ở ICU</strong> bảo cô truyền dịch. Cô cố phản đối, nói rằng dịch truyền có thể giết chết một bệnh nhân như thế này. Bác sĩ ICU vẫn khăng khăng, và vì là “người mới” (mới tốt nghiệp nội trú chưa lâu), cô đã làm theo.</p>
+<p>Sau khi truyền dịch, bệnh nhân tụt huyết áp nặng hơn, xấu đi nhanh chóng và tử vong.  Tất nhiên cô rất buồn và day dứt.</p>
+<p>Chúng ta có chứng minh được dịch truyền đã giết bệnh nhân này không?  Không, nhưng có thể là vậy.</p>
+<p><strong>Tôi có một bài giảng về suy thất phải cấp ở khoa cấp cứu, và đây là một số slide liên quan đến ca này:</strong></p>
+<figure><a class="o-anh" href="2026-10-25-pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how_anh/2026_10_In-RV-failure-management-depends-on-triggering-factor.jpg"><img src="2026-10-25-pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how_anh/2026_10_In-RV-failure-management-depends-on-triggering-factor.jpg" alt="" width="1600" height="941" loading="lazy" decoding="async"></a></figure>
+<figure><a class="o-anh" href="2026-10-25-pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how_anh/2026_10_6-Steps-for-RV-rescue.jpg"><img src="2026-10-25-pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how_anh/2026_10_6-Steps-for-RV-rescue.jpg" alt="" width="1590" height="920" loading="lazy" decoding="async"></a></figure>
+<figure><a class="o-anh" href="2026-10-25-pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how_anh/2026_10_Ideal-Vasopressor-in-RV-failure.jpg"><img src="2026-10-25-pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how_anh/2026_10_Ideal-Vasopressor-in-RV-failure.jpg" alt="" width="1600" height="904" loading="lazy" decoding="async"></a></figure>
+<figure><a class="o-anh" href="2026-10-25-pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how_anh/2026_10_Reducing-pulmonary-vascular-resistance.jpg"><img src="2026-10-25-pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how_anh/2026_10_Reducing-pulmonary-vascular-resistance.jpg" alt="" width="1600" height="948" loading="lazy" decoding="async"></a></figure>
+<p><strong>Trong ca này:</strong></p>
+<figure><a class="o-anh" href="2026-10-25-pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how_anh/2026_10_Management-if-triggered-by-hypoxia-increased-pulmonary-afterload.jpg"><img src="2026-10-25-pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how_anh/2026_10_Management-if-triggered-by-hypoxia-increased-pulmonary-afterload.jpg" alt="" width="1386" height="248" loading="lazy" decoding="async"></a></figure>
+<p><strong>Viêm phổi khởi động vòng xoắn bệnh lý:</strong></p>
+<figure><a class="o-anh" href="2026-10-25-pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how_anh/2026_10_6-If-pneumonia-initiates-the-vicious-cycle-3.jpg"><img src="2026-10-25-pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how_anh/2026_10_6-If-pneumonia-initiates-the-vicious-cycle-3.jpg" alt="" width="1600" height="910" loading="lazy" decoding="async"></a></figure>
+<p><strong>Đừng đặt nội khí quản trừ khi thật sự cần thiết:</strong></p>
+<figure><a class="o-anh" href="2026-10-25-pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how_anh/2026_10_7-high-arrest-rate-with-intubation.jpg"><img src="2026-10-25-pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how_anh/2026_10_7-high-arrest-rate-with-intubation.jpg" alt="" width="1600" height="971" loading="lazy" decoding="async"></a></figure>
+<p><strong>Chỉ đặt nội khí quản khi thật sự bắt buộc</strong></p>
+<figure><a class="o-anh" href="2026-10-25-pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how_anh/2026_10_8-If-you-absolutely-must-intubate.jpg"><img src="2026-10-25-pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how_anh/2026_10_8-If-you-absolutely-must-intubate.jpg" alt="" width="1600" height="931" loading="lazy" decoding="async"></a></figure>
+<h3 id="nhung-diem-can-hoc">Những điểm cần học:</h3>
+<ol><li>Dịch truyền có thể rất nguy hiểm cho bệnh nhân sốc có suy thất phải.</li>
+<li>Sóng R lớn ở V1 rất đặc hiệu cho phì đại thất phải mạn tính (V1 được đặt ngay trên thất phải).  </li>
+<li><strong>RVH bị bỏ sót trên điện tâm đồ ngay cả bởi các chuyên gia về suy thất phải. Xem bài này:</strong> <a href="https://drsmithsecgblog.com/copd-exacerbation-followed-by-cardiac-arrest/" rel="noopener" target="_blank">COPD exacerbation, followed by cardiac arrest</a> (Đợt cấp COPD, sau đó ngừng tim).</li>
+<li><strong>RVH hiếm khi được nhận ra trên điện tâm đồ. Điện tâm đồ RẤT hữu ích để chẩn đoán phân biệt thất phải lớn trên siêu âm tại giường giữa PE và RVH</strong>, vì PE chỉ cho thấy tăng gánh tim phải cấp, còn RVH có sóng R lớn ở V1. <strong>(V1 được đặt ngay trên thất phải; sóng R ở đây chỉ lớn khi có RVH mạn tính, không lớn khi tăng gánh tim phải cấp)</strong>.</li>
+<li>Tôi từng nghe một bài giảng của một trong những chuyên gia hàng đầu cả nước về suy thất phải, <a href="https://emcrit.org/emcrit/pulmonary-hypertension-right-ventricular-failure/" rel="noopener" target="_blank">Susan Wilcox</a>. Bà trình bày một số ca suy thất phải không được chẩn đoán. Trong mọi ca mà bà có cho xem điện tâm đồ (theo tôi nhớ là 4 ca), điện tâm đồ đều cho thấy RVH, nhưng Dr. Wilcox đã không nhận ra điều đó. Tôi đã liên lạc với bà để lưu ý bà về điểm này, và quả thật bà đã không nhận ra. Bà rất nhã nhặn và cảm kích khi biết được điều này.<br></li></ol>
+<p><span class="c-nhat">= = =</span></p>
+<hr>
+<p><span class="c-do">==================================</span></p>
+<h2 id="binh-luan-cua-toi-boi-ken-grauer-md-8-9-2026">BÌNH LUẬN CỦA TÔI, bởi KEN GRAUER, MD (8/9/2026):</h2>
+<hr>
+<p>Ca hôm nay của Dr. Smith thật bi thảm khi truyền tải một bài học đau đớn, trong đó bệnh nhân tử vong do xử trí suy thất phải không hợp lý. <em>Cách thức và Lý do</em> điều trị tình trạng phức tạp này vượt ra ngoài phạm vi của ECG Blog này. Để tham khảo — tôi thấy các nguồn sau đây đầy đủ và sâu sắc:</p>
+<ul><li>Ventetuolo và Klinger — <strong><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4225807/" rel="noopener" target="_blank">Ann Am Thorac Soc 11(5):811-822, 2014</a></strong> —</li>
+<li>Levitt và cs. — <strong><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10856072/" rel="noopener" target="_blank">J Clin Med 13:869, 2024</a></strong> —</li>
+<li>Farkas — <strong><a href="https://emcrit.org/ibcc/rv/" rel="noopener" target="_blank">Internet Book of Critical Care</a></strong> <strong>(</strong><em>Cập nhật ngày 30/8/2026</em><strong>)</strong>.</li>
+<li>NIckson và Pearlman — <strong><a href="https://litfl.com/right-ventricular-failure/" rel="noopener" target="_blank">Life In The Fast Lane</a></strong> <strong>(</strong><em>Cập nhật ngày 22/3/2023</em><strong>)</strong>.</li></ul>
+<p>Nhằm thử thách sự tinh tường của bạn đọc trong đọc điện tâm đồ — tôi tập trung bình luận vào một vài nhận xét <em>vượt ra ngoài phần cốt lõi</em> được chọn lọc về 2 điện tâm đồ trong ca hôm nay.</p>
+<p><span class="c-nhat">= = =</span></p>
+<h3 id="dien-tam-do-thu-1-da-duoc-ghi">Điện tâm đồ thứ 1 đã được ghi …</h3>
+<p>Để rõ ràng, và để thuận tiện so sánh 2 bản ghi của ca hôm nay — tôi đã đặt chúng cạnh nhau trong <strong>Hình 1</strong>.</p>
+<ul><li><strong>ĐIỂM THEN CHỐT (PEARL):</strong> Như Dr. Smith đã nêu — nhận ra thay đổi kín đáo giữa 2 điện tâm đồ này có ý nghĩa lâm sàng, vì <strong>điện tâm đồ #1</strong> gợi ý nhiều hơn đến “tăng gánh” thất phải cấp gặp trong PE cấp — trong khi <strong>điện tâm đồ #2</strong> trông phù hợp hơn với RVH mất bù. <em>Chẳng phải việc đánh giá những thay đổi kín đáo giữa 2 bản ghi liên tiếp DỄ HƠN nhiều khi bạn đặt cả hai điện tâm đồ cạnh nhau</em> <strong>(</strong>như trong Hình 1<strong>)</strong> — <em>rồi thực hiện một cách có hệ thống việc <strong>so sánh từng</strong></em> <strong>chuyển đạo hay sao?</strong></li></ul>
+<p>Như Dr. Smith đã nêu — điện tâm đồ #1 cho thấy <strong><em>nhịp nhanh</em></strong> <strong>xoang</strong> — sóng T đảo ngược ở <strong>các chuyển đạo V1</strong>,<strong>V2</strong>,<strong>V3</strong> và <strong>chuyển đạo III (</strong><em>các mũi tên ĐỎ ở những chuyển đạo này</em><strong>)</strong> — kèm <strong>hình ảnh S1Q3T3</strong> ở chuyển đạo I và III. Các dấu hiệu khác trên điện tâm đồ #1 gồm:</p>
+<ul><li><strong>Sóng P</strong> cao và <strong><em>nhọn</em></strong> ở các chuyển đạo thành dưới <strong>II</strong> và <strong>aVF</strong>. Mặc dù tiêu chuẩn biên độ sóng P 2,5 mm cho RAA (<em>bất thường nhĩ phải</em>) chưa đạt — tôi nhận thấy mức độ nhọn rõ rệt như thế này của sóng P ở các chuyển đạo thành dưới, ngay cả khi biên độ sóng P thấp hơn — liên quan thường gặp với bệnh phổi cấp đến mức tôi dùng nó như một dấu hiệu hỗ trợ.</li>
+<li><strong>Hình ảnh Qr</strong> ở <strong>chuyển đạo V1</strong> <strong>(</strong><em>mũi tên VÀNG ở chuyển đạo này</em><strong>)</strong>. Đặc biệt ở bệnh nhân có bệnh phổi — <strong>hình ảnh</strong> <strong>Qr (</strong><em>hoặc qR</em><strong>)</strong> ở chuyển đạo V1 tương quan tốt với <strong><em>tăng áp </em>phổi! (</strong><em>Xem Hình 2 trong phần Bình luận của tôi ở cuối trang của </em><strong>bài ngày <a href="https://drsmithsecgblog.com/what-is-going-on-in-v2-and-v3-with/" rel="noopener" target="_blank">12 tháng Hai năm 2023</a> </strong><em>để xem phần bàn luận có minh họa về lý do của điều này</em><strong>)</strong>.</li>
+<li><strong>ST dạng vòm (coving)</strong> và <strong>chênh lên</strong> ở <strong>các chuyển đạo <em>thành trước </em>V1</strong>,<strong>V2</strong>. Ngoài nhồi máu thất phải cấp và tắc LAD — <strong>ST chênh lên <em>thành trước </em>(</strong><em>thay vì sóng T đảo ngược thành trước</em><strong>)</strong> có thể gặp như một dấu hiệu của PE cấp, đặc biệt khi đi kèm ST dạng vòm và chênh lên ở <strong>chuyển đạo III</strong> và <strong>aVR (</strong> <em>= các chuyển đạo bên phải còn lại</em><strong>)</strong>. Khi có, dấu hiệu này thường gặp ở bệnh nhân có chức năng thất phải suy giảm rõ rệt <strong>(</strong><em>Zhan và cs. — </em><strong><a href="https://onlinelibrary.wiley.com/doi/epdf/10.1111/anec.12163" rel="noopener" target="_blank">Ann Noninvasive Electrocardiol 19(6):543-551, 2014</a></strong> – và – <em>Omar HR —</em> <strong><a href="https://pubmed.ncbi.nlm.nih.gov/26373811/" rel="noopener" target="_blank">Eur Heart J: Acute Cardiovasc Care 5(8):579-586, 2016</a>)</strong>. 
+<ul>
+<li>Mặc dù tôi không tin rằng ST chênh lên thành trước giúp phân biệt PE cấp <em>với</em> RVH kèm suy thất phải cấp — vẫn nên biết các tình trạng có thể gặp dấu hiệu này.</li>
+</ul>
+</li></ul>
+<p><span class="c-nhat">= = =</span></p>
+<hr>
+<p><strong>Hình 1:</strong> Tôi đã tái hiện và đánh dấu 2 điện tâm đồ trong ca hôm nay.</p>
+<figure><a class="o-anh" href="2026-10-25-pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how_anh/2026_09_Figure-1-ECGs-12-9-7.21-2026-USE-scaled.jpg"><img src="2026-10-25-pneumonia-hypotension-and-large-rv-on-bedside-ultrasound-how_anh/2026_09_Figure-1-ECGs-12-9-7.21-2026-USE-scaled.jpg" alt="" width="1600" height="946" loading="lazy" decoding="async"></a></figure>
+<hr>
+<p><span class="c-nhat">= = =</span></p>
+<h3 id="dien-tam-do-ghi-lai">Điện tâm đồ ghi lại …</h3>
+<p>Như Dr. Smith đã nêu — trong số những khác biệt kín đáo về hình dạng giữa điện tâm đồ #1 và <strong><em>điện tâm đồ ghi lại </em>#2</strong> — có sự <strong><em>mất đi</em></strong> của <strong>hình ảnh S1Q3T3</strong> <strong>(</strong><em>sóng T không còn đảo ngược ở chuyển đạo III</em><strong>) </strong>— và <strong>biên độ sóng R tăng </strong>ở<strong> chuyển đạo V1</strong> <strong>(</strong><em>sóng R cao mới xuất hiện đột ngột này trên</em> điện tâm đồ #2 <em>gợi ý RVH nhiều hơn hẳn</em><strong>)</strong>. Câu hỏi đặt ra là <em>VÌ SAO</em> sóng R cao phần tận cùng này ở chuyển đạo V1 lại không thấy trên điện tâm đồ #1?</p>
+<ul><li>Cả điện tâm đồ #1 và điện tâm đồ #2 đều có sóng Q khởi đầu nổi bật ở chuyển đạo V1 — và ST dạng vòm kèm ST chênh lên nhẹ ở các chuyển đạo thành trước.</li>
+<li>Thay vì một thay đổi về huyết động thất phải — tôi nghĩ những lý do hợp lý nhất cho việc tăng biên độ sóng R ở chuyển đạo V1 trên điện tâm đồ #2 là: <strong>i<span class="c-do">)</span></strong> <strong>Tần số tim <em>nhanh</em> hơn nhiều trên điện tâm đồ #1</strong> <strong>(</strong><em>~140/phút trên điện tâm đồ #1 — so với 115/phút trên điện tâm đồ #2</em><strong>)</strong> — vì hình dạng QRST đôi khi có thể bị thay đổi do nhịp nhanh; — và, <strong>ii<span class="c-do">)</span></strong> <strong>Thay đổi vị trí đặt điện cực chuyển đạo trước tim</strong> <strong>(</strong><em>Thấy rõ nhất trong Hình 1 khi so sánh hình dạng QRST của chuyển đạo V3 trên cả hai bản ghi</em> <em>— kèm thay đổi kín đáo hơn về sự tồn tại của sóng S ở các chuyển đạo ngực bên V4,V5,V6</em><strong>)</strong>. 
+<ul>
+<li>Ủng hộ cho tác động của việc thay đổi vị trí đặt điện cực chuyển đạo trước tim — là dấu hiệu kín đáo của một khía âm sau sóng r tận rất nhỏ có trên điện tâm đồ #1. </li>
+</ul>
+</li></ul>
+<p><span class="c-nhat">= = =</span></p>
+<p><span class="c-nhat">= = =</span></p>
+  </section>
+ </main>
+</div>
+<div class="thanh-nut">
+ <button id="nutMl" class="hien-ml" type="button" title="Mục lục">≡</button>
+ <button id="nutGiam" type="button" title="Chữ nhỏ hơn">A-</button>
+ <button id="nutTang" type="button" title="Chữ lớn hơn">A+</button>
+ <button id="nutNen" type="button" title="Nền sáng/tối">◐</button>
+</div>
+<div class="xem-anh" id="xemAnh" role="dialog" aria-label="Xem ảnh">
+ <span class="xa-dem"></span>
+ <button class="xa-dong" type="button" title="Đóng (Esc)">✕</button>
+ <button class="xa-truoc" type="button" title="Ảnh trước (←)">‹</button>
+ <img alt="">
+ <button class="xa-sau" type="button" title="Ảnh sau (→)">›</button>
+ <div class="xa-chu"></div>
+</div>
+<script>
+(function(){
+ var goc=document.documentElement, ds=document.getElementById('dsMuc'),
+     giay=document.getElementById('toGiay'), pt=document.getElementById('phanTram'),
+     ml=document.getElementById('mucLuc');
+ var dau=[].slice.call(giay.querySelectorAll('h2,h3,h4,h5,h6'));
+
+ // mục lục
+ dau.forEach(function(h){
+  var li=document.createElement('li');
+  li.className='cap-'+(+h.tagName[1]-1);
+  var a=document.createElement('a');
+  a.href='#'+h.id; a.textContent=h.textContent;
+  a.addEventListener('click',function(){ ml.classList.remove('mo'); });
+  li.appendChild(a); ds.appendChild(li);
+ });
+ var neo=[].slice.call(ds.querySelectorAll('a'));
+
+ function capNhat(){
+  var i=0;
+  for(var k=0;k<dau.length;k++){ if(dau[k].getBoundingClientRect().top<140) i=k; }
+  neo.forEach(function(a,k){ a.classList.toggle('dang-doc',k===i); });
+  var a=neo[i];
+  if(a){ var cuon=a.closest('.ml-cuon');
+   if(cuon){ var h=a.getBoundingClientRect(), c=cuon.getBoundingClientRect();
+    if(h.top<c.top||h.bottom>c.bottom) cuon.scrollTop+=h.top-c.top-c.height/3; } }
+  var het=document.documentElement.scrollHeight-innerHeight;
+  pt.textContent=(het>0?Math.min(100,Math.round(scrollY/het*100)):100)+'%';
+ }
+ addEventListener('scroll',capNhat,{passive:true});
+ addEventListener('resize',capNhat); capNhat();
+
+ // cỡ chữ + nền tối, nhớ lựa chọn
+ function docNho(k,md){ try{ return localStorage.getItem(k)||md; }catch(e){ return md; } }
+ function ghiNho(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+ var co=parseInt(docNho('gl-co','16'),10);
+ function apCo(){ goc.style.setProperty('--co',co+'px'); ghiNho('gl-co',co); capNhat(); }
+ apCo();
+ goc.setAttribute('data-nen',docNho('gl-nen','sang'));
+ document.getElementById('nutTang').onclick=function(){ co=Math.min(24,co+1); apCo(); };
+ document.getElementById('nutGiam').onclick=function(){ co=Math.max(12,co-1); apCo(); };
+ document.getElementById('nutNen').onclick=function(){
+  var v=goc.getAttribute('data-nen')==='toi'?'sang':'toi';
+  goc.setAttribute('data-nen',v); ghiNho('gl-nen',v);
+ };
+ // thu gọn / mở lại cột mục lục (nhớ lựa chọn)
+ goc.setAttribute('data-ml',docNho('gl-ml',''));
+ function datMl(v){ goc.setAttribute('data-ml',v); ghiNho('gl-ml',v); capNhat(); }
+ document.getElementById('nutThu').onclick=function(){ datMl('thu'); };
+ document.getElementById('nutMl').onclick=function(){
+  // màn hình rộng: nút ≡ mở lại cột đã thu; màn hình hẹp: kéo cột ra/vào
+  if(innerWidth>980 && goc.getAttribute('data-ml')==='thu'){ datMl(''); return; }
+  ml.classList.toggle('mo');
+ };
+
+ // tìm trong bài
+ var o=document.getElementById('oTim'), dem=document.getElementById('demTim'), hit=[], vt=-1;
+ function xoaDanh(){
+  hit=[]; vt=-1;
+  var m=giay.querySelectorAll('mark.danh');
+  for(var i=0;i<m.length;i++){ var p=m[i].parentNode;
+   p.replaceChild(document.createTextNode(m[i].textContent),m[i]); p.normalize(); }
+ }
+ function danhDau(q){
+  xoaDanh();
+  if(q.length<2){ dem.textContent=''; return; }
+  var tw=document.createTreeWalker(giay,NodeFilter.SHOW_TEXT,null), nut=[], n;
+  while((n=tw.nextNode())) if(n.nodeValue.trim()) nut.push(n);
+  var kq=q.toLowerCase();
+  nut.forEach(function(n){
+   var s=n.nodeValue, l=s.toLowerCase(), i=l.indexOf(kq);
+   if(i<0) return;
+   var cha=n.parentNode, sau=n, dich=0;
+   while(i>=0){
+    var giua=sau.splitText(i-dich); dich=i+q.length;
+    sau=giua.splitText(q.length);
+    var mk=document.createElement('mark'); mk.className='danh';
+    cha.replaceChild(mk,giua); mk.appendChild(giua); hit.push(mk);
+    i=l.indexOf(kq,dich);
+   }
+  });
+  dem.textContent=hit.length?('1/'+hit.length):'0';
+  if(hit.length){ vt=0; toi(0); }
+ }
+ function toi(i){
+  if(!hit.length) return;
+  hit.forEach(function(m){ m.classList.remove('dang'); });
+  vt=(i+hit.length)%hit.length;
+  hit[vt].classList.add('dang');
+  hit[vt].scrollIntoView({block:'center',behavior:'smooth'});
+  dem.textContent=(vt+1)+'/'+hit.length;
+ }
+ var cho;
+ o.addEventListener('input',function(){ clearTimeout(cho);
+  cho=setTimeout(function(){ danhDau(o.value.trim()); },250); });
+ o.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault();
+  toi(vt+(e.shiftKey?-1:1)); } });
+ document.getElementById('timTruoc').onclick=function(){ toi(vt-1); };
+ document.getElementById('timSau').onclick=function(){ toi(vt+1); };
+ addEventListener('beforeprint',xoaDanh);
+})();
+// xem ảnh phóng to: bấm ảnh để mở, ←/→ chuyển ảnh trong cùng bộ, Esc để đóng
+(function(){
+ var hop=document.getElementById('xemAnh'), anh=hop.querySelector('img'),
+     chu=hop.querySelector('.xa-chu'), dem=hop.querySelector('.xa-dem'), bo=[], vt=0;
+ function hien(i){
+  vt=(i+bo.length)%bo.length; var a=bo[vt], im=a.querySelector('img');
+  anh.src=a.getAttribute('href'); anh.alt=im.alt; chu.textContent=im.alt;
+  chu.style.display=im.alt?'':'none';
+  dem.textContent=bo.length>1?(vt+1)+' / '+bo.length:'';
+  hop.querySelector('.xa-truoc').style.display=hop.querySelector('.xa-sau').style.display=bo.length>1?'':'none';
+ }
+ function dong(){ hop.classList.remove('mo'); anh.removeAttribute('src'); document.body.style.overflow=''; }
+ document.getElementById('toGiay').addEventListener('click',function(e){
+  var a=e.target.closest('a.o-anh'); if(!a) return;
+  e.preventDefault();
+  var cha=a.closest('.bo-anh');
+  bo=cha?[].slice.call(cha.querySelectorAll('a.o-anh')):[a];
+  hien(bo.indexOf(a)); hop.classList.add('mo'); document.body.style.overflow='hidden';
+ });
+ hop.querySelector('.xa-dong').onclick=dong;
+ hop.querySelector('.xa-truoc').onclick=function(e){ e.stopPropagation(); hien(vt-1); };
+ hop.querySelector('.xa-sau').onclick=function(e){ e.stopPropagation(); hien(vt+1); };
+ hop.addEventListener('click',function(e){ if(e.target===hop) dong(); });
+ addEventListener('keydown',function(e){
+  if(!hop.classList.contains('mo')) return;
+  if(e.key==='Escape') dong();
+  else if(e.key==='ArrowLeft') hien(vt-1);
+  else if(e.key==='ArrowRight') hien(vt+1);
+ });
+ var x0=null;
+ hop.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+ hop.addEventListener('touchend',function(e){ if(x0===null) return;
+  var dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)>50) hien(vt+(dx<0?1:-1)); });
+})();
+// video YouTube: chỉ tải khi bấm. YouTube trả "Lỗi 153" khi trang không gửi được referrer
+// (mở từ ổ đĩa file:// hoặc khung sandbox) — khi đó mở thẳng tab YouTube.
+(function(){
+ var giay=document.getElementById('toGiay'), ds=giay.querySelectorAll('.yt');
+ if(!ds.length) return;
+ var canEmbed=/^https?:$/.test(location.protocol) &&
+   (typeof window.origin==='undefined' || (window.origin && window.origin!=='null'));
+ var PLAY='<span class="play"><svg viewBox="0 0 68 48"><path fill="#f00" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/><path fill="#fff" d="M27 34l18-10-18-10z"/></svg></span>';
+ [].forEach.call(ds,function(b){
+  var id=b.getAttribute('data-id'), n=b.getAttribute('data-n')||'Video', watch='https://www.youtube.com/watch?v='+id;
+  b.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+n+'">'+PLAY+'<span class="badge">▶ '+n+'</span>';
+  b.setAttribute('role','button'); b.setAttribute('tabindex','0');
+  var fig=b.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+  if(!cap&&fig){ cap=document.createElement('figcaption'); fig.appendChild(cap); }
+  if(cap){ var a=document.createElement('a'); a.className='ytlink'; a.href=watch; a.target='_blank';
+   a.rel='noopener'; a.textContent='Mở trên YouTube ↗'; cap.appendChild(a); }
+  function load(){
+   if(!canEmbed){ window.open(watch,'_blank','noopener'); return; }
+   b.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&autoplay=1" '+
+    'referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer;autoplay;clipboard-write;'+
+    'encrypted-media;gyroscope;picture-in-picture" allowfullscreen title="'+n+'"></iframe>';
+   b.style.cursor='default';
+  }
+  b.addEventListener('click',load);
+  b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
+ });
+ if(!canEmbed){
+  var w=document.createElement('div'); w.className='canh-bao';
+  w.innerHTML='<b>Lưu ý:</b> trang đang mở trực tiếp từ ổ đĩa (hoặc trong khung xem trước) nên YouTube chặn phát nhúng '+
+   '(<i>Lỗi 153</i>). Bấm vào video sẽ mở tab YouTube. Đăng trang lên web (https) thì video phát ngay trong trang.';
+  giay.insertBefore(w, giay.firstChild);
+ }
+})();
+</script>
+</body>
+</html>
